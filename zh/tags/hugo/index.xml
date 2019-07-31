@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hugo on Keep Learning</title>
+    <link>https://hanyutan.github.io/zh/tags/hugo/</link>
+    <description>Recent content in Hugo on Keep Learning</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 29 Jul 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://hanyutan.github.io/zh/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Build Blog</title>
+      <link>https://hanyutan.github.io/zh/build_blog/</link>
+      <pubDate>Mon, 29 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.github.io/zh/build_blog/</guid>
+      <description>Introduction 如果你不会Web前端开发，也不愿意花钱买服务器，懒洋洋地做个伸手党，只希望专注于内容创作&amp;hellip;&amp;hellip; 那么Github Pages + Hugo绝对适合你！
+Why Github Pages? 免费！创建和管理都很方便！
+只需在Github上创建一个repository，然后将Hugo生成的静态页面相关文件push到项目上。 （个人主页&amp;lt;username&amp;gt;.github.io的话push到默认的master分支上，普通repository则push到该项目的gh-pages分支上并保证根目录有一个index.html文件）
+Push的方法有多种，说一些我接触到的： - 使用Git命令（最原始，最基本，灵活度高） - 下载GitHub桌面版，2次按键搞定（最简单，灵活度低） - 基于Git使用sublime上传 - Eclipse里自带Git，但需要Java环境，jre或jdk都行。
+Why Hugo? 目前流行的几个静态网站生成器（SSG————Static Site Generator）：Hugo/Hexo/Jekyll。
+Hugo官方主页：https://gohugo.io
+ Hugo是使用Go语言编写的静态网站生成器。 相对于Jekyll复杂的安装设置来说，Hugo进行需要下载一个二进制文件（hogo.exe）即可轻松调试和生成静态页面。 Hugo生成静态页码的效率很高，速度上来说Hugo&amp;gt;Hexo&amp;gt;Jekyll。 Hugo自带watch的调试模式，可以在修改Markdown的文章内容的同时，自动更新浏览器页面呈现最终效果。 缺点是主题模板相对其他两个来说数量比较少。 用的人感觉还不算特别多，中文社区支持也不是很多。  Preparation 需要拥有自己的GitHub账号、创建个人主页用的仓库、安装Git和Hugo、一定的Markdown和HTML基础。GitHub Desktop和Go语言可以根据自身需要选择性地安装。
+由于是国外网站，下载速度很慢，用Vpn吧或者给我发邮件要百度云链接来下载。
+GitHub Account &amp;amp; Repository 进入GitHub官方主页：https://github.com/注册自己的GitHub账户，登陆个人主页http://github.com/username， 右上角点击+号新建仓库（New Repository），在Repository name一栏中为仓库命名为&amp;lt;username&amp;gt;.github.io。 注意username需要与注册时保持一致。Initialize this repository with a README先不用勾选。
+Install Git &amp;amp; Hugo # Windows10在开始菜单键右击选择Windows PowerShell，依次输入下列命令 set-executionpolicy remotesigned -scope currentuser	$env:SCOOP=&amp;#39;D:\Scoop&amp;#39; # 这里可以替换到你自定义的安装目录 [environment]::setEnvironmentVariable(&amp;#39;SCOOP&amp;#39;,$env:SCOOP,&amp;#39;User&amp;#39;) iex (new-object net.</description>
+    </item>
+    
+    <item>
+      <title>Hugo Notes</title>
+      <link>https://hanyutan.github.io/zh/hugo_notes/</link>
+      <pubDate>Mon, 29 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.github.io/zh/hugo_notes/</guid>
+      <description>Hugo Notes Hugo官方教程：https://gohugo.io/getting-started/
+有人自己创建的Hugo中文文档：https://www.gohugo.org/
+Hugo主题模板：https://themes.gohugo.io/
+hugo new site Hugo_Blog
+然后hugo会自动生成这样一个目录结构（大致样子）：
+   文件(夹)名 用途     archetypes 为不同类型定义默认的头文件FrontMatter，一般用不上   content 存放写好的文章，markdown文件   data 数据文件，一般用不上   layouts 存放网站的模板文件   static 存放image/css/js等静态资源   themes 存放下载的Hugo主题   config.toml 网站的配置文件    hugo new指令会自动添加content路径前缀 themes/ananke/exampleSite是一个示例站点，我们可以直接拿来使用。
+修改FrontMatter
+&amp;ndash;watch或者-w 选项打开的话，将会监控到文章的改动从而自动刷新浏览器。
+浏览器里打开：http://localhost:1313
+hugo
+所有静态页面会生成到public目录，将public文件夹里的全部文件push到对应的分支上。（例如&amp;lt;username&amp;gt;.github.io的master分支上，或者其他项目repository的gh-pages上）
+在浏览器中输入https://&amp;lt;username&amp;gt;.github.io查看个人主页，或者https://&amp;lt;username&amp;gt;.github.io/repository_name查看项目主页。</description>
+    </item>
+    
+  </channel>
+</rss>

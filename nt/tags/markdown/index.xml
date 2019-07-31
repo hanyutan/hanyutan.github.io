@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Markdown on Keep Learning</title>
+    <link>https://hanyutan.github.io/nt/tags/markdown/</link>
+    <description>Recent content in Markdown on Keep Learning</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 29 Jul 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://hanyutan.github.io/nt/tags/markdown/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Markdown Notes</title>
+      <link>https://hanyutan.github.io/nt/markdown_notes/</link>
+      <pubDate>Mon, 29 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.github.io/nt/markdown_notes/</guid>
+      <description>Markdown Notes 作为示例，右边栏code即本文的markdown内容。 此外在markdown里使用html tag同样有效。 空一行可以形成单独段落。 作为示例，右边栏code即本文的markdown内容。
+此外在markdown里使用html tag同样有效。
+空一行可以形成单独段落。
+Headers ## Headers 三级标题 ### 三级标题 在想要设置为标题的文字前面加#号和空格来表示，#号的数量代表几级标题。标准语法一般在#后面跟个空格再写文字。 &amp;lt;aside class=&amp;#34;notice&amp;#34;&amp;gt;补充内容可以设置加下划线的标题形式，这里不作展示。&amp;lt;/aside&amp;gt; Alt-title1 ====== Alt-H2 ------ 在想要设置为标题的文字前面加#号和空格来表示，#号的数量代表几级标题。标准语法一般在#后面跟个空格再写文字。
+补充内容可以设置加下划线的标题形式，这里不作展示。 Emphasis 要**加粗**的文字左右两边使用2个星号`*`括起来 要&amp;lt;em&amp;gt;倾斜&amp;lt;/em&amp;gt;的文字左右两边使用1个星号`*`或者`&amp;lt;em&amp;gt;&amp;lt;/em&amp;gt;`括起来 要***加粗和倾斜***的文字左右两边使用3个星号`*`括起来 要~~加删除线~~的文字左右两边使用2个波浪号`~`括起来 &amp;lt;aside class=&amp;#34;warning&amp;#34;&amp;gt;在这里使用星号*设置倾斜似乎无效&amp;lt;/aside&amp;gt; 要加粗的文字左右两边使用2个星号*括起来
+要倾斜的文字左右两边使用1个星号*或者&amp;lt;em&amp;gt;&amp;lt;/em&amp;gt;括起来
+要加粗和倾斜的文字左右两边使用3个星号*括起来
+要加删除线的文字左右两边使用2个波浪号~括起来
+在这里使用星号*设置倾斜似乎无效 Lists 无序列表使用-+*中的任意一种作为开头，空一格后输入内容。 - 列表内容 + 列表内容 * 列表内容 有序列表需要使用数字+点作为开头，空一格后输入内容。 1. 列表内容 2. 列表内容 3. 列表内容 列表嵌套需要在行前再空1个tab或者1个空格（空格数量不一定）。 1. 列表内容 - 列表内容 2. 列表内容 无序列表使用-+*中的任意一种作为开头，空一格后输入内容。
+ 列表内容 列表内容 列表内容  有序列表需要使用数字+点作为开头，空一格后输入内容。
+ 列表内容 列表内容 列表内容  列表嵌套需要在行前再空1个tab或者1个空格（空格数量不一定）。</description>
+    </item>
+    
+  </channel>
+</rss>

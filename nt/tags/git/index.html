@@ -1,0 +1,941 @@
+<!doctype html>
+<html lang="nt">
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Git</title>
+    
+
+
+
+
+
+
+
+
+<link href='/styles/screen.min.22e204b7d93a3c45f092b721549245eb54574cff91818b87882ea87ceb70e3ba.css' rel="stylesheet" media="screen" integrity="sha256-IuIEt9k6PEXwkrchVJJF61RXTP&#43;RgYuHiC6ofOtw47o=" />
+<link href='/styles/print.min.b3e09db630acb83576f21ff203109e0ad66e70c42dadb6f13165fe918c2ece18.css' rel="stylesheet" media="print" integrity="sha256-s&#43;CdtjCsuDV28h/yAxCeCtZucMQtrbbxMWX&#43;kYwuzhg=" />
+
+
+    
+
+
+
+
+
+
+<script src='/js/all.js'></script>
+
+    
+	<script type="text/javascript"
+    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?cfd5dd9b6b26ab23d505c1cc80350ab9";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+</head>
+<body class="index" data-languages="[ &#34;code&#34; ]">
+    <a href="#" id="nav-button">
+        <span>
+        NAV
+        <img src='/images/navbar.png'/>
+      </span>
+    </a>
+    <div class="toc-wrapper">
+        
+         <img src='/images/logo.png' class="logo" />
+        
+        <div class="lang-selector">
+            
+            <a href="#" data-language-name="code">Code</a>
+            
+        </div>
+         
+        
+        <div class="search">
+            <input type="search" class="search" id="input-search" placeholder='Search'>
+        </div>
+        <ul class="search-results"></ul>
+        
+        
+    <ul id="toc" class="toc-list-h1">
+        
+        
+        <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+        
+        <a href="#why-github-pages" class="toc-h2 toc-link" data-title="Why Github Pages?">Why Github Pages?</a>
+        
+        <a href="#why-hugo" class="toc-h2 toc-link" data-title="Why Hugo?">Why Hugo?</a>
+        
+        <a href="#preparation" class="toc-h1 toc-link" data-title="Preparation">Preparation</a>
+        
+        <a href="#github-account-repository" class="toc-h2 toc-link" data-title="GitHub Account & Repository">GitHub Account & Repository</a>
+        
+        <a href="#install-git-hugo" class="toc-h2 toc-link" data-title="Install Git & Hugo">Install Git & Hugo</a>
+        
+        <a href="#optional" class="toc-h2 toc-link" data-title="Optional">Optional</a>
+        
+        <a href="#quick-start" class="toc-h1 toc-link" data-title="Quick Start">Quick Start</a>
+        
+        <a href="#git-notes" class="toc-h1 toc-link" data-title="Git Notes">Git Notes</a>
+        
+        <a href="#cheat-sheet" class="toc-h2 toc-link" data-title="Cheat Sheet">Cheat Sheet</a>
+        
+        <a href="#create-new-repo" class="toc-h2 toc-link" data-title="Create New Repo">Create New Repo</a>
+        
+        <a href="#local-changes" class="toc-h2 toc-link" data-title="Local Changes">Local Changes</a>
+        
+        <a href="#commit-history" class="toc-h2 toc-link" data-title="Commit History">Commit History</a>
+        
+        <a href="#rollback-reset" class="toc-h2 toc-link" data-title="Rollback / Reset">Rollback / Reset</a>
+        
+        <a href="#working-directory-stage" class="toc-h2 toc-link" data-title="Working Directory & Stage">Working Directory & Stage</a>
+        
+        <a href="#undo" class="toc-h2 toc-link" data-title="Undo">Undo</a>
+        
+        <a href="#delete-files" class="toc-h2 toc-link" data-title="Delete Files">Delete Files</a>
+        
+        <a href="#remote-repo-ssh-key" class="toc-h2 toc-link" data-title="Remote Repo & SSH Key">Remote Repo & SSH Key</a>
+        
+        <a href="#add-remote-repo" class="toc-h2 toc-link" data-title="Add Remote Repo">Add Remote Repo</a>
+        
+        <a href="#clone-existing-repo" class="toc-h2 toc-link" data-title="Clone Existing Repo">Clone Existing Repo</a>
+        
+        <a href="#hugo-notes" class="toc-h1 toc-link" data-title="Hugo Notes">Hugo Notes</a>
+        
+        <a href="#markdown-notes" class="toc-h1 toc-link" data-title="Markdown Notes">Markdown Notes</a>
+        
+        <a href="#headers" class="toc-h2 toc-link" data-title="Headers">Headers</a>
+        
+        <a href="#emphasis" class="toc-h2 toc-link" data-title="Emphasis">Emphasis</a>
+        
+        <a href="#lists" class="toc-h2 toc-link" data-title="Lists">Lists</a>
+        
+        <a href="#tables" class="toc-h2 toc-link" data-title="Tables">Tables</a>
+        
+        <a href="#images-and-links" class="toc-h2 toc-link" data-title="Images and Links">Images and Links</a>
+        
+        <a href="#code-and-syntax-highlighting" class="toc-h2 toc-link" data-title="Code and Syntax Highlighting">Code and Syntax Highlighting</a>
+        
+        <a href="#blockquotes-and-horizontal-rule" class="toc-h2 toc-link" data-title="Blockquotes and Horizontal Rule">Blockquotes and Horizontal Rule</a>
+        
+        <a href="#youtube-videos" class="toc-h2 toc-link" data-title="YouTube Videos">YouTube Videos</a>
+        
+        <a href="#q-a" class="toc-h1 toc-link" data-title="Q&A">Q&A</a>
+        
+    </ul>
+
+         
+        
+        <ul class="toc-footer">
+            
+            <li>Contact</li>
+            
+            <li><a href="https://github.com/hanyutan" target="_blank">GitHub Homepage</a></li>
+            
+            <li>Weibo: Pride_Darcy</li>
+            
+            <li>Email: hanyutan@foxmail.com</li>
+            
+        </ul>
+        
+        
+
+    </div>
+    <div class="page-wrapper">
+        <div class="dark-box"></div>
+        <div class="content">
+            
+    
+        
+
+<h1 id="introduction">Introduction</h1>
+
+<p>如果你不会Web前端开发，也不愿意花钱买服务器，<del>懒洋洋地做个伸手党</del>，只希望专注于内容创作&hellip;&hellip;
+那么Github Pages + Hugo绝对适合你！</p>
+
+<h2 id="why-github-pages">Why Github Pages?</h2>
+
+<p><strong>免费！创建和管理都很方便！</strong></p>
+
+<p>只需在Github上创建一个repository，然后将Hugo生成的静态页面相关文件push到项目上。
+（个人主页<code>&lt;username&gt;.github.io</code>的话push到默认的master分支上，普通repository则push到该项目的gh-pages分支上并保证根目录有一个index.html文件）</p>
+
+<p>Push的方法有多种，说一些我接触到的：</p>
+
+<ul>
+<li>使用Git命令（最原始，最基本，灵活度高）</li>
+<li>下载GitHub桌面版，2次按键搞定（最简单，灵活度低）</li>
+<li>基于Git使用sublime上传</li>
+<li>Eclipse里自带Git，但需要Java环境，jre或jdk都行。</li>
+</ul>
+
+<h2 id="why-hugo">Why Hugo?</h2>
+
+<p>目前流行的几个静态网站生成器（SSG——Static Site Generator）：Hugo/Hexo/Jekyll。</p>
+
+<p>Hugo官方主页：<a href="https://gohugo.io" target="_blank">https://gohugo.io</a></p>
+
+<ul>
+<li>Hugo是使用Go语言编写的静态网站生成器。</li>
+<li>相对于Jekyll复杂的安装设置来说，Hugo进行需要下载一个二进制文件（hogo.exe）即可轻松调试和生成静态页面。</li>
+<li>Hugo生成静态页码的效率很高，速度上来说Hugo&gt;Hexo&gt;Jekyll。</li>
+<li>Hugo自带watch的调试模式，可以在修改Markdown的文章内容的同时，自动更新浏览器页面呈现最终效果。</li>
+<li>缺点是主题模板相对其他两个来说数量比较少。</li>
+<li>用的人感觉还不算特别多，中文社区支持也不是很多。</li>
+</ul>
+
+<h1 id="preparation">Preparation</h1>
+
+<p>需要拥有自己的GitHub账号、创建个人主页用的仓库、安装Git和Hugo、一定的Markdown和HTML基础。
+GitHub Desktop和Go语言可以根据自身需要选择性地安装。
+另外最好还要有一款支持语法高亮的文本编辑器/代码编辑器，例如Sublime Text、Notepad++等等。</p>
+
+<h2 id="github-account-repository">GitHub Account &amp; Repository</h2>
+
+<p>进入GitHub官方主页<a href="https://github.com/" target="_blank">https://github.com/</a>注册自己的GitHub账户，登陆个人主页<code>http://github.com/username</code>，
+右上角点击+号新建仓库（New Repository），在Repository name一栏中为仓库命名为<code>&lt;username&gt;.github.io</code>。
+注意<code>username</code>需要与注册时保持一致。<code>Initialize this repository with a README</code>先不用勾选。</p>
+
+<h2 id="install-git-hugo">Install Git &amp; Hugo</h2>
+
+<h3 id="install-git">Install Git</h3>
+
+<p>Git下载安装网站：<a href="https://git-scm.com/download" target="_blank">https://git-scm.com/download</a></p>
+
+<p>安装完成后，在开始菜单里找到Git -&gt; Git Bash，蹦出一个命令行窗口说明Git安装成功。</p>
+
+<blockquote>
+<p>Git Bash命令行输入</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git config --global user.name <span style="color:#e6db74">&#34;Your Name&#34;</span>
+git config --global user.email email@example.com</code></pre></div>
+<p>因为Git是分布式版本控制系统，所以，每个机器都必须自报家门：你的名字和Email地址。
+注意git config命令的&ndash;global参数，用了这个参数，表示你这台机器上所有的Git仓库都会使用这个配置</p>
+
+<p>如果想要修改用户主目录的默认路径，可以修改环境变量：在用户变量中新建，名称为HOME，地址自定义。
+其实不修改默认路径也ok，每次直接在你的目标文件夹里右键Git Bash Here，即可在当前目录中创建命令行窗口。</p>
+
+<h3 id="install-hugo">Install Hugo</h3>
+
+<p>详细安装指南请参考：<a href="https://gohugo.io/getting-started/installing/" target="_blank">https://gohugo.io/getting-started/installing/</a></p>
+
+<p>我用的Windows系统，两种常用方法（推荐第二种）：</p>
+
+<ol>
+<li>在Hugo Releases上下载最新版的二进制程序：<a href="https://github.com/spf13/hugo/releases" target="_blank">https://github.com/spf13/hugo/releases</a>，下载后解压，然后把解压目录添加到环境变量path里。</li>
+<li>使用Scoop包管理器来管理Windows软件，一行代码搞定安装和卸载，干净又迅速。操作如右侧代码栏：</li>
+</ol>
+
+<blockquote>
+<p>Windows PowerShell命令行输入</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Windows10在开始菜单键右击选择Windows PowerShell，依次输入下列命令</span>
+set-executionpolicy remotesigned -scope currentuser	
+$env:SCOOP<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;D:\Scoop&#39;</span>      <span style="color:#75715e"># 这里可以替换到你自定义的安装目录</span>
+<span style="color:#f92672">[</span>environment<span style="color:#f92672">]</span>::setEnvironmentVariable<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;SCOOP&#39;</span>,$env:SCOOP,<span style="color:#e6db74">&#39;User&#39;</span><span style="color:#f92672">)</span>
+iex <span style="color:#f92672">(</span>new-object net.webclient<span style="color:#f92672">)</span>.downloadstring<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;https://get.scoop.sh&#39;</span><span style="color:#f92672">)</span>
+
+<span style="color:#75715e"># 一行代码即可安装和卸载</span>
+scoop install hugo         <span style="color:#75715e"># 安装Hugo，D:\Scoop\apps出现hugo文件夹</span>
+scoop uninstall hugo       <span style="color:#75715e"># 卸载Hugo超简单</span>
+scoop uninstall scoop      <span style="color:#75715e"># 卸载Scoop超简单</span></code></pre></div>
+<blockquote>
+<p>Git Bash命令行输入</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 验证是否安装成功：</span>
+<span style="color:#75715e"># Win+R输入cmd回车，打开命令行窗口/或者最好直接打开Git Bash</span>
+hugo help                  <span style="color:#75715e"># 如果正常运行则安装成功</span></code></pre></div>
+<h2 id="optional">Optional</h2>
+
+<p>Go语言下载安装：&lt;<a href="https://golang.org/dl/" target="_blank">https://golang.org/dl/</a></p>
+
+<p>GitHub桌面版下载地址：<a href="https://desktop.github.com/" target="_blank">https://desktop.github.com/</a></p>
+
+<h1 id="quick-start">Quick Start</h1>
+
+<p>不想看后面的Git/Hugo/Markdown Notes的话，可以直接按照Quick Start的操作来迅速建立一个个人Blog。</p>
+
+<p>打开Github Desktop，登陆账号后Clone a repository from the Internet，选择你刚刚创建的仓库<code>&lt;username&gt;.github.io</code>，下面确定clone到本地的地址，例如<code>D:/Github/hanyutan.github.io</code>。</p>
+
+<p>在<code>D:/Github</code>目录下右击Git Bash Here，如右侧代码栏输入命令。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">hugo new site Hugo_Blog    <span style="color:#75715e"># 新建网站</span>
+cd Hugo_Blog               <span style="color:#75715e"># 切换目录</span>
+git init                   <span style="color:#75715e"># 初始化仓库</span>
+
+<span style="color:#75715e"># 下载安装Ananke主题，并把demo相关文件复制过来</span>
+git submodule add https://github.com/budparr/gohugo-theme-ananke.git themes/ananke
+cp -r themes/ananke/exampleSite/. ./</code></pre></div>
+<p>右键用文本编辑器Notepad++打开<code>D:/Github/Hugo_Blog/config.toml</code>文件，
+自定义title（会显示在网页标签上），修改baseURL为自己的github.io地址，修改主题theme为&raquo;ananke&raquo;，删掉<code>themesDir = &quot;../..&quot;</code>。
+然后记得打开文件<code>D:/Github/Hugo_Blog/themes/ananke/theme.toml</code>，修改第11行<code>min_version = &quot;0.30.2&quot;</code>，加上双引号，否则系统把版本号当作float类型会报错。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 本地打开网站，可在http://localhost:1313/查看效果</span>
+hugo server --watch
+<span style="color:#75715e"># 创建markdown文章，打开D:/Github/Hugo_Blog/content/post/my-first-post.md进行编辑</span>
+hugo new post/my-first-post.md
+<span style="color:#75715e"># 建立静态网页</span>
+hugo</code></pre></div>
+<p>成功建立静态网页后，将public目录里的全部内容拷贝到刚才通过GitHub Desktop克隆的本地仓库<code>D:/Github/hanyutan.github.io</code>中。
+打开GitHub Desktop，左下角Summary栏写一点此次提交的备注，例如&raquo;add ananke theme&raquo;，然后点击Commit to master。
+最后点击导航栏的Publish branch提交到远程仓库。现在就可以打开你的个人主页网址<code>&lt;username&gt;.github.io</code>欣赏成果啦！</p>
+
+<p>自定义配置：可以自己研究config.toml文件以及themes/ananke/layouts文件夹力度内容，进行相应修改。</p>
+
+<p>日常管理：添加/修改/删除markdown文件的同时可以通过<code>hugo server --watch</code>随时在<code>http://localhost:1313/</code>上查看效果。
+修改完成后，<code>hugo</code>一下，复制public文件夹内容到本地仓库，提交修改。</p>
+
+    
+        
+
+<h1 id="git-notes">Git Notes</h1>
+
+<p>Git的用途和优点自行Google。这里安利一些学习资料，本Notes主要来自于廖雪峰的Git教程：</p>
+
+<ul>
+<li>Git的官方网站：<a href="http://git-scm.com" target="_blank">http://git-scm.com</a></li>
+<li>廖雪峰的Git教程：<a href="https://www.liaoxuefeng.com/wiki/896043488029600" target="_blank">https://www.liaoxuefeng.com/wiki/896043488029600</a></li>
+<li>Git的cheat sheet：<a href="https://gitee.com/liaoxuefeng/learn-java/raw/master/teach/git-cheatsheet.pdf" target="_blank">https://gitee.com/liaoxuefeng/learn-java/raw/master/teach/git-cheatsheet.pdf</a></li>
+</ul>
+
+<h2 id="cheat-sheet">Cheat Sheet</h2>
+
+<table>
+<thead>
+<tr>
+<th>Git Cheat Sheet</th>
+<th></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>git init</code><strong>create a new local respository</strong></td>
+<td></td>
+</tr>
+
+<tr>
+<td><code>git clone git@github.com:user/repo.git</code><strong>clone an existing repository use SSH</strong></td>
+<td></td>
+</tr>
+
+<tr>
+<td><code>git clone https://github.com/user/repo.git</code><strong>clone &hellip;&hellip; use HTTPS</strong></td>
+<td></td>
+</tr>
+
+<tr>
+<td><code>git status</code><strong>status of your working directory</strong></td>
+<td></td>
+</tr>
+
+<tr>
+<td><code>git diff</code><strong>changes to tracked files</strong></td>
+<td></td>
+</tr>
+
+<tr>
+<td><code>git add readme.txt</code><strong>add specific changed file</strong></td>
+<td></td>
+</tr>
+
+<tr>
+<td><code>git add . 或 git add --all</code><strong>add all current changes</strong></td>
+<td></td>
+</tr>
+
+<tr>
+<td><code>git commit -m &quot;commit内容&quot;</code><strong>commit local changes</strong></td>
+<td></td>
+</tr>
+
+<tr>
+<td><code>git log</code><strong>show all commits</strong></td>
+<td></td>
+</tr>
+
+<tr>
+<td><code>git branch -av</code><strong>list all existing branches</strong></td>
+<td></td>
+</tr>
+
+<tr>
+<td><code>git checkout -b &lt;new-branch&gt;</code><strong>create and switch to the new branch</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="create-new-repo">Create New Repo</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pwd                           <span style="color:#75715e"># 显示当前目录</span>
+mkdir Blog_Git                <span style="color:#75715e"># 创建空目录</span>
+cd Blog_Git                   <span style="color:#75715e"># 切换到当前空目录下</span>
+git init                      <span style="color:#75715e"># 将目录变成Git可以管理的仓库</span></code></pre></div>
+<p>创建版本库，Git Bash会返回
+<code>Initialized empty Git repository in d:/Github/Blog_Git/.git/</code>，如果你没有看到.git目录，那是因为这个目录默认是隐藏的，用ls -ah命令就可以看见。</p>
+
+<h2 id="local-changes">Local Changes</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 创建新文件并提交</span>
+echo <span style="color:#e6db74">&#34;Git is a version control system.    
+</span><span style="color:#e6db74">&gt; Git is a free software.&#34;</span> &gt; test.txt       <span style="color:#75715e"># 创建文件（如果文件已存在则覆盖）</span>
+echo <span style="color:#e6db74">&#34;add something&#34;</span> &gt;&gt; test.txt            <span style="color:#75715e"># 在末尾继续添加内容</span>
+git add test.txt                            <span style="color:#75715e"># 把文件添加到仓库</span>
+git commit -m <span style="color:#e6db74">&#34;wrote a test file&#34;</span>           <span style="color:#75715e"># 把文件提交到仓库</span>
+<span style="color:#75715e">#[master (root-commit) c0a9a57] wrote a test file</span>
+<span style="color:#75715e"># 1 file changed, 3 insertions(+)</span>
+<span style="color:#75715e"># create mode 100644 test.txt</span>
+
+<span style="color:#75715e"># 修改文件后，查看仓库当前状态</span>
+git status                   
+<span style="color:#75715e">#On branch master</span>
+<span style="color:#75715e">#Changes not staged for commit:</span>
+<span style="color:#75715e">#  (use &#34;git add &lt;file&gt;...&#34; to update what will be committed)</span>
+<span style="color:#75715e">#  (use &#34;git checkout -- &lt;file&gt;...&#34; to discard changes in working directory)</span>
+#  
+<span style="color:#75715e">#        modified:   test.txt</span>
+#  
+<span style="color:#75715e">#no changes added to commit (use &#34;git add&#34; and/or &#34;git commit -a&#34;)</span>
+
+<span style="color:#75715e"># 查看具体修改了什么内容</span>
+git diff test.txt      
+<span style="color:#75715e">#diff --git a/test.txt b/test.txt</span>
+<span style="color:#75715e">#index 561340d..369546c 100644</span>
+<span style="color:#75715e">#--- a/test.txt</span>
+<span style="color:#75715e">#+++ b/test.txt</span>
+<span style="color:#75715e">#@@ -1,3 +1,3 @@</span>
+<span style="color:#75715e">#-Git is a version control system.</span>
+<span style="color:#75715e">#+Git is a distributed version control system.</span>
+<span style="color:#75715e"># Git is a free software.</span>
+<span style="color:#75715e"># add something</span>
+
+<span style="color:#75715e"># 提交修改文件</span>
+git add test.txt                   
+git commit -m <span style="color:#e6db74">&#34;add distributed&#34;</span>
+
+<span style="color:#75715e"># 提交文件后，查看仓库当前状态</span>
+git status
+<span style="color:#75715e">#On branch master</span>
+<span style="color:#75715e">#nothing to commit, working tree clean</span></code></pre></div>
+<p>所有的版本控制系统只能跟踪文本文件的改动，比如TXT文件，网页，所有的程序代码等。
+而图片、视频、Microsoft的Word这些二进制文件没法跟踪文件的变化。
+所以建议用Notepad++以纯文本方式编写文件，并使用utf-8编码。</p>
+
+<p>创建文件test.txt，内容如下：<br>
+Git is a version control system.<br>
+Git is a free software.<br>
+add something</p>
+
+<p>使用<code>add</code>和<code>commit</code>命令将其添加到仓库中，若添加成功则显示</p>
+
+<aside class="notice">
+注意可以多次使用add添加不同文件，也可以使用git add --all一次性添加所有文件
+然后统一使用commit进行说明。
+</aside>
+
+<p>修改本地文件test.txt内容为：<br>
+Git is a distributed version control system.<br>
+Git is a free software.<br>
+add something</p>
+
+<p>使用<code>status</code>命令查看仓库当前状态，显示有文件被修改但尚未提交修改。
+正常<code>add</code>、<code>commit</code>提交修改后，仓库clean。</p>
+
+<h2 id="commit-history">Commit History</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git add test.txt
+git commit -m <span style="color:#e6db74">&#34;append GPL&#34;</span>
+
+<span style="color:#75715e"># 查看历史纪录</span>
+git log --pretty<span style="color:#f92672">=</span>oneline --abbrev-commit
+<span style="color:#75715e">#18a6b3f (HEAD -&gt; master) append GPL</span>
+<span style="color:#75715e">#8742dec add distributed</span>
+<span style="color:#75715e">#c0a9a57 wrote a test file</span></code></pre></div>
+<p>再次修改本地文件test.txt内容为：<br>
+Git is a distributed version control system.<br>
+Git is a free software distributed under the GPL.<br>
+add something</p>
+
+<p>提交修改后，使用<code>log</code>命令查看历史纪录（按Q结束）。如果近运行命令<code>git log</code>将返回详细内容：<br>
+commit 18a6b3fd4235fab6bc0e205c921e5b43a1695339 (HEAD -&gt; master)<br>
+Author: user.name user.email<br>
+Date:   Wed Jul 31 16:37:58 2019 +0800<br>
+<body>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;append GPL</body><br></p>
+
+<p>其中第1行的一大串数字的字母叫做commid id（版本号），HEAD可以理解为指针，当前正指向master分支；
+第2行的内容是之前下载Git后使用<code>git config --global</code>指定的用户名与Email；
+第3行则是提交commit的时间；最后一行为提交的commit内容。</p>
+
+<aside class="notice">
+使用git log --pretty=oneline可返回缩短到一行的简洁版，<br>
+使用git log --pretty=oneline --abbrev-commit可返回commit id也缩短的简洁版。
+</aside>
+
+<h2 id="rollback-reset">Rollback / Reset</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 回退到上一版本</span>
+git reset --hard HEAD^
+<span style="color:#75715e">#HEAD is now at 8742dec add distributed</span>
+
+<span style="color:#75715e"># 查看文件内容</span>
+cat test.txt
+
+<span style="color:#75715e"># 回到指定版本</span>
+git reset --hard 18a6b3f</code></pre></div>
+<p>HEAD是当前版本，HEAD^^代表上上一个版本，类似的HEAD~100是往上100个版本。
+此时使用<code>cat</code>命令查看文件内容，会发现是没有进行最后一次修改的内容。<br>
+Git is a distributed version control system.<br>
+Git is a free software.<br>
+add something<br></p>
+
+<p>此外还可以使用<code>reset</code>命令回到指定版本，或者取消回退而继续最新版本。
+注意commit id可以在log中找到，并且没必要写全，只写前几位即可。
+另外，假设命令窗口不小心被关掉了，<code>git log</code>不再起作用，可以使用<code>git reflog</code>追踪commit id。</p>
+
+<h2 id="working-directory-stage">Working Directory &amp; Stage</h2>
+
+<p>工作区working directory是在电脑里能看到的目录，比如Blog_Git文件夹就是一个工作区。
+工作区有一个隐藏目录.git是Git的版本库repository，里面存了很多东西，其中最重要的就是暂存区stage/index，
+还有Git自动创建的第一个分支master，以及指向master的指针HEAD。
+<img src="https://raw.githubusercontent.com/hanyutan/hanyutan.github.io/master/images/working-directory-and-stage.jpg.png">
+git add把文件修改添加到暂存区；git commit把暂存区的所有内容提交到当前分支。
+简单理解为：需要提交的文件修改通通放到暂存区，然后一次性提交暂存区的所有修改。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 查看工作区和版本库里面最新版本的区别</span>
+git diff HEAD -- test.txt</code></pre></div>
+<p>Git跟踪并管理的是修改而非文件，举例：第一次修改 -&gt; git add -&gt; 第二次修改 -&gt; git commit。
+当你用git add命令后，在工作区的第一次修改被放入暂存区，准备提交但是，
+在工作区的第二次修改并没有放入暂存区，所以git commit只负责把暂存区的修改提交了，
+也就是第一次的修改被提交了，第二次的修改不会被提交。</p>
+
+<h2 id="undo">Undo</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 撤销工作区的修改</span>
+ git checkout -- test.txt
+<span style="color:#75715e"># 撤销add操作，重新放回工作区</span>
+git reset HEAD test.txt
+ </code></pre></div>
+<p>使用<code>checkout</code>命令把test.txt文件在工作区的修改全部撤销，这里有两种情况：<br>
+一种是test.txt自修改后还没有被放到暂存区，现在撤销修改就回到和版本库一模一样的状态；<br>
+一种是test.txt已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。<br>
+总之，就是让这个文件回到最近一次git add或git commit时的状态。<br>
+注意命令中如果没有<code>--</code>就变成了“切换到另一个分支”的命令</p>
+
+<p>总结一下有几种情况：
+1. 刚在文件中做了修改，如何撤销？<br>git checkout &ndash; test.txt
+2. 修改的文件已经add，如何撤销？<br>git reset HEAD test.txt<br>git checkout &ndash; test.txt
+3. 修改的文件已经add、commit（尚未从本地版本库推送到远程版本库），如何撤销？<br>git reset –hard HEAD^
+4.  修改的文件add后又做了修改，如何撤销？git checkout &ndash; test.txt</p>
+
+<h2 id="delete-files">Delete Files</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">rm test.txt                            <span style="color:#75715e"># 删除文件</span>
+<span style="color:#75715e"># git checkout -- test.txt             # 文件误删需要恢复</span>
+git status                             <span style="color:#75715e"># 工作区和版本库不再一致</span>
+git rm test.txt                        <span style="color:#75715e"># 确定要从版本库中删除文件</span>
+git commit –m “remove test.txt”        <span style="color:#75715e"># 提交删除操作</span></code></pre></div>
+<p>注意git checkout其实是用版本库里的版本替换工作区的版本，无论工作区是修改还是删除，
+都可以“一键还原”，但从来没有被添加到版本库就被删除的文件，是无法恢复的。</p>
+
+<h2 id="remote-repo-ssh-key">Remote Repo &amp; SSH Key</h2>
+
+<p>Git是分布式版本控制系统，同一个Git仓库，可以分布到不同的机器上（多个克隆的版本库）。
+一台电脑充当服务器的角色，每天24小时开机，其他每个人都从这个“服务器”仓库克隆一份到自己的电脑上，
+并且各自把各自的提交推送到服务器仓库里，也从服务器仓库中拉取别人的提交。
+只要注册一个GitHub账号，就可以免费获得Git远程仓库。
+由于你的本地Git仓库和GitHub仓库之间的传输是通过SSH加密的，所以，需要一点设置SSH Key。</p>
+
+<p>第1步：打开Git Bash创建SSH Key。<code>ssh-keygen -t rsa -C &quot;youremail@example.com&quot;</code><br>
+替换自己的邮件地址，然后一路回车，无需设置密码。随后显示：<br>
+Your identification has been saved in /d/Github/.ssh/id_rsa.<br>
+Your public key has been saved in /d/Github/.ssh/id_rsa.pub.<br>
+&hellip;&hellip;<br></p>
+
+<p>第2步：登陆GitHub右上角打开Settings，SSH and GPG keys条目，点击“New SSH Key”，
+填上任意Title，在Key文本框里粘贴id_rsa.pub文件的内容，点击Add SSH key。</p>
+
+<p>为什么GitHub需要SSH Key呢？因为GitHub需要识别出你推送的提交确实是你推送的，而不是别人冒充的。
+Git支持SSH协议，所以GitHub只要知道了你的公钥，就可以确认只有你自己才能推送。当然，GitHub允许你添加多个Key。
+假定你有若干电脑，你一会儿在公司提交，一会儿在家里提交，只要把每台电脑的Key都添加到GitHub，就可以在每台电脑上往GitHub推送了。
+GitHub上免费托管的Git仓库，任何人都可以看到，但只有你自己才能改。如果你不想让别人看到Git库，有两个办法，
+一个是交点保护费让GitHub把公开的仓库变成私有的（别人看不见，不可读更不可写）；
+另一个办法是自己动手，搭一个自己的Git服务器，别人也是看不见的，公司内部开发必备。</p>
+
+<h2 id="add-remote-repo">Add Remote Repo</h2>
+
+<h2 id="clone-existing-repo">Clone Existing Repo</h2>
+
+    
+        
+
+<h1 id="hugo-notes">Hugo Notes</h1>
+
+<p>Hugo官方教程：<a href="https://gohugo.io/getting-started/" target="_blank">https://gohugo.io/getting-started/</a></p>
+
+<p>有人自己创建的Hugo中文文档：<a href="https://www.gohugo.org/" target="_blank">https://www.gohugo.org/</a></p>
+
+<p>Hugo主题模板：<a href="https://themes.gohugo.io/" target="_blank">https://themes.gohugo.io/</a></p>
+
+<p><code>hugo new site Hugo_Blog</code></p>
+
+<p>然后hugo会自动生成这样一个目录结构（大致样子）：</p>
+
+<table>
+<thead>
+<tr>
+<th>文件(夹)名</th>
+<th>用途</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>archetypes</td>
+<td>为不同类型定义默认的头文件FrontMatter，一般用不上</td>
+</tr>
+
+<tr>
+<td>content</td>
+<td>存放写好的文章，markdown文件</td>
+</tr>
+
+<tr>
+<td>data</td>
+<td>数据文件，一般用不上</td>
+</tr>
+
+<tr>
+<td>layouts</td>
+<td>存放网站的模板文件</td>
+</tr>
+
+<tr>
+<td>static</td>
+<td>存放image/css/js等静态资源</td>
+</tr>
+
+<tr>
+<td>themes</td>
+<td>存放下载的Hugo主题</td>
+</tr>
+
+<tr>
+<td>config.toml</td>
+<td>网站的配置文件</td>
+</tr>
+</tbody>
+</table>
+
+<p><code>hugo new</code>指令会自动添加<code>content</code>路径前缀
+themes/ananke/exampleSite是一个示例站点，我们可以直接拿来使用。</p>
+
+<p>修改<code>FrontMatter</code></p>
+
+<p>&ndash;watch或者-w 选项打开的话，将会监控到文章的改动从而自动刷新浏览器。</p>
+
+<p>浏览器里打开：<a href="http://localhost:1313" target="_blank">http://localhost:1313</a></p>
+
+<p><code>hugo</code></p>
+
+<p>所有静态页面会生成到public目录，将public文件夹里的全部文件push到对应的分支上。（例如<code>&lt;username&gt;.github.io</code>的<code>master</code>分支上，或者其他项目<code>repository</code>的<code>gh-pages</code>上）</p>
+
+<p>在浏览器中输入<code>https://&lt;username&gt;.github.io</code>查看个人主页，或者<code>https://&lt;username&gt;.github.io/repository_name</code>查看项目主页。</p>
+
+    
+        
+
+<h1 id="markdown-notes">Markdown Notes</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown">作为示例，右边栏code即本文的markdown内容。
+
+此外在markdown里使用html tag同样有效。
+
+空一行可以形成单独段落。</code></pre></div>
+<p>作为示例，右边栏code即本文的markdown内容。</p>
+
+<p>此外在markdown里使用html tag同样有效。</p>
+
+<p>空一行可以形成单独段落。</p>
+
+<h2 id="headers">Headers</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown">## Headers</code></pre></div>
+<h3 id="三级标题">三级标题</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">### 三级标题
+
+在想要设置为标题的文字前面加#号和空格来表示，#号的数量代表几级标题。标准语法一般在#后面跟个空格再写文字。
+
+&lt;<span style="color:#f92672">aside</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;notice&#34;</span>&gt;补充内容可以设置加下划线的标题形式，这里不作展示。&lt;/<span style="color:#f92672">aside</span>&gt;
+Alt-title1
+======
+
+Alt-H2
+------</code></pre></div>
+<p>在想要设置为标题的文字前面加#号和空格来表示，#号的数量代表几级标题。标准语法一般在#后面跟个空格再写文字。</p>
+
+<aside class="notice">补充内容可以设置加下划线的标题形式，这里不作展示。</aside>
+
+<h2 id="emphasis">Emphasis</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown">要**加粗**的文字左右两边使用2个星号`*`括起来
+
+要&lt;em&gt;倾斜&lt;/em&gt;的文字左右两边使用1个星号`*`或者`&lt;em&gt;&lt;/em&gt;`括起来
+
+要***加粗和倾斜***的文字左右两边使用3个星号`*`括起来
+
+要~~加删除线~~的文字左右两边使用2个波浪号`~`括起来
+
+&lt;aside class=&#34;warning&#34;&gt;在这里使用星号*设置倾斜似乎无效&lt;/aside&gt;</code></pre></div>
+<p>要<strong>加粗</strong>的文字左右两边使用2个星号<code>*</code>括起来</p>
+
+<p>要<em>倾斜</em>的文字左右两边使用1个星号<code>*</code>或者<code>&lt;em&gt;&lt;/em&gt;</code>括起来</p>
+
+<p>要<strong><em>加粗和倾斜</em></strong>的文字左右两边使用3个星号<code>*</code>括起来</p>
+
+<p>要<del>加删除线</del>的文字左右两边使用2个波浪号<code>~</code>括起来</p>
+
+<aside class="warning">在这里使用星号*设置倾斜似乎无效</aside>
+
+<h2 id="lists">Lists</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">无序列表使用-+*中的任意一种作为开头，空一格后输入内容。
+
+- 列表内容
++ 列表内容
+* 列表内容
+
+有序列表需要使用数字+点作为开头，空一格后输入内容。
+
+1. 列表内容
+2. 列表内容
+3. 列表内容
+
+列表嵌套需要在行前再空1个tab或者1个空格（空格数量不一定）。
+
+1. 列表内容
+	- 列表内容
+2. 列表内容</code></pre></div>
+<p>无序列表使用-+*中的任意一种作为开头，空一格后输入内容。</p>
+
+<ul>
+<li>列表内容</li>
+<li>列表内容</li>
+<li>列表内容</li>
+</ul>
+
+<p>有序列表需要使用数字+点作为开头，空一格后输入内容。</p>
+
+<ol>
+<li>列表内容</li>
+<li>列表内容</li>
+<li>列表内容</li>
+</ol>
+
+<p>列表嵌套需要在行前再空1个tab或者1个空格（空格数量不一定）。</p>
+
+<ol>
+<li>列表内容
+
+<ul>
+<li>列表内容</li>
+</ul></li>
+<li>列表内容</li>
+</ol>
+
+<h2 id="tables">Tables</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown">第一行使用`|`来分隔列名，第二行使用`---`与`|`组合来分隔第一行表头与下面几行表格内容。
+内容默认居左，通过冒号:控制文字居中/居右在这里好像不好使。
+
+列1|列2|列3
+---|---|---
+T11|T12|T13
+T21|T22|T23</code></pre></div>
+<p>第一行使用<code>|</code>来分隔列名，第二行使用<code>---</code>与<code>|</code>组合来分隔第一行表头与下面几行表格内容。
+内容默认居左，通过冒号:控制文字居中/居右在这里好像不好使。</p>
+
+<table>
+<thead>
+<tr>
+<th>列1</th>
+<th>列2</th>
+<th>列3</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>T11</td>
+<td>T12</td>
+<td>T13</td>
+</tr>
+
+<tr>
+<td>T21</td>
+<td>T22</td>
+<td>T23</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="images-and-links">Images and Links</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown">若想加入图片，使用`![]`将图片下方文字括起来，使用`()`将图片地址和说明信息括起来。注：图像地址可以通过右击选择复制图像地址得到。
+![<span style="color:#f92672">图片说明</span>](<span style="color:#a6e22e">https://raw.githubusercontent.com/hanyutan/hanyutan.github.io/master/images/logo.png &#34;Logo&#34;</span>)
+
+或者使用HTML语言&lt;img src=&#34;https://raw.githubusercontent.com/hanyutan/hanyutan.github.io/master/images/portrait2.png&#34; &#34;portrait&#34;&gt;
+ 
+若想加入超链接，使用`[]`将超链接名括起来，使用`()`将超链接地址和说明信息括起来。
+[<span style="color:#f92672">Github主页</span>](<span style="color:#a6e22e">https://github.com/hanyutan &#34;说明信息&#34;</span>)
+
+直接呈现网址链接或者使用`&lt;&gt;`直接将网址链接括起来，都会自动转化为超链接。
+例如http://github.com 和 &lt;https://github.com/hanyutan&gt;</code></pre></div>
+<p>若想加入图片，使用<code>![]</code>将图片下方文字括起来，使用<code>()</code>将图片地址和说明信息括起来。注：图像地址可以通过右击选择复制图像地址得到。
+<img src="https://raw.githubusercontent.com/hanyutan/hanyutan.github.io/master/images/logo.png" alt="图片说明" title="Logo" /></p>
+
+<p>或者使用HTML语言<img src="https://raw.githubusercontent.com/hanyutan/hanyutan.github.io/master/images/portrait2.png" "portrait"></p>
+
+<p>若想加入超链接，使用<code>[]</code>将超链接名括起来，使用<code>()</code>将超链接地址和说明信息括起来。
+<a href="https://github.com/hanyutan" title="说明信息" target="_blank">Github主页</a></p>
+
+<p>直接呈现网址链接或者使用<code>&lt;&gt;</code>直接将网址链接括起来，都会自动转化为超链接。
+例如<a href="http://github.com" target="_blank">http://github.com</a> 和 <a href="https://github.com/hanyutan" target="_blank">https://github.com/hanyutan</a></p>
+
+<h2 id="code-and-syntax-highlighting">Code and Syntax Highlighting</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown-" data-lang="markdown-">单行代码使用1个反引号\`将内容两边括起来，例如：`code`。
+代码块使用3个反引号\```将内容括起来（单独占一行）。在第一行末尾加上所使用的语言将会按照该语言的规则进行highlight。
+
+常用的有bash、c++、c#、css、django、go、http、java、javascript、json、julia、markdown、mathematica、matlab、perl、python、r、ruby、sas、shell、sql、stata、tex、html、xml等。
+
+全部可支持的语言列表请参考&lt;https://highlightjs.org/static/demo/&gt;</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Hello, world!&#34;</span>)</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">aside</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;notice&#34;</span>&gt;上述代码仅作示例，在本文使用的主题中默认将代码块移到了右边栏。加反斜杠\是为了放置转译。&lt;/<span style="color:#f92672">aside</span>&gt;</code></pre></div>
+<p>单行代码使用1个反引号`将内容两边括起来，例如：<code>code</code>。
+代码块使用3个反引号```将内容括起来（单独占一行）。在第一行末尾加上所使用的语言将会按照该语言的规则进行highlight。</p>
+
+<p>常用的有bash、c++、c#、css、django、go、http、java、javascript、json、julia、markdown、mathematica、matlab、perl、python、r、ruby、sas、shell、sql、stata、tex、html、xml等。</p>
+
+<p>全部可支持的语言列表请参考<a href="https://highlightjs.org/static/demo/" target="_blank">https://highlightjs.org/static/demo/</a></p>
+
+<p>```python</p>
+
+<p>print(&laquo;Hello, world!&raquo;)</p>
+
+<p>```</p>
+
+<aside class="notice">上述代码仅作示例，在本文使用的主题中默认将代码块移到了右边栏。加反斜杠\是为了放置转译。</aside>
+
+<h2 id="blockquotes-and-horizontal-rule">Blockquotes and Horizontal Rule</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown">在引用的文字前加大于号即可，引用的内容会显示在代码块。
+
+&gt; 引用内容</code></pre></div>
+<p>在引用的文字前加大于号即可，引用的内容会显示在代码块。</p>
+
+<blockquote>
+<p>引用内容</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown">三个或者三个以上的 - 或者 <span style="font-style:italic">* 都可以，效果都一样。
+</span><span style="font-style:italic">
+</span><span style="font-style:italic">---
+</span><span style="font-style:italic">上面有一条分隔线
+</span><span style="font-style:italic">*</span>**
+下面有一条分隔线
+————</code></pre></div>
+<p>分割线用三个或者三个以上的 - 或者 * 将文字内容括起来都可以，效果是一样的。</p>
+
+<hr />
+
+<p>上面有一条分隔线</p>
+
+<hr />
+
+<p>下面有一条分隔线</p>
+
+<hr />
+
+<h2 id="youtube-videos">YouTube Videos</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://www.youtube.com/watch?feature=player_embedded&amp;v=YOUTUBE_VIDEO_ID_HERE
+</span><span style="color:#e6db74">&#34;</span> <span style="color:#a6e22e">target</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;_blank&#34;</span>&gt;&lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg&#34;</span> 
+<span style="color:#a6e22e">alt</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;IMAGE ALT TEXT HERE&#34;</span> <span style="color:#a6e22e">width</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;240&#34;</span> <span style="color:#a6e22e">height</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;180&#34;</span> <span style="color:#a6e22e">border</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;10&#34;</span> /&gt;&lt;/<span style="color:#f92672">a</span>&gt;</code></pre></div>
+<p><a href="http://www.youtube.com/watch?feature=player_embedded&v=YOUTUBE_VIDEO_ID_HERE
+" target="_blank"><img src="http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg" 
+alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a></p>
+
+    
+        
+
+<h1 id="q-a">Q&amp;A</h1>
+
+<h3 id="1-如何在-github-pages-中输入数学公式">1.如何在 Github Pages 中输入数学公式？</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/javascript&#34;</span>
+<span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&#34;</span>&gt;
+&lt;/<span style="color:#f92672">script</span>&gt;
+
+# markdown内容
+使用2个dollar符号括起来可以让公式单独显示一行$$\prod(1+1)$$</code></pre></div>
+<aside class="warning">写作markdown文件时发现用$$标记的公式内容无法在网页上正常解析成数学公式，只能显示原有内容。</aside>
+
+<p><strong>解决办法：</strong>使用 Mathjax 渲染数学公式。
+需要找到你使用的Hugo Themes文件夹里的<code>&lt;your site&gt;\themes\&lt;theme name&gt;\layouts\_default\baseof.html</code>文件，
+打开后在<code>&lt;head&gt;</code>里加入右侧代码。</p>
+
+<p>使用2个dollar符号括起来可以让公式单独显示一行$$\prod(1+1)$$</p>
+
+<h3 id="2-如何开启双语界面">2.如何开启双语界面？</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-code" data-lang="code"># 原有内容，说明网站现在是英文的
+[languages.en]
+  languageCode = &#34;en-us&#34;
+# 在其后面添加中文
+[languages.zh]
+  languageCode = &#34;zh-cn&#34;
+# 回到config.toml开头修改默认语言
+defaultContentLanguage = &#34;zh&#34;
+defaultContentLanguageInSubdir = true</code></pre></div>
+<p><strong>解决办法：</strong>在<code>config.toml</code>文件里找到<code>[languages]</code>部分，按照右侧代码修改。
+然后在<code>&lt;your site&gt;\themes\&lt;theme name&gt;\i18n</code>中保留<code>en.yaml</code>和<code>zh.yaml</code>文件，并把其中翻译不当的地方修改一下。
+之后新增博客时如果要增加英文版本，只需在文件扩展名前加<code>.en</code>即可。例如中文版本的为<code>my_post.md</code>，那么英文版本为<code>my_post.en.md</code>。</p>
+
+<h3 id="3-win10如何设置环境变量">3.Win10如何设置环境变量？</h3>
+
+<p><strong>解决办法：</strong>控制面板————系统和安全————系统————高级系统设置————环境变量</p>
+
+<h3 id="4-如何让我的github-io被google-bing-baidu搜索到">4.如何让我的github.io被Google/Bing/Baidu搜索到？</h3>
+
+<aside class="warning">在Google搜索页面中输入`site:<username>.github.io`发现这个网页无法被Google索引到。</aside>
+
+<p><strong>解决办法：</strong></p>
+
+<ul>
+<li>Google: 根据搜索结果页面的提示，使用<a href="https://www.google.com/webmasters/#?modal_active=none" target="_blank">Google Search Console</a> （需要拥有Google账户），
+选择资源类型————网址前缀，输入完整的url<code>https://&lt;username&gt;.github.io</code>，下载HTML验证文件上传到github.io的repository中，等待官方验证通过即可。</li>
+<li>Bing:</li>
+<li>Baidu:在<a href="https://ziyuan.baidu.com/site/" target="_blank">百度站点管理</a> 进行注册，貌似还需要与熊掌ID关联之后才可实用功能，
+总之流程相对有点繁琐，最后也是可以选择下载一个验证文件push到github.io上。
+详情请参考<a href="https://orianna-zzo.github.io/sci-tech/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B05-%E8%A6%81%E8%AE%A9github-pages%E8%A2%AB%E7%B4%A2%E5%BC%95%E5%88%B0/" target="_blank">这篇文章</a></li>
+</ul>
+
+<h3 id="5-如何对我的github-io进行网站数据统计与分析">5.如何对我的github.io进行网站数据统计与分析？</h3>
+
+<p><strong>解决办法：</strong></p>
+
+<ul>
+<li>百度统计：注册并登陆<a href="https://tongji.baidu.com/web/10000031576/welcome/login" target="_blank">百度统计</a> ，添加网站后，
+在左边栏的代码管理————代码获取中复制<code>&lt;script&gt;...&lt;/script&gt;</code>这一大段添加到你的
+<code>themes/&lt;theme_name&gt;/layouts/_default/baseof.html</code>文件中的<head>部分。
+如果代码安装正确，一般20分钟后，可以查看网站分析数据。</li>
+</ul>
+
+<h3 id="6-如何在markdown里输入空格以及换行">6.如何在Markdown里输入空格以及换行？</h3>
+
+<p><strong>解决办法：</strong>利用HTML语言<body>&nbsp;原本内容</body>即可在内容前增加一个空格，在尾部添加<br>标签即可换行。
+此外，在尾部敲入几个空格也可实现markdown里的换行，留一个空行可以实现另起一段。</p>
+
+    
+
+        </div>
+        <div class="dark-box">
+            
+            <div class="lang-selector">
+                
+                <a href="#" data-language-name="code">Code</a>
+                
+            </div>
+            
+        </div>
+    </div>
+    
+</body>
+</html>

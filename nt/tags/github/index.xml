@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Github on Keep Learning</title>
+    <link>https://hanyutan.github.io/nt/tags/github/</link>
+    <description>Recent content in Github on Keep Learning</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 29 Jul 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://hanyutan.github.io/nt/tags/github/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Build Blog</title>
+      <link>https://hanyutan.github.io/nt/build_blog/</link>
+      <pubDate>Mon, 29 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.github.io/nt/build_blog/</guid>
+      <description>Introduction 如果你不会Web前端开发，也不愿意花钱买服务器，懒洋洋地做个伸手党，只希望专注于内容创作&amp;hellip;&amp;hellip; 那么Github Pages + Hugo绝对适合你！
+Why Github Pages? 免费！创建和管理都很方便！
+只需在Github上创建一个repository，然后将Hugo生成的静态页面相关文件push到项目上。 （个人主页&amp;lt;username&amp;gt;.github.io的话push到默认的master分支上，普通repository则push到该项目的gh-pages分支上并保证根目录有一个index.html文件）
+Push的方法有多种，说一些我接触到的：
+ 使用Git命令（最原始，最基本，灵活度高） 下载GitHub桌面版，2次按键搞定（最简单，灵活度低） 基于Git使用sublime上传 Eclipse里自带Git，但需要Java环境，jre或jdk都行。  Why Hugo? 目前流行的几个静态网站生成器（SSG——Static Site Generator）：Hugo/Hexo/Jekyll。
+Hugo官方主页：https://gohugo.io
+ Hugo是使用Go语言编写的静态网站生成器。 相对于Jekyll复杂的安装设置来说，Hugo进行需要下载一个二进制文件（hogo.exe）即可轻松调试和生成静态页面。 Hugo生成静态页码的效率很高，速度上来说Hugo&amp;gt;Hexo&amp;gt;Jekyll。 Hugo自带watch的调试模式，可以在修改Markdown的文章内容的同时，自动更新浏览器页面呈现最终效果。 缺点是主题模板相对其他两个来说数量比较少。 用的人感觉还不算特别多，中文社区支持也不是很多。  Preparation 需要拥有自己的GitHub账号、创建个人主页用的仓库、安装Git和Hugo、一定的Markdown和HTML基础。 GitHub Desktop和Go语言可以根据自身需要选择性地安装。 另外最好还要有一款支持语法高亮的文本编辑器/代码编辑器，例如Sublime Text、Notepad++等等。
+GitHub Account &amp;amp; Repository 进入GitHub官方主页https://github.com/注册自己的GitHub账户，登陆个人主页http://github.com/username， 右上角点击+号新建仓库（New Repository），在Repository name一栏中为仓库命名为&amp;lt;username&amp;gt;.github.io。 注意username需要与注册时保持一致。Initialize this repository with a README先不用勾选。
+Install Git &amp;amp; Hugo Install Git Git下载安装网站：https://git-scm.com/download
+安装完成后，在开始菜单里找到Git -&amp;gt; Git Bash，蹦出一个命令行窗口说明Git安装成功。
+ Git Bash命令行输入
+ git config --global user.</description>
+    </item>
+    
+  </channel>
+</rss>
