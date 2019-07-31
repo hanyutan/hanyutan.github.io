@@ -40,15 +40,10 @@ Install Git &amp;amp; Hugo Install Git Git下载安装网站：https://git-scm.c
       <description>Hugo Notes Hugo官方教程：https://gohugo.io/getting-started/
 有人自己创建的Hugo中文文档：https://www.gohugo.org/
 Hugo主题模板：https://themes.gohugo.io/
-hugo new site Hugo_Blog
-然后hugo会自动生成这样一个目录结构（大致样子）：
-   文件(夹)名 用途     archetypes 为不同类型定义默认的头文件FrontMatter，一般用不上   content 存放写好的文章，markdown文件   data 数据文件，一般用不上   layouts 存放网站的模板文件   static 存放image/css/js等静态资源   themes 存放下载的Hugo主题   config.toml 网站的配置文件    hugo new指令会自动添加content路径前缀 themes/ananke/exampleSite是一个示例站点，我们可以直接拿来使用。
-修改FrontMatter
-&amp;ndash;watch或者-w 选项打开的话，将会监控到文章的改动从而自动刷新浏览器。
-浏览器里打开：http://localhost:1313
-hugo
-所有静态页面会生成到public目录，将public文件夹里的全部文件push到对应的分支上。（例如&amp;lt;username&amp;gt;.github.io的master分支上，或者其他项目repository的gh-pages上）
-在浏览器中输入https://&amp;lt;username&amp;gt;.github.io查看个人主页，或者https://&amp;lt;username&amp;gt;.github.io/repository_name查看项目主页。</description>
+Create New Site hugo new site Hugo_Blog # 新建网站 cd Hugo_Blog # 切换目录 git init # 初始化respository 详细指南请参考：https://gohugo.io/getting-started/quick-start/
+假定设定目标文件夹D:/Github用于存储网页，右键打开Git Bash。使用hugo命令new site来新建网站Hugo_Blog（命名自定义）。
+然后hugo会在D:/Github/Hugo_Blog自动生成这样一个目录结构（大致样子）：
+   文件(夹)名 用途     archetypes 为不同类型定义默认的头文件FrontMatter   content 存放写好的文章，markdown文件（.md文件）   data 数据文件，一般用不上   layouts 存放网站的模板文件（toml文件，或json、yaml格式）   static 存放image/css/js等静态资源   themes 存放下载的Hugo主题   config.toml 网站的配置文件    Install Themes # 下载安装Ananke主题到D:/Github/Hugo_Blog/themes/ananke git submodule add https://github.</description>
     </item>
     
   </channel>

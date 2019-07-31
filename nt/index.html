@@ -110,7 +110,17 @@
         
         <a href="#clone-existing-repo" class="toc-h2 toc-link" data-title="Clone Existing Repo">Clone Existing Repo</a>
         
+        <a href="#branch" class="toc-h2 toc-link" data-title="Branch">Branch</a>
+        
         <a href="#hugo-notes" class="toc-h1 toc-link" data-title="Hugo Notes">Hugo Notes</a>
+        
+        <a href="#create-new-site" class="toc-h2 toc-link" data-title="Create New Site">Create New Site</a>
+        
+        <a href="#install-themes" class="toc-h2 toc-link" data-title="Install Themes">Install Themes</a>
+        
+        <a href="#create-new-post" class="toc-h2 toc-link" data-title="Create New Post">Create New Post</a>
+        
+        <a href="#build-static-site" class="toc-h2 toc-link" data-title="Build Static Site">Build Static Site</a>
         
         <a href="#markdown-notes" class="toc-h1 toc-link" data-title="Markdown Notes">Markdown Notes</a>
         
@@ -292,8 +302,9 @@ git submodule add https://github.com/budparr/gohugo-theme-ananke.git themes/anan
 cp -r themes/ananke/exampleSite/. ./</code></pre></div>
 <p>右键用文本编辑器Notepad++打开<code>D:/Github/Hugo_Blog/config.toml</code>文件，
 自定义title（会显示在网页标签上），修改baseURL为自己的github.io地址，修改主题theme为&raquo;ananke&raquo;，删掉<code>themesDir = &quot;../..&quot;</code>。
-然后记得打开文件<code>D:/Github/Hugo_Blog/themes/ananke/theme.toml</code>，修改第11行<code>min_version = &quot;0.30.2&quot;</code>，加上双引号，否则系统把版本号当作float类型会报错。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 本地打开网站，可在http://localhost:1313/查看效果</span>
+然后记得打开文件<code>D:/Github/Hugo_Blog/themes/ananke/theme.toml</code>，修改第11行<code>min_version = &quot;0.30.2&quot;</code>，加上双引号，否则系统把版本号当作float类型会报错。
+自定义配置：可以自己研究config.toml文件以及themes/ananke/layouts文件夹力度内容，进行相应修改。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 创建本地网站，可在http://localhost:1313/查看效果</span>
 hugo server --watch
 <span style="color:#75715e"># 创建markdown文章，打开D:/Github/Hugo_Blog/content/post/my-first-post.md进行编辑</span>
 hugo new post/my-first-post.md
@@ -302,8 +313,6 @@ hugo</code></pre></div>
 <p>成功建立静态网页后，将public目录里的全部内容拷贝到刚才通过GitHub Desktop克隆的本地仓库<code>D:/Github/hanyutan.github.io</code>中。
 打开GitHub Desktop，左下角Summary栏写一点此次提交的备注，例如&raquo;add ananke theme&raquo;，然后点击Commit to master。
 最后点击导航栏的Publish branch提交到远程仓库。现在就可以打开你的个人主页网址<code>&lt;username&gt;.github.io</code>欣赏成果啦！</p>
-
-<p>自定义配置：可以自己研究config.toml文件以及themes/ananke/layouts文件夹力度内容，进行相应修改。</p>
 
 <p>日常管理：添加/修改/删除markdown文件的同时可以通过<code>hugo server --watch</code>随时在<code>http://localhost:1313/</code>上查看效果。
 修改完成后，<code>hugo</code>一下，复制public文件夹内容到本地仓库，提交修改。</p>
@@ -579,8 +588,89 @@ GitHub上免费托管的Git仓库，任何人都可以看到，但只有你自�
 另一个办法是自己动手，搭一个自己的Git服务器，别人也是看不见的，公司内部开发必备。</p>
 
 <h2 id="add-remote-repo">Add Remote Repo</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git remote add origin https://github.com/user/repo.git
+git push -u origin master                  把本地库的内容推送到远程</code></pre></div>
+<p>已经在本地创建了一个Git仓库后，想要关联到GitHub的远程仓库进行同步，之后在本地修改后推送到远程。</p>
+
+<p>用<code>git remote</code>命令添加远程库，默认名字是origin（可以修改）；
+用<code>git push</code>命令，把当前分支master推送到远程。
+注意本地库可以同时与多个远程库互相同步，但需要保证远程库的名称不同。</p>
+
+<p>由于远程库是空的，我们第一次推送master分支时需要加上<code>-u</code>参数，
+Git不但会把本地的master分支内容推送的远程新的master分支，
+还会把本地的master分支和远程的master分支关联起来，
+在以后的推送或者拉取时就可以简化命令了。</p>
+
+<p>推送成功后，可以立刻在GitHub页面中看到远程库的内容已经和本地一模一样。
+从现在起，只要本地作了提交，就可以通过命令：<code>git push origin master</code>把本地master分支的最新修改推送至GitHub。
+分布式版本系统的最大好处之一是在本地工作完全不需要考虑远程库的存在，当有网络的时候，再把本地提交推送一下就完成了同步。</p>
+
+<aside class="warning">如果遇到报错fatal: The remote end hung up unexpectedly</aside>
+
+<p>可以在版本库的隐藏文件夹.git中修改config文件，添加以下内容<br>
+[http]<br>
+postBuffer = 524288000<br>
+或者直接执行命令：<br>
+git config http.postBuffer 524288000 修改单个仓库配置到500M<br>
+git config &ndash;global http.postBuffer 1048576000 修改全局配置到1G<br>
+其中524288000&ndash;&gt;1024*1024*500</p>
+
+<aside class="warning">如果出现如下错误：curl 56 OpenSSL SSL_read:SSL_ERROR_sysCALL</aside>
+
+<p>执行：git config http.sslVerify &laquo;false&raquo;</p>
 
 <h2 id="clone-existing-repo">Clone Existing Repo</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 在目标文件夹右键Git Bash</span>
+git clone https://github.com/user/repo.git   <span style="color:#75715e"># 使用HTTPS</span>
+git clone git@github.com:user/repo.git       <span style="color:#75715e"># 使用SSH</span>
+cd 目标文件夹                                <span style="color:#75715e"># 切换到目标文件夹</span>
+ls                                           <span style="color:#75715e"># 查看目录下文件</span>
+
+<span style="color:#75715e"># 删除已经关联的远程库</span>
+git remote rm origin</code></pre></div>
+<p>从远程库克隆到本地进行开发，Github给出的地址有多种形式，其支持多种协议，默认的git://使用ssh，但也可以使用https等其他协议。
+通过ssh支持的原生git协议速度最快（首次使用会跳出警告提示，输入yes），使用https速度较慢以外。</p>
+
+<h2 id="branch">Branch</h2>
+
+<h3 id="创建与合并分支">创建与合并分支</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git checkout -b dev                  <span style="color:#75715e"># 创建并切换到dev分支，命令行末尾显示dev</span>
+git branch                           <span style="color:#75715e"># 列出所有分支，当前分支前会标*号</span>
+git add test2.txt                    <span style="color:#75715e"># 在dev分支上提交文件修改</span>
+git commit -m <span style="color:#e6db74">&#34;add new branch&#34;</span>
+git checkout master                  <span style="color:#75715e"># dev分支的工作完成，切换回master分支</span>
+git branch                           <span style="color:#75715e"># 查看所处分支</span>
+<span style="color:#75715e">#   dev</span>
+<span style="color:#75715e">#  *master</span>
+
+git merge dev                        <span style="color:#75715e"># 合并指定分支到当前分支</span>
+<span style="color:#75715e">#Updating 18a6b3f..0242b82</span>
+<span style="color:#75715e">#Fast-forward</span>
+<span style="color:#75715e"># test2.txt | 3 +++</span>
+<span style="color:#75715e"># 1 file changed, 3 insertions(+)</span>
+<span style="color:#75715e"># create mode 100644 test2.txt</span>
+
+git branch -d dev                    <span style="color:#75715e"># 合并完成后删除dev分支</span>
+git branch                           <span style="color:#75715e"># 只剩下master一个分支</span></code></pre></div>
+<p>创建属于自己的分支，其他成员在原来的分支上工作，
+而你在自己的分支上干活不会影响到其他人，开发完毕后再一次性地合并到原来的分支上。
+<img src="https://raw.githubusercontent.com/hanyutan/hanyutan.github.io/master/images/working-directory-and-stage.jpg.png"></p>
+
+<p>(1)每次提交文件及修改，Git都把它们串成一条时间线，这条时间线就是一个分支。
+master分支是主分支，每次提交，master分支都会向前移动一步，Git用master指向最新的提交，
+再用HEAD指向当前分支master，由此master分支的线越来越长。<br>
+(2)创建新分支时（例如dev），Git新建一个指针dev，指向master相同的提交，再把HEAD指向dev，代表当前分支dev。<br>
+(3)从现在开始，对工作区的修改和提交就是针对dev分支了，比如新提交一次后，dev指针往前移动一步，而master指针不变。<br>
+(4)假如我们在dev上的工作完成了，就可以把dev合并到master上。
+注意到合并后返回的信息，Fast-forward告诉我们这次合并是“快进模式”，也就是直接把master指向dev的当前提交，所以合并速度非常快。<br>
+(5)合并完分支后，甚至可以删除dev分支，把dev指针给删掉，这样就剩下一条master分支。<br>
+(6)切换回master分支后，查看test2.txt文件发现刚才添加的内容不见了。因为那个提交是在dev分支上，而master分支此刻的提交点并没有变。<br></p>
+
+<p>因为创建、合并和删除分支非常快，所以Git鼓励你使用分支完成某个任务，合并后再删掉分支，这和直接在master分支上工作效果是一样的，但过程更安全。</p>
+
+<aside class="notice">git checkout –b dev相当于以下两条命令: git branch dev 和 git checkout dev</aside>
+
+<h3 id="解决冲突">解决冲突</h3>
 
     
         
@@ -593,9 +683,14 @@ GitHub上免费托管的Git仓库，任何人都可以看到，但只有你自�
 
 <p>Hugo主题模板：<a href="https://themes.gohugo.io/" target="_blank">https://themes.gohugo.io/</a></p>
 
-<p><code>hugo new site Hugo_Blog</code></p>
+<h2 id="create-new-site">Create New Site</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">hugo new site Hugo_Blog     <span style="color:#75715e"># 新建网站</span>
+cd Hugo_Blog                <span style="color:#75715e"># 切换目录</span>
+git init                    <span style="color:#75715e"># 初始化respository</span></code></pre></div>
+<p>详细指南请参考：<a href="https://gohugo.io/getting-started/quick-start/" target="_blank">https://gohugo.io/getting-started/quick-start/</a></p>
 
-<p>然后hugo会自动生成这样一个目录结构（大致样子）：</p>
+<p>假定设定目标文件夹D:/Github用于存储网页，右键打开Git Bash。使用hugo命令<code>new site</code>来新建网站Hugo_Blog（命名自定义）。<br>
+然后hugo会在D:/Github/Hugo_Blog自动生成这样一个目录结构（大致样子）：</p>
 
 <table>
 <thead>
@@ -608,12 +703,12 @@ GitHub上免费托管的Git仓库，任何人都可以看到，但只有你自�
 <tbody>
 <tr>
 <td>archetypes</td>
-<td>为不同类型定义默认的头文件FrontMatter，一般用不上</td>
+<td>为不同类型定义默认的头文件FrontMatter</td>
 </tr>
 
 <tr>
 <td>content</td>
-<td>存放写好的文章，markdown文件</td>
+<td>存放写好的文章，markdown文件（.md文件）</td>
 </tr>
 
 <tr>
@@ -623,7 +718,7 @@ GitHub上免费托管的Git仓库，任何人都可以看到，但只有你自�
 
 <tr>
 <td>layouts</td>
-<td>存放网站的模板文件</td>
+<td>存放网站的模板文件（toml文件，或json、yaml格式）</td>
 </tr>
 
 <tr>
@@ -643,20 +738,36 @@ GitHub上免费托管的Git仓库，任何人都可以看到，但只有你自�
 </tbody>
 </table>
 
-<p><code>hugo new</code>指令会自动添加<code>content</code>路径前缀
-themes/ananke/exampleSite是一个示例站点，我们可以直接拿来使用。</p>
+<h2 id="install-themes">Install Themes</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 下载安装Ananke主题到D:/Github/Hugo_Blog/themes/ananke</span>
+git submodule add https://github.com/bep/docuapi.git themes/docuapi
+<span style="color:#75715e"># 把主题的demo样例文件复制过来</span>
+cp -r themes/ananke/exampleSite/. ./</code></pre></div>
+<p>网址可以从选中主题的Home Page（即github仓库+.git获得）代码后面部分表明安装到哪个文件夹。</p>
 
-<p>修改<code>FrontMatter</code></p>
+<p>themes/ananke/exampleSite是一个示例站点，我们可以直接拿来使用，所以需要copy里面的相关配置文件到我们自己的站点里。
+右键用文本编辑器Notepad++打开<code>D:/Github/Hugo_Blog/config.toml</code>文件，
+自定义title（会显示在网页标签上），修改baseURL为自己的github.io地址，修改主题theme为&raquo;ananke&raquo;，删掉<code>themesDir = &quot;../..&quot;</code>。
+然后记得打开文件<code>D:/Github/Hugo_Blog/themes/ananke/theme.toml</code>，修改第11行<code>min_version = &quot;0.30.2&quot;</code>，加上双引号，否则系统把版本号当作float类型会报错。
+自定义配置：可以自己研究config.toml文件以及themes/ananke/layouts文件夹力度内容，进行相应修改。</p>
 
-<p>&ndash;watch或者-w 选项打开的话，将会监控到文章的改动从而自动刷新浏览器。</p>
+<h2 id="create-new-post">Create New Post</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 创建markdown文件</span>
+hugo new post/my-first-post.md</code></pre></div>
+<p>hugo new指令创建markdown文件会自动添加<code>content/</code>路径前缀，
+打开D:/Github/Hugo_Blog/content/post/my-first-post.md进行编辑。
+使用<code>---</code>或<code>+++</code>包围起来的部分是各个静态网页编辑器SSG统一的YAML开头<code>FrontMatter</code>，可以自行修改指明文章标题、创建时间。
+注意发布时应将draft改为false，否则为草稿状态。</p>
 
-<p>浏览器里打开：<a href="http://localhost:1313" target="_blank">http://localhost:1313</a></p>
+<h2 id="build-static-site">Build Static Site</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">hugo server --watch        <span style="color:#75715e"># 创建本地网站</span>
+hugo                       <span style="color:#75715e"># 建立静态网页</span></code></pre></div>
+<p>可以使用<code>hugo server</code>命令创建本地网站，<code>–watch</code>或者<code>-w</code>选项打开的话，将会监控到Markdown文件/主题配置文件的改动从而自动去刷新浏览器，
+不需要自己手工去刷新浏览器，非常方便。浏览器里打开：<a href="http://localhost:1313" target="_blank">http://localhost:1313</a>查看本地网站。</p>
 
-<p><code>hugo</code></p>
-
-<p>所有静态页面会生成到public目录，将public文件夹里的全部文件push到对应的分支上。（例如<code>&lt;username&gt;.github.io</code>的<code>master</code>分支上，或者其他项目<code>repository</code>的<code>gh-pages</code>上）</p>
-
-<p>在浏览器中输入<code>https://&lt;username&gt;.github.io</code>查看个人主页，或者<code>https://&lt;username&gt;.github.io/repository_name</code>查看项目主页。</p>
+<p>使用<code>hugo</code>建立静态网页，所有静态页面会生成到public目录，将public文件夹里的全部文件push到对应的分支上。
+（例如<code>&lt;username&gt;.github.io</code>的<code>master</code>分支上，或者其他项目<code>repository</code>的<code>gh-pages</code>上）
+之后在浏览器中输入<code>https://&lt;username&gt;.github.io</code>查看个人主页，或者<code>https://&lt;username&gt;.github.io/repository_name</code>查看项目主页。</p>
 
     
         
@@ -939,6 +1050,41 @@ defaultContentLanguageInSubdir = true</code></pre></div>
 <p><strong>解决办法：</strong>利用HTML语言<body>&nbsp;原本内容</body>即可在内容前增加一个空格，在尾部添加<br>标签即可换行。
 此外，在尾部敲入几个空格也可实现markdown里的换行，留一个空行可以实现另起一段。</p>
 
+<h3 id="7-github-pages可以使用多个主题吗">7.Github Pages可以使用多个主题吗？</h3>
+
+<p><strong>解决办法：</strong>同一个repo下应该只能使用一个主题，但是可以新建其他repo，下设<code>gh-pages</code>分支，
+然后另设一个New Site把public文件夹里的内容push到<code>gh-pages</code>分支上，作为项目主页，
+同时单独的分支又可以不影响master上主要项目的开发。</p>
+
+<h3 id="8-没有vpn访问github太慢-或者担心所在地区某一天被美国封锁而无法使用github怎么办">8.没有Vpn访问Github太慢，或者担心所在地区某一天被美国封锁而无法使用Github怎么办？</h3>
+
+<p><strong>解决办法：</strong>那就支持一下国产吧！<br>
+来段摘自官方的介绍：“开源中国是目前国内最大的开源技术社区，拥有超过200万会员，
+形成了由开源软件库、代码分享、资讯、协作翻译、讨论区和博客等几大频道内容，
+为IT开发者提供了一个发现、使用、并交流开源技术的平台。”</p>
+
+<p>官方网站码云Gitee：<a href="https://gitee.com" target="_blank">https://gitee.com</a></p>
+
+<p>Gitee有自己的Page，和Github操作几乎一模一样，而且支持从Github上直接克隆Repo以及同步更新。
+如何建立码云Pages请参考：<a href="http://git.mydoc.io/?t=154714#text_154714" target="_blank">http://git.mydoc.io/?t=154714#text_154714</a>，注意在建仓、push后还需要启动Gitee Pages服务。</p>
+
+<p>想自己本地上传同时push两个remote的话，可以参考代码栏。<br></p>
+
+<aside class="warning">补充<br>
+我发现这种做法会让https://username.gitee.io或者https://username.oschina.io的链接直接指向https://username.github.io，那访问速度相当于没变化啊！
+猜测是因为网页配置文件config.toml里的url没有改，所以还是不要关联到同一个本地仓库，分开比较好。
+还有网站流量统计、被各大搜索引擎搜索到的验证文件也需要重新弄一遍。
+</aside>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 在原来链接到Githuhb的本次仓库中右击Git Bash，重新管理远程链接</span>
+git remote rm origin
+git remote add github https://github.com/username/username.github.io  <span style="color:#75715e"># 添加远程分支，命名github</span>
+git remote add gitee https://gitee.com/username/username              <span style="color:#75715e"># 添加远程分支，命名gitee</span>
+
+<span style="color:#75715e"># push到github</span>
+git push -u github master
+
+<span style="color:#75715e"># push到gitee</span>
+git push -u gitee master</code></pre></div>
     
 
         </div>
