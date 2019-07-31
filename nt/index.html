@@ -387,7 +387,7 @@ hugo</code></pre></div>
 </tr>
 
 <tr>
-<td><code>git branch -av</code><strong>list all existing branches</strong></td>
+<td><code>git branch</code><strong>list all existing branches</strong></td>
 <td></td>
 </tr>
 
@@ -404,7 +404,7 @@ mkdir Blog_Git                <span style="color:#75715e"># 创建空目录</spa
 cd Blog_Git                   <span style="color:#75715e"># 切换到当前空目录下</span>
 git init                      <span style="color:#75715e"># 将目录变成Git可以管理的仓库</span></code></pre></div>
 <p>创建版本库，Git Bash会返回
-<code>Initialized empty Git repository in d:/Github/Blog_Git/.git/</code>，如果你没有看到.git目录，那是因为这个目录默认是隐藏的，用ls -ah命令就可以看见。</p>
+<code>Initialized empty Git repository in d:/Github/Blog_Git/.git/</code>，如果你没有看到.git目录，那是因为这个目录默认是隐藏的，用<code>ls -ah</code>命令就可以看见。</p>
 
 <h2 id="local-changes">Local Changes</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 创建新文件并提交</span>
@@ -525,9 +525,11 @@ add something<br></p>
 
 <p>工作区working directory是在电脑里能看到的目录，比如Blog_Git文件夹就是一个工作区。
 工作区有一个隐藏目录.git是Git的版本库repository，里面存了很多东西，其中最重要的就是暂存区stage/index，
-还有Git自动创建的第一个分支master，以及指向master的指针HEAD。
-<img src="https://raw.githubusercontent.com/hanyutan/hanyutan.github.io/master/images/working-directory-and-stage.jpg.png">
-git add把文件修改添加到暂存区；git commit把暂存区的所有内容提交到当前分支。
+还有Git自动创建的第一个分支master，以及指向master的指针HEAD。</p>
+
+<p><img src="https://raw.githubusercontent.com/hanyutan/hanyutan.github.io/master/images/working-directory-and-stage.jpg"></p>
+
+<p>git add把文件修改添加到暂存区；git commit把暂存区的所有内容提交到当前分支。
 简单理解为：需要提交的文件修改通通放到暂存区，然后一次性提交暂存区的所有修改。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 查看工作区和版本库里面最新版本的区别</span>
 git diff HEAD -- test.txt</code></pre></div>
@@ -548,11 +550,16 @@ git reset HEAD test.txt
 总之，就是让这个文件回到最近一次git add或git commit时的状态。<br>
 注意命令中如果没有<code>--</code>就变成了“切换到另一个分支”的命令</p>
 
-<p>总结一下有几种情况：
-1. 刚在文件中做了修改，如何撤销？<br>git checkout &ndash; test.txt
-2. 修改的文件已经add，如何撤销？<br>git reset HEAD test.txt<br>git checkout &ndash; test.txt
-3. 修改的文件已经add、commit（尚未从本地版本库推送到远程版本库），如何撤销？<br>git reset –hard HEAD^
-4.  修改的文件add后又做了修改，如何撤销？git checkout &ndash; test.txt</p>
+<p>总结一下有几种情况：<br>
+1. 刚在文件中做了修改，如何撤销？<br>
+git checkout &ndash; test.txt<br>
+2. 修改的文件已经add，如何撤销？<br>
+git reset HEAD test.txt<br>
+git checkout &ndash; test.txt<br>
+3. 修改的文件已经add、commit，但未推送到远程库，如何撤销？<br>
+git reset –hard HEAD^<br>
+4.  修改的文件add后又做了修改，如何撤销？<br>
+git checkout &ndash; test.txt<br></p>
 
 <h2 id="delete-files">Delete Files</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">rm test.txt                            <span style="color:#75715e"># 删除文件</span>
@@ -653,8 +660,9 @@ git merge dev                        <span style="color:#75715e"># 合并指定�
 git branch -d dev                    <span style="color:#75715e"># 合并完成后删除dev分支</span>
 git branch                           <span style="color:#75715e"># 只剩下master一个分支</span></code></pre></div>
 <p>创建属于自己的分支，其他成员在原来的分支上工作，
-而你在自己的分支上干活不会影响到其他人，开发完毕后再一次性地合并到原来的分支上。
-<img src="https://raw.githubusercontent.com/hanyutan/hanyutan.github.io/master/images/working-directory-and-stage.jpg.png"></p>
+而你在自己的分支上干活不会影响到其他人，开发完毕后再一次性地合并到原来的分支上。</p>
+
+<p><img src="https://raw.githubusercontent.com/hanyutan/hanyutan.github.io/master/images/branch1.png"></p>
 
 <p>(1)每次提交文件及修改，Git都把它们串成一条时间线，这条时间线就是一个分支。
 master分支是主分支，每次提交，master分支都会向前移动一步，Git用master指向最新的提交，
@@ -671,6 +679,8 @@ master分支是主分支，每次提交，master分支都会向前移动一步�
 <aside class="notice">git checkout –b dev相当于以下两条命令: git branch dev 和 git checkout dev</aside>
 
 <h3 id="解决冲突">解决冲突</h3>
+
+<p>未完待续。。。</p>
 
     
         
@@ -747,8 +757,8 @@ cp -r themes/ananke/exampleSite/. ./</code></pre></div>
 
 <p>themes/ananke/exampleSite是一个示例站点，我们可以直接拿来使用，所以需要copy里面的相关配置文件到我们自己的站点里。
 右键用文本编辑器Notepad++打开<code>D:/Github/Hugo_Blog/config.toml</code>文件，
-自定义title（会显示在网页标签上），修改baseURL为自己的github.io地址，修改主题theme为&raquo;ananke&raquo;，删掉<code>themesDir = &quot;../..&quot;</code>。
-然后记得打开文件<code>D:/Github/Hugo_Blog/themes/ananke/theme.toml</code>，修改第11行<code>min_version = &quot;0.30.2&quot;</code>，加上双引号，否则系统把版本号当作float类型会报错。
+自定义title（会显示在网页标签上），修改baseURL为自己的github.io地址，修改主题theme为ananke，删掉<code>themesDir = &quot;../..&quot;</code>。
+然后记得打开文件<code>D:/Github/Hugo_Blog/themes/ananke/theme.toml</code>，修改第11行<code>min_version = &quot;0.30.2&quot;</code>，需要加上双引号，否则系统把版本号当作float类型会报错。
 自定义配置：可以自己研究config.toml文件以及themes/ananke/layouts文件夹力度内容，进行相应修改。</p>
 
 <h2 id="create-new-post">Create New Post</h2>
@@ -1057,7 +1067,16 @@ defaultContentLanguageInSubdir = true</code></pre></div>
 同时单独的分支又可以不影响master上主要项目的开发。</p>
 
 <h3 id="8-没有vpn访问github太慢-或者担心所在地区某一天被美国封锁而无法使用github怎么办">8.没有Vpn访问Github太慢，或者担心所在地区某一天被美国封锁而无法使用Github怎么办？</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 在原来链接到Githuhb的本次仓库中右击Git Bash，重新管理远程链接</span>
+git remote rm origin
+git remote add github https://github.com/username/username.github.io  <span style="color:#75715e"># 添加远程分支，命名github</span>
+git remote add gitee https://gitee.com/username/username              <span style="color:#75715e"># 添加远程分支，命名gitee</span>
 
+<span style="color:#75715e"># push到github</span>
+git push -u github master
+
+<span style="color:#75715e"># push到gitee</span>
+git push -u gitee master</code></pre></div>
 <p><strong>解决办法：</strong>那就支持一下国产吧！<br>
 来段摘自官方的介绍：“开源中国是目前国内最大的开源技术社区，拥有超过200万会员，
 形成了由开源软件库、代码分享、资讯、协作翻译、讨论区和博客等几大频道内容，
@@ -1075,16 +1094,7 @@ defaultContentLanguageInSubdir = true</code></pre></div>
 猜测是因为网页配置文件config.toml里的url没有改，所以还是不要关联到同一个本地仓库，分开比较好。
 还有网站流量统计、被各大搜索引擎搜索到的验证文件也需要重新弄一遍。
 </aside>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 在原来链接到Githuhb的本次仓库中右击Git Bash，重新管理远程链接</span>
-git remote rm origin
-git remote add github https://github.com/username/username.github.io  <span style="color:#75715e"># 添加远程分支，命名github</span>
-git remote add gitee https://gitee.com/username/username              <span style="color:#75715e"># 添加远程分支，命名gitee</span>
 
-<span style="color:#75715e"># push到github</span>
-git push -u github master
-
-<span style="color:#75715e"># push到gitee</span>
-git push -u gitee master</code></pre></div>
     
 
         </div>
