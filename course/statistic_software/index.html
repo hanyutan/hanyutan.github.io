@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Statistic Software - Keep Learning</title>
+<meta name="description" content="Han Yutan">
+<meta name="generator" content="Hugo 0.58.1" />
+<link href="https://hanyutan.gitee.ioindex.xml" rel="alternate" type="application/rss+xml">
+<link rel="canonical" href="https://hanyutan.gitee.io/course/statistic_software/">
+<link rel="stylesheet" href="https://hanyutan.gitee.io/css/theme.min.css">
+<script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<link rel="stylesheet" href="https://hanyutan.gitee.io/css/chroma.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://hanyutan.gitee.io/js/functions.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js"></script>
+<script src="https://hanyutan.gitee.io/js/jquery.backtothetop/jquery.backtothetop.min.js"></script></head>
+<body>
+<div class="container"><header>
+<h1>Keep Learning</h1>
+
+ <span class="version">Version 1.0</span>
+<a href="https://gitee.com/hanyutan" class="github"><i class="fab fa-github"></i></a>
+<p class="description">Han Yutan</p>
+
+</header>
+<div class="menu">
+<nav>
+<ul>
+<li><a href="/">Home</a></li>
+<li><a href="https://www.instagram.com/philoartist97/">Instagram</a></li>
+<li><a href="/post/goisforlovers/">(Hu)go Template Primer</a></li>
+<li><a href="/about/">About Hugo</a></li>
+<li><a href="/post/hugoisforlovers/">Getting Started with Hugo</a></li><li class="parent"><a href="">Tutorials<i class="fas fa-angle-right"></i></a>
+<ul class="sub-menu">
+<li class="child"><a href="/post/creating-a-new-theme/">Creating a New Theme</a></li>
+<li class="child"><a href="/post/migrate-from-jekyll/">Migrating from Jekyll</a></li>
+</ul>
+</li></ul>
+</nav>
+</div>
+<div class="content-container">
+<main><h1>Statistic Software</h1>
+
+<p>张云新 xyz@fudan.edu.cn</p>
+
+<p>考核方式：平时成绩20%，课程报告成绩40%，期末报告与程序40%。没有考试。</p>
+
+<p>常用统计软件：SAS，SPSS，Eviews，Gauss，Stata，R，Python，Julia，MATLAB，Go。</p>
+
+<p>课程报告内容被随机分配：R基本作图 顺序21 控制在45min以内。</p>
+
+<h2 id="r基本操作">R基本操作</h2>
+
+<p>赋值使用 &lt;- 符号</p>
+
+<p>向量</p>
+
+<ul>
+<li>运算特点: element-size、broadcasting</li>
+<li>元素为相同类型</li>
+</ul>
+
+<p>matrix是两维的，array可以是高维的。</p>
+
+<p>超过2^1023都认为是一样的</p>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="c1"># 向量</span>
+<span class="kt">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">4</span><span class="p">)</span>   <span class="c1"># python: np.array([1,2,3,4])</span>
+<span class="kt">c</span><span class="p">(</span><span class="s">&#34;a&#34;</span><span class="p">,</span><span class="s">&#34;b&#34;</span><span class="p">,</span><span class="s">&#34;c&#34;</span><span class="p">,</span><span class="s">&#34;d&#34;</span><span class="p">)</span>
+<span class="m">1</span><span class="o">:</span><span class="m">50</span>         <span class="c1"># python: range(1,50)</span>
+v<span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">7</span><span class="p">]</span>       <span class="c1"># 切片</span>
+v<span class="p">[</span><span class="kt">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">5</span><span class="p">)]</span>  <span class="c1"># 间断取值</span>
+v<span class="p">[</span>v<span class="o">%%</span><span class="m">3</span> <span class="o">==</span> <span class="m">0</span><span class="p">]</span> <span class="c1"># 条件筛选</span>
+
+<span class="c1"># 数值计算</span>
+<span class="kp">exp</span><span class="p">()</span>
+<span class="kp">cos</span><span class="p">()</span>
+<span class="kp">log2</span><span class="p">()</span>
+<span class="kp">log</span><span class="p">()</span>
+
+<span class="c1"># 运算符</span>
+a <span class="o">&lt;-</span> <span class="m">1</span>
+<span class="m">3</span> <span class="o">-&gt;</span> b
+
+<span class="c1"># 类型 </span>
+<span class="kp">typeof</span><span class="p">()</span>   <span class="c1"># double, character, integer</span>
+<span class="kp">class</span><span class="p">()</span>    <span class="c1"># numeric, character</span>
+as<span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="s">&#34;integer&#34;</span><span class="p">)</span>   <span class="c1"># 强制成为整型（默认是double）</span>
+v <span class="o">&lt;-</span> <span class="kt">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="s">&#34;a&#34;</span><span class="p">)</span> <span class="c1"># coercion强制类型转换</span>
+
+<span class="c1"># 数组与矩阵</span>
+A <span class="o">&lt;-</span> <span class="kt">array</span><span class="p">(</span><span class="kt">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">6</span><span class="p">),</span>dim<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">))</span>   <span class="c1"># 默认纵向排列</span>
+A<span class="p">[</span><span class="m">4</span><span class="p">];</span> A<span class="p">[</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">];</span> A<span class="p">[</span><span class="m">2</span><span class="p">,]</span>
+
+M <span class="o">&lt;-</span> <span class="kt">matrix</span><span class="p">(</span><span class="kt">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">6</span><span class="p">),</span>nrow<span class="o">=</span><span class="m">2</span><span class="p">,</span>ncol<span class="o">=</span><span class="m">3</span><span class="p">)</span>
+M <span class="o">&lt;-</span> <span class="kt">matrix</span><span class="p">(</span><span class="kt">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">6</span><span class="p">),</span>nrow<span class="o">=</span><span class="m">2</span><span class="p">,</span>ncol<span class="o">=</span><span class="m">3</span><span class="p">,</span>byrow <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>
+
+B <span class="o">&lt;-</span> <span class="kt">array</span><span class="p">(</span><span class="kt">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">6</span><span class="p">,</span><span class="m">7</span><span class="p">,</span><span class="m">8</span><span class="p">,</span><span class="m">9</span><span class="p">,</span><span class="m">10</span><span class="p">,</span><span class="m">11</span><span class="p">,</span><span class="m">12</span><span class="p">),</span>dim<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>
+B<span class="p">[,,</span><span class="m">1</span><span class="p">]</span>
+
+<span class="c1"># 列表</span>
+list1 <span class="o">&lt;-</span> <span class="kt">list</span><span class="p">(</span>thing<span class="o">=</span><span class="s">&#34;hat&#34;</span><span class="p">,</span>size<span class="o">=</span><span class="m">3.6</span><span class="p">)</span>
+e<span class="p">[</span><span class="m">1</span><span class="p">]</span>
+e<span class="o">$</span>thing<span class="p">;</span> e<span class="p">[[</span><span class="m">1</span><span class="p">]]</span>
+
+<span class="c1"># 数据框</span>
+df <span class="o">&lt;-</span> <span class="kt">data.frame</span><span class="p">(</span>vec1<span class="p">,</span>vec2<span class="p">,</span>vec3<span class="p">)</span>
+df<span class="o">$</span>vec1<span class="p">[</span>df<span class="o">$</span>vec1 <span class="o">==</span> <span class="m">0</span><span class="p">]</span>
+newdata <span class="o">&lt;-</span> na.omit<span class="p">(</span>df<span class="p">)</span>      <span class="c1"># 缺失值所在行全部扔掉</span></code></pre></div>
+<h3 id="常用">常用</h3>
+
+<pre><code>rm(list=ls())   # 删除所有变量
+seq(from,to,by)
+
+</code></pre>
+
+<h3 id="数据类型">数据类型</h3>
+
+<p>R中默认将数字以double形式存储，即使表面数字是整数形式。<br>
+最大数值储存到2^1023，以上都为Inf。</p>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="kp">typeof</span><span class="p">()</span>      <span class="c1"># double interger character</span>
+<span class="kp">class</span><span class="p">()</span>       <span class="c1"># logical numeric interger complex character raw</span>
+<span class="kp">is.integer</span><span class="p">(</span><span class="m">1</span><span class="p">)</span> <span class="c1"># 默认double</span>
+<span class="kp">as.integer</span><span class="p">(</span><span class="m">1</span><span class="p">)</span> <span class="c1"># 转换为整型</span></code></pre></div>
+<h3 id="运算符">运算符</h3>
+
+<pre><code>%% 取余
+%/% 求商
+%in%元素是否属于向量
+%*%矩阵乘法
+</code></pre>
+
+<h3 id="字符串">字符串</h3>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="c1"># 字符串拼接</span>
+<span class="kp">cat</span><span class="p">(</span>str1<span class="p">,</span>num2<span class="p">,</span>list3...<span class="p">,</span>sep<span class="o">=</span><span class="s">&#34;&#34;</span><span class="p">)</span>
+<span class="kp">paste</span><span class="p">(</span><span class="s">&#34;Hello, &#34;</span><span class="p">,</span><span class="s">&#34;world!&#34;</span><span class="p">,</span>sep<span class="o">=</span><span class="s">&#34;&#34;</span><span class="p">)</span>
+
+<span class="c1"># 前后缀粘贴</span>
+<span class="kp">paste</span><span class="p">(</span><span class="s">&#34;x&#34;</span><span class="p">,</span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">,</span>sep<span class="o">=</span><span class="s">&#34;&#34;</span><span class="p">)</span></code></pre></div>
+<h3 id="条件语句-if-switch">条件语句 if switch</h3>
+
+<p>if&hellip;else if&hellip;else&hellip;注意条件排列的顺序</p>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="kr">if</span> <span class="p">(</span>condition<span class="p">)</span> <span class="s">&#34;expression1&#34;</span> <span class="kr">else</span> <span class="s">&#34;expression2&#34;</span>
+
+<span class="kr">if</span><span class="p">(</span>condition1<span class="p">){</span>
+	expression1
+<span class="p">}</span> <span class="kr">else</span> <span class="kr">if</span><span class="p">(</span>condition2<span class="p">){</span>
+	expression2
+<span class="p">}</span> <span class="kr">else</span> <span class="p">{</span>
+	expression3
+<span class="p">}</span></code></pre></div>
+<p>switch(expression,case1,case2,&hellip;)<br>
+如果expression不为字符串，则强制转为整数</p>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="c1"># 根据数字判断</span>
+<span class="kr">switch</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="s">&#34;Apple&#34;</span><span class="p">,</span><span class="s">&#34;Banana&#34;</span><span class="p">,</span><span class="s">&#34;Orange&#34;</span><span class="p">)</span>
+
+<span class="c1"># 根据字符串判断</span>
+expression <span class="o">&lt;-</span> <span class="s">&#34;vec&#34;</span>
+<span class="kr">switch</span><span class="p">(</span><span class="kp">expression</span><span class="p">,</span>num<span class="o">=</span><span class="m">123</span><span class="p">,</span>str<span class="o">=</span><span class="s">&#34;Hello, World!&#34;</span><span class="p">,</span>vec<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">))</span>
+
+<span class="c1"># 函数作为case</span>
+x <span class="o">&lt;-</span> <span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">;</span> method<span class="o">=</span><span class="s">&#34;max&#34;</span>
+<span class="kr">switch</span><span class="p">(</span>method<span class="p">,</span>mean<span class="o">=</span><span class="kp">mean</span><span class="p">(</span>x<span class="p">),</span>sum<span class="o">=</span><span class="kp">sum</span><span class="p">(</span>x<span class="p">),</span>max<span class="o">=</span><span class="kp">max</span><span class="p">(</span>x<span class="p">))</span></code></pre></div>
+<h3 id="循环语句-repeat-while-for-break-next">循环语句 repeat while for break next</h3>
+
+<p>repeat(直到循环)，循环至少运行一次</p>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="kr">repeat</span><span class="p">{</span>
+	expressions
+	<span class="kr">if</span><span class="p">(</span>condition<span class="p">){</span>
+		<span class="kr">break</span>
+	<span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+<p>while(当型循环)，循环可能永远不会运行</p>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="kr">while</span><span class="p">(</span>condition<span class="p">){</span>
+	expressions
+<span class="p">}</span></code></pre></div>
+<p>for，确定的循环次数</p>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="kr">for</span><span class="p">(</span>i <span class="kr">in</span> <span class="kt">vector</span><span class="p">){</span>
+	expressions
+<span class="p">}</span></code></pre></div>
+<h1 id="自定义函数">自定义函数</h1>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r">y <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>x<span class="p">)</span> x<span class="o">**</span><span class="m">2</span>
+y<span class="p">(</span><span class="m">3</span><span class="p">)</span>              <span class="c1"># ()用于函数，[]用于切片</span>
+
+y <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>para<span class="p">){</span>
+	<span class="kr">function</span> <span class="kp">body</span>
+<span class="p">}</span></code></pre></div>
+<h3 id="r包">R包</h3>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r">install.packages<span class="p">(</span><span class="s">&#34;&lt;package name&gt;&#34;</span><span class="p">)</span>
+<span class="kn">library</span><span class="p">(</span><span class="o">&lt;</span>package name<span class="o">&gt;</span><span class="p">)</span></code></pre></div>
+<h3 id="数据重塑">数据重塑</h3>
+
+<p>数据合并 data.frame cbind rbind merge</p>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="c1"># 以下class均为data.frame</span>
+df <span class="o">&lt;-</span> <span class="kt">data.frame</span><span class="p">(</span>colname<span class="o">=</span><span class="kt">vector</span><span class="p">,</span><span class="m">...</span><span class="kc">...</span><span class="p">)</span>
+df <span class="o">&lt;-</span> <span class="kp">cbind</span><span class="p">(</span>df1<span class="p">,</span>df2<span class="p">)</span>   <span class="c1"># 横向拼接</span>
+df <span class="o">&lt;-</span> <span class="kp">rbind</span><span class="p">(</span>df1<span class="p">,</span>df2<span class="p">)</span>   <span class="c1"># 纵向拼接，保证列名相同</span>
+
+<span class="c1"># 单纯用cbind向量，则class为matrix</span>
+<span class="kp">cbind</span><span class="p">(</span>vec1<span class="p">,</span>vec2<span class="p">,</span>vec3<span class="p">)</span>
+
+<span class="c1"># merge要注意存在相同列明</span>
+df <span class="o">&lt;-</span> <span class="kp">merge</span><span class="p">(</span>x<span class="o">=</span>df1<span class="p">,</span>y<span class="o">=</span>df2<span class="p">,</span>by<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="s">&#34;vec1&#34;</span><span class="p">,</span><span class="s">&#34;vec2)&#34;</span><span class="p">)</span>        <span class="c1"># key名相同or不同</span>
+df <span class="o">&lt;-</span> <span class="kp">merge</span><span class="p">(</span>x<span class="o">=</span>df1<span class="p">,</span>y<span class="o">=</span>df2<span class="p">,</span>by.x<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="s">&#34;vec1&#34;</span><span class="p">,</span><span class="s">&#34;vec2)&#34;</span><span class="p">,</span>by.y<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="s">&#34;vec3&#34;</span><span class="p">,</span><span class="s">&#34;vec4)&#34;</span><span class="p">)</span></code></pre></div>
+<p>数据部分转置 melt</p>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="c1"># 根据vec1和vec2归类，其他变量从列转到行（一对多，原列名自动放到新的variable下）</span>
+melt<span class="p">(</span>df<span class="p">,</span>id<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="s">&#34;vec1&#34;</span><span class="p">,</span><span class="s">&#34;vec2&#34;</span><span class="p">))</span></code></pre></div>
+<p>数据分类汇总 cast</p>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="c1"># 根据vec1和vec2归类，汇总统计variable的值</span>
+cast<span class="p">(</span>df<span class="p">,</span>vec1<span class="o">+</span>vec2<span class="o">~</span>variable<span class="p">,</span><span class="kp">sum</span><span class="o">/</span><span class="kp">mean</span><span class="o">/</span><span class="kp">max</span><span class="p">)</span></code></pre></div><div class="edit-meta">
+Last updated on 17 Oct 2017
+
+
+<br>
+Published on 17 Oct 2017
+<br><a href="https://gitee.com/hanyutan/hanyutan/edit/master/content/course%5cstatistic_software.md" class="edit-page"><i class="fas fa-pen-square"></i> Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="/course/mathematical_statistics/" title="Mathematical Statistics"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - Mathematical Statistics</a>
+<a class="nav nav-next" href="/languages/" title="Languages">Next - Languages <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+</nav><footer><p class="powered">Powered by <a href="https://gohugo.io">Hugo</a>. Theme by <a href="https://themes.gohugo.io/hugo-theme-techdoc/">TechDoc</a>. Designed by <a href="https://github.com/thingsym/hugo-theme-techdoc">Thingsym</a>.</p>
+</footer>
+</main><div class="sidebar">
+<nav>
+<ul>
+<li class=""><a href="https://hanyutan.gitee.io">Home</a></li>
+
+<li class="parent"><a href="/course/">Course</a>
+<ul class="sub-menu">
+<li class=""><a href="/course/my_notes/">My Notes</a></li>
+<li class=""><a href="/course/latex/">Latex</a></li>
+<li class=""><a href="/course/weizhongyu/">Wei Zhongyu</a></li>
+<li class=""><a href="/course/3dmax/">3dmax</a></li>
+<li class=""><a href="/course/spark/">Spark</a></li>
+<li class=""><a href="/course/artificial_intelligency/">Artificial Intelligency</a></li>
+<li class=""><a href="/course/financial_risk_management/">Financial Risk Management</a></li>
+<li class=""><a href="/course/mathematical_statistics/">Mathematical Statistics</a></li>
+<li class="active"><a href="/course/statistic_software/">Statistic Software</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/languages/">Languages</a>
+<ul class="">
+<li class=""><a href="/languages/installation/">Installation</a></li>
+<li class=""><a href="/languages/japanese/">Japanese</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/build_blog/">Build Blogs</a>
+<ul class="">
+<li class=""><a href="/build_blog/01_introduction/">Introduction</a></li>
+<li class=""><a href="/build_blog/02_preparation/">Preparation</a></li>
+<li class=""><a href="/build_blog/03_quick_start/">Quick Start</a></li>
+<li class=""><a href="/build_blog/04_git_notes/">Git Notes</a></li>
+<li class=""><a href="/build_blog/05_hugo_notes/">Hugo Notes</a></li>
+<li class=""><a href="/build_blog/06_markdown_notes/">Markdown Notes</a></li>
+<li class=""><a href="/build_blog/07_questions/">Q&amp;A</a></li>
+<li class=""><a href="/build_blog/scoop/">Scoop</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/mathematics/">Mathematics</a>
+<ul class="">
+<li class=""><a href="/mathematics/functional_analysis/">Functional Analysis</a></li>
+<li class=""><a href="/mathematics/installation/">Installation</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/machine_learning/">Machine Learning</a>
+<ul class="">
+<li class=""><a href="/machine_learning/2/">Chapter 1-2</a></li>
+<li class=""><a href="/machine_learning/3/">Chapter 1-3</a></li>
+<li class=""><a href="/machine_learning/4/">Chapter 1-4</a></li>
+<li class=""><a href="/machine_learning/1/">Nerual Network</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/big_data_analytics/">Big Data Analysis</a>
+<ul class="">
+<li class=""><a href="/big_data_analytics/installation/">Installation</a></li>
+<li class=""><a href="/big_data_analytics/configuration/">Configuration</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/chapter2/">Chapter 2 (weighted)</a>
+<ul class="">
+<li class=""><a href="/chapter2/3/">Chapter 2-3 (weight: 10)</a></li>
+<li class=""><a href="/chapter2/4/">Chapter 2-4 (weight: 20)</a></li>
+<li class=""><a href="/chapter2/2/">Chapter 2-2 (weight: 30)</a></li>
+<li class=""><a href="/chapter2/1/">Chapter 2-1 (weight: 40)</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/chapter3/">Chapter 3 (hierarchized)</a>
+<ul class="">
+<li class=""><a href="/chapter3/1/">Chapter 3-1</a></li>
+
+<li class=""><a href="/chapter3/chapter3-2/">Chapter 3-2</a>
+<ul class="">
+<li class=""><a href="/chapter3/chapter3-2/1/">Chapter 3-2-1</a></li>
+<li class=""><a href="/chapter3/chapter3-2/2/">Chapter 3-2-2</a></li>
+<li class=""><a href="/chapter3/chapter3-2/3/">Chapter 3-2-3</a></li>
+<li class=""><a href="/chapter3/chapter3-2/4/">Chapter 3-2-4</a></li>
+</ul>
+  
+</li>
+<li class=""><a href="/chapter3/3/">Chapter 3-3</a></li>
+<li class=""><a href="/chapter3/4/">Chapter 3-4</a></li>
+</ul>
+  
+</li>
+
+
+
+
+
+
+
+
+
+
+</ul>
+</nav>
+
+
+<div class="sidebar-footer"></div>
+</div>
+</div><a href="#" id="backtothetop-fixed" class="backtothetop"
+ data-backtothetop-duration="600"
+ data-backtothetop-easing="easeOutQuart"
+ data-backtothetop-fixed-fadeIn="1000"
+ data-backtothetop-fixed-fadeOut="1000"
+ data-backtothetop-fixed-bottom="10"
+ data-backtothetop-fixed-right="20">
+<span class="fa-layers fa-fw">
+<i class="fas fa-circle"></i>
+<i class="fas fa-arrow-circle-up"></i>
+</span></a>
+</div>
+</body>
+</html>

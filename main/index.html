@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Welcome - Keep Learning</title>
+<meta name="description" content="Han Yutan">
+<meta name="generator" content="Hugo 0.58.1" />
+<link href="https://hanyutan.gitee.ioindex.xml" rel="alternate" type="application/rss+xml">
+<link rel="canonical" href="https://hanyutan.gitee.io/main/">
+<link rel="stylesheet" href="https://hanyutan.gitee.io/css/theme.min.css">
+<script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<link rel="stylesheet" href="https://hanyutan.gitee.io/css/chroma.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://hanyutan.gitee.io/js/functions.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js"></script>
+<script src="https://hanyutan.gitee.io/js/jquery.backtothetop/jquery.backtothetop.min.js"></script></head>
+<body>
+<div class="container"><header>
+<h1>Keep Learning</h1>
+
+ <span class="version">Version 1.0</span>
+<a href="https://gitee.com/hanyutan" class="github"><i class="fab fa-github"></i></a>
+<p class="description">Han Yutan</p>
+
+</header>
+<div class="menu">
+<nav>
+<ul>
+<li><a href="/">Home</a></li>
+<li><a href="https://www.instagram.com/philoartist97/">Instagram</a></li>
+<li><a href="/post/goisforlovers/">(Hu)go Template Primer</a></li>
+<li><a href="/about/">About Hugo</a></li>
+<li><a href="/post/hugoisforlovers/">Getting Started with Hugo</a></li><li class="parent"><a href="">Tutorials<i class="fas fa-angle-right"></i></a>
+<ul class="sub-menu">
+<li class="child"><a href="/post/creating-a-new-theme/">Creating a New Theme</a></li>
+<li class="child"><a href="/post/migrate-from-jekyll/">Migrating from Jekyll</a></li>
+</ul>
+</li></ul>
+</nav>
+</div>
+<div class="content-container">
+<main><h1>Welcome</h1>
+
+<h1 id="introduction">Introduction</h1>
+
+<p><strong>Welcome to my blog!</strong> 这是一个用GitHub Pages和Hugo搭建的半开放博客（<del>报废品仓库</del>），打算用来记录一些学习笔记以及其他各种乱七八糟的小东西。</p>
+
+<p>目前只放了怎样搭建本博客的教程，其中也包含了Git、Hugo、Markdown的一些Notes，Q&amp;A部分是建站中遇到的其他问题及解决方案。</p>
+
+<p>最后放一个Monty Hall问题的模拟实验吧（<del>单纯想展示一下docuapi这个主题的右边栏</del>）</p>
+
+<p>Monty Hall问题来源于电视节目Let&rsquo;s Make a Deal，具体介绍请参考<a href="https://en.wikipedia.org/wiki/Monty_Hall_problem">Wikipedia</a> 以及<a href="https://baike.baidu.com/item/%E4%B8%89%E9%97%A8%E9%97%AE%E9%A2%98/1242689">百度百科</a> 。</p>
+
+<blockquote>
+<p>Monty Hall问题</p>
+</blockquote>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">choice</span>
+<span class="k">def</span> <span class="nf">monty_hall</span><span class="p">(</span><span class="n">doors_num</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">decision</span><span class="o">=</span><span class="s1">&#39;change&#39;</span><span class="p">,</span><span class="n">experiment</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
+    <span class="s2">&#34;&#34;&#34;在给定选择下，模拟n次Monty Hall实验&#34;&#34;&#34;</span>
+    <span class="n">doors</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">doors_num</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>      <span class="c1"># 门的序号</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>                            <span class="c1"># 储存每次结果的列表</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">experiment</span><span class="p">):</span> 
+        <span class="n">succ</span> <span class="o">=</span> <span class="n">choice</span><span class="p">(</span><span class="n">doors</span><span class="p">)</span>                <span class="c1"># 设置中奖门号</span>
+        <span class="n">fail</span> <span class="o">=</span> <span class="n">doors</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">fail</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">succ</span><span class="p">)</span>                   <span class="c1"># 未中奖门号列表</span>
+        <span class="n">choose</span> <span class="o">=</span>  <span class="n">choice</span><span class="p">(</span><span class="n">doors</span><span class="p">)</span>             <span class="c1"># 挑战者随机挑选一扇门</span>
+        <span class="n">unchoose</span> <span class="o">=</span> <span class="n">doors</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">unchoose</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">choose</span><span class="p">)</span>             <span class="c1"># 未被挑选的门号列表</span>
+        <span class="n">open1</span> <span class="o">=</span> <span class="n">choice</span><span class="p">([</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">fail</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">unchoose</span><span class="p">])</span>   <span class="c1"># 主持人开一扇未中奖的门</span>
+        <span class="n">unchoose</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">open1</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">decision</span> <span class="o">==</span> <span class="s1">&#39;change&#39;</span><span class="p">:</span>            <span class="c1"># 是否更改选择</span>
+            <span class="n">choose</span> <span class="o">=</span> <span class="n">unchoose</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">succ</span> <span class="o">==</span> <span class="n">choose</span><span class="p">)</span>      <span class="c1"># 记录是否中奖</span>
+
+    <span class="n">succ_rate</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">results</span><span class="p">)</span><span class="o">/</span><span class="n">experiment</span>     <span class="c1"># 计算中奖概率</span>
+    <span class="k">return</span> <span class="n">succ_rate</span>
+	
+<span class="c1"># 更改选择后的中奖概率2/3</span>
+<span class="n">monty_hall</span><span class="p">(</span><span class="n">decision</span><span class="o">=</span><span class="s1">&#39;change&#39;</span><span class="p">,</span><span class="n">experiment</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+<span class="c1"># 不换选择后的中奖概率1/3</span>
+<span class="n">monty_hall</span><span class="p">(</span><span class="n">decision</span><span class="o">=</span><span class="s1">&#39;not change&#39;</span><span class="p">,</span><span class="n">experiment</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span></code></pre></div>
+<aside class="notice">
+有任何疑问或建议欢迎随时联系我！hanyutan@foxmail.com
+</aside>
+
+<p><img src="https://raw.githubusercontent.com/hanyutan/hanyutan.github.io/master/images/portrait2.png"/></p>
+
+<h1 id="category">Category</h1>
+
+<h3 id="how-to-build-my-own-blog-https-hanyutan-github-io-nt"><a href="https://hanyutan.github.io/nt">How to build my own blog?</a></h3>
+
+<h3 id="git-notes-https-hanyutan-github-io-nt-git-notes"><a href="https://hanyutan.github.io/nt/#git-notes">Git Notes</a></h3>
+
+<h3 id="hugo-notes-https-hanyutan-github-io-nt-hugo-notes"><a href="https://hanyutan.github.io/nt/#hugo-notes">Hugo Notes</a></h3>
+
+<h3 id="markdown-notes-https-hanyutan-github-io-nt-markdown-notes"><a href="https://hanyutan.github.io/nt/#markdown-notes">Markdown Notes</a></h3>
+
+<h1 id="updates">Updates</h1>
+
+<ul>
+<li>添加了ducuapi模板</li>
+<li>Build Blog教程</li>
+<li>自定义Logo</li>
+<li>流量统计</li>
+<li>Gitee备份</li>
+</ul>
+
+<h1 id="books-movies">Books &amp; Movies</h1>
+
+<h2 id="books">Books</h2>
+
+<table>
+    <tr>
+        <td ><center><a href="https://book.douban.com/subject/26861583/"><img src="https://raw.githubusercontent.com/hanyutan/hanyutan.github.io/master/images/不正常人类症候群.png" ></a></center></td>
+        <td ><center><a href="https://book.douban.com/subject/26382433/"><img src="https://raw.githubusercontent.com/hanyutan/hanyutan.github.io/master/images/无声告白.png" ></a></center></td>
+        <td ><center><a href="https://book.douban.com/subject/24540864/"><img src="https://raw.githubusercontent.com/hanyutan/hanyutan.github.io/master/images/第七天.png" ></a></center></td>
+        <td ><center><a href="https://book.douban.com/subject/26371317/"><img src="https://raw.githubusercontent.com/hanyutan/hanyutan.github.io/master/images/24个比利.png" ></a></center></td>
+        <td ><center><a href="https://book.douban.com/subject/4242172/"><img src="https://raw.githubusercontent.com/hanyutan/hanyutan.github.io/master/images/天才在左疯子在右.png" ></a></center></td>
+    </tr>
+    <tr>
+        <td ><center><a href="https://book.douban.com/subject/25862578/"><img src="https://raw.githubusercontent.com/hanyutan/hanyutan.github.io/master/images/解忧杂货店.png" ></a></center></td>
+        <td ><center><a href="https://book.douban.com/subject/4881509/"><img src="https://raw.githubusercontent.com/hanyutan/hanyutan.github.io/master/images/飞鸟集.png" ></a></center></td>
+        <td ><center><a href="https://book.douban.com/subject/2154960/"><img src="https://raw.githubusercontent.com/hanyutan/hanyutan.github.io/master/images/一个陌生女人的来信.png" ></a></center></td>
+    </tr>
+</table>
+
+<h2 id="movies">Movies</h2>
+
+<table>
+    <tr>
+        <td ><center><a href="https://movie.douban.com/subject/30181230/"><img src="https://raw.githubusercontent.com/hanyutan/hanyutan.github.io/master/images/我们与恶的距离.jpg" ></a></center></td>
+        <td ><center><a href="https://movie.douban.com/subject/21767183/"><img src="https://raw.githubusercontent.com/hanyutan/hanyutan.github.io/master/images/零点五毫米.jpg" ></a></center></td>
+        <td ><center><a href="https://movie.douban.com/subject/21356379/"><img src="https://raw.githubusercontent.com/hanyutan/hanyutan.github.io/master/images/寻找薇薇安迈尔.jpg" ></a></center></td>
+        <td ><center><a href="https://movie.douban.com/subject/3236904/"><img src="https://raw.githubusercontent.com/hanyutan/hanyutan.github.io/master/images/自闭历程.jpg" ></a></center></td>
+        <td ><center><a href="https://movie.douban.com/subject/25745651/"><img src="https://raw.githubusercontent.com/hanyutan/hanyutan.github.io/master/images/妈咪.jpg" ></a></center></td>
+    </tr>
+    <tr>
+        <td ><center><a href="https://movie.douban.com/subject/25716096/"><img src="https://raw.githubusercontent.com/hanyutan/hanyutan.github.io/master/images/狗十三.jpg" ></a></center></td>
+        <td ><center><a href="https://movie.douban.com/subject/6786002/"><img src="https://raw.githubusercontent.com/hanyutan/hanyutan.github.io/master/images/触不可及.jpg" ></a></center></td>
+        <td ><center><a href="https://movie.douban.com/subject/6307447/"><img src="https://raw.githubusercontent.com/hanyutan/hanyutan.github.io/master/images/被解救的姜戈.jpg" ></a></center></td>
+        <td ><center><a href="https://movie.douban.com/subject/1418200/"><img src="https://raw.githubusercontent.com/hanyutan/hanyutan.github.io/master/images/傲慢与偏见.jpg" ></a></center></td>
+        <td ><center><a href="https://movie.douban.com/subject/1298624/"><img src="https://raw.githubusercontent.com/hanyutan/hanyutan.github.io/master/images/闻香识女人.jpg" ></a></center></td>
+    </tr>
+    <tr>
+        <td ><center><a href="https://movie.douban.com/subject/26787574/"><img src="https://raw.githubusercontent.com/hanyutan/hanyutan.github.io/master/images/奇迹男孩.jpg" ></a></center></td>
+        <td ><center><a href="https://movie.douban.com/subject/1865703/"><img src="https://raw.githubusercontent.com/hanyutan/hanyutan.github.io/master/images/红辣椒.jpg" ></a></center></td>
+        <td ><center><a href="https://movie.douban.com/subject/1485260/"><img src="https://raw.githubusercontent.com/hanyutan/hanyutan.github.io/master/images/本杰明巴顿奇事.jpg" ></a></center></td>
+    </tr>
+</table>
+
+<h1 id="moments">Moments</h1>
+
+<p>“把废片都挑出来，做一个废片摄影展，展名就叫差一秒”————大印-</p>
+
+<p>“我没有过去，也没有未来，我只有每一秒钟的现在”————Philoartist</p>
+
+<p>“站着的人认为躺着的人应该站起来”————明石</p>
+
+<p>“我问过我妈，当妈妈是什么感觉，我妈说像抱一袋子鸡蛋挤早高峰地铁”————Unknown</p>
+
+<p>“Everyone struggles, but everything will be alright.”————Susu</p>
+
+<p>“人生的非线性回报，平时的每一分作为，都会有无形的记录”————Unknown</p>
+
+<p>“短暂又缓慢的人生，独自做过的喜爱之事，最后会逐个变成不在场证明”————鲜榨盲肠汁</p>
+
+<p>“抬头是星辰闪烁，眼前是日出于海，身边是心爱之人”————Unknown</p>
+
+<p>“当新生儿降临时<br>天使和死神都会来拜访<br>离别之际新生儿问：何时再见？<br>天使说：在你每一次微笑的时候<br>死神道：在你按部就班走完这一生的每个步骤的时候，我们便会再遇见”<br>————Philoartist</p>
+
+<aside class="success">有些句子未标记出处，实在想不起来在哪里见到的了，原作可以直接联系我注明</aside>
+
+<h1 id="future">Future</h1>
+
+<ol>
+<li>docuapi这个主题的代码栏很酷，但也很鸡肋。有的时候并不需要把code单独分出来，或者有时候理论部分介绍不需要code，就要想办法让右边栏设置成一个可选项，根据文章需要来添加或取消。</li>
+<li>目录的设置其实是用语言版本改的，太鸡贼了，想个办法加自己的目录和tags。</li>
+<li>想自定义模板的话还是得学css和html吧</li>
+<li>最近没时间，之后把本科的一些笔记补上来</li>
+<li>想做一个流量统计、访客数之类的dashboard</li>
+<li>图片加载太慢</li>
+<li>侧边栏不支持中文目录，电脑端显示正常，但移动端无法展开</li>
+</ol>
+<div class="edit-meta">
+
+<br><a href="https://gitee.com/hanyutan/hanyutan/edit/master/content/main.md" class="edit-page"><i class="fas fa-pen-square"></i> Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-next" href="/course/" title="Course">Next - Course <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+</nav><footer><p class="powered">Powered by <a href="https://gohugo.io">Hugo</a>. Theme by <a href="https://themes.gohugo.io/hugo-theme-techdoc/">TechDoc</a>. Designed by <a href="https://github.com/thingsym/hugo-theme-techdoc">Thingsym</a>.</p>
+</footer>
+</main><div class="sidebar">
+<nav>
+<ul>
+<li class=""><a href="https://hanyutan.gitee.io">Home</a></li>
+
+<li class=""><a href="/course/">Course</a>
+<ul class="">
+<li class=""><a href="/course/my_notes/">My Notes</a></li>
+<li class=""><a href="/course/latex/">Latex</a></li>
+<li class=""><a href="/course/weizhongyu/">Wei Zhongyu</a></li>
+<li class=""><a href="/course/3dmax/">3dmax</a></li>
+<li class=""><a href="/course/spark/">Spark</a></li>
+<li class=""><a href="/course/artificial_intelligency/">Artificial Intelligency</a></li>
+<li class=""><a href="/course/financial_risk_management/">Financial Risk Management</a></li>
+<li class=""><a href="/course/mathematical_statistics/">Mathematical Statistics</a></li>
+<li class=""><a href="/course/statistic_software/">Statistic Software</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/languages/">Languages</a>
+<ul class="">
+<li class=""><a href="/languages/installation/">Installation</a></li>
+<li class=""><a href="/languages/japanese/">Japanese</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/build_blog/">Build Blogs</a>
+<ul class="">
+<li class=""><a href="/build_blog/01_introduction/">Introduction</a></li>
+<li class=""><a href="/build_blog/02_preparation/">Preparation</a></li>
+<li class=""><a href="/build_blog/03_quick_start/">Quick Start</a></li>
+<li class=""><a href="/build_blog/04_git_notes/">Git Notes</a></li>
+<li class=""><a href="/build_blog/05_hugo_notes/">Hugo Notes</a></li>
+<li class=""><a href="/build_blog/06_markdown_notes/">Markdown Notes</a></li>
+<li class=""><a href="/build_blog/07_questions/">Q&amp;A</a></li>
+<li class=""><a href="/build_blog/scoop/">Scoop</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/mathematics/">Mathematics</a>
+<ul class="">
+<li class=""><a href="/mathematics/functional_analysis/">Functional Analysis</a></li>
+<li class=""><a href="/mathematics/installation/">Installation</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/machine_learning/">Machine Learning</a>
+<ul class="">
+<li class=""><a href="/machine_learning/2/">Chapter 1-2</a></li>
+<li class=""><a href="/machine_learning/3/">Chapter 1-3</a></li>
+<li class=""><a href="/machine_learning/4/">Chapter 1-4</a></li>
+<li class=""><a href="/machine_learning/1/">Nerual Network</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/big_data_analytics/">Big Data Analysis</a>
+<ul class="">
+<li class=""><a href="/big_data_analytics/installation/">Installation</a></li>
+<li class=""><a href="/big_data_analytics/configuration/">Configuration</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/chapter2/">Chapter 2 (weighted)</a>
+<ul class="">
+<li class=""><a href="/chapter2/3/">Chapter 2-3 (weight: 10)</a></li>
+<li class=""><a href="/chapter2/4/">Chapter 2-4 (weight: 20)</a></li>
+<li class=""><a href="/chapter2/2/">Chapter 2-2 (weight: 30)</a></li>
+<li class=""><a href="/chapter2/1/">Chapter 2-1 (weight: 40)</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/chapter3/">Chapter 3 (hierarchized)</a>
+<ul class="">
+<li class=""><a href="/chapter3/1/">Chapter 3-1</a></li>
+
+<li class=""><a href="/chapter3/chapter3-2/">Chapter 3-2</a>
+<ul class="">
+<li class=""><a href="/chapter3/chapter3-2/1/">Chapter 3-2-1</a></li>
+<li class=""><a href="/chapter3/chapter3-2/2/">Chapter 3-2-2</a></li>
+<li class=""><a href="/chapter3/chapter3-2/3/">Chapter 3-2-3</a></li>
+<li class=""><a href="/chapter3/chapter3-2/4/">Chapter 3-2-4</a></li>
+</ul>
+  
+</li>
+<li class=""><a href="/chapter3/3/">Chapter 3-3</a></li>
+<li class=""><a href="/chapter3/4/">Chapter 3-4</a></li>
+</ul>
+  
+</li>
+
+
+
+
+
+
+
+
+
+
+</ul>
+</nav>
+
+
+<div class="sidebar-footer"></div>
+</div>
+</div><a href="#" id="backtothetop-fixed" class="backtothetop"
+ data-backtothetop-duration="600"
+ data-backtothetop-easing="easeOutQuart"
+ data-backtothetop-fixed-fadeIn="1000"
+ data-backtothetop-fixed-fadeOut="1000"
+ data-backtothetop-fixed-bottom="10"
+ data-backtothetop-fixed-right="20">
+<span class="fa-layers fa-fw">
+<i class="fas fa-circle"></i>
+<i class="fas fa-arrow-circle-up"></i>
+</span></a>
+</div>
+</body>
+</html>

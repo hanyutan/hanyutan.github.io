@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Course on Keep Learning</title>
+    <link>https://hanyutan.gitee.io/course/</link>
+    <description>Recent content in Course on Keep Learning</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 10 Sep 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://hanyutan.gitee.io/course/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>My Notes</title>
+      <link>https://hanyutan.gitee.io/course/my_notes/</link>
+      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/course/my_notes/</guid>
+      <description>To Do List 每天必须保证练习30min 英语流利说30min 《社会媒体挖掘》ch01-ch02 [1-40]/240 计算机二级python ch05 [76-90]/220 Databricks注册，</description>
+    </item>
+    
+    <item>
+      <title>Latex</title>
+      <link>https://hanyutan.gitee.io/course/latex/</link>
+      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/course/latex/</guid>
+      <description>用beamer做ppt？ Install TexLive 清华开源镜像下载地址 下载最新的.iso文件，进入DVD驱动器后双击install-tl-advanced.bat</description>
+    </item>
+    
+    <item>
+      <title>Wei Zhongyu</title>
+      <link>https://hanyutan.gitee.io/course/weizhongyu/</link>
+      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/course/weizhongyu/</guid>
+      <description>http://www.sdspeople.fudan.edu.cn/zywei/DATA130008/slides/Lecture1.1.pdf Search Search Problems state space 状态空间 successor function (with actions, costs) start state 起始空间 goal test 检测是否达到目标状态 Uninformed Search 无信息搜索算法 Depth-First Search 深度优先 Breadth-First Search 广度优先 Uniform-Cost Search 代价一致 Real World Task Pac-man</description>
+    </item>
+    
+    <item>
+      <title>3dmax</title>
+      <link>https://hanyutan.gitee.io/course/3dmax/</link>
+      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/course/3dmax/</guid>
+      <description>Install 虚幻ue4下载 unity3d下载 maya学生版下载 注册学校为北大</description>
+    </item>
+    
+    <item>
+      <title>Spark</title>
+      <link>https://hanyutan.gitee.io/course/spark/</link>
+      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/course/spark/</guid>
+      <description>Introduction Spark框架概念 Spark是一款基于内存的分布式计算框架，具有简洁接口，可以快速构建上层数据分析算法。 基于内存计算，处理快 Hapdooo</description>
+    </item>
+    
+    <item>
+      <title>Artificial Intelligency</title>
+      <link>https://hanyutan.gitee.io/course/artificial_intelligency/</link>
+      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/course/artificial_intelligency/</guid>
+      <description>数学基础：线性代数+概率统计 Bayesian 人工神经网络（MLB BP RNN） 分类-监督学习（SVM, Decision Tree） 聚类-非监督学习（KNN, K-Means） 回</description>
+    </item>
+    
+    <item>
+      <title>Financial Risk Management</title>
+      <link>https://hanyutan.gitee.io/course/financial_risk_management/</link>
+      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/course/financial_risk_management/</guid>
+      <description>10.31期中考</description>
+    </item>
+    
+    <item>
+      <title>Mathematical Statistics</title>
+      <link>https://hanyutan.gitee.io/course/mathematical_statistics/</link>
+      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/course/mathematical_statistics/</guid>
+      <description>梁汉营 hyliang@tongji.edu.cn</description>
+    </item>
+    
+    <item>
+      <title>Statistic Software</title>
+      <link>https://hanyutan.gitee.io/course/statistic_software/</link>
+      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/course/statistic_software/</guid>
+      <description>张云新 xyz@fudan.edu.cn 考核方式：平时成绩20%，课程报告成绩40%，期末报告与程序40%。没有考试。 常用统计软件：SAS，SPSS，Eviews，Gaus</description>
+    </item>
+    
+  </channel>
+</rss>

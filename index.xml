@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Keep Learning</title>
+    <link>https://hanyutan.gitee.io/</link>
+    <description>Recent content on Keep Learning</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 30 Jul 2019 15:26:15 +0000</lastBuildDate>
+    
+	<atom:link href="https://hanyutan.gitee.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Functional Analysis</title>
+      <link>https://hanyutan.gitee.io/mathematics/functional_analysis/</link>
+      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/mathematics/functional_analysis/</guid>
+      <description>泛函分析笔记整理by刘宇扬（SJTU，统计学） 如对笔记中的内容有疑问，或者想要跟作者交流，请联系Email:lyy_stat@foxmail</description>
+    </item>
+    
+    <item>
+      <title>Introduction</title>
+      <link>https://hanyutan.gitee.io/build_blog/01_introduction/</link>
+      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/build_blog/01_introduction/</guid>
+      <description>如果你不会Web前端开发，也不愿意花钱买服务器，懒洋洋地做个伸手党，只希望专注于内容创作&amp;hellip;&amp;hellip; 那么Github Pages +</description>
+    </item>
+    
+    <item>
+      <title>My Notes</title>
+      <link>https://hanyutan.gitee.io/course/my_notes/</link>
+      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/course/my_notes/</guid>
+      <description>To Do List 每天必须保证练习30min 英语流利说30min 《社会媒体挖掘》ch01-ch02 [1-40]/240 计算机二级python ch05 [76-90]/220 Databricks注册，</description>
+    </item>
+    
+    <item>
+      <title>Welcome</title>
+      <link>https://hanyutan.gitee.io/main/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/main/</guid>
+      <description>Introduction Welcome to my blog! 这是一个用GitHub Pages和Hugo搭建的半开放博客（报废品仓库），打算用来记录一些学习笔记以及其他各种乱七八糟的小东西。 目</description>
+    </item>
+    
+    <item>
+      <title>Latex</title>
+      <link>https://hanyutan.gitee.io/course/latex/</link>
+      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/course/latex/</guid>
+      <description>用beamer做ppt？ Install TexLive 清华开源镜像下载地址 下载最新的.iso文件，进入DVD驱动器后双击install-tl-advanced.bat</description>
+    </item>
+    
+    <item>
+      <title>Preparation</title>
+      <link>https://hanyutan.gitee.io/build_blog/02_preparation/</link>
+      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/build_blog/02_preparation/</guid>
+      <description>需要拥有自己的GitHub账号、创建个人主页用的仓库、安装Git和Hugo、一定的Markdown和HTML基础。 GitHub Desktop和Go语言</description>
+    </item>
+    
+    <item>
+      <title>Quick Start</title>
+      <link>https://hanyutan.gitee.io/build_blog/03_quick_start/</link>
+      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/build_blog/03_quick_start/</guid>
+      <description>不想看后面的Git/Hugo/Markdown Notes的话，可以直接按照Quick Start的操作来迅速建立一个个人Blog。 打开Gith</description>
+    </item>
+    
+    <item>
+      <title>Wei Zhongyu</title>
+      <link>https://hanyutan.gitee.io/course/weizhongyu/</link>
+      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/course/weizhongyu/</guid>
+      <description>http://www.sdspeople.fudan.edu.cn/zywei/DATA130008/slides/Lecture1.1.pdf Search Search Problems state space 状态空间 successor function (with actions, costs) start state 起始空间 goal test 检测是否达到目标状态 Uninformed Search 无信息搜索算法 Depth-First Search 深度优先 Breadth-First Search 广度优先 Uniform-Cost Search 代价一致 Real World Task Pac-man</description>
+    </item>
+    
+    <item>
+      <title>Git Notes</title>
+      <link>https://hanyutan.gitee.io/build_blog/04_git_notes/</link>
+      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/build_blog/04_git_notes/</guid>
+      <description>Git的用途和优点自行Google。这里安利一些学习资料，本Notes主要来自于廖雪峰的Git教程： Git的官方网站：http://git-</description>
+    </item>
+    
+    <item>
+      <title>Hugo Notes</title>
+      <link>https://hanyutan.gitee.io/build_blog/05_hugo_notes/</link>
+      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/build_blog/05_hugo_notes/</guid>
+      <description>Hugo官方教程：https://gohugo.io/getting-started/ 有人自己创建的Hugo中文文档：https://www</description>
+    </item>
+    
+    <item>
+      <title>Markdown Notes</title>
+      <link>https://hanyutan.gitee.io/build_blog/06_markdown_notes/</link>
+      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/build_blog/06_markdown_notes/</guid>
+      <description>作为示例，右边栏code即本文的markdown内容。 此外在markdown里使用html tag同样有效。 空一行可以形成单独段落。 作为示例，</description>
+    </item>
+    
+    <item>
+      <title>Q&amp;A</title>
+      <link>https://hanyutan.gitee.io/build_blog/07_questions/</link>
+      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/build_blog/07_questions/</guid>
+      <description>1.如何在 Github Pages 中输入数学公式？ &amp;lt;script type=&amp;#34;text/javascript&amp;#34; src=&amp;#34;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&amp;#34;&amp;gt; &amp;lt;/script&amp;gt; # markdown内容 使用2个dollar符号括起来可以让公式单独显示一行$$\prod(1+1)$$</description>
+    </item>
+    
+    <item>
+      <title>3dmax</title>
+      <link>https://hanyutan.gitee.io/course/3dmax/</link>
+      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/course/3dmax/</guid>
+      <description>Install 虚幻ue4下载 unity3d下载 maya学生版下载 注册学校为北大</description>
+    </item>
+    
+    <item>
+      <title>Scoop</title>
+      <link>https://hanyutan.gitee.io/build_blog/scoop/</link>
+      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/build_blog/scoop/</guid>
+      <description>Scoop，优质的 Windows 包管理器，一行代码搞定安装和卸载，干净又迅速。 Install Scoop and Apps Windows10在开始菜单键右击选择Windows PowerSh</description>
+    </item>
+    
+    <item>
+      <title>Spark</title>
+      <link>https://hanyutan.gitee.io/course/spark/</link>
+      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/course/spark/</guid>
+      <description>Introduction Spark框架概念 Spark是一款基于内存的分布式计算框架，具有简洁接口，可以快速构建上层数据分析算法。 基于内存计算，处理快 Hapdooo</description>
+    </item>
+    
+    <item>
+      <title>Artificial Intelligency</title>
+      <link>https://hanyutan.gitee.io/course/artificial_intelligency/</link>
+      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/course/artificial_intelligency/</guid>
+      <description>数学基础：线性代数+概率统计 Bayesian 人工神经网络（MLB BP RNN） 分类-监督学习（SVM, Decision Tree） 聚类-非监督学习（KNN, K-Means） 回</description>
+    </item>
+    
+    <item>
+      <title>Financial Risk Management</title>
+      <link>https://hanyutan.gitee.io/course/financial_risk_management/</link>
+      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/course/financial_risk_management/</guid>
+      <description>10.31期中考</description>
+    </item>
+    
+    <item>
+      <title>Mathematical Statistics</title>
+      <link>https://hanyutan.gitee.io/course/mathematical_statistics/</link>
+      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/course/mathematical_statistics/</guid>
+      <description>梁汉营 hyliang@tongji.edu.cn</description>
+    </item>
+    
+    <item>
+      <title>Statistic Software</title>
+      <link>https://hanyutan.gitee.io/course/statistic_software/</link>
+      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/course/statistic_software/</guid>
+      <description>张云新 xyz@fudan.edu.cn 考核方式：平时成绩20%，课程报告成绩40%，期末报告与程序40%。没有考试。 常用统计软件：SAS，SPSS，Eviews，Gaus</description>
+    </item>
+    
+    <item>
+      <title>Chapter 2-3 (weight: 10)</title>
+      <link>https://hanyutan.gitee.io/chapter2/3/</link>
+      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/chapter2/3/</guid>
+      <description>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</description>
+    </item>
+    
+    <item>
+      <title>Installation</title>
+      <link>https://hanyutan.gitee.io/big_data_analytics/installation/</link>
+      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/big_data_analytics/installation/</guid>
+      <description>Download Hugo theme If you have git installed, you can do the following at the command-line-interface within the Hugo directory:
+cd themes git clone https://github.com/thingsym/hugo-theme-techdoc.git  For more information read the Hugo documentation.
+Configure You may specify options in config.toml (or config.yaml/config.json) of your site to make use of this theme&amp;rsquo;s features.
+For an example of config.toml, see config.toml in exampleSite.
+See the Configuration documentation.
+Preview site To preview your site, run Hugo&amp;rsquo;s built-in local server.</description>
+    </item>
+    
+    <item>
+      <title>Installation</title>
+      <link>https://hanyutan.gitee.io/languages/installation/</link>
+      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/languages/installation/</guid>
+      <description>Download Hugo theme If you have git installed, you can do the following at the command-line-interface within the Hugo directory:
+cd themes git clone https://github.com/thingsym/hugo-theme-techdoc.git  For more information read the Hugo documentation.
+Configure You may specify options in config.toml (or config.yaml/config.json) of your site to make use of this theme&amp;rsquo;s features.
+For an example of config.toml, see config.toml in exampleSite.
+See the Configuration documentation.
+Preview site To preview your site, run Hugo&amp;rsquo;s built-in local server.</description>
+    </item>
+    
+    <item>
+      <title>Installation</title>
+      <link>https://hanyutan.gitee.io/mathematics/installation/</link>
+      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/mathematics/installation/</guid>
+      <description>Download Hugo theme If you have git installed, you can do the following at the command-line-interface within the Hugo directory:
+cd themes git clone https://github.com/thingsym/hugo-theme-techdoc.git  For more information read the Hugo documentation.
+Configure You may specify options in config.toml (or config.yaml/config.json) of your site to make use of this theme&amp;rsquo;s features.
+For an example of config.toml, see config.toml in exampleSite.
+See the Configuration documentation.
+Preview site To preview your site, run Hugo&amp;rsquo;s built-in local server.</description>
+    </item>
+    
+    <item>
+      <title>Creating a New Theme</title>
+      <link>https://hanyutan.gitee.io/post/creating-a-new-theme/</link>
+      <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/post/creating-a-new-theme/</guid>
+      <description>Introduction This tutorial will show you how to create a simple theme in Hugo. I assume that you are familiar with HTML, the bash command line, and that you are comfortable using Markdown to format content. I&amp;rsquo;ll explain how Hugo uses templates and how you can organize your templates to create a theme. I won&amp;rsquo;t cover using CSS to style your theme.
+We&amp;rsquo;ll start with creating a new site with a very basic template.</description>
+    </item>
+    
+    <item>
+      <title>Migrate to Hugo from Jekyll</title>
+      <link>https://hanyutan.gitee.io/post/migrate-from-jekyll/</link>
+      <pubDate>Mon, 10 Mar 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/post/migrate-from-jekyll/</guid>
+      <description>Move static content to static Jekyll has a rule that any directory not starting with _ will be copied as-is to the _site output. Hugo keeps all static content under static. You should therefore move it all there. With Jekyll, something that looked like
+▾ &amp;lt;root&amp;gt;/ ▾ images/ logo.png  should become
+▾ &amp;lt;root&amp;gt;/ ▾ static/ ▾ images/ logo.png  Additionally, you&amp;rsquo;ll want any files that should reside at the root (such as CNAME) to be moved to static.</description>
+    </item>
+    
+    <item>
+      <title>Hello_world</title>
+      <link>https://hanyutan.gitee.io/posts/hello_world/</link>
+      <pubDate>Tue, 17 Oct 2017 14:00:45 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/posts/hello_world/</guid>
+      <description>aaaaaa
+vvvv
+aaa</description>
+    </item>
+    
+    <item>
+      <title>Chapter 2-4 (weight: 20)</title>
+      <link>https://hanyutan.gitee.io/chapter2/4/</link>
+      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/chapter2/4/</guid>
+      <description>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</description>
+    </item>
+    
+    <item>
+      <title>Configuration</title>
+      <link>https://hanyutan.gitee.io/big_data_analytics/configuration/</link>
+      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/big_data_analytics/configuration/</guid>
+      <description>You may specify options in config.toml (or config.yaml/config.json) of your site to make use of this theme’s features.
+For an example of config.toml, see config.toml in exampleSite.
+Params # Souce Code repository section description = &amp;quot;put your description&amp;quot; github_repository = &amp;quot;https://github.com/thingsym/hugo-theme-techdoc&amp;quot; version = &amp;quot;0.2.2&amp;quot; # Documentation repository section # documentation repository (set edit link to documentation repository) github_doc_repository = &amp;quot;https://github.com/thingsym/hugo-theme-techdoc&amp;quot; # Analytic section google_analytics_id = &amp;quot;&amp;quot; # Your Google Analytics tracking id tag_manager_container_id = &amp;quot;&amp;quot; # Your Google Tag Manager container id google_site_verification = &amp;quot;&amp;quot; # Your Google Site Verification # Theme settings section dateformat = &amp;quot;&amp;quot; # default &amp;quot;2 Jan 2006&amp;quot; # path name excluded from document menu menu_exclusion = [&amp;quot;archives&amp;quot;, &amp;quot;blog&amp;quot;, &amp;quot;entry&amp;quot;, &amp;quot;post&amp;quot;, &amp;quot;posts&amp;quot;]  description The document summary</description>
+    </item>
+    
+    <item>
+      <title>Japanese</title>
+      <link>https://hanyutan.gitee.io/languages/japanese/</link>
+      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/languages/japanese/</guid>
+      <description>こんにちは！さようなら！ 教材：基础日语1 徐民敏，每天至少花30min来看。 cwwang@fudan.edu.cn win10添加日本输入法： 点击任务栏最右面的输入法图表，选择“语</description>
+    </item>
+    
+    <item>
+      <title>Chapter 2-2 (weight: 30)</title>
+      <link>https://hanyutan.gitee.io/chapter2/2/</link>
+      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/chapter2/2/</guid>
+      <description>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</description>
+    </item>
+    
+    <item>
+      <title>Chapter 2-1 (weight: 40)</title>
+      <link>https://hanyutan.gitee.io/chapter2/1/</link>
+      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/chapter2/1/</guid>
+      <description>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</description>
+    </item>
+    
+    <item>
+      <title>Hello_world2</title>
+      <link>https://hanyutan.gitee.io/archives/hello_world2/</link>
+      <pubDate>Sun, 17 Dec 2017 14:00:45 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/archives/hello_world2/</guid>
+      <description>aaaaaa
+vvvv
+aaa</description>
+    </item>
+    
+    <item>
+      <title>Hello_world2</title>
+      <link>https://hanyutan.gitee.io/blog/hello_world2/</link>
+      <pubDate>Sun, 17 Dec 2017 14:00:45 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/blog/hello_world2/</guid>
+      <description>aaaaaa
+vvvv
+aaa</description>
+    </item>
+    
+    <item>
+      <title>Hello_world2</title>
+      <link>https://hanyutan.gitee.io/entry/hello_world2/</link>
+      <pubDate>Sun, 17 Dec 2017 14:00:45 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/entry/hello_world2/</guid>
+      <description>aaaaaa
+vvvv
+aaa</description>
+    </item>
+    
+    <item>
+      <title>Hello_world1</title>
+      <link>https://hanyutan.gitee.io/archives/hello_world1/</link>
+      <pubDate>Fri, 17 Nov 2017 14:00:45 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/archives/hello_world1/</guid>
+      <description>aaaaaa
+vvvv
+aaa</description>
+    </item>
+    
+    <item>
+      <title>Hello_world1</title>
+      <link>https://hanyutan.gitee.io/blog/hello_world1/</link>
+      <pubDate>Fri, 17 Nov 2017 14:00:45 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/blog/hello_world1/</guid>
+      <description>aaaaaa
+vvvv
+aaa</description>
+    </item>
+    
+    <item>
+      <title>Hello_world1</title>
+      <link>https://hanyutan.gitee.io/entry/hello_world1/</link>
+      <pubDate>Fri, 17 Nov 2017 14:00:45 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/entry/hello_world1/</guid>
+      <description>aaaaaa
+vvvv
+aaa</description>
+    </item>
+    
+    <item>
+      <title>Chapter 1-2</title>
+      <link>https://hanyutan.gitee.io/machine_learning/2/</link>
+      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/machine_learning/2/</guid>
+      <description>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</description>
+    </item>
+    
+    <item>
+      <title>Chapter 1-3</title>
+      <link>https://hanyutan.gitee.io/machine_learning/3/</link>
+      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/machine_learning/3/</guid>
+      <description>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</description>
+    </item>
+    
+    <item>
+      <title>Chapter 1-4</title>
+      <link>https://hanyutan.gitee.io/machine_learning/4/</link>
+      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/machine_learning/4/</guid>
+      <description>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</description>
+    </item>
+    
+    <item>
+      <title>Chapter 3-1</title>
+      <link>https://hanyutan.gitee.io/chapter3/1/</link>
+      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/chapter3/1/</guid>
+      <description>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</description>
+    </item>
+    
+    <item>
+      <title>Chapter 3-2-1</title>
+      <link>https://hanyutan.gitee.io/chapter3/chapter3-2/1/</link>
+      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/chapter3/chapter3-2/1/</guid>
+      <description>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</description>
+    </item>
+    
+    <item>
+      <title>Chapter 3-2-2</title>
+      <link>https://hanyutan.gitee.io/chapter3/chapter3-2/2/</link>
+      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/chapter3/chapter3-2/2/</guid>
+      <description>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</description>
+    </item>
+    
+    <item>
+      <title>Chapter 3-2-3</title>
+      <link>https://hanyutan.gitee.io/chapter3/chapter3-2/3/</link>
+      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/chapter3/chapter3-2/3/</guid>
+      <description>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</description>
+    </item>
+    
+    <item>
+      <title>Chapter 3-2-4</title>
+      <link>https://hanyutan.gitee.io/chapter3/chapter3-2/4/</link>
+      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/chapter3/chapter3-2/4/</guid>
+      <description>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</description>
+    </item>
+    
+    <item>
+      <title>Chapter 3-3</title>
+      <link>https://hanyutan.gitee.io/chapter3/3/</link>
+      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/chapter3/3/</guid>
+      <description>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</description>
+    </item>
+    
+    <item>
+      <title>Chapter 3-4</title>
+      <link>https://hanyutan.gitee.io/chapter3/4/</link>
+      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/chapter3/4/</guid>
+      <description>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</description>
+    </item>
+    
+    <item>
+      <title>Nerual Network</title>
+      <link>https://hanyutan.gitee.io/machine_learning/1/</link>
+      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/machine_learning/1/</guid>
+      <description>神经网络总以最简单的方式完成分类任务（抓住最简单的区分特征），所以要特别注意训练集与测试集覆盖的应用场景要相似。 神经网络计算GPU+CUDA</description>
+    </item>
+    
+    <item>
+      <title>Hello_world</title>
+      <link>https://hanyutan.gitee.io/archives/hello_world/</link>
+      <pubDate>Tue, 17 Oct 2017 14:00:45 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/archives/hello_world/</guid>
+      <description>aaaaaa
+vvvv
+aaa</description>
+    </item>
+    
+    <item>
+      <title>Hello_world</title>
+      <link>https://hanyutan.gitee.io/blog/hello_world/</link>
+      <pubDate>Tue, 17 Oct 2017 14:00:45 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/blog/hello_world/</guid>
+      <description>aaaaaa
+vvvv
+aaa</description>
+    </item>
+    
+    <item>
+      <title>Hello_world</title>
+      <link>https://hanyutan.gitee.io/entry/hello_world/</link>
+      <pubDate>Tue, 17 Oct 2017 14:00:45 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/entry/hello_world/</guid>
+      <description>aaaaaa
+vvvv
+aaa</description>
+    </item>
+    
+    <item>
+      <title>About Hugo</title>
+      <link>https://hanyutan.gitee.io/about/</link>
+      <pubDate>Wed, 09 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/about/</guid>
+      <description>Hugo is a static site engine written in Go.
+It makes use of a variety of open source projects including:
+ Cobra Viper J Walter Weatherman Cast  Learn more and contribute on GitHub.</description>
+    </item>
+    
+    <item>
+      <title>(Hu)go Template Primer</title>
+      <link>https://hanyutan.gitee.io/post/goisforlovers/</link>
+      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/post/goisforlovers/</guid>
+      <description>Hugo uses the excellent Go html/template library for its template engine. It is an extremely lightweight engine that provides a very small amount of logic. In our experience that it is just the right amount of logic to be able to create a good static website. If you have used other template systems from different languages or frameworks you will find a lot of similarities in Go templates.
+This document is a brief primer on using Go templates.</description>
+    </item>
+    
+    <item>
+      <title>Getting Started with Hugo</title>
+      <link>https://hanyutan.gitee.io/post/hugoisforlovers/</link>
+      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/post/hugoisforlovers/</guid>
+      <description>Step 1. Install Hugo Go to Hugo releases and download the appropriate version for your OS and architecture.
+Save it somewhere specific as we will be using it in the next step.
+More complete instructions are available at Install Hugo
+Step 2. Build the Docs Hugo has its own example site which happens to also be the documentation site you are reading right now.
+Follow the following steps:
+ Clone the Hugo repository Go into the repo Run hugo in server mode and build the docs Open your browser to http://localhost:1313  Corresponding pseudo commands:</description>
+    </item>
+    
+  </channel>
+</rss>

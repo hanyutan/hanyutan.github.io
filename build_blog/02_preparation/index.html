@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Preparation - Keep Learning</title>
+<meta name="description" content="Han Yutan">
+<meta name="generator" content="Hugo 0.58.1" />
+<link href="https://hanyutan.gitee.ioindex.xml" rel="alternate" type="application/rss+xml">
+<link rel="canonical" href="https://hanyutan.gitee.io/build_blog/02_preparation/">
+<link rel="stylesheet" href="https://hanyutan.gitee.io/css/theme.min.css">
+<script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<link rel="stylesheet" href="https://hanyutan.gitee.io/css/chroma.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://hanyutan.gitee.io/js/functions.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js"></script>
+<script src="https://hanyutan.gitee.io/js/jquery.backtothetop/jquery.backtothetop.min.js"></script></head>
+<body>
+<div class="container"><header>
+<h1>Keep Learning</h1>
+
+ <span class="version">Version 1.0</span>
+<a href="https://gitee.com/hanyutan" class="github"><i class="fab fa-github"></i></a>
+<p class="description">Han Yutan</p>
+
+</header>
+<div class="menu">
+<nav>
+<ul>
+<li><a href="/">Home</a></li>
+<li><a href="https://www.instagram.com/philoartist97/">Instagram</a></li>
+<li><a href="/post/goisforlovers/">(Hu)go Template Primer</a></li>
+<li><a href="/about/">About Hugo</a></li>
+<li><a href="/post/hugoisforlovers/">Getting Started with Hugo</a></li><li class="parent"><a href="">Tutorials<i class="fas fa-angle-right"></i></a>
+<ul class="sub-menu">
+<li class="child"><a href="/post/creating-a-new-theme/">Creating a New Theme</a></li>
+<li class="child"><a href="/post/migrate-from-jekyll/">Migrating from Jekyll</a></li>
+</ul>
+</li></ul>
+</nav>
+</div>
+<div class="content-container">
+<main><h1>Preparation</h1>
+
+<p>需要拥有自己的GitHub账号、创建个人主页用的仓库、安装Git和Hugo、一定的Markdown和HTML基础。
+GitHub Desktop和Go语言可以根据自身需要选择性地安装。
+另外最好还要有一款支持语法高亮的文本编辑器/代码编辑器，例如Sublime Text、Notepad++等等。</p>
+
+<h2 id="github-account-repository">GitHub Account &amp; Repository</h2>
+
+<p>进入GitHub官方主页<a href="https://github.com/">https://github.com/</a>注册自己的GitHub账户，登陆个人主页<code>http://github.com/username</code>，
+右上角点击+号新建仓库（New Repository），在Repository name一栏中为仓库命名为<code>&lt;username&gt;.github.io</code>。
+注意<code>username</code>需要与注册时保持一致。<code>Initialize this repository with a README</code>先不用勾选。</p>
+
+<h2 id="install-git-hugo">Install Git &amp; Hugo</h2>
+
+<h3 id="install-git">Install Git</h3>
+
+<p>Git下载安装网站：<a href="https://git-scm.com/download">https://git-scm.com/download</a></p>
+
+<p>安装完成后，在开始菜单里找到Git -&gt; Git Bash，蹦出一个命令行窗口说明Git安装成功。</p>
+
+<blockquote>
+<p>Git Bash命令行输入</p>
+</blockquote>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">git config --global user.name <span class="s2">&#34;Your Name&#34;</span>
+git config --global user.email email@example.com</code></pre></div>
+<p>因为Git是分布式版本控制系统，所以，每个机器都必须自报家门：你的名字和Email地址。
+注意git config命令的&ndash;global参数，用了这个参数，表示你这台机器上所有的Git仓库都会使用这个配置</p>
+
+<p>如果想要修改用户主目录的默认路径，可以修改环境变量：在用户变量中新建，名称为HOME，地址自定义。
+其实不修改默认路径也ok，每次直接在你的目标文件夹里右键Git Bash Here，即可在当前目录中创建命令行窗口。</p>
+
+<h3 id="install-hugo">Install Hugo</h3>
+
+<p>详细安装指南请参考：<a href="https://gohugo.io/getting-started/installing/">https://gohugo.io/getting-started/installing/</a></p>
+
+<p>我用的Windows系统，两种常用方法（推荐第二种）：</p>
+
+<ol>
+<li>在Hugo Releases上下载最新版的二进制程序：<a href="https://github.com/spf13/hugo/releases">https://github.com/spf13/hugo/releases</a>，下载后解压，然后把解压目录添加到环境变量path里。</li>
+<li>使用Scoop包管理器来管理Windows软件，一行代码搞定安装和卸载，干净又迅速。操作如右侧代码栏：</li>
+</ol>
+
+<blockquote>
+<p>Windows PowerShell命令行输入</p>
+</blockquote>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># Windows10在开始菜单键右击选择Windows PowerShell，依次输入下列命令</span>
+set-executionpolicy remotesigned -scope currentuser	
+<span class="nv">$env</span>:SCOOP<span class="o">=</span><span class="s1">&#39;D:\Scoop&#39;</span>      <span class="c1"># 这里可以替换到你自定义的安装目录</span>
+<span class="o">[</span>environment<span class="o">]</span>::setEnvironmentVariable<span class="o">(</span><span class="s1">&#39;SCOOP&#39;</span>,<span class="nv">$env</span>:SCOOP,<span class="s1">&#39;User&#39;</span><span class="o">)</span>
+iex <span class="o">(</span>new-object net.webclient<span class="o">)</span>.downloadstring<span class="o">(</span><span class="s1">&#39;https://get.scoop.sh&#39;</span><span class="o">)</span>
+
+<span class="c1"># 一行代码即可安装和卸载</span>
+scoop install hugo         <span class="c1"># 安装Hugo，D:\Scoop\apps出现hugo文件夹</span>
+scoop uninstall hugo       <span class="c1"># 卸载Hugo超简单</span>
+scoop uninstall scoop      <span class="c1"># 卸载Scoop超简单</span>
+
+<span class="c1"># 其他软件安装参考 https://github.com/h404bi/dorado/blob/master/README_CN.md</span></code></pre></div>
+<blockquote>
+<p>Git Bash命令行输入</p>
+</blockquote>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 验证是否安装成功：</span>
+<span class="c1"># Win+R输入cmd回车，打开命令行窗口/或者最好直接打开Git Bash</span>
+hugo <span class="nb">help</span>                  <span class="c1"># 如果正常运行则安装成功</span></code></pre></div>
+<h2 id="optional">Optional</h2>
+
+<p>Go语言下载安装：&lt;<a href="https://golang.org/dl/">https://golang.org/dl/</a></p>
+
+<p>GitHub桌面版下载地址：<a href="https://desktop.github.com/">https://desktop.github.com/</a></p>
+<div class="edit-meta">
+Last updated on 17 Oct 2017
+
+
+<br>
+Published on 17 Oct 2017
+<br><a href="https://gitee.com/hanyutan/hanyutan/edit/master/content/build_blog%5c02_preparation.md" class="edit-page"><i class="fas fa-pen-square"></i> Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="/build_blog/01_introduction/" title="Introduction"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - Introduction</a>
+<a class="nav nav-next" href="/build_blog/03_quick_start/" title="Quick Start">Next - Quick Start <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+</nav><footer><p class="powered">Powered by <a href="https://gohugo.io">Hugo</a>. Theme by <a href="https://themes.gohugo.io/hugo-theme-techdoc/">TechDoc</a>. Designed by <a href="https://github.com/thingsym/hugo-theme-techdoc">Thingsym</a>.</p>
+</footer>
+</main><div class="sidebar">
+<nav>
+<ul>
+<li class=""><a href="https://hanyutan.gitee.io">Home</a></li>
+
+<li class=""><a href="/course/">Course</a>
+<ul class="">
+<li class=""><a href="/course/my_notes/">My Notes</a></li>
+<li class=""><a href="/course/latex/">Latex</a></li>
+<li class=""><a href="/course/weizhongyu/">Wei Zhongyu</a></li>
+<li class=""><a href="/course/3dmax/">3dmax</a></li>
+<li class=""><a href="/course/spark/">Spark</a></li>
+<li class=""><a href="/course/artificial_intelligency/">Artificial Intelligency</a></li>
+<li class=""><a href="/course/financial_risk_management/">Financial Risk Management</a></li>
+<li class=""><a href="/course/mathematical_statistics/">Mathematical Statistics</a></li>
+<li class=""><a href="/course/statistic_software/">Statistic Software</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/languages/">Languages</a>
+<ul class="">
+<li class=""><a href="/languages/installation/">Installation</a></li>
+<li class=""><a href="/languages/japanese/">Japanese</a></li>
+</ul>
+  
+</li>
+
+<li class="parent"><a href="/build_blog/">Build Blogs</a>
+<ul class="sub-menu">
+<li class=""><a href="/build_blog/01_introduction/">Introduction</a></li>
+<li class="active"><a href="/build_blog/02_preparation/">Preparation</a></li>
+<li class=""><a href="/build_blog/03_quick_start/">Quick Start</a></li>
+<li class=""><a href="/build_blog/04_git_notes/">Git Notes</a></li>
+<li class=""><a href="/build_blog/05_hugo_notes/">Hugo Notes</a></li>
+<li class=""><a href="/build_blog/06_markdown_notes/">Markdown Notes</a></li>
+<li class=""><a href="/build_blog/07_questions/">Q&amp;A</a></li>
+<li class=""><a href="/build_blog/scoop/">Scoop</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/mathematics/">Mathematics</a>
+<ul class="">
+<li class=""><a href="/mathematics/functional_analysis/">Functional Analysis</a></li>
+<li class=""><a href="/mathematics/installation/">Installation</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/machine_learning/">Machine Learning</a>
+<ul class="">
+<li class=""><a href="/machine_learning/2/">Chapter 1-2</a></li>
+<li class=""><a href="/machine_learning/3/">Chapter 1-3</a></li>
+<li class=""><a href="/machine_learning/4/">Chapter 1-4</a></li>
+<li class=""><a href="/machine_learning/1/">Nerual Network</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/big_data_analytics/">Big Data Analysis</a>
+<ul class="">
+<li class=""><a href="/big_data_analytics/installation/">Installation</a></li>
+<li class=""><a href="/big_data_analytics/configuration/">Configuration</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/chapter2/">Chapter 2 (weighted)</a>
+<ul class="">
+<li class=""><a href="/chapter2/3/">Chapter 2-3 (weight: 10)</a></li>
+<li class=""><a href="/chapter2/4/">Chapter 2-4 (weight: 20)</a></li>
+<li class=""><a href="/chapter2/2/">Chapter 2-2 (weight: 30)</a></li>
+<li class=""><a href="/chapter2/1/">Chapter 2-1 (weight: 40)</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/chapter3/">Chapter 3 (hierarchized)</a>
+<ul class="">
+<li class=""><a href="/chapter3/1/">Chapter 3-1</a></li>
+
+<li class=""><a href="/chapter3/chapter3-2/">Chapter 3-2</a>
+<ul class="">
+<li class=""><a href="/chapter3/chapter3-2/1/">Chapter 3-2-1</a></li>
+<li class=""><a href="/chapter3/chapter3-2/2/">Chapter 3-2-2</a></li>
+<li class=""><a href="/chapter3/chapter3-2/3/">Chapter 3-2-3</a></li>
+<li class=""><a href="/chapter3/chapter3-2/4/">Chapter 3-2-4</a></li>
+</ul>
+  
+</li>
+<li class=""><a href="/chapter3/3/">Chapter 3-3</a></li>
+<li class=""><a href="/chapter3/4/">Chapter 3-4</a></li>
+</ul>
+  
+</li>
+
+
+
+
+
+
+
+
+
+
+</ul>
+</nav>
+
+
+<div class="sidebar-footer"></div>
+</div>
+</div><a href="#" id="backtothetop-fixed" class="backtothetop"
+ data-backtothetop-duration="600"
+ data-backtothetop-easing="easeOutQuart"
+ data-backtothetop-fixed-fadeIn="1000"
+ data-backtothetop-fixed-fadeOut="1000"
+ data-backtothetop-fixed-bottom="10"
+ data-backtothetop-fixed-right="20">
+<span class="fa-layers fa-fw">
+<i class="fas fa-circle"></i>
+<i class="fas fa-arrow-circle-up"></i>
+</span></a>
+</div>
+</body>
+</html>

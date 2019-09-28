@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mathematics on Keep Learning</title>
+    <link>https://hanyutan.gitee.io/mathematics/</link>
+    <description>Recent content in Mathematics on Keep Learning</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 10 Sep 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://hanyutan.gitee.io/mathematics/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Functional Analysis</title>
+      <link>https://hanyutan.gitee.io/mathematics/functional_analysis/</link>
+      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/mathematics/functional_analysis/</guid>
+      <description>泛函分析笔记整理by刘宇扬（SJTU，统计学） 如对笔记中的内容有疑问，或者想要跟作者交流，请联系Email:lyy_stat@foxmail</description>
+    </item>
+    
+    <item>
+      <title>Installation</title>
+      <link>https://hanyutan.gitee.io/mathematics/installation/</link>
+      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/mathematics/installation/</guid>
+      <description>Download Hugo theme If you have git installed, you can do the following at the command-line-interface within the Hugo directory:
+cd themes git clone https://github.com/thingsym/hugo-theme-techdoc.git  For more information read the Hugo documentation.
+Configure You may specify options in config.toml (or config.yaml/config.json) of your site to make use of this theme&amp;rsquo;s features.
+For an example of config.toml, see config.toml in exampleSite.
+See the Configuration documentation.
+Preview site To preview your site, run Hugo&amp;rsquo;s built-in local server.</description>
+    </item>
+    
+  </channel>
+</rss>

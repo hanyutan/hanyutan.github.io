@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Scoop - Keep Learning</title>
+<meta name="description" content="Han Yutan">
+<meta name="generator" content="Hugo 0.58.1" />
+<link href="https://hanyutan.gitee.ioindex.xml" rel="alternate" type="application/rss+xml">
+<link rel="canonical" href="https://hanyutan.gitee.io/build_blog/scoop/">
+<link rel="stylesheet" href="https://hanyutan.gitee.io/css/theme.min.css">
+<script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<link rel="stylesheet" href="https://hanyutan.gitee.io/css/chroma.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://hanyutan.gitee.io/js/functions.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js"></script>
+<script src="https://hanyutan.gitee.io/js/jquery.backtothetop/jquery.backtothetop.min.js"></script></head>
+<body>
+<div class="container"><header>
+<h1>Keep Learning</h1>
+
+ <span class="version">Version 1.0</span>
+<a href="https://gitee.com/hanyutan" class="github"><i class="fab fa-github"></i></a>
+<p class="description">Han Yutan</p>
+
+</header>
+<div class="menu">
+<nav>
+<ul>
+<li><a href="/">Home</a></li>
+<li><a href="https://www.instagram.com/philoartist97/">Instagram</a></li>
+<li><a href="/post/goisforlovers/">(Hu)go Template Primer</a></li>
+<li><a href="/about/">About Hugo</a></li>
+<li><a href="/post/hugoisforlovers/">Getting Started with Hugo</a></li><li class="parent"><a href="">Tutorials<i class="fas fa-angle-right"></i></a>
+<ul class="sub-menu">
+<li class="child"><a href="/post/creating-a-new-theme/">Creating a New Theme</a></li>
+<li class="child"><a href="/post/migrate-from-jekyll/">Migrating from Jekyll</a></li>
+</ul>
+</li></ul>
+</nav>
+</div>
+<div class="content-container">
+<main><h1>Scoop</h1>
+
+<p>Scoop，优质的 Windows 包管理器，一行代码搞定安装和卸载，干净又迅速。</p>
+
+<h2 id="install-scoop-and-apps">Install Scoop and Apps</h2>
+
+<p>Windows10在开始菜单键右击选择Windows PowerShell，依次输入下列命令：</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># Windows PowerShell命令行输入</span>
+set-executionpolicy remotesigned -scope currentuser	
+<span class="nv">$env</span>:SCOOP<span class="o">=</span><span class="s1">&#39;D:\Scoop&#39;</span>      <span class="c1"># 替换到你自定义的安装目录，以后安装的其他软件也会安装到此目录下</span>
+<span class="o">[</span>environment<span class="o">]</span>::setEnvironmentVariable<span class="o">(</span><span class="s1">&#39;SCOOP&#39;</span>,<span class="nv">$env</span>:SCOOP,<span class="s1">&#39;User&#39;</span><span class="o">)</span>
+iex <span class="o">(</span>new-object net.webclient<span class="o">)</span>.downloadstring<span class="o">(</span><span class="s1">&#39;https://get.scoop.sh&#39;</span><span class="o">)</span>
+
+<span class="c1"># 一行代码即可安装和卸载</span>
+scoop install &lt;app name&gt;         <span class="c1"># 安装软件，D:\Scoop\apps出现对应的文件夹</span>
+scoop uninstall &lt;app name&gt;       <span class="c1"># 卸载超简单</span>
+scoop uninstall scoop                 <span class="c1"># 也可以用此功能卸载Scoop自己</span></code></pre></div>
+<p>Scoop 默认软件仓库（main bucket）包含了cuda、git、go、hugo、julia、kafka、latex、mysql、nano、nodejs、octave、pandoc、perl、php、r、ruby、scalaspark、sudo、</p>
+
+<p>但main bucket的软件数量是有限的，所以需要添加其他bucket（软件仓库）来下载我们想要的软件的安装配置文件。在<a href="https://github.com/rasa/scoop-directory/blob/master/by-apps.md">这里</a>可以直接搜索想要的软件，找到对应包含它的bucket。</p>
+
+<p>举例：</p>
+
+<ul>
+<li>官方维护的bucket
+
+<ul>
+<li>安装命令<code>scoop bucket add extras</code>，包含了anaconda3、firefox、foxit-reader、notepadplusplus、rstudio、sublime-text等</li>
+<li>安装命令<code>scoop bucket add java</code>，包含了oraclejdk12等</li>
+<li>安装命令<code>scoop bucket add JetBrains</code>，包含了IntelliJ-IDEA等</li>
+</ul></li>
+<li>社区提供的bucket——dorado ，安装命令<code>scoop bucket add dorado https://github.com/h404bi/dorado</code>，包含了wechat等。</li>
+<li>指定安装某个bucket下的某项app：<code>scoop install &lt;bucket name&gt;/&lt;app name&gt;</code></li>
+</ul>
+
+<h2 id="补充-what-s-bucket">补充：What&rsquo;s bucket?</h2>
+
+<p>Scoop 将一个个bucket（仓库）缓存至本地，当我们想要安装一个软件的时候，Scoop 就从本地的仓库中挑选出我们想要安装的软件的安装配置文件，并依照这个配置文件进行软件的安装工作，包括：</p>
+
+<ul>
+<li>从哪里下载软件</li>
+<li>如何安装软件、安装到哪里、需要修改更新什么环境变量</li>
+<li>安装之前、之后都要做什么准备（善后）工作</li>
+</ul>
+
+<p>查看一个软件的安装配置详情，<code>scoop info &lt;app name&gt;</code>:</p>
+
+<pre><code># 以hugo为例，其中 Manifest 项目下的路径指向的文件是Scoop具体读取的配置文件，我们的bucket就是由这样的一个个配置文件组成的。
+
+Name: hugo
+Description: Speedy and flexible static site generator (without Sass/SCSS support)
+Version: 0.58.1
+Website: https://gohugo.io
+License: Apache-2.0 (https://spdx.org/licenses/Apache-2.0.html)
+Manifest:
+  D:\#Han Yutan\Scoop\buckets\main\bucket\hugo.json
+Installed:
+  D:\#Han Yutan\Scoop\apps\hugo\0.58.1
+Binaries:
+   hugo.exe
+</code></pre>
+
+<p>对应的json文件（文件路径：<code>D:/Scoop/buckets/&lt;bucket name&gt;/bucket</code>）内容：</p>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="s2">&#34;0.58.1&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;homepage&#34;</span><span class="p">:</span> <span class="s2">&#34;https://gohugo.io&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;Speedy and flexible static site generator (without Sass/SCSS support)&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;license&#34;</span><span class="p">:</span> <span class="s2">&#34;Apache-2.0&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;architecture&#34;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&#34;64bit&#34;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&#34;url&#34;</span><span class="p">:</span> <span class="s2">&#34;https://github.com/gohugoio/hugo/releases/download/v0.58.1/hugo_0.58.1_windows-64bit.zip&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;hash&#34;</span><span class="p">:</span> <span class="s2">&#34;3a9a033b41a84b9b74ad71f11cb6aed00a8ddeadc1c3dd3d3d318f538ef7bd99&#34;</span>
+        <span class="p">},</span>
+        <span class="nt">&#34;32bit&#34;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&#34;url&#34;</span><span class="p">:</span> <span class="s2">&#34;https://github.com/gohugoio/hugo/releases/download/v0.58.1/hugo_0.58.1_windows-32bit.zip&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;hash&#34;</span><span class="p">:</span> <span class="s2">&#34;f4c61caa8c54974b65205b28a9aacd7ab9ac36f545ac599fc5e25119827dc85c&#34;</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&#34;bin&#34;</span><span class="p">:</span> <span class="s2">&#34;hugo.exe&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;checkver&#34;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&#34;github&#34;</span><span class="p">:</span> <span class="s2">&#34;https://github.com/gohugoio/hugo&#34;</span>
+    <span class="p">},</span>
+    <span class="nt">&#34;autoupdate&#34;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&#34;architecture&#34;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&#34;64bit&#34;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&#34;url&#34;</span><span class="p">:</span> <span class="s2">&#34;https://github.com/gohugoio/hugo/releases/download/v$version/hugo_$version_windows-64bit.zip&#34;</span>
+            <span class="p">},</span>
+            <span class="nt">&#34;32bit&#34;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&#34;url&#34;</span><span class="p">:</span> <span class="s2">&#34;https://github.com/gohugoio/hugo/releases/download/v$version/hugo_$version_windows-32bit.zip&#34;</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="nt">&#34;hash&#34;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&#34;url&#34;</span><span class="p">:</span> <span class="s2">&#34;https://github.com/gohugoio/hugo/releases/download/v$version/hugo_$version_checksums.txt&#34;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+<h2 id="create-my-own-bucket">Create my own bucket</h2>
+
+<p>在gitee中创建新仓库并克隆到本地，向文件夹中添加创建app的安装配置文件(.json)，最后将本地更改推送至gitee。</p>
+
+<p>如何对json文件进行配置？请参考<a href="https://github.com/lukesampson/scoop/wiki/App-Manifests">官方说明 App Manifests</a></p>
+
+<p>添加bucket97代码：<code>scoop bucket add bucket97 https://gitee.com/hanyutan/bucket97</code>，安装app代码<code>scoop install bucket97/&lt;app name&gt;</code>.</p>
+
+<ul>
+<li>Anaconda3<br /></li>
+<li>BaiduYunGuanJia</li>
+<li>Firefox</li>
+<li>Foxit Reader</li>
+<li>Foxmail</li>
+<li>Git</li>
+<li>Go</li>
+<li>Google Chrome</li>
+<li>Hugo</li>
+<li>Julia</li>
+<li>Notepad++</li>
+<li>Oracle VM VirtualBox</li>
+<li>QQ Tencent</li>
+<li>R</li>
+<li>Rstudio</li>
+<li>Unbuntu 16.04</li>
+<li>Wechat</li>
+<li>YoudaoDict</li>
+</ul>
+
+<h2 id="参考文章">参考文章：</h2>
+
+<p><a href="https://sspai.com/post/52710">少数派：给Scoop加上这些软件仓库，让它变成强大的Windows软件管理器</a></p>
+<div class="edit-meta">
+Last updated on 17 Oct 2017
+
+
+<br>
+Published on 17 Oct 2017
+<br><a href="https://gitee.com/hanyutan/hanyutan/edit/master/content/build_blog%5cscoop.md" class="edit-page"><i class="fas fa-pen-square"></i> Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="/build_blog/07_questions/" title="Q&amp;A"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - Q&amp;A</a>
+<a class="nav nav-next" href="/mathematics/" title="Mathematics">Next - Mathematics <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+</nav><footer><p class="powered">Powered by <a href="https://gohugo.io">Hugo</a>. Theme by <a href="https://themes.gohugo.io/hugo-theme-techdoc/">TechDoc</a>. Designed by <a href="https://github.com/thingsym/hugo-theme-techdoc">Thingsym</a>.</p>
+</footer>
+</main><div class="sidebar">
+<nav>
+<ul>
+<li class=""><a href="https://hanyutan.gitee.io">Home</a></li>
+
+<li class=""><a href="/course/">Course</a>
+<ul class="">
+<li class=""><a href="/course/my_notes/">My Notes</a></li>
+<li class=""><a href="/course/latex/">Latex</a></li>
+<li class=""><a href="/course/weizhongyu/">Wei Zhongyu</a></li>
+<li class=""><a href="/course/3dmax/">3dmax</a></li>
+<li class=""><a href="/course/spark/">Spark</a></li>
+<li class=""><a href="/course/artificial_intelligency/">Artificial Intelligency</a></li>
+<li class=""><a href="/course/financial_risk_management/">Financial Risk Management</a></li>
+<li class=""><a href="/course/mathematical_statistics/">Mathematical Statistics</a></li>
+<li class=""><a href="/course/statistic_software/">Statistic Software</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/languages/">Languages</a>
+<ul class="">
+<li class=""><a href="/languages/installation/">Installation</a></li>
+<li class=""><a href="/languages/japanese/">Japanese</a></li>
+</ul>
+  
+</li>
+
+<li class="parent"><a href="/build_blog/">Build Blogs</a>
+<ul class="sub-menu">
+<li class=""><a href="/build_blog/01_introduction/">Introduction</a></li>
+<li class=""><a href="/build_blog/02_preparation/">Preparation</a></li>
+<li class=""><a href="/build_blog/03_quick_start/">Quick Start</a></li>
+<li class=""><a href="/build_blog/04_git_notes/">Git Notes</a></li>
+<li class=""><a href="/build_blog/05_hugo_notes/">Hugo Notes</a></li>
+<li class=""><a href="/build_blog/06_markdown_notes/">Markdown Notes</a></li>
+<li class=""><a href="/build_blog/07_questions/">Q&amp;A</a></li>
+<li class="active"><a href="/build_blog/scoop/">Scoop</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/mathematics/">Mathematics</a>
+<ul class="">
+<li class=""><a href="/mathematics/functional_analysis/">Functional Analysis</a></li>
+<li class=""><a href="/mathematics/installation/">Installation</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/machine_learning/">Machine Learning</a>
+<ul class="">
+<li class=""><a href="/machine_learning/2/">Chapter 1-2</a></li>
+<li class=""><a href="/machine_learning/3/">Chapter 1-3</a></li>
+<li class=""><a href="/machine_learning/4/">Chapter 1-4</a></li>
+<li class=""><a href="/machine_learning/1/">Nerual Network</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/big_data_analytics/">Big Data Analysis</a>
+<ul class="">
+<li class=""><a href="/big_data_analytics/installation/">Installation</a></li>
+<li class=""><a href="/big_data_analytics/configuration/">Configuration</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/chapter2/">Chapter 2 (weighted)</a>
+<ul class="">
+<li class=""><a href="/chapter2/3/">Chapter 2-3 (weight: 10)</a></li>
+<li class=""><a href="/chapter2/4/">Chapter 2-4 (weight: 20)</a></li>
+<li class=""><a href="/chapter2/2/">Chapter 2-2 (weight: 30)</a></li>
+<li class=""><a href="/chapter2/1/">Chapter 2-1 (weight: 40)</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/chapter3/">Chapter 3 (hierarchized)</a>
+<ul class="">
+<li class=""><a href="/chapter3/1/">Chapter 3-1</a></li>
+
+<li class=""><a href="/chapter3/chapter3-2/">Chapter 3-2</a>
+<ul class="">
+<li class=""><a href="/chapter3/chapter3-2/1/">Chapter 3-2-1</a></li>
+<li class=""><a href="/chapter3/chapter3-2/2/">Chapter 3-2-2</a></li>
+<li class=""><a href="/chapter3/chapter3-2/3/">Chapter 3-2-3</a></li>
+<li class=""><a href="/chapter3/chapter3-2/4/">Chapter 3-2-4</a></li>
+</ul>
+  
+</li>
+<li class=""><a href="/chapter3/3/">Chapter 3-3</a></li>
+<li class=""><a href="/chapter3/4/">Chapter 3-4</a></li>
+</ul>
+  
+</li>
+
+
+
+
+
+
+
+
+
+
+</ul>
+</nav>
+
+
+<div class="sidebar-footer"></div>
+</div>
+</div><a href="#" id="backtothetop-fixed" class="backtothetop"
+ data-backtothetop-duration="600"
+ data-backtothetop-easing="easeOutQuart"
+ data-backtothetop-fixed-fadeIn="1000"
+ data-backtothetop-fixed-fadeOut="1000"
+ data-backtothetop-fixed-bottom="10"
+ data-backtothetop-fixed-right="20">
+<span class="fa-layers fa-fw">
+<i class="fas fa-circle"></i>
+<i class="fas fa-arrow-circle-up"></i>
+</span></a>
+</div>
+</body>
+</html>
