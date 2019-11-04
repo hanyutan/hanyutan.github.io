@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>PCA - Keep Learning</title>
+<meta name="description" content="Han Yutan">
+<meta name="generator" content="Hugo 0.58.1" />
+<link href="https://hanyutan.gitee.ioindex.xml" rel="alternate" type="application/rss+xml">
+<link rel="canonical" href="https://hanyutan.gitee.io/02_big_data/machine_learning/pca/">
+<link rel="stylesheet" href="https://hanyutan.gitee.io/css/theme.min.css">
+<script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<link rel="stylesheet" href="https://hanyutan.gitee.io/css/chroma.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://hanyutan.gitee.io/js/functions.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js"></script>
+<script src="https://hanyutan.gitee.io/js/jquery.backtothetop/jquery.backtothetop.min.js"></script><script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$']],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    messageStyle: "none",
+    "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+</head>
+<body>
+<div class="container"><header>
+<h1>Keep Learning</h1>
+
+ <span class="version">Version 1.0</span>
+<a href="https://gitee.com/hanyutan" class="github"><i class="fab fa-github"></i></a>
+<p class="description">Han Yutan</p>
+
+</header>
+<div class="menu">
+<nav>
+<ul>
+<li><a href="/">Home</a></li>
+<li><a href="https://www.instagram.com/philoartist97/">Instagram</a></li>
+<li><a href="/default_post/goisforlovers/">(Hu)go Template Primer</a></li>
+<li><a href="/about/">About Hugo</a></li>
+<li><a href="/default_post/hugoisforlovers/">Getting Started with Hugo</a></li><li class="parent"><a href="">Tutorials<i class="fas fa-angle-right"></i></a>
+<ul class="sub-menu">
+<li class="child"><a href="/default_post/creating-a-new-theme/">Creating a New Theme</a></li>
+<li class="child"><a href="/default_post/migrate-from-jekyll/">Migrating from Jekyll</a></li>
+</ul>
+</li></ul>
+</nav>
+</div>
+<div class="content-container">
+<main><h1>PCA</h1>
+
+<h2 id="理论部分">理论部分</h2>
+
+<h2 id="代码部分">代码部分</h2>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># scaling variables</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">preprocessing</span>
+<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">scale</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">])</span>
+
+<span class="c1"># Fit a PCA model</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">Imputer</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+<span class="n">p</span> <span class="o">=</span> <span class="mi">10</span>                                     <span class="c1"># 主成分数量</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="n">p</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="k">lambda</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">explained_variance_ratio_</span>   <span class="c1"># 贡献率</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&#34;Explained variance ratio of principal components:</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">,</span><span class="k">lambda</span><span class="p">)</span> 
+
+<span class="c1"># Report PVE and CVE plots</span>
+<span class="n">cve</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="k">lambda</span><span class="p">)</span>                     <span class="c1"># 累积贡献率</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>   
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">p</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="k">lambda</span><span class="p">,</span><span class="s1">&#39;k-&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span><span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="n">p</span><span class="p">],[</span><span class="mf">0.95</span><span class="p">,</span><span class="mf">0.95</span><span class="p">],</span><span class="s1">&#39;r--&#39;</span><span class="p">)</span>          <span class="c1"># 目标95%</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">1.1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Principal Component&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Prop. Variance Explained&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&#34;PVE plots&#34;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">p</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="n">cve</span><span class="p">,</span><span class="s1">&#39;k-&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span><span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">1.1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="n">p</span><span class="p">],[</span><span class="mf">0.95</span><span class="p">,</span><span class="mf">0.95</span><span class="p">],</span><span class="s1">&#39;r--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Principal Component&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Cumulative Prop. Variance Explained&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&#34;CVE plots&#34;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Calculate eigenvalues by hand</span>
+<span class="kn">import</span> <span class="nn">numpy.linalg</span> <span class="kn">as</span> <span class="nn">la</span>
+<span class="n">covx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>      <span class="c1"># covariance matrix</span>
+<span class="n">u</span><span class="p">,</span><span class="n">v</span> <span class="o">=</span> <span class="n">la</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">covx</span><span class="p">)</span>              <span class="c1"># u is eigenvalue, v is direction</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Eigenvalues calculated locally:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">u</span><span class="p">[:</span><span class="n">p</span><span class="p">],</span><span class="mi">2</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Eigenvalues calculated by sklearn.decomposition.PCA:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">explained_variance_</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;CVE calculated locally:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">u</span><span class="p">[:</span><span class="n">p</span><span class="p">]</span><span class="o">/</span><span class="nb">sum</span><span class="p">(</span><span class="n">u</span><span class="p">),</span><span class="mi">2</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;CVE calculated by sklearn.decomposition.PCA:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span></code></pre></div><div class="edit-meta">
+Last updated on 19 Oct 2019
+
+
+<br>
+Published on 19 Oct 2019
+<br><a href="https://gitee.com/hanyutan/hanyutan/edit/master/content/02_big_data%5cmachine_learning%5cpca.md" class="edit-page"><i class="fas fa-pen-square"></i> Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="/02_big_data/machine_learning/logistic_regression/" title="Logistic Regression"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - Logistic Regression</a>
+<a class="nav nav-next" href="/02_big_data/machine_learning/train_test/" title="Train &amp; Test">Next - Train &amp; Test <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+</nav><footer><p class="powered">Powered by <a href="https://gohugo.io">Hugo</a>. Theme by <a href="https://themes.gohugo.io/hugo-theme-techdoc/">TechDoc</a>. Designed by <a href="https://github.com/thingsym/hugo-theme-techdoc">Thingsym</a>.</p>
+</footer>
+</main><div class="sidebar">
+<nav>
+<ul>
+<li class=""><a href="https://hanyutan.gitee.io">Home</a></li>
+
+<li class=""><a href="/01_course/">Course</a>
+<ul class="">
+<li class=""><a href="/01_course/r_cheat_sheet/">R Cheat-Sheet</a></li>
+<li class=""><a href="/01_course/spark/">Spark</a></li>
+<li class=""><a href="/01_course/julia_cheat_sheet/">Julia Cheat-Sheet</a></li>
+<li class=""><a href="/01_course/latex/">Latex</a></li>
+<li class=""><a href="/01_course/mathematical_statistics/">Mathematical Statistics</a></li>
+<li class=""><a href="/01_course/statistic_software/">Statistic Software</a></li>
+<li class=""><a href="/01_course/weizhongyu/">Wei Zhongyu</a></li>
+
+<li class=""><a href="/01_course/python_cheat_sheet/">Python Cheat Sheet</a>
+<ul class="">
+</ul>
+  
+</li>
+
+<li class=""><a href="/01_course/financial_risk_management/">Financial Risk Management</a>
+<ul class="">
+<li class=""><a href="/01_course/financial_risk_management/markowitz/">Markowitz</a></li>
+<li class=""><a href="/01_course/financial_risk_management/binomial_trees/">Binomial Trees</a></li>
+<li class=""><a href="/01_course/financial_risk_management/bsm_model/">BSM Model</a></li>
+<li class=""><a href="/01_course/financial_risk_management/greeks/">Hedging with the Greeks</a></li>
+<li class=""><a href="/01_course/financial_risk_management/exam/">Exam</a></li>
+</ul>
+  
+</li>
+</ul>
+  
+</li>
+
+<li class="parent"><a href="/02_big_data/">Big Data Analysis</a>
+<ul class="sub-menu">
+
+<li class="parent"><a href="/02_big_data/machine_learning/">Machine Learning</a>
+<ul class="sub-menu">
+<li class=""><a href="/02_big_data/machine_learning/random_forest/">Random Forest</a></li>
+<li class=""><a href="/02_big_data/machine_learning/bagging/">Bagging</a></li>
+<li class=""><a href="/02_big_data/machine_learning/linear_regression/">Linear Regression</a></li>
+<li class=""><a href="/02_big_data/machine_learning/logistic_regression/">Logistic Regression</a></li>
+<li class="active"><a href="/02_big_data/machine_learning/pca/">PCA</a></li>
+<li class=""><a href="/02_big_data/machine_learning/train_test/">Train &amp; Test</a></li>
+<li class=""><a href="/02_big_data/machine_learning/clustering/">Clustering</a></li>
+<li class=""><a href="/02_big_data/machine_learning/naive_bayes/">Naive Bayes</a></li>
+</ul>
+  
+</li>
+<li class=""><a href="/02_big_data/gan/">GAN</a></li>
+<li class=""><a href="/02_big_data/tensorflow/">Tensorflow</a></li>
+<li class=""><a href="/02_big_data/caffe/">Caffe</a></li>
+<li class=""><a href="/02_big_data/reinforcement_learning/">Reinforcement Learning</a></li>
+<li class=""><a href="/02_big_data/data_mining/">Data Mining</a></li>
+<li class=""><a href="/02_big_data/text_mining/">Text Mining</a></li>
+<li class=""><a href="/02_big_data/artificial_intelligency/">Artificial Intelligency</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/build_blog/">Build Blogs</a>
+<ul class="">
+<li class=""><a href="/build_blog/01_introduction/">Introduction</a></li>
+<li class=""><a href="/build_blog/02_preparation/">Preparation</a></li>
+<li class=""><a href="/build_blog/03_quick_start/">Quick Start</a></li>
+<li class=""><a href="/build_blog/04_git_notes/">Git Notes</a></li>
+<li class=""><a href="/build_blog/05_hugo_notes/">Hugo Notes</a></li>
+<li class=""><a href="/build_blog/06_markdown_notes/">Markdown Notes</a></li>
+<li class=""><a href="/build_blog/07_questions/">Q&amp;A</a></li>
+<li class=""><a href="/build_blog/scoop/">Scoop</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/03_interests/">Interests</a>
+<ul class="">
+<li class=""><a href="/03_interests/japanese/">Japanese</a></li>
+<li class=""><a href="/03_interests/hunt_for_stars/">Hunt for Stars</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/04_reading/">Reading</a>
+<ul class="">
+<li class=""><a href="/04_reading/reading_notes/">Reading Notes</a></li>
+<li class=""><a href="/04_reading/nonsense_output/">Nonsense Output</a></li>
+<li class=""><a href="/04_reading/wisdom_from_others/">Wisdom From Others</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/mathematics/">Mathematics</a>
+<ul class="">
+<li class=""><a href="/mathematics/mathematical_analysis/">Mathematical Analysis</a></li>
+<li class=""><a href="/mathematics/functional_analysis/">Functional Analysis</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/digital_content/">Digital Content</a>
+<ul class="">
+<li class=""><a href="/digital_content/opengl/">OpenGL</a></li>
+<li class=""><a href="/digital_content/shader/">Shader</a></li>
+<li class=""><a href="/digital_content/3dmax/">3dmax</a></li>
+<li class=""><a href="/digital_content/smpl/">SMPL</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/chapter3/">Chapter 3 (hierarchized)</a>
+<ul class="">
+<li class=""><a href="/chapter3/1/">Chapter 3-1</a></li>
+
+<li class=""><a href="/chapter3/chapter3-2/">Chapter 3-2</a>
+<ul class="">
+<li class=""><a href="/chapter3/chapter3-2/1/">Chapter 3-2-1</a></li>
+<li class=""><a href="/chapter3/chapter3-2/2/">Chapter 3-2-2</a></li>
+<li class=""><a href="/chapter3/chapter3-2/3/">Chapter 3-2-3</a></li>
+<li class=""><a href="/chapter3/chapter3-2/4/">Chapter 3-2-4</a></li>
+</ul>
+  
+</li>
+<li class=""><a href="/chapter3/3/">Chapter 3-3</a></li>
+<li class=""><a href="/chapter3/4/">Chapter 3-4</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/default_post/">Default_posts</a>
+<ul class="">
+<li class=""><a href="/default_post/installation/">Installation</a></li>
+<li class=""><a href="/default_post/creating-a-new-theme/">Creating a New Theme</a></li>
+<li class=""><a href="/default_post/migrate-from-jekyll/">Migrate to Hugo from Jekyll</a></li>
+<li class=""><a href="/default_post/configuration/">Configuration</a></li>
+<li class=""><a href="/default_post/goisforlovers/">(Hu)go Template Primer</a></li>
+<li class=""><a href="/default_post/hugoisforlovers/">Getting Started with Hugo</a></li>
+</ul>
+  
+</li>
+</ul>
+</nav>
+
+
+<div class="sidebar-footer"></div>
+</div>
+</div><a href="#" id="backtothetop-fixed" class="backtothetop"
+ data-backtothetop-duration="600"
+ data-backtothetop-easing="easeOutQuart"
+ data-backtothetop-fixed-fadeIn="1000"
+ data-backtothetop-fixed-fadeOut="1000"
+ data-backtothetop-fixed-bottom="10"
+ data-backtothetop-fixed-right="20">
+<span class="fa-layers fa-fw">
+<i class="fas fa-circle"></i>
+<i class="fas fa-arrow-circle-up"></i>
+</span></a>
+</div>
+</body>
+</html>

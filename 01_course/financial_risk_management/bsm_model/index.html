@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>BSM Model - Keep Learning</title>
+<meta name="description" content="Han Yutan">
+<meta name="generator" content="Hugo 0.58.1" />
+<link href="https://hanyutan.gitee.ioindex.xml" rel="alternate" type="application/rss+xml">
+<link rel="canonical" href="https://hanyutan.gitee.io/01_course/financial_risk_management/bsm_model/">
+<link rel="stylesheet" href="https://hanyutan.gitee.io/css/theme.min.css">
+<script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<link rel="stylesheet" href="https://hanyutan.gitee.io/css/chroma.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://hanyutan.gitee.io/js/functions.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js"></script>
+<script src="https://hanyutan.gitee.io/js/jquery.backtothetop/jquery.backtothetop.min.js"></script><script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$']],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    messageStyle: "none",
+    "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+</head>
+<body>
+<div class="container"><header>
+<h1>Keep Learning</h1>
+
+ <span class="version">Version 1.0</span>
+<a href="https://gitee.com/hanyutan" class="github"><i class="fab fa-github"></i></a>
+<p class="description">Han Yutan</p>
+
+</header>
+<div class="menu">
+<nav>
+<ul>
+<li><a href="/">Home</a></li>
+<li><a href="https://www.instagram.com/philoartist97/">Instagram</a></li>
+<li><a href="/default_post/goisforlovers/">(Hu)go Template Primer</a></li>
+<li><a href="/about/">About Hugo</a></li>
+<li><a href="/default_post/hugoisforlovers/">Getting Started with Hugo</a></li><li class="parent"><a href="">Tutorials<i class="fas fa-angle-right"></i></a>
+<ul class="sub-menu">
+<li class="child"><a href="/default_post/creating-a-new-theme/">Creating a New Theme</a></li>
+<li class="child"><a href="/default_post/migrate-from-jekyll/">Migrating from Jekyll</a></li>
+</ul>
+</li></ul>
+</nav>
+</div>
+<div class="content-container">
+<main><h1>BSM Model</h1>
+
+<h2 id="outline">Outline</h2>
+
+<ul>
+<li>Brownian motions</li>
+<li>Geometric Brownian motions (GBM, modeling of stock prices)</li>
+<li>Ito&rsquo;s Lemma</li>
+<li>Black-Scholes-Merton differential equation</li>
+<li>Black-Scholes pricing formula</li>
+<li>Criticism</li>
+</ul>
+
+<p>Binomial tree model是用<strong>“discrete time &amp; discrete state”</strong>的随机过程来刻画股票价格，而本节中将使用<strong>“continuous time &amp; continuous state”</strong>的随机过程来刻画。</p>
+
+<p><strong>缺点</strong>：现实世界中的price是discrete state(最小单位为分) &amp; discrete time(只在交易开放时变化)</p>
+
+<p>当二叉树模型的区间长度很小、区间个数无穷多时，其收敛为Black-Scholes模型。</p>
+
+<p>前提假定：股票价格服从对数正态分布，收益率服从正态分布。</p>
+
+<h2 id="brownian-motions">Brownian motions</h2>
+
+<p>股票价格通常服从<strong>Markov process(马尔可夫过程)</strong>，即未来的状态只和当前状态有关，与过去状态无关（当前价格包含了过去的所有信息）。满足以下条件的Markov process被称为<strong>Brownian motion(布朗运动)</strong>或<strong>Wiener process(维纳过程)</strong>：</p>
+
+<ul>
+<li><p>independent increments独立增量： $B(t_2)-B(t_1)$与$B(t_3)-B(t_2)$独立</p></li>
+
+<li><p>stationary increments平稳增量： $B(t_1+\Delta t)-B(t_1)$与$B(t_2+\Delta t)-B(t_2)$有相同的分布（注意区间length相同）</p></li>
+
+<li><p>$B(t+\Delta t)-B(t)\thicksim N(0,\Delta t)$ for any $t$ and $\Delta t$</p></li>
+
+<li><p>$B(0)=0$</p></li>
+</ul>
+
+<p><strong>BM性质：</strong></p>
+
+<ul>
+<li>$B(t)\thicksim N(0,t)$，均值为0，方差为$t$</li>
+<li>$dB(t)=Z\sqrt{dt}$，当$\Delta t\rightarrow 0$</li>
+<li>路径连续，但处处不可导</li>
+</ul>
+
+<h2 id="geometric-brownian-motions">Geometric Brownian motions</h2>
+
+<blockquote>
+<p>GBM 对股票收益率建模，可以得到股票价格变化值的分布情况</p>
+</blockquote>
+
+<p><strong>Generalized Brownian motion:</strong> $S(t)=at+bB(t)$</p>
+
+<ul>
+<li>标准布朗运动：$dB(t)$，普通布朗运动：$dx=adt+bdB(t)$</li>
+</ul>
+
+<p>不适合用来刻画股票价格的变动：取值可能为负；给定很短的$\Delta t$，价格变化绝对值(absolute)的期望为常数$E(\Delta S)=a\Delta t$，我们不关心绝对变化，而关心相对变化</p>
+
+<p><strong>Geometric Brownian motions:</strong> $\frac{dS}{S}=\mu dt+\sigma dB(t)$</p>
+
+<ul>
+<li><p>又可以写作$\frac{dS}{S}=\mu dt+\sigma dB(t)=\mu dt+\sigma\sqrt{dt}Z$，where $Z\thicksim N(0,1)$</p></li>
+
+<li><p>$ \frac{\Delta S}{S}=\mu \Delta t+\sigma \sqrt{\Delta t}Z\thicksim N(\mu \Delta t,\sigma^2\Delta t)$</p></li>
+
+<li><p>$ \Delta S=\mu S\Delta t+\sigma S\sqrt{\Delta t}Z\thicksim N(\mu S\Delta t,\sigma^2S\Delta t)$</p></li>
+</ul>
+
+<p>$\mu$ is expected return，$\sigma$ is volatility (都是单位时间)</p>
+
+<p>给定很短的$\Delta t$，价格变化相对值（relative，价格变化幅度）的期望为常数$E(\frac{\Delta S}{S})=\mu \Delta t$ ; 价格变化相对值的方差为常数$Var(\frac{\Delta S}{S})=\sigma^2\Delta t$，即在高价位和低价位时，对变化率的不确定程度是相同的。</p>
+
+<h2 id="ito-s-lemma">Ito&rsquo;s Lemma</h2>
+
+<blockquote>
+<p>Ito&rsquo;s Lemma 对股票价格建模，可以得到股票价格的分布情况</p>
+</blockquote>
+
+<p>在Generalized Brownian motion中a b为常数，实际可以是变量x和t的函数。</p>
+
+<p><strong>Ito&rsquo;s process (伊藤过程):</strong> $dx=a(x,t)dt+b(x,t)dB(t)$</p>
+
+<p><strong>Ito&rsquo;s Lemma (伊藤引理):</strong> 变量x和t的函数G将遵循的过程</p>
+
+<p>利用Ito&rsquo;s process对函数$G(x,t)$进行二阶泰勒展开，可以得到Ito&rsquo;s Lemma：
+$$
+dG=\lgroup\frac{\partial G}{\partial x}a+\frac{\partial G}{\partial t}+\frac{1}{2}\frac{\partial ^2G}{\partial x^2}b^2\rgroup dt+\frac{\partial G}{\partial x}bdB(t)
+$$
+根据形式得出，函数$G(x,t)$也遵循Ito&rsquo;s process (伊藤过程)。</p>
+
+<p>假定股票价格服从log-normal distribution(对数正态分布)，所以需要分析 $lnS$ 的随机过程。对GBM应用Ito&rsquo;s Lemma，令 $G(S,t)=lnS$，代入求偏导可以得到：
+$$
+dG = \lgroup\mu-\frac{\sigma^2}{2}\rgroup dt+\sigma dB(t)
+$$
+即 :
+$$
+lnS(t+\Delta t)-lnS(t)=(\mu-\frac{1}{2}\sigma^2)\Delta t+\sigma \sqrt{\Delta t}Z
+$$
+从而：
+$$
+ln\frac{S(t+\Delta t)}{S(t)}\thicksim N((\mu-\frac{1}{2}\sigma^2)\Delta t,\sigma ^2\Delta t)
+$$
+<strong>Idea:</strong> 每日收益叠加且彼此独立，正态分布的可加性 $ln\frac{S(T)}{S(0)}=ln\frac{S(t<em>n)}{S(t</em>{n-1})}\frac{S(t<em>{n-1})}{S(t</em>{n-2})}&hellip;\frac{S(t_1)}{S(t<em>0)}=\sum</em>{i=1}^nln\frac{S(t<em>i)}{S(t</em>{i-1})}$</p>
+
+<p>则股票价格 $S(T)\thicksim log-normal$：
+$$
+lnS(T)\thicksim N\lgroup lnS_0+(\mu-\frac{1}{2}\sigma^2)T,\sigma^2T\rgroup
+$$
+$$
+S(T)=S_0e^{(\mu-\frac{1}{2}\sigma^2)T+\sigma \sqrt T Z}
+$$</p>
+
+<p><strong>Note:</strong> 若 $X\thicksim log-normal$，即 $lnX\thicksim N(\mu,\sigma^2)$，则 $E(X)=e^{\mu+\frac{\sigma^2}{2}}$</p>
+
+<p>直接利用上式$S(T)$计算未来股票价格期望，会得到 $E(S(T))=S_0e^{\mu T}$，则期望收益率为$ln(E(\frac{S(T)}{S_0}))=\mu T$。而按照分布计算期望收益率(expected return)为$E(ln\frac{S(T)}{S_0})=(\mu-\frac{1}{2}\sigma^2)T$，不再是原先定义的$\mu T$。</p>
+
+<p>可以这样理解：$\mu-\frac{1}{2}\sigma^2$对应于expected return in a long period of time expressed with continuous compounding，$\mu$ 对应于expected return in a very short time。</p>
+
+<p><strong>关于volatility</strong>: 从一年折算到 $\Delta t$ 时间：$\sigma \sqrt{\Delta t}$，一天的话$\Delta t=\frac{1}{256}$ 或 $\frac{1}{252}$，<br>基于历史数据进行估计：$\Delta t$ 时间内观察到股票价格$S_0,S_1,&hellip;,S_n$，计算每个区间的收益率$u_i=ln\lgroup\frac{S<em>i}{S</em>{i-1}}\rgroup$，再算出$u_i$的标准差$s$，从而得到$\hat \sigma=\frac{s}{\sqrt{\Delta t}}$</p>
+
+<blockquote>
+<p>正态分布股票收益没法刻画暴跌</p>
+</blockquote>
+
+<h2 id="black-scholes-merton-differential-equation">Black-Scholes-Merton differential equation</h2>
+
+<blockquote>
+<p>BSM 对衍生品价格建模，给衍生品定价</p>
+</blockquote>
+
+<p>假定 $f$ 代表标的物为S的衍生品的价格，$f=f(S,t)$，<br>其中$S$服从GBM(几何布朗运动) $dS=\mu Sdt+\sigma SdB(t)$，<br>应用Ito&rsquo;s Lemma得到：
+$$
+df=\lgroup\frac{\partial f}{\partial S}\mu S+\frac{\partial f}{\partial t}+\frac{1}{2}\frac{\partial ^2f}{\partial S^2}\sigma^2 S^2\rgroup dt+\frac{\partial f}{\partial S}\sigma SdB(t)
+$$
+根据No Arbitrage，可以构造一个option和stock的portfolio来消除不确定风险，最终收益率为risk-free rate。构建投资组合 $\prod=-f+\frac{\partial f}{\partial S}S$ (short 1 options, long $\frac{\partial f}{\partial S}$ stocks, 可以消除布朗运动过程)，使得其获得无风险收益，则$\Delta\prod=-\Delta f+\frac{\partial f}{\partial S}\Delta S=r\prod\Delta t$，代入上式中的 $df,dS,\prod$ 得到Black-Scholes-Merton differential equation：
+$$
+\frac{\partial f}{\partial t}+\frac{\partial f}{\partial S}rS+\frac{1}{2}\frac{\partial ^2f}{\partial S^2}\sigma^2 S^2=rf
+$$
+<strong>Note:</strong> $\theta=\frac{\partial f}{\partial t}$，$\Delta=\frac{\partial f}{\partial S}$，$\Gamma=\frac{\partial ^2f}{\partial S^2}$<br>注意$\prod$这个portfolio只在很短的一段时间区间内为无风险，随着时间变化，$\frac{\partial f}{\partial S}$也会发生改变，所以需要不断调整portfolio中的比例结构。</p>
+
+<p>对于不同的衍生品，该方程有不同的解。给定某种特定衍生品所依赖的边界条件（$G(S_T)$也即$f_T$，T时刻衍生品价格），即可求得当前时刻的衍生品价格。</p>
+
+<p><strong>Forward contract:</strong></p>
+
+<ul>
+<li>boundary condition is $G(S_T)=S_T-K$</li>
+<li>solution to the equation: price at $t_0$ is $f=S_0-Ke^{-rT}$</li>
+</ul>
+
+<p><strong>Options:</strong></p>
+
+<ul>
+<li>call option&rsquo;s boundary condition is $G(S_T)=(S_T-K)^{+}$</li>
+<li>put option&rsquo;s boundary condition is $G(S_T)=(K-S_T)^{+}$</li>
+</ul>
+
+<p>由于描述风险偏好的变量$\mu$没有出现在方程中，所以说投资者的风险偏好对于方程的解没有影响，即我们可以使用任何一种风险偏好进行计算。方程在现实世界与风险中性世界中的解相同，从而后面使用了风险中性定价原理来求解。根据风险中性定价原理，衍生品价格等于它在T时刻盈亏期望值按照无风险利率的贴现。</p>
+
+<p><strong>Risk-Neutral Pricing:</strong>  $\mu=r$，where $r$ is the risk-free rate</p>
+
+<ul>
+<li>$S_T=S_0e^{(r-\frac{1}{2}\sigma^2)T+\sigma \sqrt T Z}$， 用$\mu$替代$r$</li>
+<li>$f=e^{-rT}E[G(S_T)]$</li>
+<li>$G(S_T)$ is the payoff at $T$</li>
+</ul>
+
+<p>所以forward contract的价格也可以直接贴现计算：$f=e^{-rT}E[G(S_T)]=e^{-rT}[S_0e^{rT}-K]=S_0-Ke^{-rT}$</p>
+
+<h2 id="black-scholes-pricing-formula">Black-Scholes pricing formula</h2>
+
+<p><strong>European call option</strong>:</p>
+
+<ul>
+<li>boundary condition is $G(S_T)=(S_T-K)^+$</li>
+<li>price at $t_0$ is $c=S_0N(d_1)-Ke^{-rT}N(d_2)$</li>
+<li>$d_1=\frac{ln(\frac{S_0}{K})+(r+\frac{\sigma^2}{2})T}{\sigma\sqrt T}$，$d_2=\frac{ln(\frac{S_0}{K})+(r-\frac{\sigma^2}{2})T}{\sigma\sqrt T}=d_1-\sigma\sqrt T$，$N(x)$为标准正态分布的CDF</li>
+</ul>
+
+<p><strong>European put option</strong>:</p>
+
+<ul>
+<li>boundary condition is $G(S_T)=(K-S_T)^+$</li>
+<li>price at $t_0$ is $p=Ke^{-rT}N(-d_2)-S_0N(-d_1)$ <br>利用看涨看跌的平价关系 $c+Ke^{-rT}=p+S_0$</li>
+</ul>
+
+<p><strong>Proof:</strong></p>
+
+<p><img src="./documents/BS_formula_proof.jpg" alt="BS_formula_proof" /></p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">S0</span><span class="o">=</span><span class="mi">49</span><span class="p">;</span> <span class="n">K</span><span class="o">=</span><span class="mi">50</span><span class="p">;</span> <span class="n">r</span><span class="o">=</span><span class="mf">0.05</span><span class="p">;</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">0.2</span><span class="p">;</span> <span class="n">T</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="mi">7</span><span class="o">/</span><span class="mi">365</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
+<span class="n">d1</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">S0</span><span class="o">/</span><span class="n">K</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="n">r</span><span class="o">+</span><span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">T</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">sigma</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">T</span><span class="p">))</span>
+<span class="n">d2</span> <span class="o">=</span> <span class="n">d1</span><span class="o">-</span><span class="n">sigma</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">S0</span><span class="o">*</span><span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">d1</span><span class="p">)</span><span class="o">-</span><span class="n">K</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">r</span><span class="o">*</span><span class="n">T</span><span class="p">)</span><span class="o">*</span><span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">d2</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">K</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">r</span><span class="o">*</span><span class="n">T</span><span class="p">)</span><span class="o">*</span><span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="o">-</span><span class="n">d2</span><span class="p">)</span><span class="o">-</span><span class="n">S0</span><span class="o">*</span><span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="o">-</span><span class="n">d1</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&#34;European call option price: &#34;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="mi">3</span><span class="p">)))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&#34;European put option price: &#34;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="mi">3</span><span class="p">)))</span></code></pre></div>
+<h2 id="criticism">Criticism</h2>
+
+<ul>
+<li>股票价格可能不服从对数正态分布，股票价格可能出现跳跃，则模型会存在误差</li>
+<li>无法刻画暴跌，参数是用过去估计的，与实际值会出现较大偏差</li>
+<li>volatility会随着时间改变</li>
+</ul>
+<div class="edit-meta">
+Last updated on 24 Oct 2019
+
+
+<br>
+Published on 24 Oct 2019
+<br><a href="https://gitee.com/hanyutan/hanyutan/edit/master/content/01_course%5cfinancial_risk_management%5cbsm_model.md" class="edit-page"><i class="fas fa-pen-square"></i> Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="/01_course/financial_risk_management/binomial_trees/" title="Binomial Trees"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - Binomial Trees</a>
+<a class="nav nav-next" href="/01_course/financial_risk_management/greeks/" title="Hedging with the Greeks">Next - Hedging with the Greeks <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+</nav><footer><p class="powered">Powered by <a href="https://gohugo.io">Hugo</a>. Theme by <a href="https://themes.gohugo.io/hugo-theme-techdoc/">TechDoc</a>. Designed by <a href="https://github.com/thingsym/hugo-theme-techdoc">Thingsym</a>.</p>
+</footer>
+</main><div class="sidebar">
+<nav>
+<ul>
+<li class=""><a href="https://hanyutan.gitee.io">Home</a></li>
+
+<li class="parent"><a href="/01_course/">Course</a>
+<ul class="sub-menu">
+<li class=""><a href="/01_course/r_cheat_sheet/">R Cheat-Sheet</a></li>
+<li class=""><a href="/01_course/spark/">Spark</a></li>
+<li class=""><a href="/01_course/julia_cheat_sheet/">Julia Cheat-Sheet</a></li>
+<li class=""><a href="/01_course/latex/">Latex</a></li>
+<li class=""><a href="/01_course/mathematical_statistics/">Mathematical Statistics</a></li>
+<li class=""><a href="/01_course/statistic_software/">Statistic Software</a></li>
+<li class=""><a href="/01_course/weizhongyu/">Wei Zhongyu</a></li>
+
+<li class=""><a href="/01_course/python_cheat_sheet/">Python Cheat Sheet</a>
+<ul class="">
+<li class=""><a href="/01_course/python_cheat_sheet/basic/">Basic</a></li>
+<li class=""><a href="/01_course/python_cheat_sheet/pandas/">Pandas</a></li>
+<li class=""><a href="/01_course/python_cheat_sheet/plot/">Plot</a></li>
+<li class=""><a href="/01_course/python_cheat_sheet/numpy/">Numpy</a></li>
+<li class=""><a href="/01_course/python_cheat_sheet/data_preprocessing/">Data Pre-processing</a></li>
+</ul>
+  
+</li>
+
+<li class="parent"><a href="/01_course/financial_risk_management/">Financial Risk Management</a>
+<ul class="sub-menu">
+<li class=""><a href="/01_course/financial_risk_management/markowitz/">Markowitz</a></li>
+<li class=""><a href="/01_course/financial_risk_management/binomial_trees/">Binomial Trees</a></li>
+<li class="active"><a href="/01_course/financial_risk_management/bsm_model/">BSM Model</a></li>
+<li class=""><a href="/01_course/financial_risk_management/greeks/">Hedging with the Greeks</a></li>
+<li class=""><a href="/01_course/financial_risk_management/exam/">Exam</a></li>
+</ul>
+  
+</li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/02_big_data/">Big Data Analysis</a>
+<ul class="">
+
+<li class=""><a href="/02_big_data/machine_learning/">Machine Learning</a>
+<ul class="">
+<li class=""><a href="/02_big_data/machine_learning/random_forest/">Random Forest</a></li>
+<li class=""><a href="/02_big_data/machine_learning/bagging/">Bagging</a></li>
+<li class=""><a href="/02_big_data/machine_learning/linear_regression/">Linear Regression</a></li>
+<li class=""><a href="/02_big_data/machine_learning/logistic_regression/">Logistic Regression</a></li>
+<li class=""><a href="/02_big_data/machine_learning/pca/">PCA</a></li>
+<li class=""><a href="/02_big_data/machine_learning/train_test/">Train &amp; Test</a></li>
+<li class=""><a href="/02_big_data/machine_learning/clustering/">Clustering</a></li>
+<li class=""><a href="/02_big_data/machine_learning/naive_bayes/">Naive Bayes</a></li>
+</ul>
+  
+</li>
+<li class=""><a href="/02_big_data/gan/">GAN</a></li>
+<li class=""><a href="/02_big_data/tensorflow/">Tensorflow</a></li>
+<li class=""><a href="/02_big_data/caffe/">Caffe</a></li>
+<li class=""><a href="/02_big_data/reinforcement_learning/">Reinforcement Learning</a></li>
+<li class=""><a href="/02_big_data/data_mining/">Data Mining</a></li>
+<li class=""><a href="/02_big_data/text_mining/">Text Mining</a></li>
+<li class=""><a href="/02_big_data/artificial_intelligency/">Artificial Intelligency</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/build_blog/">Build Blogs</a>
+<ul class="">
+<li class=""><a href="/build_blog/01_introduction/">Introduction</a></li>
+<li class=""><a href="/build_blog/02_preparation/">Preparation</a></li>
+<li class=""><a href="/build_blog/03_quick_start/">Quick Start</a></li>
+<li class=""><a href="/build_blog/04_git_notes/">Git Notes</a></li>
+<li class=""><a href="/build_blog/05_hugo_notes/">Hugo Notes</a></li>
+<li class=""><a href="/build_blog/06_markdown_notes/">Markdown Notes</a></li>
+<li class=""><a href="/build_blog/07_questions/">Q&amp;A</a></li>
+<li class=""><a href="/build_blog/scoop/">Scoop</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/03_interests/">Interests</a>
+<ul class="">
+<li class=""><a href="/03_interests/japanese/">Japanese</a></li>
+<li class=""><a href="/03_interests/hunt_for_stars/">Hunt for Stars</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/04_reading/">Reading</a>
+<ul class="">
+<li class=""><a href="/04_reading/reading_notes/">Reading Notes</a></li>
+<li class=""><a href="/04_reading/nonsense_output/">Nonsense Output</a></li>
+<li class=""><a href="/04_reading/wisdom_from_others/">Wisdom From Others</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/mathematics/">Mathematics</a>
+<ul class="">
+<li class=""><a href="/mathematics/mathematical_analysis/">Mathematical Analysis</a></li>
+<li class=""><a href="/mathematics/functional_analysis/">Functional Analysis</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/digital_content/">Digital Content</a>
+<ul class="">
+<li class=""><a href="/digital_content/opengl/">OpenGL</a></li>
+<li class=""><a href="/digital_content/shader/">Shader</a></li>
+<li class=""><a href="/digital_content/3dmax/">3dmax</a></li>
+<li class=""><a href="/digital_content/smpl/">SMPL</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/chapter3/">Chapter 3 (hierarchized)</a>
+<ul class="">
+<li class=""><a href="/chapter3/1/">Chapter 3-1</a></li>
+
+<li class=""><a href="/chapter3/chapter3-2/">Chapter 3-2</a>
+<ul class="">
+<li class=""><a href="/chapter3/chapter3-2/1/">Chapter 3-2-1</a></li>
+<li class=""><a href="/chapter3/chapter3-2/2/">Chapter 3-2-2</a></li>
+<li class=""><a href="/chapter3/chapter3-2/3/">Chapter 3-2-3</a></li>
+<li class=""><a href="/chapter3/chapter3-2/4/">Chapter 3-2-4</a></li>
+</ul>
+  
+</li>
+<li class=""><a href="/chapter3/3/">Chapter 3-3</a></li>
+<li class=""><a href="/chapter3/4/">Chapter 3-4</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/default_post/">Default_posts</a>
+<ul class="">
+<li class=""><a href="/default_post/installation/">Installation</a></li>
+<li class=""><a href="/default_post/creating-a-new-theme/">Creating a New Theme</a></li>
+<li class=""><a href="/default_post/migrate-from-jekyll/">Migrate to Hugo from Jekyll</a></li>
+<li class=""><a href="/default_post/configuration/">Configuration</a></li>
+<li class=""><a href="/default_post/goisforlovers/">(Hu)go Template Primer</a></li>
+<li class=""><a href="/default_post/hugoisforlovers/">Getting Started with Hugo</a></li>
+</ul>
+  
+</li>
+</ul>
+</nav>
+
+
+<div class="sidebar-footer"></div>
+</div>
+</div><a href="#" id="backtothetop-fixed" class="backtothetop"
+ data-backtothetop-duration="600"
+ data-backtothetop-easing="easeOutQuart"
+ data-backtothetop-fixed-fadeIn="1000"
+ data-backtothetop-fixed-fadeOut="1000"
+ data-backtothetop-fixed-bottom="10"
+ data-backtothetop-fixed-right="20">
+<span class="fa-layers fa-fw">
+<i class="fas fa-circle"></i>
+<i class="fas fa-arrow-circle-up"></i>
+</span></a>
+</div>
+</body>
+</html>

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Tensorflow - Keep Learning</title>
+<meta name="description" content="Han Yutan">
+<meta name="generator" content="Hugo 0.58.1" />
+<link href="https://hanyutan.gitee.ioindex.xml" rel="alternate" type="application/rss+xml">
+<link rel="canonical" href="https://hanyutan.gitee.io/02_big_data/tensorflow/">
+<link rel="stylesheet" href="https://hanyutan.gitee.io/css/theme.min.css">
+<script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<link rel="stylesheet" href="https://hanyutan.gitee.io/css/chroma.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://hanyutan.gitee.io/js/functions.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js"></script>
+<script src="https://hanyutan.gitee.io/js/jquery.backtothetop/jquery.backtothetop.min.js"></script><script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$']],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    messageStyle: "none",
+    "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+</head>
+<body>
+<div class="container"><header>
+<h1>Keep Learning</h1>
+
+ <span class="version">Version 1.0</span>
+<a href="https://gitee.com/hanyutan" class="github"><i class="fab fa-github"></i></a>
+<p class="description">Han Yutan</p>
+
+</header>
+<div class="menu">
+<nav>
+<ul>
+<li><a href="/">Home</a></li>
+<li><a href="https://www.instagram.com/philoartist97/">Instagram</a></li>
+<li><a href="/default_post/goisforlovers/">(Hu)go Template Primer</a></li>
+<li><a href="/about/">About Hugo</a></li>
+<li><a href="/default_post/hugoisforlovers/">Getting Started with Hugo</a></li><li class="parent"><a href="">Tutorials<i class="fas fa-angle-right"></i></a>
+<ul class="sub-menu">
+<li class="child"><a href="/default_post/creating-a-new-theme/">Creating a New Theme</a></li>
+<li class="child"><a href="/default_post/migrate-from-jekyll/">Migrating from Jekyll</a></li>
+</ul>
+</li></ul>
+</nav>
+</div>
+<div class="content-container">
+<main><h1>Tensorflow</h1>
+
+<p>Reference: 《Tensorflow实战》 黄文坚 唐源 电子工业出版社</p>
+
+<h1 id="tensorflow-introduction">Tensorflow Introduction</h1>
+
+<p>Github网址：<a href="https://github.com/tensorflow/tensorflow/">https://github.com/tensorflow/tensorflow/</a></p>
+
+<p>To install the current release for CPU-only:<code>$ pip install tensorflow</code><br>
+Use the GPU package for CUDA-enabled GPU cards:<code>$ pip install tensorflow-gpu</code></p>
+
+<p>Tensorflow使用数据流式图来规划计算流程：</p>
+
+<ul>
+<li>将计算表示为一个有向图(directed graph)，或称计算图(computation graph)</li>
+<li>节点(node)是运算操作(operation)的实例化</li>
+<li>节点与节点之间的连接称为边(edge)</li>
+<li>在计算图(computation graph)的边(edge)中流动(flow)的数据被称为张量(tensor)<br>
+其数据类型可以事先定义，也可以根据计算图的结构推断得到</li>
+<li>运算核(kernal)是一个运算操作在某个具体硬件(e.g.: CPU/GPU)的实现</li>
+<li>Session是用户使用Tensorflow时的交互接口，通过extend方法添加新的节点和边来创建计算图，然后通过run方法执行计算图</li>
+<li>计算图(computation graph)通常会被创建一次，然后执行很多次，数据张量(tensor)只在图中流过一边而不会被保留</li>
+<li>Variable是一类特殊的运算操作，可以将一些需要保留的tensor（比如神经网络的系数）储存在内存或者显存中，在训练时也可以更新并保存，<br>
+从而可以实现assign/assignadd(+=)/assignmul(*=)等特殊操作</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>内建运算操作</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>标量运算</td>
+<td>add, sub, mul, div, exp, log, greater, less, equal</td>
+</tr>
+
+<tr>
+<td>向量运算</td>
+<td>concat, slice, split, constant, rank, shape, shuffle</td>
+</tr>
+
+<tr>
+<td>矩阵运算</td>
+<td>matmul, matrixinverse逆, matrixdeterminant行列式</td>
+</tr>
+
+<tr>
+<td>带状态的运算</td>
+<td>variable, assign, assignadd(+=), assignmul(*=)</td>
+</tr>
+
+<tr>
+<td>神经网络组件</td>
+<td>softmax, sigmoid, relu, convolution2d, maxpooling</td>
+</tr>
+
+<tr>
+<td>储存、恢复</td>
+<td>save, restore</td>
+</tr>
+
+<tr>
+<td>队列及同步运算</td>
+<td>enqueue, dequeue, mutexacquire, mutexrelease</td>
+</tr>
+
+<tr>
+<td>控制流</td>
+<td>merge, switch, enter, leave, nextiteration</td>
+</tr>
+</tbody>
+</table>
+<div class="edit-meta">
+Last updated on 11 Oct 2019
+
+
+<br>
+Published on 11 Oct 2019
+<br><a href="https://gitee.com/hanyutan/hanyutan/edit/master/content/02_big_data%5ctensorflow.md" class="edit-page"><i class="fas fa-pen-square"></i> Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="/02_big_data/machine_learning/naive_bayes/" title="Naive Bayes"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - Naive Bayes</a>
+<a class="nav nav-next" href="/02_big_data/machine_learning/" title="Machine Learning">Next - Machine Learning <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+</nav><footer><p class="powered">Powered by <a href="https://gohugo.io">Hugo</a>. Theme by <a href="https://themes.gohugo.io/hugo-theme-techdoc/">TechDoc</a>. Designed by <a href="https://github.com/thingsym/hugo-theme-techdoc">Thingsym</a>.</p>
+</footer>
+</main><div class="sidebar">
+<nav>
+<ul>
+<li class=""><a href="https://hanyutan.gitee.io">Home</a></li>
+
+<li class=""><a href="/01_course/">Course</a>
+<ul class="">
+<li class=""><a href="/01_course/r_cheat_sheet/">R Cheat-Sheet</a></li>
+<li class=""><a href="/01_course/spark/">Spark</a></li>
+<li class=""><a href="/01_course/julia_cheat_sheet/">Julia Cheat-Sheet</a></li>
+<li class=""><a href="/01_course/latex/">Latex</a></li>
+<li class=""><a href="/01_course/mathematical_statistics/">Mathematical Statistics</a></li>
+<li class=""><a href="/01_course/statistic_software/">Statistic Software</a></li>
+<li class=""><a href="/01_course/weizhongyu/">Wei Zhongyu</a></li>
+
+<li class=""><a href="/01_course/python_cheat_sheet/">Python Cheat Sheet</a>
+<ul class="">
+<li class=""><a href="/01_course/python_cheat_sheet/basic/">Basic</a></li>
+<li class=""><a href="/01_course/python_cheat_sheet/pandas/">Pandas</a></li>
+<li class=""><a href="/01_course/python_cheat_sheet/plot/">Plot</a></li>
+<li class=""><a href="/01_course/python_cheat_sheet/numpy/">Numpy</a></li>
+<li class=""><a href="/01_course/python_cheat_sheet/data_preprocessing/">Data Pre-processing</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/01_course/financial_risk_management/">Financial Risk Management</a>
+<ul class="">
+<li class=""><a href="/01_course/financial_risk_management/markowitz/">Markowitz</a></li>
+<li class=""><a href="/01_course/financial_risk_management/binomial_trees/">Binomial Trees</a></li>
+<li class=""><a href="/01_course/financial_risk_management/bsm_model/">BSM Model</a></li>
+<li class=""><a href="/01_course/financial_risk_management/greeks/">Hedging with the Greeks</a></li>
+<li class=""><a href="/01_course/financial_risk_management/exam/">Exam</a></li>
+</ul>
+  
+</li>
+</ul>
+  
+</li>
+
+<li class="parent"><a href="/02_big_data/">Big Data Analysis</a>
+<ul class="sub-menu">
+
+<li class=""><a href="/02_big_data/machine_learning/">Machine Learning</a>
+<ul class="">
+<li class=""><a href="/02_big_data/machine_learning/random_forest/">Random Forest</a></li>
+<li class=""><a href="/02_big_data/machine_learning/bagging/">Bagging</a></li>
+<li class=""><a href="/02_big_data/machine_learning/linear_regression/">Linear Regression</a></li>
+<li class=""><a href="/02_big_data/machine_learning/logistic_regression/">Logistic Regression</a></li>
+<li class=""><a href="/02_big_data/machine_learning/pca/">PCA</a></li>
+<li class=""><a href="/02_big_data/machine_learning/train_test/">Train &amp; Test</a></li>
+<li class=""><a href="/02_big_data/machine_learning/clustering/">Clustering</a></li>
+<li class=""><a href="/02_big_data/machine_learning/naive_bayes/">Naive Bayes</a></li>
+</ul>
+  
+</li>
+<li class=""><a href="/02_big_data/gan/">GAN</a></li>
+<li class="active"><a href="/02_big_data/tensorflow/">Tensorflow</a></li>
+<li class=""><a href="/02_big_data/caffe/">Caffe</a></li>
+<li class=""><a href="/02_big_data/reinforcement_learning/">Reinforcement Learning</a></li>
+<li class=""><a href="/02_big_data/data_mining/">Data Mining</a></li>
+<li class=""><a href="/02_big_data/text_mining/">Text Mining</a></li>
+<li class=""><a href="/02_big_data/artificial_intelligency/">Artificial Intelligency</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/build_blog/">Build Blogs</a>
+<ul class="">
+<li class=""><a href="/build_blog/01_introduction/">Introduction</a></li>
+<li class=""><a href="/build_blog/02_preparation/">Preparation</a></li>
+<li class=""><a href="/build_blog/03_quick_start/">Quick Start</a></li>
+<li class=""><a href="/build_blog/04_git_notes/">Git Notes</a></li>
+<li class=""><a href="/build_blog/05_hugo_notes/">Hugo Notes</a></li>
+<li class=""><a href="/build_blog/06_markdown_notes/">Markdown Notes</a></li>
+<li class=""><a href="/build_blog/07_questions/">Q&amp;A</a></li>
+<li class=""><a href="/build_blog/scoop/">Scoop</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/03_interests/">Interests</a>
+<ul class="">
+<li class=""><a href="/03_interests/japanese/">Japanese</a></li>
+<li class=""><a href="/03_interests/hunt_for_stars/">Hunt for Stars</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/04_reading/">Reading</a>
+<ul class="">
+<li class=""><a href="/04_reading/reading_notes/">Reading Notes</a></li>
+<li class=""><a href="/04_reading/nonsense_output/">Nonsense Output</a></li>
+<li class=""><a href="/04_reading/wisdom_from_others/">Wisdom From Others</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/mathematics/">Mathematics</a>
+<ul class="">
+<li class=""><a href="/mathematics/mathematical_analysis/">Mathematical Analysis</a></li>
+<li class=""><a href="/mathematics/functional_analysis/">Functional Analysis</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/digital_content/">Digital Content</a>
+<ul class="">
+<li class=""><a href="/digital_content/opengl/">OpenGL</a></li>
+<li class=""><a href="/digital_content/shader/">Shader</a></li>
+<li class=""><a href="/digital_content/3dmax/">3dmax</a></li>
+<li class=""><a href="/digital_content/smpl/">SMPL</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/chapter3/">Chapter 3 (hierarchized)</a>
+<ul class="">
+<li class=""><a href="/chapter3/1/">Chapter 3-1</a></li>
+
+<li class=""><a href="/chapter3/chapter3-2/">Chapter 3-2</a>
+<ul class="">
+<li class=""><a href="/chapter3/chapter3-2/1/">Chapter 3-2-1</a></li>
+<li class=""><a href="/chapter3/chapter3-2/2/">Chapter 3-2-2</a></li>
+<li class=""><a href="/chapter3/chapter3-2/3/">Chapter 3-2-3</a></li>
+<li class=""><a href="/chapter3/chapter3-2/4/">Chapter 3-2-4</a></li>
+</ul>
+  
+</li>
+<li class=""><a href="/chapter3/3/">Chapter 3-3</a></li>
+<li class=""><a href="/chapter3/4/">Chapter 3-4</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/default_post/">Default_posts</a>
+<ul class="">
+<li class=""><a href="/default_post/installation/">Installation</a></li>
+<li class=""><a href="/default_post/creating-a-new-theme/">Creating a New Theme</a></li>
+<li class=""><a href="/default_post/migrate-from-jekyll/">Migrate to Hugo from Jekyll</a></li>
+<li class=""><a href="/default_post/configuration/">Configuration</a></li>
+<li class=""><a href="/default_post/goisforlovers/">(Hu)go Template Primer</a></li>
+<li class=""><a href="/default_post/hugoisforlovers/">Getting Started with Hugo</a></li>
+</ul>
+  
+</li>
+</ul>
+</nav>
+
+
+<div class="sidebar-footer"></div>
+</div>
+</div><a href="#" id="backtothetop-fixed" class="backtothetop"
+ data-backtothetop-duration="600"
+ data-backtothetop-easing="easeOutQuart"
+ data-backtothetop-fixed-fadeIn="1000"
+ data-backtothetop-fixed-fadeOut="1000"
+ data-backtothetop-fixed-bottom="10"
+ data-backtothetop-fixed-right="20">
+<span class="fa-layers fa-fw">
+<i class="fas fa-circle"></i>
+<i class="fas fa-arrow-circle-up"></i>
+</span></a>
+</div>
+</body>
+</html>

@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Binomial Trees - Keep Learning</title>
+<meta name="description" content="Han Yutan">
+<meta name="generator" content="Hugo 0.58.1" />
+<link href="https://hanyutan.gitee.ioindex.xml" rel="alternate" type="application/rss+xml">
+<link rel="canonical" href="https://hanyutan.gitee.io/01_course/financial_risk_management/binomial_trees/">
+<link rel="stylesheet" href="https://hanyutan.gitee.io/css/theme.min.css">
+<script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<link rel="stylesheet" href="https://hanyutan.gitee.io/css/chroma.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://hanyutan.gitee.io/js/functions.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js"></script>
+<script src="https://hanyutan.gitee.io/js/jquery.backtothetop/jquery.backtothetop.min.js"></script><script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$']],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    messageStyle: "none",
+    "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+</head>
+<body>
+<div class="container"><header>
+<h1>Keep Learning</h1>
+
+ <span class="version">Version 1.0</span>
+<a href="https://gitee.com/hanyutan" class="github"><i class="fab fa-github"></i></a>
+<p class="description">Han Yutan</p>
+
+</header>
+<div class="menu">
+<nav>
+<ul>
+<li><a href="/">Home</a></li>
+<li><a href="https://www.instagram.com/philoartist97/">Instagram</a></li>
+<li><a href="/default_post/goisforlovers/">(Hu)go Template Primer</a></li>
+<li><a href="/about/">About Hugo</a></li>
+<li><a href="/default_post/hugoisforlovers/">Getting Started with Hugo</a></li><li class="parent"><a href="">Tutorials<i class="fas fa-angle-right"></i></a>
+<ul class="sub-menu">
+<li class="child"><a href="/default_post/creating-a-new-theme/">Creating a New Theme</a></li>
+<li class="child"><a href="/default_post/migrate-from-jekyll/">Migrating from Jekyll</a></li>
+</ul>
+</li></ul>
+</nav>
+</div>
+<div class="content-container">
+<main><h1>Binomial Trees</h1>
+
+<h2 id="outline">Outline</h2>
+
+<ul>
+<li>Options and options market</li>
+<li>Put-call parity</li>
+<li>Binomial model for option pricing
+
+<ul>
+<li>European and American options</li>
+<li>No arbitrage argument</li>
+<li>Risk-neutral valuation or pricing</li>
+</ul></li>
+<li>Python code</li>
+</ul>
+
+<p><strong>Derivatives:</strong> Forward 远期合约 Futures 期货 Options 期权 Swap 互换</p>
+
+<h2 id="options-and-options-market">Options and options market</h2>
+
+<p><strong>期权Options：</strong>赋予buyers在<strong>未来</strong>以<strong>事先确定的价格</strong>来<strong>买卖</strong>标的资产的<strong>权利</strong>，可以执行也可以放弃</p>
+
+<ul>
+<li>未来：欧式为maturity date到期日当日，美式可以为期限内任意一天（寻找最优停时）</li>
+<li>执行价：strike price K，事先约定好未来进行交易的价格</li>
+<li>标的资产：underlying asset，课内一般指股票</li>
+<li>long 买入 call 看涨 option：认为股票价格会涨，想在未来以低价购入</li>
+<li>long 买入 put 看跌 option：认为股票价格会跌，想在未来以高价卖出</li>
+<li>short 卖出 call 看涨 option：认为股票价格会跌/不会涨很多，buyers不会行权，坐收期权费</li>
+<li>short 卖出 put 看跌 option：认为股票价格会涨/不会跌很多，buyers不会行权，坐收期权费</li>
+<li>一般是金融机构进行short</li>
+<li>不付股息股票的美式看涨期权不会提前执行</li>
+</ul>
+
+<p><strong>Combinations:</strong></p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Long position 多头/买入</th>
+<th>Short position 空头/卖出</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><strong>Call options 看涨</strong></td>
+<td>Long call $(S_T-K)^+$</td>
+<td>Short call</td>
+</tr>
+
+<tr>
+<td><strong>Put options 看跌</strong></td>
+<td>Long put $(K-S_T)^+$</td>
+<td>Short put</td>
+</tr>
+</tbody>
+</table>
+
+<p>买卖双方的盈亏是对称的</p>
+
+<p><img src="type_combinations.png" alt="type_combinations" /></p>
+
+<p><strong>Moneyness:</strong></p>
+
+<ul>
+<li>at the money: S=K</li>
+<li>in the money: S&gt;K for call, S&lt;K for short 行权</li>
+<li>out the money: S<K for call, S>K for short 不行权</li>
+</ul>
+
+<p><strong>Option&rsquo;s Value:</strong></p>
+
+<ul>
+<li>Intrinsic value内在价值: $(S_t-K)^+$ for call, $(K-S_t)^+$ for put. 此时立即行权/放弃的价值</li>
+<li>Time value时间价值: 时间越长变数越多，可能的获利就更大（亏损是有限的）由于盈亏不对称，任何大的波动都是好事</li>
+</ul>
+
+<h2 id="put-call-parity">Put-call parity</h2>
+
+<p>买卖权平价关系，同一标的资产、相同到期日、相同执行价格的call option和put option，价格应符合数学关系 （t=0和t=T价格都应该分别相等）
+$$
+c+Ke^{-rT}=p+S_0
+$$</p>
+
+<h2 id="binomial-model-for-option-pricing">Binomial model for option pricing</h2>
+
+<p>Option price 依赖于 stock price</p>
+
+<p><strong>Binomial tree model:</strong></p>
+
+<ul>
+<li><p>stock price is modeled as a random walk，将期权的有效期划分为几个step</p></li>
+
+<li><p>当step size无限大时，binomial tree收敛(converge to)到BSM model</p></li>
+
+<li><p><strong>Forward:</strong> 每个step里，stock price以q的概率上涨u，以(1-q)的概率下降d</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>step 1</th>
+<th>step 2</th>
+<th>&hellip;</th>
+<th>step n</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>stock price $S_0$<br>option price $f$</td>
+<td>概率$q$ <br> stock price $S_0\times u$<br>option price $f_u$</td>
+<td>概率$q^2$<br> stock price $S<em>0\times u^2$<br>option price $f</em>{uu}$</td>
+<td>&hellip;</td>
+<td>概率$C_n^0q^n(1-q)^0$<br> stock price $S_0\times u^nd^0$<br>option price $(S_T-K)^{+}$</td>
+</tr>
+
+<tr>
+<td></td>
+<td>概率$(1-q)$ <br> stock price $S_0\times d$<br>option price $f_d$</td>
+<td>概率$2q(1-q)$ <br> stock price $S<em>0\times u\times d$<br>option price $f</em>{ud}$</td>
+<td>&hellip;</td>
+<td>概率$C_n^1q^{n-1}(1-q)^1$<br> stock price $S_0\times u^{n-1}d^1$<br>option price $(S_T-K)^+$</td>
+</tr>
+
+<tr>
+<td></td>
+<td></td>
+<td>概率$(1-q)^2$<br> stock price $S<em>0\times d^2$<br>option price $f</em>{dd}$</td>
+<td>&hellip;</td>
+<td>&hellip;</td>
+</tr>
+
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>概率$C_n^{n}q^0(1-q)^n$<br> stock price $S_0\times u^nd^0$<br>option price $(S_T-K)^+$</td>
+</tr>
+</tbody>
+</table></li>
+
+<li><p><strong>Back-forward:</strong> 先计算最后一步的option price，$(S_t-K)^+$ for call，$(K-S_t)^+$ for put，然后逐步向前推导（求期望再贴现）<br><u><strong>Detailed:</strong> No arbitrage opportunities exists 不存在套利机会</u><br>考虑一个riskless portfolio： long $\Delta$ stock and short 1 option<br>则T时刻portfolio的价格应相等：$S_0u\Delta-f_u=S_0d\Delta-d_d$，即$\Delta=\frac{f_u-f_d}{S_0u-S_0d}$<br>把T时刻portfolio的价格贴现到0时刻：$S_0\Delta-f=e^{-rT}(S_0u\Delta-f_u)$<br>代入$\Delta$得到0时刻的option price：</p></li>
+</ul>
+
+<p>$$
+f=e^{-rT}[pf_u+(1-p)f_d]，其中p=\frac{e^{rT}-d}{u-d}
+$$</p>
+
+<p><strong>Risk-neutral valuation or pricing:</strong></p>
+
+<ul>
+<li><p><strong>风险中性投资者：</strong>不关心风险，对自己承担的风险并不要求风险补偿，当资产的期望损益以无风险利率进行折现时，他们对风险资产和无风险资产有同样的偏好</p></li>
+
+<li><p><strong>风险中性世界：</strong>risk-neutral world里所有证券的预期收益率都是无风险利率，期望收益使用risk-free rate $r$ 来折现，上述公式中的参数 $p$ 可以解释为价格上涨的概率</p></li>
+</ul>
+
+<h2 id="python-code">Python code</h2>
+
+<ul>
+<li>$u = e^{\sigma\sqrt{\Delta t}}$</li>
+<li>$d = e^{-\sigma\sqrt{\Delta t}}$</li>
+<li>$q = \frac{e^{r \Delta t}-d}{u-d} = \frac{R-d}{u-d}$</li>
+<li>1 step tree model: $f = e^{-r \Delta t}[qf_u+(1-q)f_d]$</li>
+
+<li><p>n step tree model: $f = e^{-nr\Delta t}\Sigma_{i=0}^n C_n^i{q^iSu^i+(1-q)^{n-i}Sd^{n-i}}$</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># load packages</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">comb</span>
+
+<span class="c1"># parameter setting</span>
+<span class="n">S</span> <span class="o">=</span> <span class="mi">30</span>       <span class="c1"># stock price</span>
+<span class="n">K</span> <span class="o">=</span> <span class="mi">30</span>       <span class="c1"># strike price</span>
+<span class="n">r</span> <span class="o">=</span> <span class="mf">0.03</span>     <span class="c1"># risk-free rate (per annum)</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mf">0.35</span> <span class="c1"># volatility of the price (per annum)</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mi">8</span><span class="o">/</span><span class="mi">12</span>     <span class="c1"># expires (year)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">8</span>        <span class="c1"># n-step tree model</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="n">T</span><span class="o">/</span><span class="n">n</span>     <span class="c1"># delta t</span>
+
+<span class="c1"># calculate: u d q</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">sigma</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dt</span><span class="p">))</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">sigma</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dt</span><span class="p">))</span>
+<span class="n">q</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">r</span><span class="o">*</span><span class="n">dt</span><span class="p">)</span><span class="o">-</span><span class="n">d</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">-</span><span class="n">d</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&#34;u = </span><span class="si">%.04f</span><span class="s2">, d = </span><span class="si">%.04f</span><span class="s2">, q = </span><span class="si">%.04f</span><span class="s2">&#34;</span> <span class="o">%</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">q</span><span class="p">))</span></code></pre></div></li>
+</ul>
+
+<p>European options (concise results):</p>
+
+<ul>
+<li><p>call/put</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">option_price_concise</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">u</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">S</span><span class="p">,</span><span class="n">K</span><span class="p">,</span><span class="n">q</span><span class="p">,</span><span class="n">r</span><span class="p">,</span><span class="n">dt</span><span class="p">,</span><span class="n">options1</span><span class="o">=</span><span class="s2">&#34;call&#34;</span><span class="p">):</span>
+<span class="n">tmp</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">ST</span> <span class="o">=</span> <span class="n">S</span><span class="o">*</span><span class="n">u</span><span class="o">**</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="n">i</span><span class="p">)</span><span class="o">*</span><span class="n">d</span><span class="o">**</span><span class="n">i</span>
+    <span class="k">if</span> <span class="n">options1</span><span class="o">==</span><span class="s2">&#34;call&#34;</span><span class="p">:</span>
+        <span class="n">fT</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">ST</span><span class="o">-</span><span class="n">K</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">options1</span><span class="o">==</span><span class="s2">&#34;put&#34;</span><span class="p">:</span>
+        <span class="n">fT</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">K</span><span class="o">-</span><span class="n">ST</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">weighted_fT</span> <span class="o">=</span> <span class="n">fT</span><span class="o">*</span><span class="n">comb</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">i</span><span class="p">)</span><span class="o">*</span><span class="n">q</span><span class="o">**</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="n">i</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">q</span><span class="p">)</span><span class="o">**</span><span class="n">i</span>
+    <span class="n">discount_fT</span> <span class="o">=</span> <span class="n">weighted_fT</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">n</span><span class="o">*</span><span class="n">r</span><span class="o">*</span><span class="n">dt</span><span class="p">)</span>
+    <span class="n">tmp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">discount_fT</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&#34;Option price is </span><span class="si">%.04f</span><span class="s2">&#34;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">tmp</span><span class="p">)))</span>
+    
+<span class="n">option_price_concise</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">u</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">S</span><span class="p">,</span><span class="n">K</span><span class="p">,</span><span class="n">q</span><span class="p">,</span><span class="n">r</span><span class="p">,</span><span class="n">dt</span><span class="p">,</span><span class="n">options1</span><span class="o">=</span><span class="s2">&#34;call&#34;</span><span class="p">)</span>
+<span class="n">option_price_concise</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">u</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">S</span><span class="p">,</span><span class="n">K</span><span class="p">,</span><span class="n">q</span><span class="p">,</span><span class="n">r</span><span class="p">,</span><span class="n">dt</span><span class="p">,</span><span class="n">options1</span><span class="o">=</span><span class="s2">&#34;put&#34;</span><span class="p">)</span></code></pre></div></li>
+</ul>
+
+<p>All combinations options (concise results):</p>
+
+<ul>
+<li>European/American</li>
+
+<li><p>call/put</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># calculate stock price at each step</span>
+<span class="k">def</span> <span class="nf">stock_price_detailed</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">u</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">S</span><span class="p">):</span>
+<span class="n">stock_dict</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">stock_dict</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">j</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">stock_dict</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">j</span><span class="p">)]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">S</span><span class="o">*</span><span class="n">u</span><span class="o">**</span><span class="p">(</span><span class="n">j</span><span class="o">-</span><span class="n">i</span><span class="p">)</span><span class="o">*</span><span class="n">d</span><span class="o">**</span><span class="n">i</span><span class="p">)</span>
+<span class="c1"># print results</span>
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="n">stock_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&#34;Step &#34;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="o">+</span><span class="s2">&#34;: &#34;</span><span class="p">,</span><span class="n">end</span><span class="o">=</span><span class="s2">&#34;&#34;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="k">return</span> <span class="n">stock_dict</span>
+
+<span class="n">stock_dict</span> <span class="o">=</span> <span class="n">stock_price_detailed</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">u</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">S</span><span class="p">)</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># calculate option price at each step</span>
+<span class="k">def</span> <span class="nf">option_price_detailed</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">u</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">S</span><span class="p">,</span><span class="n">K</span><span class="p">,</span><span class="n">q</span><span class="p">,</span><span class="n">r</span><span class="p">,</span><span class="n">dt</span><span class="p">,</span><span class="n">stock_dict</span><span class="p">,</span><span class="n">options</span><span class="o">=</span><span class="s2">&#34;European&#34;</span><span class="p">,</span><span class="n">options1</span><span class="o">=</span><span class="s2">&#34;call&#34;</span><span class="p">):</span>
+<span class="n">option_dict</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="c1"># step n</span>
+<span class="k">if</span> <span class="n">options1</span><span class="o">==</span><span class="s2">&#34;call&#34;</span><span class="p">:</span>
+    <span class="n">option_dict</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="nb">max</span><span class="p">(</span><span class="n">S</span><span class="o">-</span><span class="n">K</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="k">for</span> <span class="n">S</span> <span class="ow">in</span> <span class="n">stock_dict</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)]]</span>
+<span class="k">if</span> <span class="n">options1</span><span class="o">==</span><span class="s2">&#34;put&#34;</span><span class="p">:</span>
+    <span class="n">option_dict</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="nb">max</span><span class="p">(</span><span class="n">K</span><span class="o">-</span><span class="n">S</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="k">for</span> <span class="n">S</span> <span class="ow">in</span> <span class="n">stock_dict</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)]]</span>
+<span class="c1"># step (n-1) to 1</span>
+<span class="n">step</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">))</span>
+<span class="n">step</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">step</span><span class="p">:</span>
+    <span class="n">option_dict</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">j</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">fu</span> <span class="o">=</span> <span class="n">option_dict</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">)][</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">fd</span> <span class="o">=</span> <span class="n">option_dict</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">)][</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">r</span><span class="o">*</span><span class="n">dt</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">q</span><span class="o">*</span><span class="n">fu</span><span class="o">+</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">q</span><span class="p">)</span><span class="o">*</span><span class="n">fd</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">options</span><span class="o">==</span><span class="s2">&#34;European&#34;</span><span class="p">:</span>
+            <span class="n">option_dict</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">j</span><span class="p">)]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">r</span><span class="o">*</span><span class="n">dt</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">q</span><span class="o">*</span><span class="n">fu</span><span class="o">+</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">q</span><span class="p">)</span><span class="o">*</span><span class="n">fd</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">options</span><span class="o">==</span><span class="s2">&#34;American&#34;</span><span class="p">:</span>   <span class="c1"># allow early exercise</span>
+            <span class="k">if</span> <span class="n">options1</span><span class="o">==</span><span class="s2">&#34;call&#34;</span><span class="p">:</span>
+                <span class="n">early</span> <span class="o">=</span> <span class="n">stock_dict</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">j</span><span class="p">)][</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">K</span>
+            <span class="k">if</span> <span class="n">options1</span><span class="o">==</span><span class="s2">&#34;put&#34;</span><span class="p">:</span>
+                <span class="n">early</span> <span class="o">=</span> <span class="n">K</span><span class="o">-</span><span class="n">stock_dict</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">j</span><span class="p">)][</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">option_dict</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">j</span><span class="p">)]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">early</span><span class="p">))</span>
+<span class="c1"># step 0</span>
+<span class="n">fu</span> <span class="o">=</span> <span class="n">option_dict</span><span class="p">[</span><span class="s2">&#34;1&#34;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">fd</span> <span class="o">=</span> <span class="n">option_dict</span><span class="p">[</span><span class="s2">&#34;1&#34;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">option_dict</span><span class="p">[</span><span class="s2">&#34;0&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">r</span><span class="o">*</span><span class="n">dt</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">q</span><span class="o">*</span><span class="n">fu</span><span class="o">+</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">q</span><span class="p">)</span><span class="o">*</span><span class="n">fd</span><span class="p">)]</span>
+<span class="c1"># print results</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&#34;Option type is &#34;</span><span class="o">+</span><span class="n">options</span><span class="o">+</span><span class="s2">&#34; &#34;</span><span class="o">+</span><span class="n">options1</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="n">option_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&#34;Step &#34;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="o">+</span><span class="s2">&#34;: &#34;</span><span class="p">,</span><span class="n">end</span><span class="o">=</span><span class="s2">&#34;&#34;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+        
+<span class="k">return</span> <span class="n">option_dict</span>
+
+<span class="n">option_dict</span> <span class="o">=</span> <span class="n">option_price_detailed</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">u</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">S</span><span class="p">,</span><span class="n">K</span><span class="p">,</span><span class="n">q</span><span class="p">,</span><span class="n">r</span><span class="p">,</span><span class="n">dt</span><span class="p">,</span><span class="n">stock_dict</span><span class="p">,</span><span class="n">options</span><span class="o">=</span><span class="s2">&#34;European&#34;</span><span class="p">,</span><span class="n">options1</span><span class="o">=</span><span class="s2">&#34;call&#34;</span><span class="p">)</span>
+<span class="n">option_dict</span> <span class="o">=</span> <span class="n">option_price_detailed</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">u</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">S</span><span class="p">,</span><span class="n">K</span><span class="p">,</span><span class="n">q</span><span class="p">,</span><span class="n">r</span><span class="p">,</span><span class="n">dt</span><span class="p">,</span><span class="n">stock_dict</span><span class="p">,</span><span class="n">options</span><span class="o">=</span><span class="s2">&#34;American&#34;</span><span class="p">,</span><span class="n">options1</span><span class="o">=</span><span class="s2">&#34;call&#34;</span><span class="p">)</span>
+<span class="n">option_dict</span> <span class="o">=</span> <span class="n">option_price_detailed</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">u</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">S</span><span class="p">,</span><span class="n">K</span><span class="p">,</span><span class="n">q</span><span class="p">,</span><span class="n">r</span><span class="p">,</span><span class="n">dt</span><span class="p">,</span><span class="n">stock_dict</span><span class="p">,</span><span class="n">options</span><span class="o">=</span><span class="s2">&#34;European&#34;</span><span class="p">,</span><span class="n">options1</span><span class="o">=</span><span class="s2">&#34;put&#34;</span><span class="p">)</span>
+<span class="n">option_dict</span> <span class="o">=</span> <span class="n">option_price_detailed</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">u</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">S</span><span class="p">,</span><span class="n">K</span><span class="p">,</span><span class="n">q</span><span class="p">,</span><span class="n">r</span><span class="p">,</span><span class="n">dt</span><span class="p">,</span><span class="n">stock_dict</span><span class="p">,</span><span class="n">options</span><span class="o">=</span><span class="s2">&#34;American&#34;</span><span class="p">,</span><span class="n">options1</span><span class="o">=</span><span class="s2">&#34;put&#34;</span><span class="p">)</span></code></pre></div></li>
+</ul>
+<div class="edit-meta">
+Last updated on 24 Oct 2019
+
+
+<br>
+Published on 24 Oct 2019
+<br><a href="https://gitee.com/hanyutan/hanyutan/edit/master/content/01_course%5cfinancial_risk_management%5cbinomial_trees.md" class="edit-page"><i class="fas fa-pen-square"></i> Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="/01_course/financial_risk_management/markowitz/" title="Markowitz"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - Markowitz</a>
+<a class="nav nav-next" href="/01_course/financial_risk_management/bsm_model/" title="BSM Model">Next - BSM Model <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+</nav><footer><p class="powered">Powered by <a href="https://gohugo.io">Hugo</a>. Theme by <a href="https://themes.gohugo.io/hugo-theme-techdoc/">TechDoc</a>. Designed by <a href="https://github.com/thingsym/hugo-theme-techdoc">Thingsym</a>.</p>
+</footer>
+</main><div class="sidebar">
+<nav>
+<ul>
+<li class=""><a href="https://hanyutan.gitee.io">Home</a></li>
+
+<li class="parent"><a href="/01_course/">Course</a>
+<ul class="sub-menu">
+<li class=""><a href="/01_course/r_cheat_sheet/">R Cheat-Sheet</a></li>
+<li class=""><a href="/01_course/spark/">Spark</a></li>
+<li class=""><a href="/01_course/julia_cheat_sheet/">Julia Cheat-Sheet</a></li>
+<li class=""><a href="/01_course/latex/">Latex</a></li>
+<li class=""><a href="/01_course/mathematical_statistics/">Mathematical Statistics</a></li>
+<li class=""><a href="/01_course/statistic_software/">Statistic Software</a></li>
+<li class=""><a href="/01_course/weizhongyu/">Wei Zhongyu</a></li>
+
+<li class=""><a href="/01_course/python_cheat_sheet/">Python Cheat Sheet</a>
+<ul class="">
+<li class=""><a href="/01_course/python_cheat_sheet/basic/">Basic</a></li>
+<li class=""><a href="/01_course/python_cheat_sheet/pandas/">Pandas</a></li>
+<li class=""><a href="/01_course/python_cheat_sheet/plot/">Plot</a></li>
+<li class=""><a href="/01_course/python_cheat_sheet/numpy/">Numpy</a></li>
+<li class=""><a href="/01_course/python_cheat_sheet/data_preprocessing/">Data Pre-processing</a></li>
+</ul>
+  
+</li>
+
+<li class="parent"><a href="/01_course/financial_risk_management/">Financial Risk Management</a>
+<ul class="sub-menu">
+<li class=""><a href="/01_course/financial_risk_management/markowitz/">Markowitz</a></li>
+<li class="active"><a href="/01_course/financial_risk_management/binomial_trees/">Binomial Trees</a></li>
+<li class=""><a href="/01_course/financial_risk_management/bsm_model/">BSM Model</a></li>
+<li class=""><a href="/01_course/financial_risk_management/greeks/">Hedging with the Greeks</a></li>
+<li class=""><a href="/01_course/financial_risk_management/exam/">Exam</a></li>
+</ul>
+  
+</li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/02_big_data/">Big Data Analysis</a>
+<ul class="">
+
+<li class=""><a href="/02_big_data/machine_learning/">Machine Learning</a>
+<ul class="">
+<li class=""><a href="/02_big_data/machine_learning/random_forest/">Random Forest</a></li>
+<li class=""><a href="/02_big_data/machine_learning/bagging/">Bagging</a></li>
+<li class=""><a href="/02_big_data/machine_learning/linear_regression/">Linear Regression</a></li>
+<li class=""><a href="/02_big_data/machine_learning/logistic_regression/">Logistic Regression</a></li>
+<li class=""><a href="/02_big_data/machine_learning/pca/">PCA</a></li>
+<li class=""><a href="/02_big_data/machine_learning/train_test/">Train &amp; Test</a></li>
+<li class=""><a href="/02_big_data/machine_learning/clustering/">Clustering</a></li>
+<li class=""><a href="/02_big_data/machine_learning/naive_bayes/">Naive Bayes</a></li>
+</ul>
+  
+</li>
+<li class=""><a href="/02_big_data/gan/">GAN</a></li>
+<li class=""><a href="/02_big_data/tensorflow/">Tensorflow</a></li>
+<li class=""><a href="/02_big_data/caffe/">Caffe</a></li>
+<li class=""><a href="/02_big_data/reinforcement_learning/">Reinforcement Learning</a></li>
+<li class=""><a href="/02_big_data/data_mining/">Data Mining</a></li>
+<li class=""><a href="/02_big_data/text_mining/">Text Mining</a></li>
+<li class=""><a href="/02_big_data/artificial_intelligency/">Artificial Intelligency</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/build_blog/">Build Blogs</a>
+<ul class="">
+<li class=""><a href="/build_blog/01_introduction/">Introduction</a></li>
+<li class=""><a href="/build_blog/02_preparation/">Preparation</a></li>
+<li class=""><a href="/build_blog/03_quick_start/">Quick Start</a></li>
+<li class=""><a href="/build_blog/04_git_notes/">Git Notes</a></li>
+<li class=""><a href="/build_blog/05_hugo_notes/">Hugo Notes</a></li>
+<li class=""><a href="/build_blog/06_markdown_notes/">Markdown Notes</a></li>
+<li class=""><a href="/build_blog/07_questions/">Q&amp;A</a></li>
+<li class=""><a href="/build_blog/scoop/">Scoop</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/03_interests/">Interests</a>
+<ul class="">
+<li class=""><a href="/03_interests/japanese/">Japanese</a></li>
+<li class=""><a href="/03_interests/hunt_for_stars/">Hunt for Stars</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/04_reading/">Reading</a>
+<ul class="">
+<li class=""><a href="/04_reading/reading_notes/">Reading Notes</a></li>
+<li class=""><a href="/04_reading/nonsense_output/">Nonsense Output</a></li>
+<li class=""><a href="/04_reading/wisdom_from_others/">Wisdom From Others</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/mathematics/">Mathematics</a>
+<ul class="">
+<li class=""><a href="/mathematics/mathematical_analysis/">Mathematical Analysis</a></li>
+<li class=""><a href="/mathematics/functional_analysis/">Functional Analysis</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/digital_content/">Digital Content</a>
+<ul class="">
+<li class=""><a href="/digital_content/opengl/">OpenGL</a></li>
+<li class=""><a href="/digital_content/shader/">Shader</a></li>
+<li class=""><a href="/digital_content/3dmax/">3dmax</a></li>
+<li class=""><a href="/digital_content/smpl/">SMPL</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/chapter3/">Chapter 3 (hierarchized)</a>
+<ul class="">
+<li class=""><a href="/chapter3/1/">Chapter 3-1</a></li>
+
+<li class=""><a href="/chapter3/chapter3-2/">Chapter 3-2</a>
+<ul class="">
+<li class=""><a href="/chapter3/chapter3-2/1/">Chapter 3-2-1</a></li>
+<li class=""><a href="/chapter3/chapter3-2/2/">Chapter 3-2-2</a></li>
+<li class=""><a href="/chapter3/chapter3-2/3/">Chapter 3-2-3</a></li>
+<li class=""><a href="/chapter3/chapter3-2/4/">Chapter 3-2-4</a></li>
+</ul>
+  
+</li>
+<li class=""><a href="/chapter3/3/">Chapter 3-3</a></li>
+<li class=""><a href="/chapter3/4/">Chapter 3-4</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/default_post/">Default_posts</a>
+<ul class="">
+<li class=""><a href="/default_post/installation/">Installation</a></li>
+<li class=""><a href="/default_post/creating-a-new-theme/">Creating a New Theme</a></li>
+<li class=""><a href="/default_post/migrate-from-jekyll/">Migrate to Hugo from Jekyll</a></li>
+<li class=""><a href="/default_post/configuration/">Configuration</a></li>
+<li class=""><a href="/default_post/goisforlovers/">(Hu)go Template Primer</a></li>
+<li class=""><a href="/default_post/hugoisforlovers/">Getting Started with Hugo</a></li>
+</ul>
+  
+</li>
+</ul>
+</nav>
+
+
+<div class="sidebar-footer"></div>
+</div>
+</div><a href="#" id="backtothetop-fixed" class="backtothetop"
+ data-backtothetop-duration="600"
+ data-backtothetop-easing="easeOutQuart"
+ data-backtothetop-fixed-fadeIn="1000"
+ data-backtothetop-fixed-fadeOut="1000"
+ data-backtothetop-fixed-bottom="10"
+ data-backtothetop-fixed-right="20">
+<span class="fa-layers fa-fw">
+<i class="fas fa-circle"></i>
+<i class="fas fa-arrow-circle-up"></i>
+</span></a>
+</div>
+</body>
+</html>

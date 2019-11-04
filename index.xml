@@ -12,12 +12,48 @@
     
     
     <item>
-      <title>Functional Analysis</title>
-      <link>https://hanyutan.gitee.io/mathematics/functional_analysis/</link>
-      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      <title>Mathematical Analysis</title>
+      <link>https://hanyutan.gitee.io/mathematics/mathematical_analysis/</link>
+      <pubDate>Mon, 04 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://hanyutan.gitee.io/mathematics/functional_analysis/</guid>
-      <description>泛函分析笔记整理by刘宇扬（SJTU，统计学） 如对笔记中的内容有疑问，或者想要跟作者交流，请联系Email:lyy_stat@foxmail</description>
+      <guid>https://hanyutan.gitee.io/mathematics/mathematical_analysis/</guid>
+      <description>“数学分析助教笔记”整理by刘宇扬（SJTU，统计学） 如对笔记中的内容有疑问，或者想要跟作者交流，请联系Email:lyy_stat@fox</description>
+    </item>
+    
+    <item>
+      <title>Basic</title>
+      <link>https://hanyutan.gitee.io/01_course/python_cheat_sheet/basic/</link>
+      <pubDate>Sat, 19 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/01_course/python_cheat_sheet/basic/</guid>
+      <description>List list.index(max(k)) # index返回值的索引 for i,element in enumerate(list): print(i,element) # enumerate枚举 String print(&amp;#34;Test set accuracy score: {:.5f}&amp;#34;.format(accuracy_score(y_pred, y_test))) &amp;#39;K = %s, Silhouette Coefficient = %.3f&amp;#39; % ( k, metrics.silhouette_score(X_train, y_train_hat ,metric=&amp;#39;euclidean&amp;#39;))</description>
+    </item>
+    
+    <item>
+      <title>OpenGL</title>
+      <link>https://hanyutan.gitee.io/digital_content/opengl/</link>
+      <pubDate>Sat, 19 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/digital_content/opengl/</guid>
+      <description>渲染管道（graphics pipeline） 通过OpenGL理解前端渲染原理（1） https://blog.csdn.net/gao2175/article/details/97629582 3D管线教程 (一) https://www.cnblogs.com/firewood/articles/3d_pipeline_tutorial_part1.html 原文</description>
+    </item>
+    
+    <item>
+      <title>Shader</title>
+      <link>https://hanyutan.gitee.io/digital_content/shader/</link>
+      <pubDate>Sat, 19 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/digital_content/shader/</guid>
+      <description>Unity Documentation: Manual link Offline documentation link Github: ScriptableRenderPipeline link Scriptable Render Pipeline link About the Universal Render Pipeline link High Definition Render Pipeline overview link About Shader Graph link 详解Unity3D Shader开发之渲染管线 link 在Unity2018版本，Unit</description>
+    </item>
+    
+    <item>
+      <title>Reading Notes</title>
+      <link>https://hanyutan.gitee.io/04_reading/reading_notes/</link>
+      <pubDate>Mon, 30 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/04_reading/reading_notes/</guid>
+      <description>[ToC] 读书打卡 跟着车纯姐终身学习 20191029 今日阅读 1.【书名】：《反本能》如何对抗你的习以为常 2.【页数】：序言1—9 3.【摘抄】： 本能虽然可以让我们用</description>
     </item>
     
     <item>
@@ -30,15 +66,6 @@
     </item>
     
     <item>
-      <title>My Notes</title>
-      <link>https://hanyutan.gitee.io/course/my_notes/</link>
-      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
-      
-      <guid>https://hanyutan.gitee.io/course/my_notes/</guid>
-      <description>To Do List 每天必须保证练习30min 英语流利说30min 《社会媒体挖掘》ch01-ch02 [1-40]/240 计算机二级python ch05 [76-90]/220 Databricks注册，</description>
-    </item>
-    
-    <item>
       <title>Welcome</title>
       <link>https://hanyutan.gitee.io/main/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -48,12 +75,30 @@
     </item>
     
     <item>
-      <title>Latex</title>
-      <link>https://hanyutan.gitee.io/course/latex/</link>
-      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      <title>Pandas</title>
+      <link>https://hanyutan.gitee.io/01_course/python_cheat_sheet/pandas/</link>
+      <pubDate>Sat, 19 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://hanyutan.gitee.io/course/latex/</guid>
-      <description>用beamer做ppt？ Install TexLive 清华开源镜像下载地址 下载最新的.iso文件，进入DVD驱动器后双击install-tl-advanced.bat</description>
+      <guid>https://hanyutan.gitee.io/01_course/python_cheat_sheet/pandas/</guid>
+      <description>import pandas as pd Attribute df.head() df.shape df.dtypes.index([df.dtypes==&amp;#34;object&amp;#34;]) # 筛选出属性变量 df.dtypes.index([df.dtypes!=&amp;#34;object&amp;#34;]) # 筛选出数值变量 Slice/Filter df.loc[0:2] # 0 1 2行 df.iloc[0:2] # 0 1行 df.iloc[0:2,0:2] # 0 1行 0 1列 df[(condition)&amp;amp;(condition)&amp;amp;...] df.drop([&amp;#34;var&amp;#34;,&amp;#34;var&amp;#34;],axis=1) Apply/Map # 对行数据计算生成新变量 df[&amp;#34;volumn&amp;#34;] = df.apply(lambda x: x[&amp;#34;x&amp;#34;]*x[&amp;#34;y&amp;#34;]*x[&amp;#34;z&amp;#34;],axis=1) # 属性值替</description>
+    </item>
+    
+    <item>
+      <title>R Cheat-Sheet</title>
+      <link>https://hanyutan.gitee.io/01_course/r_cheat_sheet/</link>
+      <pubDate>Mon, 07 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/01_course/r_cheat_sheet/</guid>
+      <description>R Markdown # Options of rmarkdown code block include=FALSE # not show code&amp;amp;result warning = FALSE # not show waring fig.align=&amp;#39;center&amp;#39; # pic center fig.width=7 # pic width fig.height=3.5 # pic height Preparations # Clear the Environment rm(list=ls()) # Working Directory getwd() # find current wd setwd(&amp;#34;path&amp;#34;) # change current wd Packages # install packages install.packages(&amp;#34;&amp;lt;package name&amp;gt;&amp;#34;) # Load packages library(dplyr) library(ggplot2) library(gridExtra) # grid.arrange() Arrange multiple grobs on a</description>
+    </item>
+    
+    <item>
+      <title>Functional Analysis</title>
+      <link>https://hanyutan.gitee.io/mathematics/functional_analysis/</link>
+      <pubDate>Tue, 10 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/mathematics/functional_analysis/</guid>
+      <description>“泛函分析笔记”整理by刘宇扬（SJTU，统计学） 如对笔记中的内容有疑问，或者想要跟作者交流，请联系Email:lyy_stat@foxma</description>
     </item>
     
     <item>
@@ -66,21 +111,39 @@
     </item>
     
     <item>
+      <title>Plot</title>
+      <link>https://hanyutan.gitee.io/01_course/python_cheat_sheet/plot/</link>
+      <pubDate>Wed, 23 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/01_course/python_cheat_sheet/plot/</guid>
+      <description>matplotlib 数学绘图库 可视化工具 参数较复杂 seaborn 在matplotlib的基础上进行更高级的API封装 官网 yellowbrick pyecharts 用于生成Echarts图表的类库 官方教程 link import matplotlib.pyplot</description>
+    </item>
+    
+    <item>
+      <title>Numpy</title>
+      <link>https://hanyutan.gitee.io/01_course/python_cheat_sheet/numpy/</link>
+      <pubDate>Sat, 19 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/01_course/python_cheat_sheet/numpy/</guid>
+      <description>import numpy as np Random np.random.seed(123) np.random.randn(m,n) # 标准正态分布随机数 np.random.shuffle(array) # 打乱数据，改变原值 Array np.arange(n) # 0~n-1的数组 np.array(range(10)) # 0~n-1的数组 np.ones((m,n)) # 全是1的数组 np.where(array == np.max(array)) # 返回值的索引</description>
+    </item>
+    
+    <item>
+      <title>Spark</title>
+      <link>https://hanyutan.gitee.io/01_course/spark/</link>
+      <pubDate>Mon, 07 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/01_course/spark/</guid>
+      <description>Spark+R Databricks平台 集成了Spark环境，支持Scala、python、R语言进行开发。 学生可以注册社区版本，拥有一台配置为6G内存的</description>
+    </item>
+    
+    <item>
       <title>Quick Start</title>
       <link>https://hanyutan.gitee.io/build_blog/03_quick_start/</link>
       <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
       
       <guid>https://hanyutan.gitee.io/build_blog/03_quick_start/</guid>
       <description>不想看后面的Git/Hugo/Markdown Notes的话，可以直接按照Quick Start的操作来迅速建立一个个人Blog。 打开Gith</description>
-    </item>
-    
-    <item>
-      <title>Wei Zhongyu</title>
-      <link>https://hanyutan.gitee.io/course/weizhongyu/</link>
-      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
-      
-      <guid>https://hanyutan.gitee.io/course/weizhongyu/</guid>
-      <description>http://www.sdspeople.fudan.edu.cn/zywei/DATA130008/slides/Lecture1.1.pdf Search Search Problems state space 状态空间 successor function (with actions, costs) start state 起始空间 goal test 检测是否达到目标状态 Uninformed Search 无信息搜索算法 Depth-First Search 深度优先 Breadth-First Search 广度优先 Uniform-Cost Search 代价一致 Real World Task Pac-man</description>
     </item>
     
     <item>
@@ -116,16 +179,16 @@
       <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
       
       <guid>https://hanyutan.gitee.io/build_blog/07_questions/</guid>
-      <description>1.如何在 Github Pages 中输入数学公式？ &amp;lt;script type=&amp;#34;text/javascript&amp;#34; src=&amp;#34;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&amp;#34;&amp;gt; &amp;lt;/script&amp;gt; # markdown内容 使用2个dollar符号括起来可以让公式单独显示一行$$\prod(1+1)$$</description>
+      <description>1.如何在 Github Pages 中输入数学公式？ &amp;lt;script type=&amp;#34;text/javascript&amp;#34; src=&amp;#34;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&amp;#34;&amp;gt; &amp;lt;/script&amp;gt; &amp;lt;script type=&amp;#34;text/x-mathjax-config&amp;#34;&amp;gt; MathJax.Hub.Config({ extensions: [&amp;#34;tex2jax.js&amp;#34;], jax: [&amp;#34;input/TeX&amp;#34;, &amp;#34;output/HTML-CSS&amp;#34;], tex2jax: { inlineMath: [ [&amp;#39;$&amp;#39;,&amp;#39;$&amp;#39;] ], displayMath: [ [&amp;#39;$$&amp;#39;,&amp;#39;$$&amp;#39;] ], processEscapes: true }, &amp;#34;HTML-CSS&amp;#34;: { availableFonts: [&amp;#34;TeX&amp;#34;] }, messageStyle: &amp;#34;none&amp;#34; }); &amp;lt;/script&amp;gt; # markdown内容 使用2个dollar</description>
     </item>
     
     <item>
       <title>3dmax</title>
-      <link>https://hanyutan.gitee.io/course/3dmax/</link>
+      <link>https://hanyutan.gitee.io/digital_content/3dmax/</link>
       <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
       
-      <guid>https://hanyutan.gitee.io/course/3dmax/</guid>
-      <description>Install 虚幻ue4下载 unity3d下载 maya学生版下载 注册学校为北大</description>
+      <guid>https://hanyutan.gitee.io/digital_content/3dmax/</guid>
+      <description>Install 虚幻ue4下载 unity3d下载 maya学生版下载 注册学校为北大 Unity3d Game Object &amp;ndash; 3D &amp;ndash; 添加sphere plane Materials Scenes Scripts文件夹 新建代码 add component &amp;ndash; new script 凡</description>
     </item>
     
     <item>
@@ -138,93 +201,173 @@
     </item>
     
     <item>
-      <title>Spark</title>
-      <link>https://hanyutan.gitee.io/course/spark/</link>
+      <title>SMPL</title>
+      <link>https://hanyutan.gitee.io/digital_content/smpl/</link>
       <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
       
-      <guid>https://hanyutan.gitee.io/course/spark/</guid>
-      <description>Introduction Spark框架概念 Spark是一款基于内存的分布式计算框架，具有简洁接口，可以快速构建上层数据分析算法。 基于内存计算，处理快 Hapdooo</description>
+      <guid>https://hanyutan.gitee.io/digital_content/smpl/</guid>
+      <description>Paper:SMPL: A Skinned Multi-Person Linear Model 代码实现：https://github.com/CalciferZh/SMPL 官方文档：http://smpl.is.tue.m</description>
     </item>
     
     <item>
-      <title>Artificial Intelligency</title>
-      <link>https://hanyutan.gitee.io/course/artificial_intelligency/</link>
-      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      <title>Data Pre-processing</title>
+      <link>https://hanyutan.gitee.io/01_course/python_cheat_sheet/data_preprocessing/</link>
+      <pubDate>Sat, 19 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://hanyutan.gitee.io/course/artificial_intelligency/</guid>
-      <description>数学基础：线性代数+概率统计 Bayesian 人工神经网络（MLB BP RNN） 分类-监督学习（SVM, Decision Tree） 聚类-非监督学习（KNN, K-Means） 回</description>
+      <guid>https://hanyutan.gitee.io/01_course/python_cheat_sheet/data_preprocessing/</guid>
+      <description>Miss Rate # define function to calculate missing rate def miss_rate(df): columns = df.columns n = df.shape[0] rates = [] for col in columns: rate = round(sum(df[col].isnull())/n*100,3) rates.append(rate) miss_df = pd.DataFrame({&amp;#34;Column_Name&amp;#34;:columns,&amp;#34;Miss_Rate&amp;#34;:rates}) miss_df = miss_df[miss_df[&amp;#34;Miss_Rate&amp;#34;]&amp;gt;0] miss_df = miss_df.sort_values(by=&amp;#34;Miss_Rate&amp;#34;,ascending=False) return(miss_df) # fill missing value df.fillna(&amp;#34;Unknown&amp;#34;,inplace=True) scaling variables from sklearn import preprocessing for col in df.columns: df[col] = preprocessing.scale(df[col]) Split dataset from sklearn.model_selection import train_test_split X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.</description>
     </item>
     
     <item>
-      <title>Financial Risk Management</title>
-      <link>https://hanyutan.gitee.io/course/financial_risk_management/</link>
+      <title>Nonsense Output</title>
+      <link>https://hanyutan.gitee.io/04_reading/nonsense_output/</link>
+      <pubDate>Mon, 30 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/04_reading/nonsense_output/</guid>
+      <description>记名字的能力 2019/10/02 “名字不重要，名字本身只是一种代称而已”。我是蛮认同这句话的，但或许只是为自己记不住名字而辩解。 昨天晚上我听到电视剧里一位女演</description>
+    </item>
+    
+    <item>
+      <title>Wisdom From Others</title>
+      <link>https://hanyutan.gitee.io/04_reading/wisdom_from_others/</link>
+      <pubDate>Mon, 30 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/04_reading/wisdom_from_others/</guid>
+      <description>如何做到真正的自由？ 康德曾说“自由不是你想做什么就做什么，那是兽性。自由，是你不想做什么的时候你可以不做，这是理性。” 表面上想做什么就能去做</description>
+    </item>
+    
+    <item>
+      <title>Julia Cheat-Sheet</title>
+      <link>https://hanyutan.gitee.io/01_course/julia_cheat_sheet/</link>
+      <pubDate>Tue, 17 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/01_course/julia_cheat_sheet/</guid>
+      <description>Julia Julia introduction 注意按照教程安装完成后，需要在Atom-Settings-Packages-Julia Client-Julia Path中修改Julia安装位置，例如D:/J</description>
+    </item>
+    
+    <item>
+      <title>Latex</title>
+      <link>https://hanyutan.gitee.io/01_course/latex/</link>
       <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
       
-      <guid>https://hanyutan.gitee.io/course/financial_risk_management/</guid>
-      <description>10.31期中考</description>
+      <guid>https://hanyutan.gitee.io/01_course/latex/</guid>
+      <description>用beamer做ppt？ Install TexLive 清华开源镜像下载地址 下载最新的.iso文件，进入DVD驱动器后双击install-tl-advanced.bat</description>
     </item>
     
     <item>
       <title>Mathematical Statistics</title>
-      <link>https://hanyutan.gitee.io/course/mathematical_statistics/</link>
+      <link>https://hanyutan.gitee.io/01_course/mathematical_statistics/</link>
       <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
       
-      <guid>https://hanyutan.gitee.io/course/mathematical_statistics/</guid>
+      <guid>https://hanyutan.gitee.io/01_course/mathematical_statistics/</guid>
       <description>梁汉营 hyliang@tongji.edu.cn</description>
     </item>
     
     <item>
       <title>Statistic Software</title>
-      <link>https://hanyutan.gitee.io/course/statistic_software/</link>
+      <link>https://hanyutan.gitee.io/01_course/statistic_software/</link>
       <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
       
-      <guid>https://hanyutan.gitee.io/course/statistic_software/</guid>
+      <guid>https://hanyutan.gitee.io/01_course/statistic_software/</guid>
       <description>张云新 xyz@fudan.edu.cn 考核方式：平时成绩20%，课程报告成绩40%，期末报告与程序40%。没有考试。 常用统计软件：SAS，SPSS，Eviews，Gaus</description>
     </item>
     
     <item>
-      <title>Chapter 2-3 (weight: 10)</title>
-      <link>https://hanyutan.gitee.io/chapter2/3/</link>
+      <title>Wei Zhongyu</title>
+      <link>https://hanyutan.gitee.io/01_course/weizhongyu/</link>
       <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
       
-      <guid>https://hanyutan.gitee.io/chapter2/3/</guid>
-      <description>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</description>
+      <guid>https://hanyutan.gitee.io/01_course/weizhongyu/</guid>
+      <description>http://www.sdspeople.fudan.edu.cn/zywei/DATA130008/slides/Lecture1.1.pdf Search Search Problems state space 状态空间 successor function (with actions, costs) start state 起始空间 goal test 检测是否达到目标状态 Uninformed Search 无信息搜索算法 Depth-First Search 深度优先 Breadth-First Search 广度优先 Uniform-Cost Search 代价一致 Real World Task Pac-man</description>
+    </item>
+    
+    <item>
+      <title>Random Forest</title>
+      <link>https://hanyutan.gitee.io/02_big_data/machine_learning/random_forest/</link>
+      <pubDate>Tue, 22 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/02_big_data/machine_learning/random_forest/</guid>
+      <description>理论部分 还会输出变量的重要性 用OOB(out of bag)来估计误差和变量的重要性 训练tree的每次split时只考虑m=sqrt(p)个变量 Common</description>
+    </item>
+    
+    <item>
+      <title>Bagging</title>
+      <link>https://hanyutan.gitee.io/02_big_data/machine_learning/bagging/</link>
+      <pubDate>Sat, 19 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/02_big_data/machine_learning/bagging/</guid>
+      <description>理论部分 Bootstrap 每次从样本里有放回地抽出N个（与原数据量相同），平均有63.2%的原数据会进入样本，(1-1/N)^N -&amp;gt; 1/e -&amp;gt; 0.368 bootstrap抽</description>
+    </item>
+    
+    <item>
+      <title>Linear Regression</title>
+      <link>https://hanyutan.gitee.io/02_big_data/machine_learning/linear_regression/</link>
+      <pubDate>Sat, 19 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/02_big_data/machine_learning/linear_regression/</guid>
+      <description>理论部分 检查y的正态分布，右偏进行log变换 注意y与x的线性性，进行适当变换 log sqrt ^(1&amp;frasl;3) x之间的多重共线性 考虑交互项 代码部分 # Train import statsmodels.api as sm X = sm.add_constant(X_train) # 添</description>
+    </item>
+    
+    <item>
+      <title>Logistic Regression</title>
+      <link>https://hanyutan.gitee.io/02_big_data/machine_learning/logistic_regression/</link>
+      <pubDate>Sat, 19 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/02_big_data/machine_learning/logistic_regression/</guid>
+      <description>理论部分 cutoff的选择 代码部分 # Train from sklearn.linear_model import LogisticRegression model = LogisticRegression().fit(X_train,y_train) # Coefficient beta = model.coef_.ravel() print(&amp;#34;beta coefficient:&amp;#34;,np.round(beta,3)) # Prediction y_pred = model.predict(X_test) from sklearn.metrics import accuracy_score print(&amp;#34;Test set accuracy score: {:.5f}&amp;#34;.format(accuracy_score(y_pred, y_test))) # precision、recall、f1-s</description>
+    </item>
+    
+    <item>
+      <title>PCA</title>
+      <link>https://hanyutan.gitee.io/02_big_data/machine_learning/pca/</link>
+      <pubDate>Sat, 19 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/02_big_data/machine_learning/pca/</guid>
+      <description>理论部分 代码部分 # scaling variables from sklearn import preprocessing for col in df.columns: df[col] = preprocessing.scale(df[col]) # Fit a PCA model from sklearn.preprocessing import Imputer from sklearn.decomposition import PCA p = 10 # 主成分数量 model = PCA(n_components=p) model.fit(df) lambda = model.explained_variance_ratio_ # 贡献率 print(&amp;#34;Explained variance ratio of principal components:\n&amp;#34;,lambda) # Report PVE and CVE plots cve = np.cumsum(lambda)</description>
+    </item>
+    
+    <item>
+      <title>Train &amp; Test</title>
+      <link>https://hanyutan.gitee.io/02_big_data/machine_learning/train_test/</link>
+      <pubDate>Sat, 19 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/02_big_data/machine_learning/train_test/</guid>
+      <description>理论部分 代码部分 # split dataset from sklearn.model_selection import train_test_split X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=123) print(&amp;#34;Train size: &amp;#34;+str(X_train.shape[0])+&amp;#34;, Test size: &amp;#34;+str(X_test.shape[0])) # scaling variables from sklearn import preprocessing for col in df.columns: df[col] = preprocessing.scale(df[col])</description>
+    </item>
+    
+    <item>
+      <title>Clustering</title>
+      <link>https://hanyutan.gitee.io/02_big_data/machine_learning/clustering/</link>
+      <pubDate>Fri, 11 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/02_big_data/machine_learning/clustering/</guid>
+      <description>理论部分 常用的距离计算方法： 计算方法 公式 曼哈顿距离($L_1$范数) $d(X,Y)=\sum _{i=1}^n\vert x_i-y_i\vert $ 欧氏距离($L_2$范数) $d(X,Y)=\sqrt{ \sum _{i=1}^n(x_i-y_i)^2 }$ 明氏距离($L_p$范数) $d(X,Y)=(\sum _{i=1}^n\vert</description>
+    </item>
+    
+    <item>
+      <title>Naive Bayes</title>
+      <link>https://hanyutan.gitee.io/02_big_data/machine_learning/naive_bayes/</link>
+      <pubDate>Fri, 11 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/02_big_data/machine_learning/naive_bayes/</guid>
+      <description>理论部分 Naive Bayes decision rule is: $y = argmax{y\in \lbrace yes,no \rbrace}P(y|X) = argmax{y\in \lbrace yes,no \rbrace}P(X|y)*P(y)$, 代码部分 # sklearn from sklearn.naive_bayes import GaussianNB clf = GaussianNB() clf.fit(computer.iloc[:,0:3], computer[&amp;#34;buys_computer&amp;#34;]) print(&amp;#34;Validate my result by fitting a NB model, and the output is &amp;#34;,clf.predict([[1,2,1]]),&amp;#34;(&amp;#39;yes&amp;#39;:1,&amp;#39;no&amp;#39;:0)&amp;#34;) pyspark.mllib版本 from pyspark.sql import SparkSession from pyspark.mllib.classification import</description>
+    </item>
+    
+    <item>
+      <title>Markowitz</title>
+      <link>https://hanyutan.gitee.io/01_course/financial_risk_management/markowitz/</link>
+      <pubDate>Mon, 07 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/01_course/financial_risk_management/markowitz/</guid>
+      <description>https://breakingdownfinance.com/finance-topics/modern-portfolio-theory/markowitz-portfolio-selection/ 金融零基础小白的艰难自学之旅 10.31期中考 名词 释义 securities 证券 Breaking Down Finance Modern portfolio theory Modern portfolio theory (MPT) 证券投资组合理论 is a method for constructing a portfolio of securities Precondition: investors only care about the mean return and the standard deviation of</description>
     </item>
     
     <item>
       <title>Installation</title>
-      <link>https://hanyutan.gitee.io/big_data_analytics/installation/</link>
+      <link>https://hanyutan.gitee.io/default_post/installation/</link>
       <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
       
-      <guid>https://hanyutan.gitee.io/big_data_analytics/installation/</guid>
-      <description>Download Hugo theme If you have git installed, you can do the following at the command-line-interface within the Hugo directory:
-cd themes git clone https://github.com/thingsym/hugo-theme-techdoc.git  For more information read the Hugo documentation.
-Configure You may specify options in config.toml (or config.yaml/config.json) of your site to make use of this theme&amp;rsquo;s features.
-For an example of config.toml, see config.toml in exampleSite.
-See the Configuration documentation.
-Preview site To preview your site, run Hugo&amp;rsquo;s built-in local server.</description>
-    </item>
-    
-    <item>
-      <title>Installation</title>
-      <link>https://hanyutan.gitee.io/languages/installation/</link>
-      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
-      
-      <guid>https://hanyutan.gitee.io/languages/installation/</guid>
-      <description>Download Hugo theme If you have git installed, you can do the following at the command-line-interface within the Hugo directory:
-cd themes git clone https://github.com/thingsym/hugo-theme-techdoc.git  For more information read the Hugo documentation.
-Configure You may specify options in config.toml (or config.yaml/config.json) of your site to make use of this theme&amp;rsquo;s features.
-For an example of config.toml, see config.toml in exampleSite.
-See the Configuration documentation.
-Preview site To preview your site, run Hugo&amp;rsquo;s built-in local server.</description>
-    </item>
-    
-    <item>
-      <title>Installation</title>
-      <link>https://hanyutan.gitee.io/mathematics/installation/</link>
-      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
-      
-      <guid>https://hanyutan.gitee.io/mathematics/installation/</guid>
+      <guid>https://hanyutan.gitee.io/default_post/installation/</guid>
       <description>Download Hugo theme If you have git installed, you can do the following at the command-line-interface within the Hugo directory:
 cd themes git clone https://github.com/thingsym/hugo-theme-techdoc.git  For more information read the Hugo documentation.
 Configure You may specify options in config.toml (or config.yaml/config.json) of your site to make use of this theme&amp;rsquo;s features.
@@ -235,51 +378,49 @@ Preview site To preview your site, run Hugo&amp;rsquo;s built-in local server.</
     
     <item>
       <title>Creating a New Theme</title>
-      <link>https://hanyutan.gitee.io/post/creating-a-new-theme/</link>
+      <link>https://hanyutan.gitee.io/default_post/creating-a-new-theme/</link>
       <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://hanyutan.gitee.io/post/creating-a-new-theme/</guid>
+      <guid>https://hanyutan.gitee.io/default_post/creating-a-new-theme/</guid>
       <description>Introduction This tutorial will show you how to create a simple theme in Hugo. I assume that you are familiar with HTML, the bash command line, and that you are comfortable using Markdown to format content. I&amp;rsquo;ll explain how Hugo uses templates and how you can organize your templates to create a theme. I won&amp;rsquo;t cover using CSS to style your theme.
 We&amp;rsquo;ll start with creating a new site with a very basic template.</description>
     </item>
     
     <item>
       <title>Migrate to Hugo from Jekyll</title>
-      <link>https://hanyutan.gitee.io/post/migrate-from-jekyll/</link>
+      <link>https://hanyutan.gitee.io/default_post/migrate-from-jekyll/</link>
       <pubDate>Mon, 10 Mar 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://hanyutan.gitee.io/post/migrate-from-jekyll/</guid>
+      <guid>https://hanyutan.gitee.io/default_post/migrate-from-jekyll/</guid>
       <description>Move static content to static Jekyll has a rule that any directory not starting with _ will be copied as-is to the _site output. Hugo keeps all static content under static. You should therefore move it all there. With Jekyll, something that looked like
 ▾ &amp;lt;root&amp;gt;/ ▾ images/ logo.png  should become
 ▾ &amp;lt;root&amp;gt;/ ▾ static/ ▾ images/ logo.png  Additionally, you&amp;rsquo;ll want any files that should reside at the root (such as CNAME) to be moved to static.</description>
     </item>
     
     <item>
-      <title>Hello_world</title>
-      <link>https://hanyutan.gitee.io/posts/hello_world/</link>
-      <pubDate>Tue, 17 Oct 2017 14:00:45 +0000</pubDate>
+      <title>GAN</title>
+      <link>https://hanyutan.gitee.io/02_big_data/gan/</link>
+      <pubDate>Fri, 11 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://hanyutan.gitee.io/posts/hello_world/</guid>
-      <description>aaaaaa
-vvvv
-aaa</description>
+      <guid>https://hanyutan.gitee.io/02_big_data/gan/</guid>
+      <description>Introduction Some Useful Links: Introduction to GAN: A Gentle Introduction to Generative Adversarial Networks (GANs) link An easy introduction to GAN in Deep Learning link A Brief Introduction To GANs | GAN简介(数学解释与实现) link paper GAN — What is Generative Adversary Networks GAN? | 什么是生成式对抗网络(GAN</description>
     </item>
     
     <item>
-      <title>Chapter 2-4 (weight: 20)</title>
-      <link>https://hanyutan.gitee.io/chapter2/4/</link>
-      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      <title>Tensorflow</title>
+      <link>https://hanyutan.gitee.io/02_big_data/tensorflow/</link>
+      <pubDate>Fri, 11 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://hanyutan.gitee.io/chapter2/4/</guid>
-      <description>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</description>
+      <guid>https://hanyutan.gitee.io/02_big_data/tensorflow/</guid>
+      <description>Reference: 《Tensorflow实战》 黄文坚 唐源 电子工业出版社 Tensorflow Introduction Github网址：https://github.com/tensorflow/te</description>
     </item>
     
     <item>
       <title>Configuration</title>
-      <link>https://hanyutan.gitee.io/big_data_analytics/configuration/</link>
+      <link>https://hanyutan.gitee.io/default_post/configuration/</link>
       <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
       
-      <guid>https://hanyutan.gitee.io/big_data_analytics/configuration/</guid>
+      <guid>https://hanyutan.gitee.io/default_post/configuration/</guid>
       <description>You may specify options in config.toml (or config.yaml/config.json) of your site to make use of this theme’s features.
 For an example of config.toml, see config.toml in exampleSite.
 Params # Souce Code repository section description = &amp;quot;put your description&amp;quot; github_repository = &amp;quot;https://github.com/thingsym/hugo-theme-techdoc&amp;quot; version = &amp;quot;0.2.2&amp;quot; # Documentation repository section # documentation repository (set edit link to documentation repository) github_doc_repository = &amp;quot;https://github.com/thingsym/hugo-theme-techdoc&amp;quot; # Analytic section google_analytics_id = &amp;quot;&amp;quot; # Your Google Analytics tracking id tag_manager_container_id = &amp;quot;&amp;quot; # Your Google Tag Manager container id google_site_verification = &amp;quot;&amp;quot; # Your Google Site Verification # Theme settings section dateformat = &amp;quot;&amp;quot; # default &amp;quot;2 Jan 2006&amp;quot; # path name excluded from document menu menu_exclusion = [&amp;quot;archives&amp;quot;, &amp;quot;blog&amp;quot;, &amp;quot;entry&amp;quot;, &amp;quot;post&amp;quot;, &amp;quot;posts&amp;quot;]  description The document summary</description>
@@ -287,122 +428,101 @@ Params # Souce Code repository section description = &amp;quot;put your descript
     
     <item>
       <title>Japanese</title>
-      <link>https://hanyutan.gitee.io/languages/japanese/</link>
+      <link>https://hanyutan.gitee.io/03_interests/japanese/</link>
       <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
       
-      <guid>https://hanyutan.gitee.io/languages/japanese/</guid>
+      <guid>https://hanyutan.gitee.io/03_interests/japanese/</guid>
       <description>こんにちは！さようなら！ 教材：基础日语1 徐民敏，每天至少花30min来看。 cwwang@fudan.edu.cn win10添加日本输入法： 点击任务栏最右面的输入法图表，选择“语</description>
     </item>
     
     <item>
-      <title>Chapter 2-2 (weight: 30)</title>
-      <link>https://hanyutan.gitee.io/chapter2/2/</link>
+      <title>Binomial Trees</title>
+      <link>https://hanyutan.gitee.io/01_course/financial_risk_management/binomial_trees/</link>
+      <pubDate>Thu, 24 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/01_course/financial_risk_management/binomial_trees/</guid>
+      <description>Outline Options and options market Put-call parity Binomial model for option pricing European and American options No arbitrage argument Risk-neutral valuation or pricing Python code Derivatives: Forward 远期合约 Futures 期货 Options 期权 Swap 互换 Options and options market 期权Options：赋予buyers在未来以事先确定</description>
+    </item>
+    
+    <item>
+      <title>Hunt for Stars</title>
+      <link>https://hanyutan.gitee.io/03_interests/hunt_for_stars/</link>
+      <pubDate>Sat, 12 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/03_interests/hunt_for_stars/</guid>
+      <description>风光摄影 器材相关 主讲人的入门相机：尼康D3100 常用器材：佳能6D 1635广角 快门线 ND滤镜 大疆无人机 手电筒 相机 风光摄影建议全画幅的尺寸，5</description>
+    </item>
+    
+    <item>
+      <title>Caffe</title>
+      <link>https://hanyutan.gitee.io/02_big_data/caffe/</link>
+      <pubDate>Tue, 10 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/02_big_data/caffe/</guid>
+      <description>Caffe (Convolutional Architecture for Fast Feature Embedding) 是最流行的深度学习框架之一。 Caffe安装 网络数据层（数据输入） 网络层（线性操作） 网络结构（由多个网络层构成的网络结构） 网络参</description>
+    </item>
+    
+    <item>
+      <title>BSM Model</title>
+      <link>https://hanyutan.gitee.io/01_course/financial_risk_management/bsm_model/</link>
+      <pubDate>Thu, 24 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/01_course/financial_risk_management/bsm_model/</guid>
+      <description>Outline Brownian motions Geometric Brownian motions (GBM, modeling of stock prices) Ito&amp;rsquo;s Lemma Black-Scholes-Merton differential equation Black-Scholes pricing formula Criticism Binomial tree model是用“discrete time &amp;amp; discrete state”的随机过程来刻画股票价格，而本节中将使用“co</description>
+    </item>
+    
+    <item>
+      <title>Reinforcement Learning</title>
+      <link>https://hanyutan.gitee.io/02_big_data/reinforcement_learning/</link>
+      <pubDate>Tue, 10 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/02_big_data/reinforcement_learning/</guid>
+      <description>The correct input/output pairs are not present. The model will learn from a sequence of actions and select the action maximizing the expected sum of the future rewards. There is a discount factor that makes future rewards less valuable that current rewards.</description>
+    </item>
+    
+    <item>
+      <title>Hedging with the Greeks</title>
+      <link>https://hanyutan.gitee.io/01_course/financial_risk_management/greeks/</link>
+      <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/01_course/financial_risk_management/greeks/</guid>
+      <description>Outline Exotic options Greeks Delta hedging example with python code Hedge套期保值 Greeks敏感性指标（希腊字母）：指各种影响因素$(S, t)$的变动对于期权价格$f$的影响程度。 Greeks</description>
+    </item>
+    
+    <item>
+      <title>Exam</title>
+      <link>https://hanyutan.gitee.io/01_course/financial_risk_management/exam/</link>
+      <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/01_course/financial_risk_management/exam/</guid>
+      <description>Mid-term exam 5道大题 Question 1 计算 利用CAPM计算两个options的期望收益 $\bar{r}_i=\beta_i[\bar{r}_m-r_f]+r_f$ （已给出其他需要的参数） Question 2 推导 用BSM给cash-or-nothing o</description>
+    </item>
+    
+    <item>
+      <title>Data Mining</title>
+      <link>https://hanyutan.gitee.io/02_big_data/data_mining/</link>
+      <pubDate>Fri, 11 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/02_big_data/data_mining/</guid>
+      <description>检查Y的分布是否正态，右偏考虑log变换 数据质量 噪声Noise： 异常值Outlier：例如考察身高水平时，&amp;gt;3m和&amp;lt;1m的数据都</description>
+    </item>
+    
+    <item>
+      <title>Text Mining</title>
+      <link>https://hanyutan.gitee.io/02_big_data/text_mining/</link>
+      <pubDate>Thu, 10 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/02_big_data/text_mining/</guid>
+      <description>正则表达式 Regular Expression 正则表达式是用于处理字符串的强大工具 Metacharacter Description ^ 开头位置，[ ]内代表“非” $ 结尾位置 . 匹配任意字符（除换行符&amp;rdquo;\n&amp;rd</description>
+    </item>
+    
+    <item>
+      <title>Artificial Intelligency</title>
+      <link>https://hanyutan.gitee.io/02_big_data/artificial_intelligency/</link>
       <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
       
-      <guid>https://hanyutan.gitee.io/chapter2/2/</guid>
-      <description>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</description>
-    </item>
-    
-    <item>
-      <title>Chapter 2-1 (weight: 40)</title>
-      <link>https://hanyutan.gitee.io/chapter2/1/</link>
-      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
-      
-      <guid>https://hanyutan.gitee.io/chapter2/1/</guid>
-      <description>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</description>
-    </item>
-    
-    <item>
-      <title>Hello_world2</title>
-      <link>https://hanyutan.gitee.io/archives/hello_world2/</link>
-      <pubDate>Sun, 17 Dec 2017 14:00:45 +0000</pubDate>
-      
-      <guid>https://hanyutan.gitee.io/archives/hello_world2/</guid>
-      <description>aaaaaa
-vvvv
-aaa</description>
-    </item>
-    
-    <item>
-      <title>Hello_world2</title>
-      <link>https://hanyutan.gitee.io/blog/hello_world2/</link>
-      <pubDate>Sun, 17 Dec 2017 14:00:45 +0000</pubDate>
-      
-      <guid>https://hanyutan.gitee.io/blog/hello_world2/</guid>
-      <description>aaaaaa
-vvvv
-aaa</description>
-    </item>
-    
-    <item>
-      <title>Hello_world2</title>
-      <link>https://hanyutan.gitee.io/entry/hello_world2/</link>
-      <pubDate>Sun, 17 Dec 2017 14:00:45 +0000</pubDate>
-      
-      <guid>https://hanyutan.gitee.io/entry/hello_world2/</guid>
-      <description>aaaaaa
-vvvv
-aaa</description>
-    </item>
-    
-    <item>
-      <title>Hello_world1</title>
-      <link>https://hanyutan.gitee.io/archives/hello_world1/</link>
-      <pubDate>Fri, 17 Nov 2017 14:00:45 +0000</pubDate>
-      
-      <guid>https://hanyutan.gitee.io/archives/hello_world1/</guid>
-      <description>aaaaaa
-vvvv
-aaa</description>
-    </item>
-    
-    <item>
-      <title>Hello_world1</title>
-      <link>https://hanyutan.gitee.io/blog/hello_world1/</link>
-      <pubDate>Fri, 17 Nov 2017 14:00:45 +0000</pubDate>
-      
-      <guid>https://hanyutan.gitee.io/blog/hello_world1/</guid>
-      <description>aaaaaa
-vvvv
-aaa</description>
-    </item>
-    
-    <item>
-      <title>Hello_world1</title>
-      <link>https://hanyutan.gitee.io/entry/hello_world1/</link>
-      <pubDate>Fri, 17 Nov 2017 14:00:45 +0000</pubDate>
-      
-      <guid>https://hanyutan.gitee.io/entry/hello_world1/</guid>
-      <description>aaaaaa
-vvvv
-aaa</description>
-    </item>
-    
-    <item>
-      <title>Chapter 1-2</title>
-      <link>https://hanyutan.gitee.io/machine_learning/2/</link>
-      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
-      
-      <guid>https://hanyutan.gitee.io/machine_learning/2/</guid>
-      <description>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</description>
-    </item>
-    
-    <item>
-      <title>Chapter 1-3</title>
-      <link>https://hanyutan.gitee.io/machine_learning/3/</link>
-      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
-      
-      <guid>https://hanyutan.gitee.io/machine_learning/3/</guid>
-      <description>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</description>
-    </item>
-    
-    <item>
-      <title>Chapter 1-4</title>
-      <link>https://hanyutan.gitee.io/machine_learning/4/</link>
-      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
-      
-      <guid>https://hanyutan.gitee.io/machine_learning/4/</guid>
-      <description>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</description>
+      <guid>https://hanyutan.gitee.io/02_big_data/artificial_intelligency/</guid>
+      <description>数学基础：线性代数+概率统计 Bayesian 人工神经网络（MLB BP RNN） 分类-监督学习（SVM, Decision Tree） 聚类-非监督学习（KNN, K-Means） 回</description>
     </item>
     
     <item>
@@ -469,48 +589,6 @@ aaa</description>
     </item>
     
     <item>
-      <title>Nerual Network</title>
-      <link>https://hanyutan.gitee.io/machine_learning/1/</link>
-      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
-      
-      <guid>https://hanyutan.gitee.io/machine_learning/1/</guid>
-      <description>神经网络总以最简单的方式完成分类任务（抓住最简单的区分特征），所以要特别注意训练集与测试集覆盖的应用场景要相似。 神经网络计算GPU+CUDA</description>
-    </item>
-    
-    <item>
-      <title>Hello_world</title>
-      <link>https://hanyutan.gitee.io/archives/hello_world/</link>
-      <pubDate>Tue, 17 Oct 2017 14:00:45 +0000</pubDate>
-      
-      <guid>https://hanyutan.gitee.io/archives/hello_world/</guid>
-      <description>aaaaaa
-vvvv
-aaa</description>
-    </item>
-    
-    <item>
-      <title>Hello_world</title>
-      <link>https://hanyutan.gitee.io/blog/hello_world/</link>
-      <pubDate>Tue, 17 Oct 2017 14:00:45 +0000</pubDate>
-      
-      <guid>https://hanyutan.gitee.io/blog/hello_world/</guid>
-      <description>aaaaaa
-vvvv
-aaa</description>
-    </item>
-    
-    <item>
-      <title>Hello_world</title>
-      <link>https://hanyutan.gitee.io/entry/hello_world/</link>
-      <pubDate>Tue, 17 Oct 2017 14:00:45 +0000</pubDate>
-      
-      <guid>https://hanyutan.gitee.io/entry/hello_world/</guid>
-      <description>aaaaaa
-vvvv
-aaa</description>
-    </item>
-    
-    <item>
       <title>About Hugo</title>
       <link>https://hanyutan.gitee.io/about/</link>
       <pubDate>Wed, 09 Apr 2014 00:00:00 +0000</pubDate>
@@ -523,20 +601,20 @@ It makes use of a variety of open source projects including:
     
     <item>
       <title>(Hu)go Template Primer</title>
-      <link>https://hanyutan.gitee.io/post/goisforlovers/</link>
+      <link>https://hanyutan.gitee.io/default_post/goisforlovers/</link>
       <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://hanyutan.gitee.io/post/goisforlovers/</guid>
+      <guid>https://hanyutan.gitee.io/default_post/goisforlovers/</guid>
       <description>Hugo uses the excellent Go html/template library for its template engine. It is an extremely lightweight engine that provides a very small amount of logic. In our experience that it is just the right amount of logic to be able to create a good static website. If you have used other template systems from different languages or frameworks you will find a lot of similarities in Go templates.
 This document is a brief primer on using Go templates.</description>
     </item>
     
     <item>
       <title>Getting Started with Hugo</title>
-      <link>https://hanyutan.gitee.io/post/hugoisforlovers/</link>
+      <link>https://hanyutan.gitee.io/default_post/hugoisforlovers/</link>
       <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://hanyutan.gitee.io/post/hugoisforlovers/</guid>
+      <guid>https://hanyutan.gitee.io/default_post/hugoisforlovers/</guid>
       <description>Step 1. Install Hugo Go to Hugo releases and download the appropriate version for your OS and architecture.
 Save it somewhere specific as we will be using it in the next step.
 More complete instructions are available at Install Hugo

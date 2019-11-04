@@ -12,26 +12,21 @@
     
     
     <item>
-      <title>Functional Analysis</title>
-      <link>https://hanyutan.gitee.io/mathematics/functional_analysis/</link>
-      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      <title>Mathematical Analysis</title>
+      <link>https://hanyutan.gitee.io/mathematics/mathematical_analysis/</link>
+      <pubDate>Mon, 04 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://hanyutan.gitee.io/mathematics/functional_analysis/</guid>
-      <description>泛函分析笔记整理by刘宇扬（SJTU，统计学） 如对笔记中的内容有疑问，或者想要跟作者交流，请联系Email:lyy_stat@foxmail</description>
+      <guid>https://hanyutan.gitee.io/mathematics/mathematical_analysis/</guid>
+      <description>“数学分析助教笔记”整理by刘宇扬（SJTU，统计学） 如对笔记中的内容有疑问，或者想要跟作者交流，请联系Email:lyy_stat@fox</description>
     </item>
     
     <item>
-      <title>Installation</title>
-      <link>https://hanyutan.gitee.io/mathematics/installation/</link>
-      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
+      <title>Functional Analysis</title>
+      <link>https://hanyutan.gitee.io/mathematics/functional_analysis/</link>
+      <pubDate>Tue, 10 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://hanyutan.gitee.io/mathematics/installation/</guid>
-      <description>Download Hugo theme If you have git installed, you can do the following at the command-line-interface within the Hugo directory:
-cd themes git clone https://github.com/thingsym/hugo-theme-techdoc.git  For more information read the Hugo documentation.
-Configure You may specify options in config.toml (or config.yaml/config.json) of your site to make use of this theme&amp;rsquo;s features.
-For an example of config.toml, see config.toml in exampleSite.
-See the Configuration documentation.
-Preview site To preview your site, run Hugo&amp;rsquo;s built-in local server.</description>
+      <guid>https://hanyutan.gitee.io/mathematics/functional_analysis/</guid>
+      <description>“泛函分析笔记”整理by刘宇扬（SJTU，统计学） 如对笔记中的内容有疑问，或者想要跟作者交流，请联系Email:lyy_stat@foxma</description>
     </item>
     
   </channel>

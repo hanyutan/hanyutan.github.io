@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Machine Learning - Keep Learning</title>
+<meta name="description" content="Han Yutan">
+<meta name="generator" content="Hugo 0.58.1" />
+<link href="https://hanyutan.gitee.ioindex.xml" rel="alternate" type="application/rss+xml">
+<link rel="canonical" href="https://hanyutan.gitee.io/02_big_data/machine_learning/">
+<link rel="stylesheet" href="https://hanyutan.gitee.io/css/theme.min.css">
+<script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<link rel="stylesheet" href="https://hanyutan.gitee.io/css/chroma.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://hanyutan.gitee.io/js/functions.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js"></script>
+<script src="https://hanyutan.gitee.io/js/jquery.backtothetop/jquery.backtothetop.min.js"></script><script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$']],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    messageStyle: "none",
+    "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+</head>
+<body>
+<div class="container"><header>
+<h1>Keep Learning</h1>
+
+ <span class="version">Version 1.0</span>
+<a href="https://gitee.com/hanyutan" class="github"><i class="fab fa-github"></i></a>
+<p class="description">Han Yutan</p>
+
+</header>
+<div class="menu">
+<nav>
+<ul>
+<li><a href="/">Home</a></li>
+<li><a href="https://www.instagram.com/philoartist97/">Instagram</a></li>
+<li><a href="/default_post/goisforlovers/">(Hu)go Template Primer</a></li>
+<li><a href="/about/">About Hugo</a></li>
+<li><a href="/default_post/hugoisforlovers/">Getting Started with Hugo</a></li><li class="parent"><a href="">Tutorials<i class="fas fa-angle-right"></i></a>
+<ul class="sub-menu">
+<li class="child"><a href="/default_post/creating-a-new-theme/">Creating a New Theme</a></li>
+<li class="child"><a href="/default_post/migrate-from-jekyll/">Migrating from Jekyll</a></li>
+</ul>
+</li></ul>
+</nav>
+</div>
+<div class="content-container">
+<main><h1>Machine Learning</h1>
+
+<h1 id="introduction">Introduction</h1>
+
+<p>Reference：Machine Learning Mastery -
+<a href="https://machinelearningmastery.com/a-tour-of-machine-learning-algorithms/">A Tour of The Most Popular Machine Learning Algorithms</a></p>
+
+<p>Algorithms can be categorized by learning styles and similarity.</p>
+
+<h2 id="grouped-by-learning-style">Grouped by Learning Style</h2>
+
+<ul>
+<li>Supervised Learning: training data + known label + predictions
+
+<ul>
+<li>Regression (y is continuous) (discrepancy, k-fold cross validation)</li>
+<li>Classification (y is discretem) (confusion matrix, accuracy, AUC, information gain, F-score)</li>
+</ul></li>
+<li>Unsupervised Learning: not labeled + deduce structures
+
+<ul>
+<li>Clustering
+
+<ul>
+<li>K-Means</li>
+<li>Hierachical Clustering</li>
+</ul></li>
+<li>Dimensionality Reduction
+
+<ul>
+<li>Factor Analysis</li>
+<li>Principle Component Analysis (PCA)</li>
+</ul></li>
+<li>Association Rule Learning
+
+<ul>
+<li>Apriori Algorithm</li>
+</ul></li>
+<li>K-Nearest Neighbour (KNN)</li>
+</ul></li>
+<li>Semi-Supervised Learning: mixture of labeled and unlabelled data + learn structure &amp; predict
+
+<ul>
+<li>classification and regression</li>
+<li>make assumptions about how to model the unlabeled data</li>
+</ul></li>
+</ul>
+
+<h2 id="machine-learning-algorithms-mind-map">Machine Learning Algorithms Mind Map:</h2>
+
+<p>by <a href="https://machinelearningmastery.com/">Machine Learning Mastery</a></p>
+
+<p><img src = "./documents/MachineLearningAlgorithms.png"></p>
+
+<h2 id="grouped-by-similarity">Grouped by Similarity</h2>
+
+<ul>
+<li>Regression Algorithms
+
+<ul>
+<li>Ordinary Least Squares Regression (OLSR)</li>
+<li>Linear Regression</li>
+<li>Logistic Regression</li>
+<li>Stepwise Regression</li>
+<li>Multivariate Adaptive Regression Splines (MARS)</li>
+<li>Locally Estimated Scatterplot Smoothing (LOESS)</li>
+</ul></li>
+<li>Similarity/Instance-based Algorithms<br />
+
+<ul>
+<li>compare new data and stored data using similarity to find best match</li>
+<li>k-Nearest Neighbour (kNN)</li>
+<li>Learning Vector Quantization (LVQ)</li>
+<li>Self-Organizing Map (SOM)</li>
+<li>Locally Weighted Learning (LWL)</li>
+<li>Support Vector Machines (SVM)</li>
+</ul></li>
+
+<li><p>Feature Selection Algorithms</p>
+
+<ul>
+<li>exclude non-information or redundant variables and also reduce dimension</li>
+<li>Filter method: focuses on the relationship between a single feature and a target variable.
+It evaluates each feature (or an independent variable) before modeling and selects &ldquo;important&rdquo; variables.</li>
+<li>Wrapper method: evaluating the combinations of features&rsquo; subset (Back-foward method.)</li>
+<li>Embedded method: part of the machine learning model. Some model has built-in variable selection function such as lasso, and decision tree</li>
+</ul></li>
+
+<li><p>Regularization Algorithms</p>
+
+<ul>
+<li>penalizes models based on their comlexity, favoring simple and generalizing models;
+usually not a complete model, but rather an add-on to other models</li>
+<li>Ridge Regression</li>
+<li>Least Absolute Shrinkage and Selection Operator (LASSO)</li>
+<li>Elastic Net</li>
+<li>Least-Angle Regression (LARS)</li>
+</ul></li>
+
+<li><p>Decision Tree Algorithms</p>
+
+<ul>
+<li>Classification and Regression Tree (CART)</li>
+<li>Iterative Dichotomiser 3 (ID3)</li>
+<li>C4.5 and C5.0 (different versions of a powerful approach)</li>
+<li>Chi-squared Automatic Interaction Detection (CHAID)</li>
+<li>Decision Stump</li>
+<li>M5</li>
+<li>Conditional Decision Trees</li>
+<li>Random Forest</li>
+<li>Gradient Boosting Machines (GBM)</li>
+<li>XGBoost</li>
+</ul></li>
+
+<li><p>Bayesian Algorithms</p>
+
+<ul>
+<li>prior &amp; posterior, Bayes&rsquo; Theorem</li>
+<li>Naive Bayes</li>
+<li>Gaussion Naive Bayes</li>
+<li>Multinomial Naive Bayes</li>
+<li>Averaged One-Dependence Estimators (AODE)</li>
+<li>Bayesian Belief Network (BNN)</li>
+<li>Bayesian Network (BN)</li>
+</ul></li>
+
+<li><p>Kernel Methods</p>
+
+<ul>
+<li>maps the input data to a higher order vector space where classification or regression problems are easier to solve</li>
+<li>Support Vector Machine (SVM)</li>
+<li>Radial Basis Function (RBF)</li>
+<li>Linear Discriminate Analysis (LDA)</li>
+</ul></li>
+
+<li><p>Clustering Algorithms</p>
+
+<ul>
+<li>use the inherent structures to organize data for maximum commonality / find similar pattern</li>
+<li>k-Means</li>
+<li>k-Medians</li>
+<li>Expectation Maximisation (EM)</li>
+<li>Hierarchical Clustering</li>
+</ul></li>
+
+<li><p>Association Rule Learning Algorithms</p>
+
+<ul>
+<li>extract rules that best explain relationships, find events occur together more often than one</li>
+<li>Apriori algorithm</li>
+<li>Eclat algorithm</li>
+</ul></li>
+
+<li><p>Artificial Nerual Network Algorithms</p>
+
+<ul>
+<li>Perceptron</li>
+<li>Multilayer Perceptrons (MLP)</li>
+<li>Back-Propagation</li>
+<li>Stochastic Gradient Descent</li>
+<li>Hopfield Network</li>
+<li>Radial Basis Function Network (RBFN)</li>
+</ul></li>
+
+<li><p>Deep Learning Algorithms</p>
+
+<ul>
+<li>Convolutional Neural Network (CNN)</li>
+<li>Recurrent Neural Networks (RNNs)</li>
+<li>Long Short-Term Memory Networks (LSTMs)</li>
+<li>Stacked Auto-Encoders</li>
+<li>Restricted Boltzmann Machine (RBN)</li>
+<li>Deep Boltzmann Machine (DBM)</li>
+<li>Deep Belief Networks (DBN)</li>
+</ul></li>
+
+<li><p>Dimensionality Reduction Algorithms</p>
+
+<ul>
+<li>seek inherent structure, summarize or describe data using less information (visualization &amp; continually used in supervised learning)</li>
+<li>Principle Component Analysis (PCA)</li>
+<li>Principle Component Regression (PCR)</li>
+<li>Partial Least Squares Regression (PLSR)</li>
+<li>Sammon Mapping</li>
+<li>Multidimensional Scaling (MDS)</li>
+<li>Projection Pursuit</li>
+<li>Linear Discriminant Analysis (LDA)</li>
+<li>Mixture Discriminant Analysis (MDA)</li>
+<li>Quadratic Discriminant Analysis (QDA)</li>
+<li>Flexible Discriminant Analysis (FDA)</li>
+<li>Exploratory Factor Analysis (EFA)</li>
+</ul></li>
+
+<li><p>Ensemble Algorithms</p>
+
+<ul>
+<li>multiple weaker models, independently trained, combine predictions</li>
+<li>Bagging (Bootstapped Aggregation 自助法)</li>
+<li>Random Forest</li>
+<li>Boosting (XGBoost, AdaBoost)</li>
+<li>Weighted Average (Blending)</li>
+<li>Stacked Generalization (Stacking)</li>
+<li>Gradient Boosting Machines (GBM)</li>
+<li>Gradient Boosted Regression Trees (GBRT)</li>
+</ul></li>
+
+<li><p>Other Machine Learning Algorithms</p>
+
+<ul>
+<li>specialty tasks in the process of machine learning
+
+<ul>
+<li>Feature selection algorithms</li>
+<li>Algorithm accuracy evaluation</li>
+<li>Performance measures</li>
+<li>Optimization algorithms</li>
+</ul></li>
+<li>specialty subfields of machine learning
+
+<ul>
+<li>Computational intelligence (evolutionary algorithms, etc.)</li>
+<li>Computer Vision (CV)</li>
+<li>Natural Language Processing (NLP)</li>
+<li>Recommender Systems</li>
+<li>Reinforcement Learning <a href="./reinforcement_learning">G0!</a></li>
+<li>Graphical Models</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<p><img src = "./documents/Clarify.png"></p>
+
+<p><img src = "./documents/sklearn_map.png"></p>
+
+<p>逻辑回归，从概率的角度看待回归
+OLS: $\beta=(X&rsquo;X)^{-1}X&rsquo;Y$<br>
+Ridge: $\beta=(X&rsquo;X+\lambda I)^{-1}X&rsquo;Y$，
+$\vert \hat{\beta}_{RR}\vert _2^2\le \vert \hat{\beta} _{OLS}\vert _2^2$
+岭回归让beta更shrink了<br>
+Lasso: min { $\frac{1}{2}\Vert y-X\beta\Vert ^2 + \lambda \sum_i \vert \beta \vert_1$  }<br>
+$\vert\beta\vert_0=\sum_iI\lbrace\beta_i\ne0\rbrace$<br>
+$\vert\beta\vert_1=\sum_i\vert\beta_i\vert$<br>
+$\vert\beta\vert_2=\sum_i\beta_i^2$<br></p>
+
+<p>朴素贝叶斯分类器假定特征条件独立来简化运算</p>
+
+<p>决策树从上而下贪心方法进行递归构建，回归树估计出来的值永远在train_y的range之内，而线性回归i=可以在range之外。
+相比线性回归，回归树可以更好地处理非线性和其他复杂关系；但如果数据明显呈线性，那么线性回归效果更好。
+train的阶段很慢，计算量大；但是使用已训练好的模型去预测时很快。</p>
+
+<p>SVM如何选择Kernal很重要</p>
+
+<p>KNN的模型是整个数据集，k值选取很重要</p>
+
+<p>在更高维空间中，欧氏距离的意义变小，应该使用其他距离度量</p>
+
+<p>利用社交信息辅助分类：个体的邻居信息作为特征进入模型。
+可以基于带权投票的近邻分类器（weighted-vote Relational-Neighbour, wvRN）。
+迭代更新所有结点的类别属性概率值，若某结点的所有邻居都是标注结点则本身已经收敛不必迭代计算。</p>
+
+<p>深度网络：前馈网络、递归网络、自组织网络
+存在问题：依赖数据与标注，逻辑不足</p>
+
+<p>知识推理，优化决策</p>
+
+<p>AutoML自动搜索最优的网络结构和参数，元学习</p>
+
+<p>未来：（类脑）新构架，胶囊网络，即插即用模块</p>
+
+<p>The least squares regression and logistic regression are traditional statistical
+models. Both of them are highly interpretable. MARS is similar to neural
+networks and partial least squares (PLS) in the respect that they all use surrogate
+features instead of original predictors.
+They differ in how to create the surrogate features. PLS and neural networks use
+linear combinations of the original predictors as surrogate features. MARS
+creates two contrasted versions of a predictor by a truncation point. And LOESS is
+a non-parametric model, usually only used in visualization.</p>
+
+<p>The key to similarity based algorithms is to find an appropriate distance metric for your data (e.g, biology distance)</p>
+<div class="edit-meta">
+Last updated on 10 Sep 2019
+
+
+<br>
+Published on 10 Sep 2019
+<br><a href="https://gitee.com/hanyutan/hanyutan/edit/master/content/02_big_data%5cmachine_learning%5c_index.md" class="edit-page"><i class="fas fa-pen-square"></i> Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="/02_big_data/artificial_intelligency/" title="Artificial Intelligency"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - Artificial Intelligency</a>
+<a class="nav nav-next" href="/02_big_data/machine_learning/random_forest/" title="Random Forest">Next - Random Forest <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+</nav><footer><p class="powered">Powered by <a href="https://gohugo.io">Hugo</a>. Theme by <a href="https://themes.gohugo.io/hugo-theme-techdoc/">TechDoc</a>. Designed by <a href="https://github.com/thingsym/hugo-theme-techdoc">Thingsym</a>.</p>
+</footer>
+</main><div class="sidebar">
+<nav>
+<ul>
+<li class=""><a href="https://hanyutan.gitee.io">Home</a></li>
+
+<li class=""><a href="/01_course/">Course</a>
+<ul class="">
+<li class=""><a href="/01_course/r_cheat_sheet/">R Cheat-Sheet</a></li>
+<li class=""><a href="/01_course/spark/">Spark</a></li>
+<li class=""><a href="/01_course/julia_cheat_sheet/">Julia Cheat-Sheet</a></li>
+<li class=""><a href="/01_course/latex/">Latex</a></li>
+<li class=""><a href="/01_course/mathematical_statistics/">Mathematical Statistics</a></li>
+<li class=""><a href="/01_course/statistic_software/">Statistic Software</a></li>
+<li class=""><a href="/01_course/weizhongyu/">Wei Zhongyu</a></li>
+
+<li class=""><a href="/01_course/python_cheat_sheet/">Python Cheat Sheet</a>
+<ul class="">
+<li class=""><a href="/01_course/python_cheat_sheet/basic/">Basic</a></li>
+<li class=""><a href="/01_course/python_cheat_sheet/pandas/">Pandas</a></li>
+<li class=""><a href="/01_course/python_cheat_sheet/plot/">Plot</a></li>
+<li class=""><a href="/01_course/python_cheat_sheet/numpy/">Numpy</a></li>
+<li class=""><a href="/01_course/python_cheat_sheet/data_preprocessing/">Data Pre-processing</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/01_course/financial_risk_management/">Financial Risk Management</a>
+<ul class="">
+<li class=""><a href="/01_course/financial_risk_management/markowitz/">Markowitz</a></li>
+<li class=""><a href="/01_course/financial_risk_management/binomial_trees/">Binomial Trees</a></li>
+<li class=""><a href="/01_course/financial_risk_management/bsm_model/">BSM Model</a></li>
+<li class=""><a href="/01_course/financial_risk_management/greeks/">Hedging with the Greeks</a></li>
+<li class=""><a href="/01_course/financial_risk_management/exam/">Exam</a></li>
+</ul>
+  
+</li>
+</ul>
+  
+</li>
+
+<li class="parent"><a href="/02_big_data/">Big Data Analysis</a>
+<ul class="sub-menu">
+
+<li class="parent active"><a href="/02_big_data/machine_learning/">Machine Learning</a>
+<ul class="sub-menu">
+<li class=""><a href="/02_big_data/machine_learning/random_forest/">Random Forest</a></li>
+<li class=""><a href="/02_big_data/machine_learning/bagging/">Bagging</a></li>
+<li class=""><a href="/02_big_data/machine_learning/linear_regression/">Linear Regression</a></li>
+<li class=""><a href="/02_big_data/machine_learning/logistic_regression/">Logistic Regression</a></li>
+<li class=""><a href="/02_big_data/machine_learning/pca/">PCA</a></li>
+<li class=""><a href="/02_big_data/machine_learning/train_test/">Train &amp; Test</a></li>
+<li class=""><a href="/02_big_data/machine_learning/clustering/">Clustering</a></li>
+<li class=""><a href="/02_big_data/machine_learning/naive_bayes/">Naive Bayes</a></li>
+</ul>
+  
+</li>
+<li class=""><a href="/02_big_data/gan/">GAN</a></li>
+<li class=""><a href="/02_big_data/tensorflow/">Tensorflow</a></li>
+<li class=""><a href="/02_big_data/caffe/">Caffe</a></li>
+<li class=""><a href="/02_big_data/reinforcement_learning/">Reinforcement Learning</a></li>
+<li class=""><a href="/02_big_data/data_mining/">Data Mining</a></li>
+<li class=""><a href="/02_big_data/text_mining/">Text Mining</a></li>
+<li class=""><a href="/02_big_data/artificial_intelligency/">Artificial Intelligency</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/build_blog/">Build Blogs</a>
+<ul class="">
+<li class=""><a href="/build_blog/01_introduction/">Introduction</a></li>
+<li class=""><a href="/build_blog/02_preparation/">Preparation</a></li>
+<li class=""><a href="/build_blog/03_quick_start/">Quick Start</a></li>
+<li class=""><a href="/build_blog/04_git_notes/">Git Notes</a></li>
+<li class=""><a href="/build_blog/05_hugo_notes/">Hugo Notes</a></li>
+<li class=""><a href="/build_blog/06_markdown_notes/">Markdown Notes</a></li>
+<li class=""><a href="/build_blog/07_questions/">Q&amp;A</a></li>
+<li class=""><a href="/build_blog/scoop/">Scoop</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/03_interests/">Interests</a>
+<ul class="">
+<li class=""><a href="/03_interests/japanese/">Japanese</a></li>
+<li class=""><a href="/03_interests/hunt_for_stars/">Hunt for Stars</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/04_reading/">Reading</a>
+<ul class="">
+<li class=""><a href="/04_reading/reading_notes/">Reading Notes</a></li>
+<li class=""><a href="/04_reading/nonsense_output/">Nonsense Output</a></li>
+<li class=""><a href="/04_reading/wisdom_from_others/">Wisdom From Others</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/mathematics/">Mathematics</a>
+<ul class="">
+<li class=""><a href="/mathematics/mathematical_analysis/">Mathematical Analysis</a></li>
+<li class=""><a href="/mathematics/functional_analysis/">Functional Analysis</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/digital_content/">Digital Content</a>
+<ul class="">
+<li class=""><a href="/digital_content/opengl/">OpenGL</a></li>
+<li class=""><a href="/digital_content/shader/">Shader</a></li>
+<li class=""><a href="/digital_content/3dmax/">3dmax</a></li>
+<li class=""><a href="/digital_content/smpl/">SMPL</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/chapter3/">Chapter 3 (hierarchized)</a>
+<ul class="">
+<li class=""><a href="/chapter3/1/">Chapter 3-1</a></li>
+
+<li class=""><a href="/chapter3/chapter3-2/">Chapter 3-2</a>
+<ul class="">
+<li class=""><a href="/chapter3/chapter3-2/1/">Chapter 3-2-1</a></li>
+<li class=""><a href="/chapter3/chapter3-2/2/">Chapter 3-2-2</a></li>
+<li class=""><a href="/chapter3/chapter3-2/3/">Chapter 3-2-3</a></li>
+<li class=""><a href="/chapter3/chapter3-2/4/">Chapter 3-2-4</a></li>
+</ul>
+  
+</li>
+<li class=""><a href="/chapter3/3/">Chapter 3-3</a></li>
+<li class=""><a href="/chapter3/4/">Chapter 3-4</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/default_post/">Default_posts</a>
+<ul class="">
+<li class=""><a href="/default_post/installation/">Installation</a></li>
+<li class=""><a href="/default_post/creating-a-new-theme/">Creating a New Theme</a></li>
+<li class=""><a href="/default_post/migrate-from-jekyll/">Migrate to Hugo from Jekyll</a></li>
+<li class=""><a href="/default_post/configuration/">Configuration</a></li>
+<li class=""><a href="/default_post/goisforlovers/">(Hu)go Template Primer</a></li>
+<li class=""><a href="/default_post/hugoisforlovers/">Getting Started with Hugo</a></li>
+</ul>
+  
+</li>
+</ul>
+</nav>
+
+
+<div class="sidebar-footer"></div>
+</div>
+</div><a href="#" id="backtothetop-fixed" class="backtothetop"
+ data-backtothetop-duration="600"
+ data-backtothetop-easing="easeOutQuart"
+ data-backtothetop-fixed-fadeIn="1000"
+ data-backtothetop-fixed-fadeOut="1000"
+ data-backtothetop-fixed-bottom="10"
+ data-backtothetop-fixed-right="20">
+<span class="fa-layers fa-fw">
+<i class="fas fa-circle"></i>
+<i class="fas fa-arrow-circle-up"></i>
+</span></a>
+</div>
+</body>
+</html>

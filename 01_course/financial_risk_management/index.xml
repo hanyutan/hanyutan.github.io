@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Financial Risk Management on Keep Learning</title>
+    <link>https://hanyutan.gitee.io/01_course/financial_risk_management/</link>
+    <description>Recent content in Financial Risk Management on Keep Learning</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 23 Oct 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://hanyutan.gitee.io/01_course/financial_risk_management/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Markowitz</title>
+      <link>https://hanyutan.gitee.io/01_course/financial_risk_management/markowitz/</link>
+      <pubDate>Mon, 07 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/01_course/financial_risk_management/markowitz/</guid>
+      <description>https://breakingdownfinance.com/finance-topics/modern-portfolio-theory/markowitz-portfolio-selection/ 金融零基础小白的艰难自学之旅 10.31期中考 名词 释义 securities 证券 Breaking Down Finance Modern portfolio theory Modern portfolio theory (MPT) 证券投资组合理论 is a method for constructing a portfolio of securities Precondition: investors only care about the mean return and the standard deviation of</description>
+    </item>
+    
+    <item>
+      <title>Binomial Trees</title>
+      <link>https://hanyutan.gitee.io/01_course/financial_risk_management/binomial_trees/</link>
+      <pubDate>Thu, 24 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/01_course/financial_risk_management/binomial_trees/</guid>
+      <description>Outline Options and options market Put-call parity Binomial model for option pricing European and American options No arbitrage argument Risk-neutral valuation or pricing Python code Derivatives: Forward 远期合约 Futures 期货 Options 期权 Swap 互换 Options and options market 期权Options：赋予buyers在未来以事先确定</description>
+    </item>
+    
+    <item>
+      <title>BSM Model</title>
+      <link>https://hanyutan.gitee.io/01_course/financial_risk_management/bsm_model/</link>
+      <pubDate>Thu, 24 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/01_course/financial_risk_management/bsm_model/</guid>
+      <description>Outline Brownian motions Geometric Brownian motions (GBM, modeling of stock prices) Ito&amp;rsquo;s Lemma Black-Scholes-Merton differential equation Black-Scholes pricing formula Criticism Binomial tree model是用“discrete time &amp;amp; discrete state”的随机过程来刻画股票价格，而本节中将使用“co</description>
+    </item>
+    
+    <item>
+      <title>Hedging with the Greeks</title>
+      <link>https://hanyutan.gitee.io/01_course/financial_risk_management/greeks/</link>
+      <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/01_course/financial_risk_management/greeks/</guid>
+      <description>Outline Exotic options Greeks Delta hedging example with python code Hedge套期保值 Greeks敏感性指标（希腊字母）：指各种影响因素$(S, t)$的变动对于期权价格$f$的影响程度。 Greeks</description>
+    </item>
+    
+    <item>
+      <title>Exam</title>
+      <link>https://hanyutan.gitee.io/01_course/financial_risk_management/exam/</link>
+      <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/01_course/financial_risk_management/exam/</guid>
+      <description>Mid-term exam 5道大题 Question 1 计算 利用CAPM计算两个options的期望收益 $\bar{r}_i=\beta_i[\bar{r}_m-r_f]+r_f$ （已给出其他需要的参数） Question 2 推导 用BSM给cash-or-nothing o</description>
+    </item>
+    
+  </channel>
+</rss>

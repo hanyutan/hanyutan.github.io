@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Hedging with the Greeks - Keep Learning</title>
+<meta name="description" content="Han Yutan">
+<meta name="generator" content="Hugo 0.58.1" />
+<link href="https://hanyutan.gitee.ioindex.xml" rel="alternate" type="application/rss+xml">
+<link rel="canonical" href="https://hanyutan.gitee.io/01_course/financial_risk_management/greeks/">
+<link rel="stylesheet" href="https://hanyutan.gitee.io/css/theme.min.css">
+<script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<link rel="stylesheet" href="https://hanyutan.gitee.io/css/chroma.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://hanyutan.gitee.io/js/functions.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js"></script>
+<script src="https://hanyutan.gitee.io/js/jquery.backtothetop/jquery.backtothetop.min.js"></script><script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$']],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    messageStyle: "none",
+    "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+</head>
+<body>
+<div class="container"><header>
+<h1>Keep Learning</h1>
+
+ <span class="version">Version 1.0</span>
+<a href="https://gitee.com/hanyutan" class="github"><i class="fab fa-github"></i></a>
+<p class="description">Han Yutan</p>
+
+</header>
+<div class="menu">
+<nav>
+<ul>
+<li><a href="/">Home</a></li>
+<li><a href="https://www.instagram.com/philoartist97/">Instagram</a></li>
+<li><a href="/default_post/goisforlovers/">(Hu)go Template Primer</a></li>
+<li><a href="/about/">About Hugo</a></li>
+<li><a href="/default_post/hugoisforlovers/">Getting Started with Hugo</a></li><li class="parent"><a href="">Tutorials<i class="fas fa-angle-right"></i></a>
+<ul class="sub-menu">
+<li class="child"><a href="/default_post/creating-a-new-theme/">Creating a New Theme</a></li>
+<li class="child"><a href="/default_post/migrate-from-jekyll/">Migrating from Jekyll</a></li>
+</ul>
+</li></ul>
+</nav>
+</div>
+<div class="content-container">
+<main><h1>Hedging with the Greeks</h1>
+
+<h2 id="outline">Outline</h2>
+
+<ul>
+<li>Exotic options</li>
+<li>Greeks</li>
+<li>Delta hedging example with python code</li>
+</ul>
+
+<p>Hedge套期保值</p>
+
+<p>Greeks敏感性指标（希腊字母）：指各种影响因素$(S, t)$的变动对于期权价格$f$的影响程度。</p>
+
+<table>
+<thead>
+<tr>
+<th>Greeks</th>
+<th>Formula</th>
+<th>European call</th>
+<th>European put</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Delta</td>
+<td>$\Delta=\frac{\partial f}{\partial S}$</td>
+<td>$\Delta(call)=N(d_1)$，$0&lt;\Delta&lt;1$</td>
+<td>$\Delta(put)=N(d_1)-1$，$-1&lt;\Delta&lt;0$</td>
+</tr>
+
+<tr>
+<td>Gamma</td>
+<td>$\Gamma=\frac{\partial ^2f}{\partial S^2}$</td>
+<td>$\Gamma=\frac{N^{&lsquo;}(d_1)}{S\sigma\sqrt{T}}$</td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>Theta</td>
+<td>$\theta=\frac{\partial f}{\partial t}$</td>
+<td>$\theta(call)=-\frac{SN^{&lsquo;}(d_1)\sigma}{2\sqrt T}-rKe^{-rT}N(d_2)$</td>
+<td>$\theta(put)=-\frac{SN^{&lsquo;}(d_1)\sigma}{2\sqrt T}+rKe^{-rT}N(-d_2)$</td>
+</tr>
+
+<tr>
+<td>Vega</td>
+<td>$\Lambda=\frac{\partial f}{\partial \sigma}$</td>
+<td>$\Lambda=N^{&lsquo;}(d_1)S\sqrt {T}$</td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>Rho</td>
+<td>$\rho=\frac{\partial f}{\partial r}$</td>
+<td>$\rho(call)=KTe^{-rT}N(d_2)$，$\rho&gt;0$</td>
+<td>$\rho(put)=-KTe^{-rT}N(-d_2)$，$\rho&lt;0$</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Relationship:</strong> $\frac{\partial f}{\partial t}+\frac{\partial f}{\partial S}rS+\frac{1}{2}\frac{\partial ^2f}{\partial S^2}\sigma^2 S^2=rf$</p>
+
+<p>$\theta+rS\Delta+\frac{1}{2}\sigma^2S^2\Gamma=r\prod$，where $\prod$: a portfolio of derivatives on a shock</p>
+
+<p><strong>Taylor expansion:</strong> $\Delta\prod=Delta\times\Delta S+Vega\times\Delta \sigma+Theta\times\Delta t+\frac{1}{2}Gamma\times(\Delta S)^2$</p>
+
+<h2 id="exotic-options">Exotic options</h2>
+
+<p>奇异期权（exotic options）通常在场外交易（over-the-counter markets），比普通衍生品（plain vanilla products: European/American call/put）更加复杂。</p>
+
+<p><strong>Types of Exotics</strong></p>
+
+<ul>
+<li><strong>Packages</strong>打包合约：将标准化期权进行组合得到portfolio，打包使cost为0，e.g. range forward contract<img src="./documents/packages.png" alt="packages" /></li>
+<li><strong>Nonstandard American options</strong>非标准化美式期权/百慕大期权：只在期权有效期内的特定日期可以交易（美式期权为任意日期）</li>
+<li><strong>Gap options</strong>：
+
+<ul>
+<li>gap call pays $S_T-K_1$ when $S_T&gt;K_2$，BSM value=$S_0N(d_1)-K_1e^{-rT}N(d_2)$</li>
+<li>gap put pays off $K_1-S_T$ when  $S_T&lt;K_2$，BSM value=$K_1e^{-rT}N(-d_2)-S_0N(-d_1)$</li>
+<li>$d_1=\frac{ln(\frac{S_0}{K_2})+(r+\frac{\sigma^2}{2})T}{\sigma\sqrt T}$，$d_2=d_1-\sigma\sqrt T$</li>
+<li>payoff是用$K_1$来算的，积分范围是用$K_2$来算的</li>
+</ul></li>
+<li><strong>Forward start options</strong>：期权从未来的某个时刻开始生效</li>
+<li><strong>Compound options</strong>复合期权：标的物也是期权，即期权的期权（call on call, put on call, call on put, put on put），价格较低</li>
+<li><strong>Chooser options</strong>任选期权：buyer可以在有效期内的某一时点选择其为看涨or看跌，价格较高</li>
+<li><strong>Barrier options</strong>障碍期权：取决于标的物价格能否达到一定水平，payoff和整个sample path都有关，8种组合in/out+up/down+call/put
+
+<ul>
+<li>knock-in达到才生效，knock-out达到就失效</li>
+<li>up指barrier level&gt;$S_0$，down指barrier level&lt;$S_0$</li>
+</ul></li>
+<li><strong>Binary options</strong>二元期权：
+
+<ul>
+<li>cash-or-nothing: pays $Q$ if $S_T&gt;K$, else nothing, <strong>value</strong>=$e^{-rT}QN(d_2)$</li>
+<li>asset-or-nothing: pays $S_T$ if $S_T&gt;K$, else nothing, <strong>value</strong>=$S_0N(d_1)$</li>
+<li>上面两个价格均可以用BSM算出</li>
+<li>decomposition of a call option:
+
+<ul>
+<li><strong>long</strong> asset-or-nothing option</li>
+<li><strong>short</strong> cash-or-nothing option where payoff is K</li>
+<li><strong>value</strong>=$S_0N(d_1)-e^{-rT}KN(d_2)$</li>
+</ul></li>
+</ul></li>
+<li><strong>Lookback options</strong>回顾期权：特殊的欧式期权，收益取决于有效期内达到的最高(put)/最低(call)价格，价格较高。与American的区别：最优停时只有过去的信息，不知道该点是否最优</li>
+<li><strong>Asian options</strong>亚式期权：收益取决于有效期内的平均价格</li>
+<li><strong>Basket options</strong> ：整个portfolio的期权，log-normal+log-normal不再是log-normal，所以要么使用monte carlo来定价，要么用近似的方法</li>
+</ul>
+
+<h2 id="delta">Delta</h2>
+
+<p><strong>含义：</strong>$\Delta=\frac{\partial f}{\partial S}$，表示标的物价格变动对期权价格的影响程度</p>
+
+<p>$S$上升1元则$f$上升$\Delta$元，short 1单位 options 需要 buy $\Delta$单位shares来对冲</p>
+
+<p><strong>计算：</strong>European call : $c=S_0N(d_1)-Ke^{-rT}N(d_2)$，注意$d_1$和$d_2$也包含$S_0$，求导很难</p>
+
+<p>无收益资产的European call：$\Delta(call)=N(d_1)$，$0&lt;\Delta&lt;1$</p>
+
+<p>无收益资产的European put：$\Delta(put)=N(d_1)-1$，$-1&lt;\Delta&lt;0$</p>
+
+<p>对于有收益的需要乘以$e^{-qT}$，其中$q$ 为 dividend rate，若没有则$q=0$</p>
+
+<p><strong>Notes：</strong>$\Delta$也取决于用什么model来对价格建模，model换了则$\Delta$也会改变</p>
+
+<p>同一标的物的衍生证券组合：$\Delta_\prod=\Sigma_i w_i\Delta_i$，$\Delta$-mutual策略是使得portfolio的$\Delta=0$，maintain a delta neutral portfolio，标的物价格变化对portfolio的价值无影响。</p>
+
+<h2 id="gamma">Gamma</h2>
+
+<p><strong>含义：</strong>$\Gamma=\frac{\partial^2f}{\partial S^2}$，表示标的物价格变动对$\Delta$的影响程度，描述期权的凸度。</p>
+
+<p>当S远离K时，它的变动对f几乎无影响；当S在K附近时，影响最大。</p>
+
+<p><strong>计算：</strong></p>
+
+<p>无收益资产的European call&amp;put：$\Gamma=\frac{N^{&lsquo;}(d_1)}{S\sigma\sqrt{T}}$</p>
+
+<p>$\prod=-f+\frac{\partial f}{\partial S}S$ 对于$t\rightarrow t+\Delta t$有：$\Delta\prod=-\Delta f+$</p>
+
+<p>$\Gamma_\prod=\Sigma_i w_i\Gamma_i$，$\Gamma$-mutual策略是使得portfolio的$\Gamma=0$，标的物价格变化对portfolio的Delta无影响。</p>
+
+<h2 id="theta">Theta</h2>
+
+<p><strong>含义：</strong>$\theta=\frac{\partial f}{\partial t}$，表示剩余期限对期权价格的影响程度。</p>
+
+<p>单个期权的theta几乎总为负值，因为剩余期限越少，价值越少</p>
+
+<p><strong>计算：</strong></p>
+
+<p>无收益资产的European call：$\theta(call)=-\frac{SN^{&lsquo;}(d_1)\sigma}{2\sqrt T}-rKe^{-rT}N(d_2)$</p>
+
+<p>无收益资产的Europeayn put：$\theta(put)=-\frac{SN^{&lsquo;}(d_1)\sigma}{2\sqrt T}+rKe^{-rT}N(-d_2)$</p>
+
+<p>$\theta_\prod=\Sigma_i w_i\theta_i$，$\theta$-mutual策略是使得portfolio的$\theta=0$，剩余期限变化对portfolio的价值无影响。</p>
+
+<h2 id="vega">Vega</h2>
+
+<p>之前讨论的隐含前提：标的物的价格波动率为常数，而实际上其随时间变化而变化。</p>
+
+<p><strong>含义：</strong>$\Lambda=\frac{\partial f}{\partial \sigma}$，表示标的物价格的波动性变动对期权价格的影响程度。</p>
+
+<p><strong>计算：</strong></p>
+
+<p>无收益资产的European call&amp;put：$\Lambda=N^{&lsquo;}(d_1)S\sqrt {T}$</p>
+
+<p>$\Lambda_\prod=\Sigma_i w_i\Lambda_i$，$\Lambda$-mutual策略是使得portfolio的$\Lambda=0$，标的物价格的波动性变化对portfolio的价值无影响。</p>
+
+<h2 id="rho">Rho</h2>
+
+<p><strong>含义：</strong>$\rho=\frac{\partial f}{\partial r}$，表示利率变动对期权价格的影响程度。</p>
+
+<p>无收益资产的European call：$\rho(call)=KTe^{-rT}N(d_2)$，$\rho&gt;0$</p>
+
+<p>无收益资产的Europeayn put：$\rho(put)=-KTe^{-rT}N(-d_2)$，$\rho&lt;0$</p>
+
+<p>$\rho_\prod=\Sigma_i w_i\rho_i$，$\rho$-mutual策略是使得portfolio的$\rho=0$，利率变化对portfolio的价值无影响。</p>
+
+<h2 id="example-code">Example &amp; Code</h2>
+
+<p>European call</p>
+
+<p>若$S_T&gt;K$，行权 in the money，$\Delta=1$，手上有相同数量的stock，cost = 最终累计cost - 收到客户的钱$K*shares$</p>
+
+<p>若$S_T&lt;K$，不行权 out the money，$\Delta=0$，手上没有stock，cost = 最终累计cost</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="c1">## load packages</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="c1">## set parameters</span>
+<span class="n">sold</span><span class="o">=</span><span class="mi">300000</span><span class="p">;</span> <span class="n">shares</span><span class="o">=</span><span class="mi">100000</span>  <span class="c1"># option sold price &amp; option on shares</span>
+<span class="n">S0</span><span class="o">=</span><span class="mi">49</span><span class="p">;</span> <span class="n">K</span><span class="o">=</span><span class="mi">50</span><span class="p">;</span> <span class="n">r</span><span class="o">=</span><span class="mf">0.05</span><span class="p">;</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">0.2</span>
+<span class="n">T</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="mi">7</span><span class="o">/</span><span class="mi">365</span><span class="p">;</span> <span class="n">n</span><span class="o">=</span><span class="mi">20</span> <span class="c1"># T is expire time, n is number of time stage</span>
+
+<span class="c1">## BSM pricing</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
+<span class="n">d1</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">S0</span><span class="o">/</span><span class="n">K</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="n">r</span><span class="o">+</span><span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">T</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">sigma</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">T</span><span class="p">))</span>
+<span class="n">d2</span> <span class="o">=</span> <span class="n">d1</span><span class="o">-</span><span class="n">sigma</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">S0</span><span class="o">*</span><span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">d1</span><span class="p">)</span><span class="o">-</span><span class="n">K</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">r</span><span class="o">*</span><span class="n">T</span><span class="p">)</span><span class="o">*</span><span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">d2</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">K</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">r</span><span class="o">*</span><span class="n">T</span><span class="p">)</span><span class="o">*</span><span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="o">-</span><span class="n">d2</span><span class="p">)</span><span class="o">-</span><span class="n">S0</span><span class="o">*</span><span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="o">-</span><span class="n">d1</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&#34;European call option price (BSM): &#34;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="mi">3</span><span class="p">)))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&#34;European put option price (BSM): &#34;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="mi">3</span><span class="p">)))</span>
+
+<span class="c1">## construct table</span>
+<span class="c1"># known data (need input)</span>
+<span class="n">table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&#34;T&#34;</span><span class="p">:</span><span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="s2">&#34;Stock_price&#34;</span><span class="p">:[</span><span class="mi">49</span><span class="p">,</span><span class="mf">48.12</span><span class="p">,</span><span class="mf">47.37</span><span class="p">,</span><span class="mf">50.25</span><span class="p">]</span><span class="o">+</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">NaN</span><span class="p">]</span><span class="o">*</span><span class="mi">15</span><span class="o">+</span><span class="p">[</span><span class="mf">55.87</span><span class="p">,</span><span class="mf">57.25</span><span class="p">]})</span>
+<span class="c1"># calculate cost for every stage</span>
+<span class="n">table</span><span class="p">[</span><span class="s2">&#34;Delta&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s2">&#34;Stock_price&#34;</span><span class="p">]</span><span class="o">/</span><span class="n">K</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="n">r</span><span class="o">+</span><span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="s2">&#34;T&#34;</span><span class="p">])</span><span class="o">/</span><span class="n">n</span><span class="o">*</span><span class="n">T</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">sigma</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">n</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="s2">&#34;T&#34;</span><span class="p">])</span><span class="o">/</span><span class="n">n</span><span class="o">*</span><span class="n">T</span><span class="p">))),</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">table</span><span class="p">[</span><span class="s2">&#34;Shares_purchased&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">table</span><span class="p">[</span><span class="s2">&#34;Delta&#34;</span><span class="p">]</span><span class="o">-</span><span class="n">table</span><span class="p">[</span><span class="s2">&#34;Delta&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="o">*</span><span class="n">shares</span>
+<span class="n">table</span><span class="p">[</span><span class="s2">&#34;Shares_purchased&#34;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="n">table</span><span class="p">[</span><span class="s2">&#34;Delta&#34;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">shares</span>   <span class="c1"># adjust</span>
+<span class="n">table</span><span class="p">[</span><span class="s2">&#34;Cost($000)&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s2">&#34;Stock_price&#34;</span><span class="p">]</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="s2">&#34;Shares_purchased&#34;</span><span class="p">]</span><span class="o">/</span><span class="mi">1000</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">table</span><span class="p">[</span><span class="s2">&#34;Cumulative_cost($000)&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="n">table</span><span class="p">[</span><span class="s2">&#34;Cost($000)&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
+<span class="c1"># adjust precision for view</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">precision</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]):</span>
+    <span class="n">table</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">table</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="n">i</span><span class="p">],</span><span class="n">precision</span><span class="p">)</span>
+<span class="c1"># show table</span>
+<span class="n">table</span>
+
+<span class="c1">## calculate costs in delta hedging and final profit</span>
+<span class="k">if</span> <span class="n">table</span><span class="p">[</span><span class="s2">&#34;Cumulative_cost($000)&#34;</span><span class="p">][</span><span class="n">n</span><span class="p">]</span><span class="o">&gt;</span><span class="n">K</span><span class="p">:</span>
+    <span class="n">hedge_cost</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">table</span><span class="p">[</span><span class="s2">&#34;Cumulative_cost($000)&#34;</span><span class="p">])[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="mi">1000</span><span class="o">-</span><span class="n">K</span><span class="o">*</span><span class="n">shares</span>
+    <span class="n">state</span> <span class="o">=</span> <span class="s2">&#34;In the money&#34;</span>
+<span class="k">if</span> <span class="n">table</span><span class="p">[</span><span class="s2">&#34;Cumulative_cost($000)&#34;</span><span class="p">][</span><span class="n">n</span><span class="p">]</span><span class="o">&lt;</span><span class="n">K</span><span class="p">:</span>
+    <span class="n">hedge_cost</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">table</span><span class="p">[</span><span class="s2">&#34;Cumulative_cost($000)&#34;</span><span class="p">])[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="mi">1000</span>
+    <span class="n">state</span> <span class="o">=</span> <span class="s2">&#34;Out the money&#34;</span>
+<span class="n">profit</span> <span class="o">=</span> <span class="n">sold</span><span class="o">-</span><span class="n">hedge_cost</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&#34;</span><span class="si">%s</span><span class="s2">, costs in delta hedging is $%.f, profit is $%.f&#34;</span> <span class="o">%</span> <span class="p">(</span><span class="n">state</span><span class="p">,</span><span class="n">hedge_cost</span><span class="p">,</span><span class="n">profit</span><span class="p">))</span></code></pre></div><div class="edit-meta">
+Last updated on 30 Oct 2019
+
+
+<br>
+Published on 30 Oct 2019
+<br><a href="https://gitee.com/hanyutan/hanyutan/edit/master/content/01_course%5cfinancial_risk_management%5cgreeks.md" class="edit-page"><i class="fas fa-pen-square"></i> Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="/01_course/financial_risk_management/bsm_model/" title="BSM Model"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - BSM Model</a>
+<a class="nav nav-next" href="/01_course/financial_risk_management/exam/" title="Exam">Next - Exam <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+</nav><footer><p class="powered">Powered by <a href="https://gohugo.io">Hugo</a>. Theme by <a href="https://themes.gohugo.io/hugo-theme-techdoc/">TechDoc</a>. Designed by <a href="https://github.com/thingsym/hugo-theme-techdoc">Thingsym</a>.</p>
+</footer>
+</main><div class="sidebar">
+<nav>
+<ul>
+<li class=""><a href="https://hanyutan.gitee.io">Home</a></li>
+
+<li class="parent"><a href="/01_course/">Course</a>
+<ul class="sub-menu">
+<li class=""><a href="/01_course/r_cheat_sheet/">R Cheat-Sheet</a></li>
+<li class=""><a href="/01_course/spark/">Spark</a></li>
+<li class=""><a href="/01_course/julia_cheat_sheet/">Julia Cheat-Sheet</a></li>
+<li class=""><a href="/01_course/latex/">Latex</a></li>
+<li class=""><a href="/01_course/mathematical_statistics/">Mathematical Statistics</a></li>
+<li class=""><a href="/01_course/statistic_software/">Statistic Software</a></li>
+<li class=""><a href="/01_course/weizhongyu/">Wei Zhongyu</a></li>
+
+<li class=""><a href="/01_course/python_cheat_sheet/">Python Cheat Sheet</a>
+<ul class="">
+<li class=""><a href="/01_course/python_cheat_sheet/basic/">Basic</a></li>
+<li class=""><a href="/01_course/python_cheat_sheet/pandas/">Pandas</a></li>
+<li class=""><a href="/01_course/python_cheat_sheet/plot/">Plot</a></li>
+<li class=""><a href="/01_course/python_cheat_sheet/numpy/">Numpy</a></li>
+<li class=""><a href="/01_course/python_cheat_sheet/data_preprocessing/">Data Pre-processing</a></li>
+</ul>
+  
+</li>
+
+<li class="parent"><a href="/01_course/financial_risk_management/">Financial Risk Management</a>
+<ul class="sub-menu">
+<li class=""><a href="/01_course/financial_risk_management/markowitz/">Markowitz</a></li>
+<li class=""><a href="/01_course/financial_risk_management/binomial_trees/">Binomial Trees</a></li>
+<li class=""><a href="/01_course/financial_risk_management/bsm_model/">BSM Model</a></li>
+<li class="active"><a href="/01_course/financial_risk_management/greeks/">Hedging with the Greeks</a></li>
+<li class=""><a href="/01_course/financial_risk_management/exam/">Exam</a></li>
+</ul>
+  
+</li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/02_big_data/">Big Data Analysis</a>
+<ul class="">
+
+<li class=""><a href="/02_big_data/machine_learning/">Machine Learning</a>
+<ul class="">
+<li class=""><a href="/02_big_data/machine_learning/random_forest/">Random Forest</a></li>
+<li class=""><a href="/02_big_data/machine_learning/bagging/">Bagging</a></li>
+<li class=""><a href="/02_big_data/machine_learning/linear_regression/">Linear Regression</a></li>
+<li class=""><a href="/02_big_data/machine_learning/logistic_regression/">Logistic Regression</a></li>
+<li class=""><a href="/02_big_data/machine_learning/pca/">PCA</a></li>
+<li class=""><a href="/02_big_data/machine_learning/train_test/">Train &amp; Test</a></li>
+<li class=""><a href="/02_big_data/machine_learning/clustering/">Clustering</a></li>
+<li class=""><a href="/02_big_data/machine_learning/naive_bayes/">Naive Bayes</a></li>
+</ul>
+  
+</li>
+<li class=""><a href="/02_big_data/gan/">GAN</a></li>
+<li class=""><a href="/02_big_data/tensorflow/">Tensorflow</a></li>
+<li class=""><a href="/02_big_data/caffe/">Caffe</a></li>
+<li class=""><a href="/02_big_data/reinforcement_learning/">Reinforcement Learning</a></li>
+<li class=""><a href="/02_big_data/data_mining/">Data Mining</a></li>
+<li class=""><a href="/02_big_data/text_mining/">Text Mining</a></li>
+<li class=""><a href="/02_big_data/artificial_intelligency/">Artificial Intelligency</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/build_blog/">Build Blogs</a>
+<ul class="">
+<li class=""><a href="/build_blog/01_introduction/">Introduction</a></li>
+<li class=""><a href="/build_blog/02_preparation/">Preparation</a></li>
+<li class=""><a href="/build_blog/03_quick_start/">Quick Start</a></li>
+<li class=""><a href="/build_blog/04_git_notes/">Git Notes</a></li>
+<li class=""><a href="/build_blog/05_hugo_notes/">Hugo Notes</a></li>
+<li class=""><a href="/build_blog/06_markdown_notes/">Markdown Notes</a></li>
+<li class=""><a href="/build_blog/07_questions/">Q&amp;A</a></li>
+<li class=""><a href="/build_blog/scoop/">Scoop</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/03_interests/">Interests</a>
+<ul class="">
+<li class=""><a href="/03_interests/japanese/">Japanese</a></li>
+<li class=""><a href="/03_interests/hunt_for_stars/">Hunt for Stars</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/04_reading/">Reading</a>
+<ul class="">
+<li class=""><a href="/04_reading/reading_notes/">Reading Notes</a></li>
+<li class=""><a href="/04_reading/nonsense_output/">Nonsense Output</a></li>
+<li class=""><a href="/04_reading/wisdom_from_others/">Wisdom From Others</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/mathematics/">Mathematics</a>
+<ul class="">
+<li class=""><a href="/mathematics/mathematical_analysis/">Mathematical Analysis</a></li>
+<li class=""><a href="/mathematics/functional_analysis/">Functional Analysis</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/digital_content/">Digital Content</a>
+<ul class="">
+<li class=""><a href="/digital_content/opengl/">OpenGL</a></li>
+<li class=""><a href="/digital_content/shader/">Shader</a></li>
+<li class=""><a href="/digital_content/3dmax/">3dmax</a></li>
+<li class=""><a href="/digital_content/smpl/">SMPL</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/chapter3/">Chapter 3 (hierarchized)</a>
+<ul class="">
+<li class=""><a href="/chapter3/1/">Chapter 3-1</a></li>
+
+<li class=""><a href="/chapter3/chapter3-2/">Chapter 3-2</a>
+<ul class="">
+<li class=""><a href="/chapter3/chapter3-2/1/">Chapter 3-2-1</a></li>
+<li class=""><a href="/chapter3/chapter3-2/2/">Chapter 3-2-2</a></li>
+<li class=""><a href="/chapter3/chapter3-2/3/">Chapter 3-2-3</a></li>
+<li class=""><a href="/chapter3/chapter3-2/4/">Chapter 3-2-4</a></li>
+</ul>
+  
+</li>
+<li class=""><a href="/chapter3/3/">Chapter 3-3</a></li>
+<li class=""><a href="/chapter3/4/">Chapter 3-4</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/default_post/">Default_posts</a>
+<ul class="">
+<li class=""><a href="/default_post/installation/">Installation</a></li>
+<li class=""><a href="/default_post/creating-a-new-theme/">Creating a New Theme</a></li>
+<li class=""><a href="/default_post/migrate-from-jekyll/">Migrate to Hugo from Jekyll</a></li>
+<li class=""><a href="/default_post/configuration/">Configuration</a></li>
+<li class=""><a href="/default_post/goisforlovers/">(Hu)go Template Primer</a></li>
+<li class=""><a href="/default_post/hugoisforlovers/">Getting Started with Hugo</a></li>
+</ul>
+  
+</li>
+</ul>
+</nav>
+
+
+<div class="sidebar-footer"></div>
+</div>
+</div><a href="#" id="backtothetop-fixed" class="backtothetop"
+ data-backtothetop-duration="600"
+ data-backtothetop-easing="easeOutQuart"
+ data-backtothetop-fixed-fadeIn="1000"
+ data-backtothetop-fixed-fadeOut="1000"
+ data-backtothetop-fixed-bottom="10"
+ data-backtothetop-fixed-right="20">
+<span class="fa-layers fa-fw">
+<i class="fas fa-circle"></i>
+<i class="fas fa-arrow-circle-up"></i>
+</span></a>
+</div>
+</body>
+</html>

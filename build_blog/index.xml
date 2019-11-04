@@ -71,7 +71,7 @@
       <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
       
       <guid>https://hanyutan.gitee.io/build_blog/07_questions/</guid>
-      <description>1.如何在 Github Pages 中输入数学公式？ &amp;lt;script type=&amp;#34;text/javascript&amp;#34; src=&amp;#34;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&amp;#34;&amp;gt; &amp;lt;/script&amp;gt; # markdown内容 使用2个dollar符号括起来可以让公式单独显示一行$$\prod(1+1)$$</description>
+      <description>1.如何在 Github Pages 中输入数学公式？ &amp;lt;script type=&amp;#34;text/javascript&amp;#34; src=&amp;#34;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&amp;#34;&amp;gt; &amp;lt;/script&amp;gt; &amp;lt;script type=&amp;#34;text/x-mathjax-config&amp;#34;&amp;gt; MathJax.Hub.Config({ extensions: [&amp;#34;tex2jax.js&amp;#34;], jax: [&amp;#34;input/TeX&amp;#34;, &amp;#34;output/HTML-CSS&amp;#34;], tex2jax: { inlineMath: [ [&amp;#39;$&amp;#39;,&amp;#39;$&amp;#39;] ], displayMath: [ [&amp;#39;$$&amp;#39;,&amp;#39;$$&amp;#39;] ], processEscapes: true }, &amp;#34;HTML-CSS&amp;#34;: { availableFonts: [&amp;#34;TeX&amp;#34;] }, messageStyle: &amp;#34;none&amp;#34; }); &amp;lt;/script&amp;gt; # markdown内容 使用2个dollar</description>
     </item>
     
     <item>

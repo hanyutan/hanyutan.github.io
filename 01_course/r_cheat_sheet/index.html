@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>R Cheat-Sheet - Keep Learning</title>
+<meta name="description" content="Han Yutan">
+<meta name="generator" content="Hugo 0.58.1" />
+<link href="https://hanyutan.gitee.ioindex.xml" rel="alternate" type="application/rss+xml">
+<link rel="canonical" href="https://hanyutan.gitee.io/01_course/r_cheat_sheet/">
+<link rel="stylesheet" href="https://hanyutan.gitee.io/css/theme.min.css">
+<script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<link rel="stylesheet" href="https://hanyutan.gitee.io/css/chroma.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://hanyutan.gitee.io/js/functions.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js"></script>
+<script src="https://hanyutan.gitee.io/js/jquery.backtothetop/jquery.backtothetop.min.js"></script><script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$']],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    messageStyle: "none",
+    "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+</head>
+<body>
+<div class="container"><header>
+<h1>Keep Learning</h1>
+
+ <span class="version">Version 1.0</span>
+<a href="https://gitee.com/hanyutan" class="github"><i class="fab fa-github"></i></a>
+<p class="description">Han Yutan</p>
+
+</header>
+<div class="menu">
+<nav>
+<ul>
+<li><a href="/">Home</a></li>
+<li><a href="https://www.instagram.com/philoartist97/">Instagram</a></li>
+<li><a href="/default_post/goisforlovers/">(Hu)go Template Primer</a></li>
+<li><a href="/about/">About Hugo</a></li>
+<li><a href="/default_post/hugoisforlovers/">Getting Started with Hugo</a></li><li class="parent"><a href="">Tutorials<i class="fas fa-angle-right"></i></a>
+<ul class="sub-menu">
+<li class="child"><a href="/default_post/creating-a-new-theme/">Creating a New Theme</a></li>
+<li class="child"><a href="/default_post/migrate-from-jekyll/">Migrating from Jekyll</a></li>
+</ul>
+</li></ul>
+</nav>
+</div>
+<div class="content-container">
+<main><h1>R Cheat-Sheet</h1>
+
+<h2 id="r-markdown">R Markdown</h2>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="c1"># Options of rmarkdown code block</span>
+include<span class="o">=</span><span class="kc">FALSE</span>        <span class="c1"># not show code&amp;result</span>
+warning <span class="o">=</span> <span class="kc">FALSE</span>      <span class="c1"># not show waring</span>
+fig.align<span class="o">=</span><span class="s">&#39;center&#39;</span>   <span class="c1"># pic center</span>
+fig.width<span class="o">=</span><span class="m">7</span>          <span class="c1"># pic width</span>
+fig.height<span class="o">=</span><span class="m">3.5</span>       <span class="c1"># pic height</span></code></pre></div>
+<h3 id="preparations">Preparations</h3>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="c1"># Clear the Environment</span>
+<span class="kp">rm</span><span class="p">(</span><span class="kt">list</span><span class="o">=</span><span class="kp">ls</span><span class="p">())</span>
+
+<span class="c1"># Working Directory</span>
+<span class="kp">getwd</span><span class="p">()</span>        <span class="c1"># find current wd</span>
+<span class="kp">setwd</span><span class="p">(</span><span class="s">&#34;path&#34;</span><span class="p">)</span>  <span class="c1"># change current wd</span></code></pre></div>
+<h3 id="packages">Packages</h3>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="c1"># install packages</span>
+install.packages<span class="p">(</span><span class="s">&#34;&lt;package name&gt;&#34;</span><span class="p">)</span>
+
+<span class="c1"># Load packages</span>
+<span class="kn">library</span><span class="p">(</span>dplyr<span class="p">)</span>
+<span class="kn">library</span><span class="p">(</span>ggplot2<span class="p">)</span>
+<span class="kn">library</span><span class="p">(</span>gridExtra<span class="p">)</span>             <span class="c1"># grid.arrange() Arrange multiple grobs on a page</span>
+
+<span class="c1"># use a particular function from a package</span>
+<span class="o">&lt;</span>package<span class="o">&gt;::&lt;</span><span class="kr">function</span><span class="o">&gt;</span></code></pre></div>
+<h3 id="load-datasets">Load datasets</h3>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="c1"># Load datasets</span>
+data<span class="p">(</span><span class="o">&lt;</span>dataset<span class="o">&gt;</span><span class="p">)</span>
+<span class="o">&lt;</span>dataset<span class="o">&gt;</span> <span class="o">=</span> <span class="o">&lt;</span>package<span class="o">&gt;::&lt;</span>dataset<span class="o">&gt;</span>
+dataset <span class="o">&lt;-</span> read.df<span class="p">(</span><span class="kn">source</span> <span class="o">=</span> <span class="s">&#34;csv&#34;</span><span class="p">,</span> path <span class="o">=</span> <span class="s">&#34;&lt;path&gt;/&lt;dataset&gt;.csv&#34;</span><span class="p">,</span> header<span class="o">=</span><span class="s">&#34;true&#34;</span><span class="p">,</span> inferSchema <span class="o">=</span> <span class="s">&#34;true&#34;</span><span class="p">)</span>
+<span class="c1"># read.df有何区别？？？</span>
+
+<span class="c1"># TXT files</span>
+df <span class="o">=</span> read.table<span class="p">(</span><span class="s">&#34;&lt;path&gt;/&lt;dataset&gt;.txt&#34;</span><span class="p">)</span>
+write.table<span class="p">(</span>df<span class="p">,</span> <span class="s">&#34;&lt;path&gt;/&lt;dataset&gt;.txt&#34;</span><span class="p">)</span>
+
+<span class="c1"># CSV files</span>
+df <span class="o">=</span> read.csv<span class="p">(</span><span class="s">&#34;&lt;path&gt;/&lt;dataset&gt;.csv&#34;</span><span class="p">,</span> header <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
+write.csv<span class="p">(</span>df<span class="p">,</span> <span class="s">&#34;&lt;path&gt;/&lt;dataset&gt;.csv&#34;</span><span class="p">)</span>
+
+<span class="c1"># R data</span>
+<span class="kp">load</span><span class="p">(</span><span class="s">&#34;file.RData&#34;</span><span class="p">)</span>
+<span class="kp">save</span><span class="p">(</span>df<span class="p">,</span> file<span class="o">=</span><span class="s">&#39;file.RData&#39;</span><span class="p">)</span></code></pre></div>
+<h3 id="data-description">Data description</h3>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="c1"># Data description</span>
+<span class="kp">head</span><span class="p">(</span><span class="o">&lt;</span>dataset<span class="o">&gt;</span><span class="p">)</span>                <span class="c1"># show first several lines</span>
+<span class="kp">dim</span><span class="p">(</span><span class="o">&lt;</span>dataset<span class="o">&gt;</span><span class="p">)</span>                 <span class="c1"># rownum &amp; colnum</span>
+<span class="kp">colnames</span><span class="p">(</span><span class="o">&lt;</span>dataset<span class="o">&gt;</span><span class="p">)</span>            <span class="c1"># variables names</span>
+str<span class="p">(</span><span class="o">&lt;</span>dataset<span class="o">&gt;</span><span class="p">)</span>                 <span class="c1"># variables types</span>
+<span class="kp">summary</span><span class="p">(</span><span class="o">&lt;</span>dataset<span class="o">&gt;</span><span class="p">)</span>             <span class="c1"># descriptive statistics</span>
+<span class="kp">by</span><span class="p">(</span><span class="o">&lt;</span>var1<span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span>var2<span class="o">&gt;</span><span class="p">,</span> <span class="kp">summary</span><span class="p">)</span>    <span class="c1"># summary by group</span>
+help<span class="p">(</span><span class="o">&lt;</span>dataset<span class="o">&gt;</span><span class="p">)</span>                <span class="c1"># variables description</span></code></pre></div>
+<h3 id="dplyr-manipulation">Dplyr manipulation</h3>
+
+<ul>
+<li>select()/SELECT: 选择，列筛选</li>
+<li>groupby()/GROUP BY: 分组，可多个变量</li>
+<li>filter()/WHERE: 过滤，行条件筛选
+
+<ul>
+<li>==, %in% c()</li>
+</ul></li>
+<li>mutate(): 生成新列补在最后
+
+<ul>
+<li>+, *, log</li>
+</ul></li>
+<li>summarise(): 汇总统计，多条数据压缩成一个
+
+<ul>
+<li>通常结合gruop_by()使用, <var_name> = fun(<var>)</li>
+<li>sum, mean, median, min, max, quantile, sd, IQR, mad</li>
+<li>first, last, nth, any, all, as.logical, (na.rm=TRUE)</li>
+<li>n(), n_distinct(<var>), sample_n(number), sample_frac(fraction)</li>
+<li>left_join, right_join, (by=c(&ldquo;left_id&rdquo;,&ldquo;right_id&rdquo;))</li>
+</ul></li>
+<li>arrange()/ORDER: 排序，可多个变量
+
+<ul>
+<li>desc()</li>
+</ul></li>
+<li>collect(): 收集，把结果收集成r dataframe，not spark dataframe</li>
+</ul>
+
+<p>%&gt;%操作符，pipeline，x%&gt;%f(y)等价于f(x,y)</p>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="c1"># 筛选最大的30个</span>
+dataset <span class="o">%&gt;%</span> arrange<span class="p">(</span>desc<span class="p">(</span><span class="o">&lt;</span>var<span class="o">&gt;</span><span class="p">))</span> <span class="o">%&gt;%</span> slice<span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">30</span><span class="p">)</span> <span class="c1"># 不适合tbl</span>
+dataset <span class="o">%&gt;%</span> filter<span class="p">(</span>dense_rank<span class="p">(</span>desc<span class="p">(</span><span class="o">&lt;</span>var<span class="o">&gt;</span><span class="p">))</span><span class="o">&lt;=</span> <span class="m">30</span><span class="p">)</span>
+dataset <span class="o">%&gt;%</span> filter<span class="p">(</span>row_number<span class="p">()</span> <span class="o">&lt;=</span> <span class="m">30</span><span class="p">)</span> 
+<span class="c1"># 提示：使用sum(a)+sum(b), 而不要sum(a+b), 后者更多缺失值</span></code></pre></div>
+<h3 id="data-exploring">Data exploring</h3>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="c1">### Data exploring</span>
+
+<span class="c1">## 1. continuous</span>
+<span class="c1"># boxplot</span>
+boxplot<span class="p">(</span><span class="o">&lt;</span>var<span class="o">&gt;</span><span class="p">)</span>
+ggplot<span class="p">(</span>data <span class="o">=</span> <span class="o">&lt;</span>dataset<span class="o">&gt;</span><span class="p">,</span> mapping <span class="o">=</span> aes<span class="p">(</span>y<span class="o">=&lt;</span>var<span class="o">&gt;</span><span class="p">),</span> na.rm<span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span> <span class="o">+</span> geom_boxplot<span class="p">()</span>
+<span class="c1"># histogram</span>
+ggplot<span class="p">(</span>data <span class="o">=</span> <span class="o">&lt;</span>dataset<span class="o">&gt;</span><span class="p">,</span> mapping <span class="o">=</span> aes<span class="p">(</span>y<span class="o">=&lt;</span>var<span class="o">&gt;</span><span class="p">),</span> na.rm<span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span> <span class="o">+</span> geom_histogram<span class="p">()</span>
+
+<span class="c1">## 2. discrete</span>
+
+<span class="c1">## 3. continuous vs. continuous</span>
+<span class="c1"># scatter</span>
+ggplot<span class="p">(</span>data <span class="o">=</span> <span class="o">&lt;</span>dataset<span class="o">&gt;</span><span class="p">,</span> mapping <span class="o">=</span> aes<span class="p">(</span>x<span class="o">=&lt;</span>var<span class="o">&gt;</span><span class="p">,</span> y<span class="o">=&lt;</span>var<span class="o">&gt;</span><span class="p">),</span> na.rm<span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span> <span class="o">+</span> geom_point<span class="p">()</span>
+
+<span class="c1">## 3.1 correlation coefficient &amp; heatmap</span>
+<span class="c1"># coefficient</span>
+corr_mat <span class="o">&lt;-</span> <span class="kp">round</span><span class="p">(</span>cor<span class="p">(</span><span class="o">&lt;</span>dataset_only_continuous<span class="o">&gt;</span><span class="p">),</span><span class="m">3</span><span class="p">)</span>
+<span class="c1"># heatmap</span>
+corr_mat<span class="p">[</span><span class="kp">lower.tri</span><span class="p">(</span>corr_mat<span class="p">)]</span><span class="o">&lt;-</span> <span class="kc">NA</span>                  <span class="c1"># lower.tri() Lower Triangular Part of a Matrix</span>
+corr_mat <span class="o">&lt;-</span> melt<span class="p">(</span>corr_mat<span class="p">,</span>na.rm <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>             <span class="c1"># melt() Convert an object into a molten data frame</span>
+ggplot<span class="p">(</span>corr_mat<span class="p">,</span> aes<span class="p">(</span>Var2<span class="p">,</span> Var1<span class="p">,</span> fill <span class="o">=</span> value<span class="p">))</span><span class="o">+</span>
+    geom_tile<span class="p">(</span>color <span class="o">=</span> <span class="s">&#34;white&#34;</span><span class="p">)</span><span class="o">+</span>
+    scale_fill_gradient2<span class="p">(</span>low <span class="o">=</span> <span class="s">&#34;blue&#34;</span><span class="p">,</span> high <span class="o">=</span> <span class="s">&#34;red&#34;</span><span class="p">,</span> mid <span class="o">=</span> <span class="s">&#34;white&#34;</span><span class="p">,</span> midpoint <span class="o">=</span> <span class="m">0</span><span class="p">,</span> 
+	                     limit <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="m">-1</span><span class="p">,</span><span class="m">1</span><span class="p">),</span> space <span class="o">=</span> <span class="s">&#34;Lab&#34;</span><span class="p">,</span> name<span class="o">=</span><span class="s">&#34;Pearson\nCorrelation&#34;</span><span class="p">)</span> <span class="o">+</span>
+    theme_minimal<span class="p">()</span><span class="o">+</span>   <span class="c1"># minimal theme</span>
+    theme<span class="p">(</span>axis.text.x <span class="o">=</span> element_text<span class="p">(</span>angle <span class="o">=</span> <span class="m">45</span><span class="p">,</span> vjust <span class="o">=</span> <span class="m">1</span><span class="p">,</span> size <span class="o">=</span> <span class="m">12</span><span class="p">,</span> hjust <span class="o">=</span> <span class="m">1</span><span class="p">))</span><span class="o">+</span>
+    coord_fixed<span class="p">()</span> <span class="o">+</span> 
+    geom_text<span class="p">(</span>aes<span class="p">(</span>Var2<span class="p">,</span> Var1<span class="p">,</span> label <span class="o">=</span> value<span class="p">),</span> color <span class="o">=</span> <span class="s">&#34;black&#34;</span><span class="p">,</span> size <span class="o">=</span> <span class="m">4</span><span class="p">)</span><span class="o">+</span>
+    theme<span class="p">(</span>
+    axis.title.x <span class="o">=</span> element_blank<span class="p">(),</span>
+    axis.title.y <span class="o">=</span> element_blank<span class="p">()</span>
+    <span class="p">)</span>
+
+<span class="c1">## 4. continuous vs. discrete</span>
+<span class="c1"># boxplot</span>
+ggplot<span class="p">(</span>data <span class="o">=</span> <span class="o">&lt;</span>dataset<span class="o">&gt;</span><span class="p">,</span> mapping <span class="o">=</span> aes<span class="p">(</span>x<span class="o">=&lt;</span>dis_var<span class="o">&gt;</span><span class="p">,</span> y<span class="o">=&lt;</span>con_var<span class="o">&gt;</span><span class="p">),</span> na.rm<span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span> <span class="o">+</span> 
+    geom_boxplot<span class="p">(</span>varwidth <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
+<span class="c1"># histogram</span>
+ggplot<span class="p">(</span>data <span class="o">=</span> <span class="o">&lt;</span>dataset<span class="o">&gt;</span><span class="p">,</span> mapping <span class="o">=</span> aes<span class="p">(</span>x<span class="o">=&lt;</span>con_var<span class="o">&gt;</span><span class="p">),</span> na.rm<span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span><span class="o">+</span>
+    geom_histogram<span class="p">(</span>aes<span class="p">(</span>fill<span class="o">=&lt;</span>dis_var<span class="o">&gt;</span><span class="p">),</span>alpha<span class="o">=</span><span class="m">0.3</span><span class="p">,</span>colour<span class="o">=</span><span class="s">&#34;black&#34;</span><span class="p">,</span>binwidth<span class="o">=</span><span class="m">50</span><span class="p">)</span><span class="o">+</span>
+    stat_density<span class="p">(</span>geom<span class="o">=</span><span class="s">&#34;line&#34;</span><span class="p">,</span>position<span class="o">=</span><span class="s">&#34;identity&#34;</span><span class="p">,</span>size<span class="o">=</span><span class="m">1</span><span class="p">,</span>aes<span class="p">(</span>colour<span class="o">=&lt;</span>dis_var<span class="o">&gt;</span><span class="p">))</span><span class="o">+</span>
+    facet_wrap<span class="p">(</span><span class="o">~&lt;</span>dis_var<span class="o">&gt;</span><span class="p">,</span>nrow <span class="o">=</span> <span class="m">2</span><span class="p">)</span>   <span class="c1"># split up by &lt;dis_var&gt;</span>
+<span class="c1"># mean-std</span>
+ggplot<span class="p">(</span><span class="o">&lt;</span>dataset<span class="o">&gt;</span><span class="p">,</span>aes<span class="p">(</span>x<span class="o">=&lt;</span>discrete<span class="o">&gt;</span><span class="p">,</span>y<span class="o">=&lt;</span>continuous_mean<span class="o">&gt;</span><span class="p">,</span>color<span class="o">=&lt;</span><span class="kp">class</span><span class="o">&gt;</span><span class="p">))</span><span class="o">+</span>
+	geom_line<span class="p">(</span>size<span class="o">=</span><span class="m">1.2</span><span class="p">)</span><span class="o">+</span>
+	geom_errorbar<span class="p">(</span>aes<span class="p">(</span>ymin<span class="o">=&lt;</span>continuous_mean<span class="o">&gt;-&lt;</span>continuous_sd<span class="o">&gt;</span><span class="p">,</span>
+	                  ymax<span class="o">=&lt;</span>continuous_mean<span class="o">&gt;+&lt;</span>continuous_sd<span class="o">&gt;</span><span class="p">),</span> width<span class="o">=</span><span class="m">0.05</span><span class="p">)</span><span class="o">+</span>
+	geom_text<span class="p">(</span>aes<span class="p">(</span>label<span class="o">=</span>count<span class="p">),</span>vjust<span class="o">=</span><span class="m">-0.2</span><span class="p">,</span>hjust<span class="o">=</span><span class="m">1.2</span><span class="p">,</span>color<span class="o">=</span><span class="s">&#34;black&#34;</span><span class="p">)</span><span class="o">+</span>
+	theme<span class="p">(</span>legend.position<span class="o">=</span><span class="s">&#34;top&#34;</span><span class="p">)</span>
+
+<span class="c1">## 5. continuous + continuous + discrete</span>
+ggplot<span class="p">(</span>data<span class="o">=&lt;</span>dataset<span class="o">&gt;</span><span class="p">,</span> mapping<span class="o">=</span>aes<span class="p">(</span>x<span class="o">=&lt;</span>con_var1<span class="o">&gt;</span><span class="p">,</span> y<span class="o">=&lt;</span>con_var2<span class="o">&gt;</span><span class="p">,</span>color<span class="o">=&lt;</span>dis_var<span class="o">&gt;</span><span class="p">))</span>
+    <span class="o">+</span> geom_point<span class="p">()</span>                       <span class="c1"># together</span>
+	<span class="o">+</span> facet_grid<span class="p">(</span><span class="o">~&lt;</span>dis_var<span class="o">&gt;</span><span class="p">,</span> ncol<span class="o">=</span><span class="m">2</span><span class="p">)</span>     <span class="c1"># split</span>
+
+<span class="c1">## 6. basic补充</span>
+xlab<span class="o">=</span><span class="p">,</span> ylab<span class="o">=</span><span class="p">,</span> title<span class="o">=</span>
+
+<span class="c1">## 7. ggplot2补充 ???</span>
+<span class="o">+</span> coord_cartesian<span class="p">(</span>xlim<span class="o">=</span><span class="kt">c</span><span class="p">(,),</span>ylim<span class="o">=</span><span class="kt">c</span><span class="p">())</span>
+<span class="o">+</span> labs<span class="p">(</span>title<span class="o">=</span><span class="s">&#34;line1 \n line2&#34;</span><span class="p">,</span> x<span class="o">=</span><span class="s">&#34;&#34;</span><span class="p">,</span> y <span class="o">=</span> <span class="s">&#34;&#34;</span><span class="p">)</span>
+<span class="o">+</span> theme<span class="p">(</span>plot.title <span class="o">=</span> element_text<span class="p">(</span>hjust <span class="o">=</span> <span class="m">0.5</span><span class="p">))</span>
+<span class="o">+</span> geom_smooth<span class="p">(</span>color<span class="o">=</span><span class="p">,</span>size<span class="o">=</span><span class="p">,</span>method<span class="o">=</span><span class="p">,)</span>
+<span class="s">&#34;&#34;&#34;
+</span><span class="s">&#39;method&#39; accepts either a character vector, e.g. &#34;</span>auto<span class="s">&#34;, &#34;</span>lm<span class="s">&#34;, &#34;</span>glm<span class="s">&#34;, &#34;</span>gam<span class="s">&#34;, &#34;</span>loess<span class="s">&#34; 
+</span><span class="s">or a function, e.g. MASS::rlm or mgcv::gam, stats::lm, or stats::loess.
+</span><span class="s">&#34;&#34;&#34;</span>
+<span class="c1">## 8. others</span>
+ggpairs<span class="p">(</span>data<span class="p">,</span> columns <span class="o">=</span> <span class="m">1</span><span class="o">:</span><span class="kp">ncol</span><span class="p">(</span>data<span class="p">),</span>
+        upper <span class="o">=</span> <span class="kt">list</span><span class="p">(</span>continuous <span class="o">=</span><span class="p">,</span> combo <span class="o">=</span><span class="p">,</span> discrete <span class="o">=</span><span class="p">,</span> na <span class="o">=</span><span class="p">),</span>  <span class="c1"># 上三角安排</span>
+        lower <span class="o">=</span> <span class="kt">list</span><span class="p">(</span>continuous <span class="o">=</span><span class="p">,</span> combo <span class="o">=</span><span class="p">,</span> discrete <span class="o">=</span><span class="p">,</span> na <span class="o">=</span><span class="p">),</span>  <span class="c1"># 下三角安排</span>
+        diag <span class="o">=</span> <span class="kt">list</span><span class="p">(</span>continuous <span class="o">=</span><span class="p">,</span> combo <span class="o">=</span><span class="p">,</span> discrete <span class="o">=</span><span class="p">,</span> na <span class="o">=</span><span class="p">),</span>   <span class="c1"># 对角线安排</span>
+        title <span class="o">=</span> <span class="kc">NULL</span><span class="p">,</span> xlab <span class="o">=</span> <span class="kc">NULL</span><span class="p">,</span> ylab <span class="o">=</span> <span class="kc">NULL</span><span class="p">,</span> 
+        axisLabels <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">&#34;show&#34;</span><span class="p">,</span> <span class="s">&#34;internal&#34;</span><span class="p">,</span> <span class="s">&#34;none&#34;</span><span class="p">))</span>
+
+<span class="s">&#34;&#34;&#34;
+</span><span class="s">## upper &amp; lower parameters
+</span><span class="s"># for continuous and continuous data
+</span><span class="s">continuous %in% c(&#39;points&#39;, &#39;smooth&#39;, &#39;smooth_loess&#39;, &#39;density&#39;, &#39;cor&#39;, &#39;blank&#39;)
+</span><span class="s">wrap(&#34;</span>points<span class="s">&#34;, shape = I(&#39;.&#39;))
+</span><span class="s"># for continuous and categorical data
+</span><span class="s">combo %in% c(&#39;box&#39;, &#39;box_no_facet&#39;, &#39;dot&#39;, &#39;dot_no_facet&#39;, &#39;facethist&#39;, &#39;facetdensity&#39;, &#39;denstrip&#39;, &#39;blank&#39;).
+</span><span class="s">wrap(&#34;</span>box<span class="s">&#34;, outlier.shape = I(&#39;.&#39;))
+</span><span class="s"># for categorical and categorical data
+</span><span class="s">discrete %in% (&#39;facetbar&#39;, &#39;ratio&#39;, &#39;blank&#39;)
+</span><span class="s"># for NA data
+</span><span class="s">na %in% (&#39;na&#39;, &#39;blank&#39;)
+</span><span class="s">
+</span><span class="s">## diag parameters
+</span><span class="s">continuous %in% c(&#39;densityDiag&#39;, &#39;barDiag&#39;, &#39;blankDiag&#39;)
+</span><span class="s">discrete %in% (&#39;barDiag&#39;, &#39;blankDiag&#39;)
+</span><span class="s">na %in% (&#39;naDiag&#39;, &#39;blankDiag&#39;)
+</span><span class="s">&#34;&#34;&#34;</span>
+<span class="c1">## 10. Arrange multiple grobs on a page</span>
+<span class="c1"># for basic</span>
+par<span class="p">(</span>mfrow<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>
+<span class="c1"># for ggplot2</span>
+p1 <span class="o">&lt;-</span> ggplot<span class="p">()</span>
+<span class="kc">...</span>
+pk <span class="o">&lt;-</span> ggplot<span class="p">()</span>
+
+grid.arrange<span class="p">(</span>p1<span class="p">,</span><span class="kc">...</span><span class="p">,</span>pk<span class="p">,</span> nrow<span class="o">=</span><span class="p">,</span> ncol<span class="o">=</span><span class="p">)</span></code></pre></div>
+<h3 id="split-train-test-dataset">Split Train/Test Dataset</h3>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="kp">set.seed</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
+ratio<span class="o">=</span><span class="m">0.7</span>
+n <span class="o">=</span> <span class="kp">nrow</span><span class="p">(</span><span class="o">&lt;</span>dataset<span class="o">&gt;</span><span class="p">)</span>
+idx<span class="o">&lt;-</span><span class="kp">sample</span><span class="p">(</span><span class="m">1</span><span class="o">:</span>n<span class="p">,</span><span class="kp">round</span><span class="p">(</span>n<span class="o">*</span>idx<span class="p">))</span>
+train <span class="o">&lt;-</span> <span class="o">&lt;</span>dataset<span class="o">&gt;</span><span class="p">[</span>idx<span class="p">,]</span>
+test <span class="o">&lt;-</span> <span class="o">&lt;</span>dataset<span class="o">&gt;</span><span class="p">[</span><span class="o">-</span>idx<span class="p">,]</span>
+<span class="kp">print</span><span class="p">(</span><span class="kt">c</span><span class="p">(</span><span class="kp">nrow</span><span class="p">(</span>train<span class="p">),</span><span class="kp">nrow</span><span class="p">(</span>test<span class="p">)))</span></code></pre></div>
+<h3 id="linear-regression">Linear Regression</h3>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="c1"># Linear Regression</span>
+m1<span class="o">&lt;-</span>lm<span class="p">(</span><span class="kp">log</span><span class="p">(</span>y<span class="p">)</span><span class="o">~</span><span class="kp">I</span><span class="p">(</span>v1<span class="o">*</span>v2<span class="p">)</span><span class="o">+</span>v3<span class="o">+</span>v4<span class="o">+</span>v5<span class="p">,</span><span class="o">&lt;</span>dataset<span class="o">&gt;</span><span class="p">)</span>   <span class="c1"># I() regard v1*v2 as a variable</span>
+m2<span class="o">&lt;-</span>update<span class="p">(</span>m1<span class="p">,</span><span class="o">~</span><span class="m">.</span><span class="o">+</span>v3<span class="o">*</span>v4<span class="p">)</span>                      <span class="c1"># interaction term</span>
+m3<span class="o">&lt;-</span>update<span class="p">(</span>m2<span class="p">,</span><span class="o">~</span><span class="m">.</span><span class="o">+</span>v3<span class="o">*</span>v5<span class="p">)</span>
+
+<span class="c1"># Results of m1</span>
+<span class="kp">summary</span><span class="p">(</span>m1<span class="p">)</span>
+
+<span class="c1"># Compare different modles</span>
+<span class="kn">library</span><span class="p">(</span>memisc<span class="p">)</span>             <span class="c1"># will mask &#39;collect&#39; function in &#34;dplyr&#34; package</span>
+mtable<span class="p">(</span>m1<span class="p">,</span>m2<span class="p">,</span>m3<span class="p">)</span>
+anova<span class="p">(</span>m1<span class="p">,</span>m2<span class="p">,</span>m3<span class="p">)</span>
+
+<span class="c1"># Full Model</span>
+m_full <span class="o">&lt;-</span> lm<span class="p">(</span>y<span class="o">~</span><span class="m">.</span><span class="p">,</span><span class="o">&lt;</span>dataset<span class="o">&gt;</span><span class="p">)</span>
+
+<span class="c1"># Step Model   ???</span>
+m_step <span class="o">&lt;-</span> step<span class="p">(</span>m_full<span class="p">)</span>
+<span class="kp">summary</span><span class="p">(</span>m_step<span class="p">)</span>
+
+<span class="c1"># Residual Analysis</span>
+par<span class="p">(</span>mfrow<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>
+plot<span class="p">(</span>model<span class="p">)</span>
+
+<span class="c1"># calculate RMS error</span>
+cal_rms <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>model<span class="p">,</span> train<span class="p">,</span> test<span class="p">)</span> <span class="p">{</span>
+  train_pred <span class="o">&lt;-</span> predict<span class="p">(</span>model<span class="p">,</span> train<span class="p">)</span>
+  rms_train <span class="o">&lt;-</span> <span class="kp">sqrt</span><span class="p">(</span><span class="kp">mean</span><span class="p">((</span>train<span class="o">$</span>y<span class="o">-</span>train_pred<span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">))</span>
+  test_pred <span class="o">&lt;-</span> predict<span class="p">(</span>model<span class="p">,</span> test<span class="p">)</span>
+  rms_test <span class="o">&lt;-</span> <span class="kp">sqrt</span><span class="p">(</span><span class="kp">mean</span><span class="p">((</span>test<span class="o">$</span>y<span class="o">-</span>test_pred<span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">))</span>
+  <span class="kr">return</span><span class="p">(</span><span class="kt">data.frame</span><span class="p">(</span>train_error <span class="o">=</span> <span class="kt">c</span><span class="p">(</span>rms_train<span class="p">),</span> test_error <span class="o">=</span> <span class="kt">c</span><span class="p">(</span>rms_test<span class="p">)))</span>
+<span class="p">}</span>
+
+cal_rms_exp <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>model<span class="p">,</span> train<span class="p">,</span> test<span class="p">)</span> <span class="p">{</span>
+  train_pred <span class="o">&lt;-</span> <span class="kp">exp</span><span class="p">(</span>predict<span class="p">(</span>model<span class="p">,</span> train<span class="p">))</span>
+  rms_train <span class="o">&lt;-</span> <span class="kp">sqrt</span><span class="p">(</span><span class="kp">mean</span><span class="p">((</span>train<span class="o">$</span>y<span class="o">-</span>train_pred<span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">))</span>
+  test_pred <span class="o">&lt;-</span> <span class="kp">exp</span><span class="p">(</span>predict<span class="p">(</span>model<span class="p">,</span> test<span class="p">))</span>
+  rms_test <span class="o">&lt;-</span> <span class="kp">sqrt</span><span class="p">(</span><span class="kp">mean</span><span class="p">((</span>test<span class="o">$</span>y<span class="o">-</span>test_pred<span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">))</span>
+  <span class="kr">return</span><span class="p">(</span><span class="kt">data.frame</span><span class="p">(</span>train_error <span class="o">=</span> <span class="kt">c</span><span class="p">(</span>rms_train<span class="p">),</span> test_error <span class="o">=</span> <span class="kt">c</span><span class="p">(</span>rms_test<span class="p">)))</span>
+<span class="p">}</span>
+
+
+<span class="c1"># model comparison</span>
+cal_rms<span class="p">(</span>model<span class="p">,</span> train<span class="p">,</span> test<span class="p">)</span>
+cal_rms_exp<span class="p">(</span>model<span class="p">,</span> train<span class="p">,</span> test<span class="p">)</span></code></pre></div>
+<h2 id="r待完成">R待完成</h2>
+
+<ul>
+<li>基本作图</li>
+<li>可视化作图ggplot</li>
+<li>假设检验
+
+<ul>
+<li>均值检验</li>
+<li>方差检验</li>
+<li>非参数检验</li>
+</ul></li>
+<li>基本回归分析
+
+<ul>
+<li>Linear Regression</li>
+<li>多项式回归</li>
+<li>全子集回归</li>
+<li>回归诊断</li>
+</ul></li>
+<li>广义线性模型
+
+<ul>
+<li>Logistic Regression</li>
+<li>Possion Regression</li>
+</ul></li>
+<li>其他处理多重共线性的回归
+
+<ul>
+<li>Ridge Regression</li>
+<li>Lasso Regression</li>
+<li>偏最小二乘回归</li>
+</ul></li>
+<li>方差分析</li>
+<li>主成分分析</li>
+<li>因子分析</li>
+<li>决策树</li>
+<li>Boosting, Bagging回归</li>
+<li>神经网络NN</li>
+<li>支持向量机SVM</li>
+<li>随机森林RF</li>
+<li>关联规则分析 apriori</li>
+<li>聚类分析</li>
+<li>时间序列分析</li>
+</ul>
+
+<h2 id="r-basics">R Basics</h2>
+
+<ul>
+<li>赋值使用<code>&lt;-</code>符号</li>
+<li>判断相等使用<code>==</code></li>
+<li>is missing: <code>is.na(x)</code></li>
+<li>is null: <code>is.null(x)</code></li>
+</ul>
+
+<h3 id="useful-function">Useful function</h3>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="c1"># Ordered Factor</span>
+<span class="kp">ordered</span><span class="p">(</span><span class="o">&lt;</span>var<span class="o">&gt;</span><span class="p">,</span>levels<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="s">&#39;l1&#39;</span><span class="p">,</span><span class="s">&#39;l2&#39;</span><span class="p">,</span><span class="kc">...</span><span class="p">,</span><span class="s">&#39;lk&#39;</span><span class="p">))</span>
+<span class="c1"># reference for regression</span>
+relevel<span class="p">(</span><span class="kp">as.factor</span><span class="p">(</span><span class="o">&lt;</span>var<span class="o">&gt;</span><span class="p">),</span>ref<span class="o">=</span><span class="s">&#34;l1&#34;</span><span class="p">)</span>
+
+<span class="c1"># sequence/repeat/paste</span>
+<span class="kp">seq</span><span class="p">(</span><span class="o">&lt;</span>from<span class="o">&gt;:&lt;</span>to<span class="o">&gt;</span><span class="p">,</span>by<span class="o">=&lt;</span>step<span class="o">&gt;</span><span class="p">)</span>
+<span class="kp">rep</span><span class="p">(</span><span class="o">&lt;</span><span class="kt">vector</span><span class="o">&gt;</span><span class="p">,</span>times<span class="o">=&lt;</span>n<span class="o">&gt;</span><span class="p">,</span>each<span class="o">=&lt;</span>n<span class="o">&gt;</span><span class="p">)</span>     <span class="c1"># times重复整个向量，each重复每个元素</span>
+<span class="kp">paste</span><span class="p">(</span><span class="m">...</span>terms...<span class="p">,</span>sep<span class="o">=</span><span class="p">,</span>collapse<span class="o">=</span><span class="p">)</span>    <span class="c1"># &#39;sep&#39; seperates terms, &#39;collapse&#39; seperates results</span>
+
+<span class="c1"># vector functions</span>
+<span class="kp">sort</span><span class="p">(</span>x<span class="p">)</span>
+<span class="kp">rev</span><span class="p">(</span>x<span class="p">)</span>    <span class="c1"># reverse</span>
+<span class="kp">table</span><span class="p">(</span>x<span class="p">)</span>  <span class="c1"># counts</span>
+<span class="kp">unique</span><span class="p">(</span>x<span class="p">)</span>
+
+<span class="c1"># apply functions</span>
+<span class="kp">apply</span><span class="p">(</span>x<span class="p">,</span> <span class="m">2</span><span class="p">,</span> FUN<span class="p">)</span>  <span class="c1"># 输入可以是array/matrix，1行2列</span>
+<span class="kp">apply</span><span class="p">(</span>x<span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="kr">function</span><span class="p">(</span>x<span class="p">)</span> x<span class="o">%%</span><span class="m">10</span><span class="p">)</span>  <span class="c1"># 自定义函数</span>
+<span class="kp">lapply</span><span class="p">(</span>x<span class="p">,</span> FUN<span class="p">)</span>    <span class="c1"># 输入是list/vector，返回list</span>
+<span class="kp">sapply</span><span class="p">(</span>x<span class="p">,</span> FUN<span class="p">)</span>    <span class="c1"># 输入是list/vector，返回vector/array/matrix</span>
+<span class="kp">tapply</span><span class="p">(</span>x<span class="p">,</span> class_var<span class="p">,</span> FUN<span class="p">)</span>  <span class="c1"># 分组统计</span>
+
+<span class="c1"># maths</span>
+<span class="kp">round</span><span class="p">(</span>x<span class="p">,</span>n<span class="p">)</span>
+<span class="kp">signif</span><span class="p">(</span>x<span class="p">,</span>n<span class="p">)</span>   <span class="c1"># round to n significant figures</span>
+cor<span class="p">(</span>x<span class="p">,</span>y<span class="p">)</span>
+var<span class="p">(</span>x<span class="p">)</span>
+sd<span class="p">(</span>x<span class="p">)</span>
+quantile<span class="p">(</span>x<span class="p">)</span>   <span class="c1"># percentage quantiles</span>
+<span class="kp">rank</span><span class="p">(</span>x<span class="p">)</span>
+
+<span class="c1"># environment</span>
+<span class="kp">ls</span><span class="p">()</span>    <span class="c1"># list all variables in the environment</span>
+<span class="kp">rm</span><span class="p">(</span>x<span class="p">)</span>   <span class="c1"># remove x from the environment</span>
+<span class="kp">rm</span><span class="p">(</span><span class="kt">list</span> <span class="o">=</span> <span class="kp">ls</span><span class="p">())</span>   <span class="c1"># remove all variables</span></code></pre></div>
+<h1 id="vector">Vector</h1>
+
+<ul>
+<li>运算特点: element-size、broadcasting</li>
+
+<li><p>元素为相同类型</p>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="c1"># Slice</span>
+x<span class="p">[</span><span class="m">2</span><span class="o">:</span><span class="m">5</span><span class="p">]</span>
+x<span class="p">[</span><span class="o">-</span><span class="kt">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">6</span><span class="p">)]</span>
+x<span class="p">[</span>x <span class="o">%in%</span> <span class="kt">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">5</span><span class="p">)]</span>
+x<span class="p">[</span><span class="s">&#34;name&#34;</span><span class="p">]</span>    <span class="c1"># element with name</span></code></pre></div></li>
+</ul>
+
+<h1 id="matrix">Matrix</h1>
+
+<p>matrix是两维的，array可以是高维的。</p>
+
+<p>超过2^1023都认为是一样的</p>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r">A <span class="o">&lt;-</span> <span class="kt">array</span><span class="p">(</span><span class="kt">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">6</span><span class="p">),</span>dim<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">))</span>   <span class="c1"># 默认纵向排列</span>
+A<span class="p">[</span><span class="m">4</span><span class="p">];</span> A<span class="p">[</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">];</span> A<span class="p">[</span><span class="m">2</span><span class="p">,]</span>
+
+M <span class="o">&lt;-</span> <span class="kt">matrix</span><span class="p">(</span><span class="kt">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">6</span><span class="p">),</span>nrow<span class="o">=</span><span class="m">2</span><span class="p">,</span>ncol<span class="o">=</span><span class="m">3</span><span class="p">)</span>
+M <span class="o">&lt;-</span> <span class="kt">matrix</span><span class="p">(</span><span class="kt">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">6</span><span class="p">),</span>nrow<span class="o">=</span><span class="m">2</span><span class="p">,</span>ncol<span class="o">=</span><span class="m">3</span><span class="p">,</span>byrow <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>
+
+B <span class="o">&lt;-</span> <span class="kt">array</span><span class="p">(</span><span class="kt">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">6</span><span class="p">,</span><span class="m">7</span><span class="p">,</span><span class="m">8</span><span class="p">,</span><span class="m">9</span><span class="p">,</span><span class="m">10</span><span class="p">,</span><span class="m">11</span><span class="p">,</span><span class="m">12</span><span class="p">),</span>dim<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>
+B<span class="p">[,,</span><span class="m">1</span><span class="p">]</span>
+
+<span class="c1"># 列表</span>
+list1 <span class="o">&lt;-</span> <span class="kt">list</span><span class="p">(</span>thing<span class="o">=</span><span class="s">&#34;hat&#34;</span><span class="p">,</span>size<span class="o">=</span><span class="m">3.6</span><span class="p">)</span>
+e<span class="p">[</span><span class="m">1</span><span class="p">]</span>
+e<span class="o">$</span>thing<span class="p">;</span> e<span class="p">[[</span><span class="m">1</span><span class="p">]]</span>
+
+<span class="c1"># 数据框</span>
+df <span class="o">&lt;-</span> <span class="kt">data.frame</span><span class="p">(</span>vec1<span class="p">,</span>vec2<span class="p">,</span>vec3<span class="p">)</span>
+df<span class="o">$</span>vec1<span class="p">[</span>df<span class="o">$</span>vec1 <span class="o">==</span> <span class="m">0</span><span class="p">]</span>
+newdata <span class="o">&lt;-</span> na.omit<span class="p">(</span>df<span class="p">)</span>      <span class="c1"># 缺失值所在行全部扔掉</span></code></pre></div>
+<h3 id="types">Types</h3>
+
+<p>R中默认将数字以double形式存储，即使表面数字是整数形式。<br>
+最大数值储存到2^1023，以上都为Inf。</p>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="kp">typeof</span><span class="p">()</span>      <span class="c1"># double interger character</span>
+<span class="kp">class</span><span class="p">()</span>       <span class="c1"># logical numeric interger complex character raw</span>
+<span class="kp">is.integer</span><span class="p">(</span><span class="m">1</span><span class="p">)</span> <span class="c1"># 默认double</span>
+
+<span class="c1"># converting</span>
+
+<span class="kp">as.logical</span><span class="p">()</span>
+<span class="kp">as.numeric</span><span class="p">()</span>  <span class="c1"># integer or float</span>
+<span class="kp">as.integer</span><span class="p">()</span>
+<span class="kp">as.factor</span><span class="p">()</span>
+<span class="kp">as.character</span><span class="p">()</span>
+
+
+as<span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="s">&#34;integer&#34;</span><span class="p">)</span>   <span class="c1"># 强制成为整型（默认是double）</span>
+v <span class="o">&lt;-</span> <span class="kt">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="s">&#34;a&#34;</span><span class="p">)</span> <span class="c1"># coercion强制类型转换</span></code></pre></div>
+<h3 id="运算符">运算符</h3>
+
+<pre><code>%% 取余
+%/% 求商
+%in%元素是否属于向量
+%*%矩阵乘法
+</code></pre>
+
+<h3 id="字符串">字符串</h3>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="c1"># 字符串拼接</span>
+<span class="kp">cat</span><span class="p">(</span>str1<span class="p">,</span>num2<span class="p">,</span>list3...<span class="p">,</span>sep<span class="o">=</span><span class="s">&#34;&#34;</span><span class="p">)</span>
+<span class="kp">paste</span><span class="p">(</span><span class="s">&#34;Hello, &#34;</span><span class="p">,</span><span class="s">&#34;world!&#34;</span><span class="p">,</span>sep<span class="o">=</span><span class="s">&#34;&#34;</span><span class="p">)</span>
+
+<span class="c1"># 前后缀粘贴</span>
+<span class="kp">paste</span><span class="p">(</span><span class="s">&#34;x&#34;</span><span class="p">,</span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">,</span>sep<span class="o">=</span><span class="s">&#34;&#34;</span><span class="p">)</span></code></pre></div>
+<h3 id="条件语句-if-switch">条件语句 if switch</h3>
+
+<p>if&hellip;else if&hellip;else&hellip;注意条件排列的顺序</p>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="kr">if</span> <span class="p">(</span>condition<span class="p">)</span> <span class="s">&#34;expression1&#34;</span> <span class="kr">else</span> <span class="s">&#34;expression2&#34;</span>
+
+<span class="kr">if</span><span class="p">(</span>condition1<span class="p">){</span>
+	expression1
+<span class="p">}</span> <span class="kr">else</span> <span class="kr">if</span><span class="p">(</span>condition2<span class="p">){</span>
+	expression2
+<span class="p">}</span> <span class="kr">else</span> <span class="p">{</span>
+	expression3
+<span class="p">}</span></code></pre></div>
+<p>switch(expression,case1,case2,&hellip;)<br>
+如果expression不为字符串，则强制转为整数</p>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="c1"># 根据数字判断</span>
+<span class="kr">switch</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="s">&#34;Apple&#34;</span><span class="p">,</span><span class="s">&#34;Banana&#34;</span><span class="p">,</span><span class="s">&#34;Orange&#34;</span><span class="p">)</span>
+
+<span class="c1"># 根据字符串判断</span>
+expression <span class="o">&lt;-</span> <span class="s">&#34;vec&#34;</span>
+<span class="kr">switch</span><span class="p">(</span><span class="kp">expression</span><span class="p">,</span>num<span class="o">=</span><span class="m">123</span><span class="p">,</span>str<span class="o">=</span><span class="s">&#34;Hello, World!&#34;</span><span class="p">,</span>vec<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">))</span>
+
+<span class="c1"># 函数作为case</span>
+x <span class="o">&lt;-</span> <span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">;</span> method<span class="o">=</span><span class="s">&#34;max&#34;</span>
+<span class="kr">switch</span><span class="p">(</span>method<span class="p">,</span>mean<span class="o">=</span><span class="kp">mean</span><span class="p">(</span>x<span class="p">),</span>sum<span class="o">=</span><span class="kp">sum</span><span class="p">(</span>x<span class="p">),</span>max<span class="o">=</span><span class="kp">max</span><span class="p">(</span>x<span class="p">))</span></code></pre></div>
+<h3 id="循环语句-repeat-while-for-break-next">循环语句 repeat while for break next</h3>
+
+<p>repeat(直到循环)，循环至少运行一次</p>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="kr">repeat</span><span class="p">{</span>
+	expressions
+	<span class="kr">if</span><span class="p">(</span>condition<span class="p">){</span>
+		<span class="kr">break</span>
+	<span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+<p>while(当型循环)，循环可能永远不会运行</p>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="kr">while</span><span class="p">(</span>condition<span class="p">){</span>
+	expressions
+<span class="p">}</span></code></pre></div>
+<p>for，确定的循环次数</p>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="kr">for</span><span class="p">(</span>i <span class="kr">in</span> <span class="kt">vector</span><span class="p">){</span>
+	expressions
+<span class="p">}</span></code></pre></div>
+<h1 id="自定义函数">自定义函数</h1>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r">y <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>x<span class="p">)</span> x<span class="o">**</span><span class="m">2</span>
+y<span class="p">(</span><span class="m">3</span><span class="p">)</span>              <span class="c1"># ()用于函数，[]用于切片</span>
+
+function_name <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>parameters<span class="p">){</span>
+	<span class="kr">function</span> <span class="kp">body</span>
+	<span class="kr">return</span><span class="p">(</span>new_variable<span class="p">)</span>
+<span class="p">}</span></code></pre></div>
+<h3 id="r包">R包</h3>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r">install.packages<span class="p">(</span><span class="s">&#34;&lt;package name&gt;&#34;</span><span class="p">)</span>
+<span class="kn">library</span><span class="p">(</span><span class="o">&lt;</span>package name<span class="o">&gt;</span><span class="p">)</span></code></pre></div>
+<h3 id="数据重塑">数据重塑</h3>
+
+<p>数据合并 data.frame cbind rbind merge</p>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="c1"># 以下class均为data.frame</span>
+df <span class="o">&lt;-</span> <span class="kt">data.frame</span><span class="p">(</span>colname<span class="o">=</span><span class="kt">vector</span><span class="p">,</span><span class="m">...</span><span class="kc">...</span><span class="p">)</span>
+df <span class="o">&lt;-</span> <span class="kp">cbind</span><span class="p">(</span>df1<span class="p">,</span>df2<span class="p">)</span>   <span class="c1"># 横向拼接</span>
+df <span class="o">&lt;-</span> <span class="kp">rbind</span><span class="p">(</span>df1<span class="p">,</span>df2<span class="p">)</span>   <span class="c1"># 纵向拼接，保证列名相同</span>
+
+<span class="c1"># 单纯用cbind向量，则class为matrix</span>
+<span class="kp">cbind</span><span class="p">(</span>vec1<span class="p">,</span>vec2<span class="p">,</span>vec3<span class="p">)</span>
+
+<span class="c1"># merge要注意存在相同列明</span>
+df <span class="o">&lt;-</span> <span class="kp">merge</span><span class="p">(</span>x<span class="o">=</span>df1<span class="p">,</span>y<span class="o">=</span>df2<span class="p">,</span>by<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="s">&#34;vec1&#34;</span><span class="p">,</span><span class="s">&#34;vec2)&#34;</span><span class="p">)</span>        <span class="c1"># key名相同or不同</span>
+df <span class="o">&lt;-</span> <span class="kp">merge</span><span class="p">(</span>x<span class="o">=</span>df1<span class="p">,</span>y<span class="o">=</span>df2<span class="p">,</span>by.x<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="s">&#34;vec1&#34;</span><span class="p">,</span><span class="s">&#34;vec2)&#34;</span><span class="p">,</span>by.y<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="s">&#34;vec3&#34;</span><span class="p">,</span><span class="s">&#34;vec4)&#34;</span><span class="p">)</span></code></pre></div>
+<p>数据部分转置 melt</p>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="c1"># 根据vec1和vec2归类，其他变量从列转到行（一对多，原列名自动放到新的variable下）</span>
+melt<span class="p">(</span>df<span class="p">,</span>id<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="s">&#34;vec1&#34;</span><span class="p">,</span><span class="s">&#34;vec2&#34;</span><span class="p">))</span></code></pre></div>
+<p>数据分类汇总 cast</p>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="c1"># 根据vec1和vec2归类，汇总统计variable的值</span>
+cast<span class="p">(</span>df<span class="p">,</span>vec1<span class="o">+</span>vec2<span class="o">~</span>variable<span class="p">,</span><span class="kp">sum</span><span class="o">/</span><span class="kp">mean</span><span class="o">/</span><span class="kp">max</span><span class="p">)</span></code></pre></div><div class="edit-meta">
+Last updated on 7 Oct 2019
+
+
+<br>
+Published on 7 Oct 2019
+<br><a href="https://gitee.com/hanyutan/hanyutan/edit/master/content/01_course%5cr_cheat_sheet.md" class="edit-page"><i class="fas fa-pen-square"></i> Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="/01_course/" title="Course"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - Course</a>
+<a class="nav nav-next" href="/01_course/python_cheat_sheet/" title="Python Cheat Sheet">Next - Python Cheat Sheet <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+</nav><footer><p class="powered">Powered by <a href="https://gohugo.io">Hugo</a>. Theme by <a href="https://themes.gohugo.io/hugo-theme-techdoc/">TechDoc</a>. Designed by <a href="https://github.com/thingsym/hugo-theme-techdoc">Thingsym</a>.</p>
+</footer>
+</main><div class="sidebar">
+<nav>
+<ul>
+<li class=""><a href="https://hanyutan.gitee.io">Home</a></li>
+
+<li class="parent"><a href="/01_course/">Course</a>
+<ul class="sub-menu">
+<li class="active"><a href="/01_course/r_cheat_sheet/">R Cheat-Sheet</a></li>
+<li class=""><a href="/01_course/spark/">Spark</a></li>
+<li class=""><a href="/01_course/julia_cheat_sheet/">Julia Cheat-Sheet</a></li>
+<li class=""><a href="/01_course/latex/">Latex</a></li>
+<li class=""><a href="/01_course/mathematical_statistics/">Mathematical Statistics</a></li>
+<li class=""><a href="/01_course/statistic_software/">Statistic Software</a></li>
+<li class=""><a href="/01_course/weizhongyu/">Wei Zhongyu</a></li>
+
+<li class=""><a href="/01_course/python_cheat_sheet/">Python Cheat Sheet</a>
+<ul class="">
+<li class=""><a href="/01_course/python_cheat_sheet/basic/">Basic</a></li>
+<li class=""><a href="/01_course/python_cheat_sheet/pandas/">Pandas</a></li>
+<li class=""><a href="/01_course/python_cheat_sheet/plot/">Plot</a></li>
+<li class=""><a href="/01_course/python_cheat_sheet/numpy/">Numpy</a></li>
+<li class=""><a href="/01_course/python_cheat_sheet/data_preprocessing/">Data Pre-processing</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/01_course/financial_risk_management/">Financial Risk Management</a>
+<ul class="">
+<li class=""><a href="/01_course/financial_risk_management/markowitz/">Markowitz</a></li>
+<li class=""><a href="/01_course/financial_risk_management/binomial_trees/">Binomial Trees</a></li>
+<li class=""><a href="/01_course/financial_risk_management/bsm_model/">BSM Model</a></li>
+<li class=""><a href="/01_course/financial_risk_management/greeks/">Hedging with the Greeks</a></li>
+<li class=""><a href="/01_course/financial_risk_management/exam/">Exam</a></li>
+</ul>
+  
+</li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/02_big_data/">Big Data Analysis</a>
+<ul class="">
+
+<li class=""><a href="/02_big_data/machine_learning/">Machine Learning</a>
+<ul class="">
+<li class=""><a href="/02_big_data/machine_learning/random_forest/">Random Forest</a></li>
+<li class=""><a href="/02_big_data/machine_learning/bagging/">Bagging</a></li>
+<li class=""><a href="/02_big_data/machine_learning/linear_regression/">Linear Regression</a></li>
+<li class=""><a href="/02_big_data/machine_learning/logistic_regression/">Logistic Regression</a></li>
+<li class=""><a href="/02_big_data/machine_learning/pca/">PCA</a></li>
+<li class=""><a href="/02_big_data/machine_learning/train_test/">Train &amp; Test</a></li>
+<li class=""><a href="/02_big_data/machine_learning/clustering/">Clustering</a></li>
+<li class=""><a href="/02_big_data/machine_learning/naive_bayes/">Naive Bayes</a></li>
+</ul>
+  
+</li>
+<li class=""><a href="/02_big_data/gan/">GAN</a></li>
+<li class=""><a href="/02_big_data/tensorflow/">Tensorflow</a></li>
+<li class=""><a href="/02_big_data/caffe/">Caffe</a></li>
+<li class=""><a href="/02_big_data/reinforcement_learning/">Reinforcement Learning</a></li>
+<li class=""><a href="/02_big_data/data_mining/">Data Mining</a></li>
+<li class=""><a href="/02_big_data/text_mining/">Text Mining</a></li>
+<li class=""><a href="/02_big_data/artificial_intelligency/">Artificial Intelligency</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/build_blog/">Build Blogs</a>
+<ul class="">
+<li class=""><a href="/build_blog/01_introduction/">Introduction</a></li>
+<li class=""><a href="/build_blog/02_preparation/">Preparation</a></li>
+<li class=""><a href="/build_blog/03_quick_start/">Quick Start</a></li>
+<li class=""><a href="/build_blog/04_git_notes/">Git Notes</a></li>
+<li class=""><a href="/build_blog/05_hugo_notes/">Hugo Notes</a></li>
+<li class=""><a href="/build_blog/06_markdown_notes/">Markdown Notes</a></li>
+<li class=""><a href="/build_blog/07_questions/">Q&amp;A</a></li>
+<li class=""><a href="/build_blog/scoop/">Scoop</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/03_interests/">Interests</a>
+<ul class="">
+<li class=""><a href="/03_interests/japanese/">Japanese</a></li>
+<li class=""><a href="/03_interests/hunt_for_stars/">Hunt for Stars</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/04_reading/">Reading</a>
+<ul class="">
+<li class=""><a href="/04_reading/reading_notes/">Reading Notes</a></li>
+<li class=""><a href="/04_reading/nonsense_output/">Nonsense Output</a></li>
+<li class=""><a href="/04_reading/wisdom_from_others/">Wisdom From Others</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/mathematics/">Mathematics</a>
+<ul class="">
+<li class=""><a href="/mathematics/mathematical_analysis/">Mathematical Analysis</a></li>
+<li class=""><a href="/mathematics/functional_analysis/">Functional Analysis</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/digital_content/">Digital Content</a>
+<ul class="">
+<li class=""><a href="/digital_content/opengl/">OpenGL</a></li>
+<li class=""><a href="/digital_content/shader/">Shader</a></li>
+<li class=""><a href="/digital_content/3dmax/">3dmax</a></li>
+<li class=""><a href="/digital_content/smpl/">SMPL</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/chapter3/">Chapter 3 (hierarchized)</a>
+<ul class="">
+<li class=""><a href="/chapter3/1/">Chapter 3-1</a></li>
+
+<li class=""><a href="/chapter3/chapter3-2/">Chapter 3-2</a>
+<ul class="">
+<li class=""><a href="/chapter3/chapter3-2/1/">Chapter 3-2-1</a></li>
+<li class=""><a href="/chapter3/chapter3-2/2/">Chapter 3-2-2</a></li>
+<li class=""><a href="/chapter3/chapter3-2/3/">Chapter 3-2-3</a></li>
+<li class=""><a href="/chapter3/chapter3-2/4/">Chapter 3-2-4</a></li>
+</ul>
+  
+</li>
+<li class=""><a href="/chapter3/3/">Chapter 3-3</a></li>
+<li class=""><a href="/chapter3/4/">Chapter 3-4</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/default_post/">Default_posts</a>
+<ul class="">
+<li class=""><a href="/default_post/installation/">Installation</a></li>
+<li class=""><a href="/default_post/creating-a-new-theme/">Creating a New Theme</a></li>
+<li class=""><a href="/default_post/migrate-from-jekyll/">Migrate to Hugo from Jekyll</a></li>
+<li class=""><a href="/default_post/configuration/">Configuration</a></li>
+<li class=""><a href="/default_post/goisforlovers/">(Hu)go Template Primer</a></li>
+<li class=""><a href="/default_post/hugoisforlovers/">Getting Started with Hugo</a></li>
+</ul>
+  
+</li>
+</ul>
+</nav>
+
+
+<div class="sidebar-footer"></div>
+</div>
+</div><a href="#" id="backtothetop-fixed" class="backtothetop"
+ data-backtothetop-duration="600"
+ data-backtothetop-easing="easeOutQuart"
+ data-backtothetop-fixed-fadeIn="1000"
+ data-backtothetop-fixed-fadeOut="1000"
+ data-backtothetop-fixed-bottom="10"
+ data-backtothetop-fixed-right="20">
+<span class="fa-layers fa-fw">
+<i class="fas fa-circle"></i>
+<i class="fas fa-arrow-circle-up"></i>
+</span></a>
+</div>
+</body>
+</html>

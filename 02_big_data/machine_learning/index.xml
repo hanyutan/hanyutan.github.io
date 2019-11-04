@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Machine Learning on Keep Learning</title>
+    <link>https://hanyutan.gitee.io/02_big_data/machine_learning/</link>
+    <description>Recent content in Machine Learning on Keep Learning</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 10 Sep 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://hanyutan.gitee.io/02_big_data/machine_learning/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Random Forest</title>
+      <link>https://hanyutan.gitee.io/02_big_data/machine_learning/random_forest/</link>
+      <pubDate>Tue, 22 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/02_big_data/machine_learning/random_forest/</guid>
+      <description>理论部分 还会输出变量的重要性 用OOB(out of bag)来估计误差和变量的重要性 训练tree的每次split时只考虑m=sqrt(p)个变量 Common</description>
+    </item>
+    
+    <item>
+      <title>Bagging</title>
+      <link>https://hanyutan.gitee.io/02_big_data/machine_learning/bagging/</link>
+      <pubDate>Sat, 19 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/02_big_data/machine_learning/bagging/</guid>
+      <description>理论部分 Bootstrap 每次从样本里有放回地抽出N个（与原数据量相同），平均有63.2%的原数据会进入样本，(1-1/N)^N -&amp;gt; 1/e -&amp;gt; 0.368 bootstrap抽</description>
+    </item>
+    
+    <item>
+      <title>Linear Regression</title>
+      <link>https://hanyutan.gitee.io/02_big_data/machine_learning/linear_regression/</link>
+      <pubDate>Sat, 19 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/02_big_data/machine_learning/linear_regression/</guid>
+      <description>理论部分 检查y的正态分布，右偏进行log变换 注意y与x的线性性，进行适当变换 log sqrt ^(1&amp;frasl;3) x之间的多重共线性 考虑交互项 代码部分 # Train import statsmodels.api as sm X = sm.add_constant(X_train) # 添</description>
+    </item>
+    
+    <item>
+      <title>Logistic Regression</title>
+      <link>https://hanyutan.gitee.io/02_big_data/machine_learning/logistic_regression/</link>
+      <pubDate>Sat, 19 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/02_big_data/machine_learning/logistic_regression/</guid>
+      <description>理论部分 cutoff的选择 代码部分 # Train from sklearn.linear_model import LogisticRegression model = LogisticRegression().fit(X_train,y_train) # Coefficient beta = model.coef_.ravel() print(&amp;#34;beta coefficient:&amp;#34;,np.round(beta,3)) # Prediction y_pred = model.predict(X_test) from sklearn.metrics import accuracy_score print(&amp;#34;Test set accuracy score: {:.5f}&amp;#34;.format(accuracy_score(y_pred, y_test))) # precision、recall、f1-s</description>
+    </item>
+    
+    <item>
+      <title>PCA</title>
+      <link>https://hanyutan.gitee.io/02_big_data/machine_learning/pca/</link>
+      <pubDate>Sat, 19 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/02_big_data/machine_learning/pca/</guid>
+      <description>理论部分 代码部分 # scaling variables from sklearn import preprocessing for col in df.columns: df[col] = preprocessing.scale(df[col]) # Fit a PCA model from sklearn.preprocessing import Imputer from sklearn.decomposition import PCA p = 10 # 主成分数量 model = PCA(n_components=p) model.fit(df) lambda = model.explained_variance_ratio_ # 贡献率 print(&amp;#34;Explained variance ratio of principal components:\n&amp;#34;,lambda) # Report PVE and CVE plots cve = np.cumsum(lambda)</description>
+    </item>
+    
+    <item>
+      <title>Train &amp; Test</title>
+      <link>https://hanyutan.gitee.io/02_big_data/machine_learning/train_test/</link>
+      <pubDate>Sat, 19 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/02_big_data/machine_learning/train_test/</guid>
+      <description>理论部分 代码部分 # split dataset from sklearn.model_selection import train_test_split X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=123) print(&amp;#34;Train size: &amp;#34;+str(X_train.shape[0])+&amp;#34;, Test size: &amp;#34;+str(X_test.shape[0])) # scaling variables from sklearn import preprocessing for col in df.columns: df[col] = preprocessing.scale(df[col])</description>
+    </item>
+    
+    <item>
+      <title>Clustering</title>
+      <link>https://hanyutan.gitee.io/02_big_data/machine_learning/clustering/</link>
+      <pubDate>Fri, 11 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/02_big_data/machine_learning/clustering/</guid>
+      <description>理论部分 常用的距离计算方法： 计算方法 公式 曼哈顿距离($L_1$范数) $d(X,Y)=\sum _{i=1}^n\vert x_i-y_i\vert $ 欧氏距离($L_2$范数) $d(X,Y)=\sqrt{ \sum _{i=1}^n(x_i-y_i)^2 }$ 明氏距离($L_p$范数) $d(X,Y)=(\sum _{i=1}^n\vert</description>
+    </item>
+    
+    <item>
+      <title>Naive Bayes</title>
+      <link>https://hanyutan.gitee.io/02_big_data/machine_learning/naive_bayes/</link>
+      <pubDate>Fri, 11 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/02_big_data/machine_learning/naive_bayes/</guid>
+      <description>理论部分 Naive Bayes decision rule is: $y = argmax{y\in \lbrace yes,no \rbrace}P(y|X) = argmax{y\in \lbrace yes,no \rbrace}P(X|y)*P(y)$, 代码部分 # sklearn from sklearn.naive_bayes import GaussianNB clf = GaussianNB() clf.fit(computer.iloc[:,0:3], computer[&amp;#34;buys_computer&amp;#34;]) print(&amp;#34;Validate my result by fitting a NB model, and the output is &amp;#34;,clf.predict([[1,2,1]]),&amp;#34;(&amp;#39;yes&amp;#39;:1,&amp;#39;no&amp;#39;:0)&amp;#34;) pyspark.mllib版本 from pyspark.sql import SparkSession from pyspark.mllib.classification import</description>
+    </item>
+    
+  </channel>
+</rss>

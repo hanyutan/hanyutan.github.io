@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Reading on Keep Learning</title>
+    <link>https://hanyutan.gitee.io/04_reading/</link>
+    <description>Recent content in Reading on Keep Learning</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 30 Sep 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://hanyutan.gitee.io/04_reading/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Reading Notes</title>
+      <link>https://hanyutan.gitee.io/04_reading/reading_notes/</link>
+      <pubDate>Mon, 30 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/04_reading/reading_notes/</guid>
+      <description>[ToC] 读书打卡 跟着车纯姐终身学习 20191029 今日阅读 1.【书名】：《反本能》如何对抗你的习以为常 2.【页数】：序言1—9 3.【摘抄】： 本能虽然可以让我们用</description>
+    </item>
+    
+    <item>
+      <title>Nonsense Output</title>
+      <link>https://hanyutan.gitee.io/04_reading/nonsense_output/</link>
+      <pubDate>Mon, 30 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/04_reading/nonsense_output/</guid>
+      <description>记名字的能力 2019/10/02 “名字不重要，名字本身只是一种代称而已”。我是蛮认同这句话的，但或许只是为自己记不住名字而辩解。 昨天晚上我听到电视剧里一位女演</description>
+    </item>
+    
+    <item>
+      <title>Wisdom From Others</title>
+      <link>https://hanyutan.gitee.io/04_reading/wisdom_from_others/</link>
+      <pubDate>Mon, 30 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/04_reading/wisdom_from_others/</guid>
+      <description>如何做到真正的自由？ 康德曾说“自由不是你想做什么就做什么，那是兽性。自由，是你不想做什么的时候你可以不做，这是理性。” 表面上想做什么就能去做</description>
+    </item>
+    
+  </channel>
+</rss>
