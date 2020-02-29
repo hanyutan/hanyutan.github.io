@@ -30,48 +30,12 @@
     </item>
     
     <item>
-      <title>Julia Cheat-Sheet</title>
-      <link>https://hanyutan.gitee.io/01_course/julia_cheat_sheet/</link>
-      <pubDate>Tue, 17 Sep 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://hanyutan.gitee.io/01_course/julia_cheat_sheet/</guid>
-      <description>Julia Julia introduction 注意按照教程安装完成后，需要在Atom-Settings-Packages-Julia Client-Julia Path中修改Julia安装位置，例如D:/J</description>
-    </item>
-    
-    <item>
       <title>Latex</title>
       <link>https://hanyutan.gitee.io/01_course/latex/</link>
       <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
       
       <guid>https://hanyutan.gitee.io/01_course/latex/</guid>
       <description>用beamer做ppt？ Install TexLive 清华开源镜像下载地址 下载最新的.iso文件，进入DVD驱动器后双击install-tl-advanced.bat</description>
-    </item>
-    
-    <item>
-      <title>Mathematical Statistics</title>
-      <link>https://hanyutan.gitee.io/01_course/mathematical_statistics/</link>
-      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
-      
-      <guid>https://hanyutan.gitee.io/01_course/mathematical_statistics/</guid>
-      <description>梁汉营 hyliang@tongji.edu.cn</description>
-    </item>
-    
-    <item>
-      <title>Statistic Software</title>
-      <link>https://hanyutan.gitee.io/01_course/statistic_software/</link>
-      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
-      
-      <guid>https://hanyutan.gitee.io/01_course/statistic_software/</guid>
-      <description>张云新 xyz@fudan.edu.cn 考核方式：平时成绩20%，课程报告成绩40%，期末报告与程序40%。没有考试。 常用统计软件：SAS，SPSS，Eviews，Gaus</description>
-    </item>
-    
-    <item>
-      <title>Wei Zhongyu</title>
-      <link>https://hanyutan.gitee.io/01_course/weizhongyu/</link>
-      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
-      
-      <guid>https://hanyutan.gitee.io/01_course/weizhongyu/</guid>
-      <description>http://www.sdspeople.fudan.edu.cn/zywei/DATA130008/slides/Lecture1.1.pdf Search Search Problems state space 状态空间 successor function (with actions, costs) start state 起始空间 goal test 检测是否达到目标状态 Uninformed Search 无信息搜索算法 Depth-First Search 深度优先 Breadth-First Search 广度优先 Uniform-Cost Search 代价一致 Real World Task Pac-man</description>
     </item>
     
   </channel>

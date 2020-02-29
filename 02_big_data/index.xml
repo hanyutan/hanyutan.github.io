@@ -39,39 +39,12 @@
     </item>
     
     <item>
-      <title>Reinforcement Learning</title>
-      <link>https://hanyutan.gitee.io/02_big_data/reinforcement_learning/</link>
-      <pubDate>Tue, 10 Sep 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://hanyutan.gitee.io/02_big_data/reinforcement_learning/</guid>
-      <description>The correct input/output pairs are not present. The model will learn from a sequence of actions and select the action maximizing the expected sum of the future rewards. There is a discount factor that makes future rewards less valuable that current rewards.</description>
-    </item>
-    
-    <item>
       <title>Data Mining</title>
       <link>https://hanyutan.gitee.io/02_big_data/data_mining/</link>
       <pubDate>Fri, 11 Oct 2019 00:00:00 +0000</pubDate>
       
       <guid>https://hanyutan.gitee.io/02_big_data/data_mining/</guid>
       <description>检查Y的分布是否正态，右偏考虑log变换 数据质量 噪声Noise： 异常值Outlier：例如考察身高水平时，&amp;gt;3m和&amp;lt;1m的数据都</description>
-    </item>
-    
-    <item>
-      <title>Text Mining</title>
-      <link>https://hanyutan.gitee.io/02_big_data/text_mining/</link>
-      <pubDate>Thu, 10 Oct 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://hanyutan.gitee.io/02_big_data/text_mining/</guid>
-      <description>正则表达式 Regular Expression 正则表达式是用于处理字符串的强大工具 Metacharacter Description ^ 开头位置，[ ]内代表“非” $ 结尾位置 . 匹配任意字符（除换行符&amp;rdquo;\n&amp;rd</description>
-    </item>
-    
-    <item>
-      <title>Artificial Intelligency</title>
-      <link>https://hanyutan.gitee.io/02_big_data/artificial_intelligency/</link>
-      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
-      
-      <guid>https://hanyutan.gitee.io/02_big_data/artificial_intelligency/</guid>
-      <description>数学基础：线性代数+概率统计 Bayesian 人工神经网络（MLB BP RNN） 分类-监督学习（SVM, Decision Tree） 聚类-非监督学习（KNN, K-Means） 回</description>
     </item>
     
   </channel>

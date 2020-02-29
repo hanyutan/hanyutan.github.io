@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Image Processing - Keep Learning</title>
+<meta name="description" content="Han Yutan">
+<meta name="generator" content="Hugo 0.58.1" />
+<link href="https://hanyutan.gitee.ioindex.xml" rel="alternate" type="application/rss+xml">
+<link rel="canonical" href="https://hanyutan.gitee.io/digital_content/image_processing/">
+<link rel="stylesheet" href="https://hanyutan.gitee.io/css/theme.min.css">
+<script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<link rel="stylesheet" href="https://hanyutan.gitee.io/css/chroma.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://hanyutan.gitee.io/js/functions.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js"></script>
+<script src="https://hanyutan.gitee.io/js/jquery.backtothetop/jquery.backtothetop.min.js"></script><script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$']],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    messageStyle: "none",
+    "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+</head>
+<body>
+<div class="container"><header>
+<h1>Keep Learning</h1>
+
+ <span class="version">Version 1.0</span>
+<a href="https://gitee.com/hanyutan" class="github"><i class="fab fa-github"></i></a>
+<p class="description">Han Yutan</p>
+
+</header>
+<div class="menu">
+<nav>
+<ul>
+<li><a href="/">Home</a></li>
+<li><a href="https://www.instagram.com/philoartist97/">Instagram</a></li>
+<li><a href="/default_post/goisforlovers/">(Hu)go Template Primer</a></li>
+<li><a href="/about/">About Hugo</a></li>
+<li><a href="/default_post/hugoisforlovers/">Getting Started with Hugo</a></li><li class="parent"><a href="">Tutorials<i class="fas fa-angle-right"></i></a>
+<ul class="sub-menu">
+<li class="child"><a href="/default_post/creating-a-new-theme/">Creating a New Theme</a></li>
+<li class="child"><a href="/default_post/migrate-from-jekyll/">Migrating from Jekyll</a></li>
+</ul>
+</li></ul>
+</nav>
+</div>
+<div class="content-container">
+<main><h1>Image Processing</h1>
+
+<h2 id="灰度变换">灰度变换</h2>
+
+<p><a href="https://www.cnblogs.com/wangguchangqing/p/6983680.html">https://www.cnblogs.com/wangguchangqing/p/6983680.html</a></p>
+
+<p>图像的空间域滤波——基于像素的某一邻域进行像素处理<br>灰度变换——仅仅针对当前像素，使用灰度变换函数（又称为图像的点运算）</p>
+
+<p>图像灰度变换的有以下作用：</p>
+
+<ul>
+<li>改善图像的质量，使图像能够显示更多的细节，提高图像的对比度（对比度拉伸）</li>
+<li>有选择的突出图像感兴趣的特征或者抑制图像中不需要的特征</li>
+<li>可以有效的改变图像的直方图分布，使像素的分布更为均匀</li>
+</ul>
+
+<p>用于图像灰度变换的函数主要有以下三种：</p>
+
+<ul>
+<li><p>二值化  binarize  （大于某值取1，否则取0）</p></li>
+
+<li><p>线性函数  linear（图像反转）</p></li>
+
+<li><p>对数函数 logarithmic 对数和反对数变换（实现图像灰度级的扩展/压缩）</p></li>
+
+<li><p>幂律函数 power-law n次幂和n次开方变换（实现图像灰度级的扩展/压缩）</p></li>
+</ul>
+
+<h3 id="对比度拉伸">对比度拉伸</h3>
+
+<p>对比度不高的图像，所有像素的灰度值大部分集中某一小段区域内</p>
+
+<p>我们通过对比度变换将灰度值拉伸到整个0-255区间，即可增强对比度</p>
+
+<p>$I(x,y) = \frac{I(x,y)-I<em>{min}}{I</em>{max}-I_{min}}(255-0)+0$</p>
+
+<p><strong>灰度直方图均衡化 Histogram Equalization</strong></p>
+
+<p><a href="https://www.cnblogs.com/wangguchangqing/p/7098213.html">https://www.cnblogs.com/wangguchangqing/p/7098213.html</a></p>
+
+<p>通常选择的变换函数为灰度的累积概率：先计算图像灰度值分布的pmf，然后计算累积分布CDF，即将原灰度值映射成0-1区间的均匀分布，再乘以255恢复取值范围。</p>
+
+<p><strong>直方图规定化/直方图匹配</strong></p>
+
+<p>使图像具有某一特定的直方图形状（或灰度分布），而不是简单的均匀分布，步骤是利用均衡化之后的直方图作为中间过程，求取规定化之后的变换函数。</p>
+
+<h2 id="图像插值">图像插值</h2>
+
+<p>最近邻插值 Nearest-neightbor（由于图像中像素具有邻域相关性，用这种拷贝的方法会产生明显的锯齿）</p>
+
+<p>双线性插值 Bilinear（使用周围4个点插值得到输出，在xy方法上都是基于线性距离来插值的）</p>
+
+<p><img src="image-20191130110103922.png" width = "300" align=center /></p>
+
+<p><img src="image-20191130110122296.png" width = "600" align=center /></p>
+
+<p>双立方插值 Bicubic</p>
+
+<p>Lanczos插值</p>
+
+<p>方向插值 Edge-directed interpolation</p>
+
+<p>Example-based插值</p>
+
+<p>深度学习</p>
+<div class="edit-meta">
+Last updated on 29 Nov 2019
+
+
+<br>
+Published on 29 Nov 2019
+<br><a href="https://gitee.com/hanyutan/hanyutan/edit/master/content/digital_content%5cimage_processing.md" class="edit-page"><i class="fas fa-pen-square"></i> Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="/digital_content/smpl/" title="SMPL"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - SMPL</a>
+<a class="nav nav-next" href="/digital_content/affine_transformation/" title="Affine Transformation">Next - Affine Transformation <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+</nav><footer><p class="powered">Powered by <a href="https://gohugo.io">Hugo</a>. Theme by <a href="https://themes.gohugo.io/hugo-theme-techdoc/">TechDoc</a>. Designed by <a href="https://github.com/thingsym/hugo-theme-techdoc">Thingsym</a>.</p>
+</footer>
+</main><div class="sidebar">
+<nav>
+<ul>
+<li class=""><a href="https://hanyutan.gitee.io">Home</a></li>
+
+<li class=""><a href="/01_course/">Course</a>
+<ul class="">
+<li class=""><a href="/01_course/r_cheat_sheet/">R Cheat-Sheet</a></li>
+<li class=""><a href="/01_course/spark/">Spark</a></li>
+<li class=""><a href="/01_course/latex/">Latex</a></li>
+
+<li class=""><a href="/01_course/python_cheat_sheet/">Python Cheat Sheet</a>
+<ul class="">
+<li class=""><a href="/01_course/python_cheat_sheet/basic/">Basic</a></li>
+<li class=""><a href="/01_course/python_cheat_sheet/pandas/">Pandas</a></li>
+<li class=""><a href="/01_course/python_cheat_sheet/plot/">Plot</a></li>
+<li class=""><a href="/01_course/python_cheat_sheet/numpy/">Numpy</a></li>
+<li class=""><a href="/01_course/python_cheat_sheet/data_preprocessing/">Data Pre-processing</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/01_course/financial_risk_management/">Financial Risk Management</a>
+<ul class="">
+<li class=""><a href="/01_course/financial_risk_management/markowitz/">Markowitz</a></li>
+<li class=""><a href="/01_course/financial_risk_management/binomial_trees/">Binomial Trees</a></li>
+<li class=""><a href="/01_course/financial_risk_management/bsm_model/">BSM Model</a></li>
+<li class=""><a href="/01_course/financial_risk_management/greeks/">Hedging with the Greeks</a></li>
+<li class=""><a href="/01_course/financial_risk_management/exam/">Exam</a></li>
+</ul>
+  
+</li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/02_big_data/">Big Data Analysis</a>
+<ul class="">
+
+<li class=""><a href="/02_big_data/machine_learning/">Machine Learning</a>
+<ul class="">
+<li class=""><a href="/02_big_data/machine_learning/random_forest/">Random Forest</a></li>
+<li class=""><a href="/02_big_data/machine_learning/bagging/">Bagging</a></li>
+<li class=""><a href="/02_big_data/machine_learning/knn/">KNN</a></li>
+<li class=""><a href="/02_big_data/machine_learning/linear_regression/">Linear Regression</a></li>
+<li class=""><a href="/02_big_data/machine_learning/pca/">PCA</a></li>
+<li class=""><a href="/02_big_data/machine_learning/train_test/">Train &amp; Test</a></li>
+<li class=""><a href="/02_big_data/machine_learning/clustering/">Clustering</a></li>
+<li class=""><a href="/02_big_data/machine_learning/naive_bayes/">Naive Bayes</a></li>
+</ul>
+  
+</li>
+<li class=""><a href="/02_big_data/gan/">GAN</a></li>
+<li class=""><a href="/02_big_data/tensorflow/">Tensorflow</a></li>
+
+<li class=""><a href="/02_big_data/reinforcement_learning/">Reinforcement Learning</a>
+<ul class="">
+<li class=""><a href="/02_big_data/reinforcement_learning/rl_with_kg/">RL with KG</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/02_big_data/text_mining/">Text Mining</a>
+<ul class="">
+<li class=""><a href="/02_big_data/text_mining/regular_expression/">Regular Expression</a></li>
+</ul>
+  
+</li>
+<li class=""><a href="/02_big_data/caffe/">Caffe</a></li>
+<li class=""><a href="/02_big_data/data_mining/">Data Mining</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/build_blog/">Build Blogs</a>
+<ul class="">
+<li class=""><a href="/build_blog/01_introduction/">Introduction</a></li>
+<li class=""><a href="/build_blog/02_preparation/">Preparation</a></li>
+<li class=""><a href="/build_blog/03_quick_start/">Quick Start</a></li>
+<li class=""><a href="/build_blog/04_git_notes/">Git Notes</a></li>
+<li class=""><a href="/build_blog/05_hugo_notes/">Hugo Notes</a></li>
+<li class=""><a href="/build_blog/06_markdown_notes/">Markdown Notes</a></li>
+<li class=""><a href="/build_blog/07_questions/">Q&amp;A</a></li>
+<li class=""><a href="/build_blog/scoop/">Scoop</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/03_interests/">Interests</a>
+<ul class="">
+<li class=""><a href="/03_interests/japanese/">Japanese</a></li>
+<li class=""><a href="/03_interests/hunt_for_stars/">Hunt for Stars</a></li>
+<li class=""><a href="/03_interests/diy_pc/">DIY PC</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/04_reading/">Reading</a>
+<ul class="">
+<li class=""><a href="/04_reading/reading_notes/">Reading Notes</a></li>
+<li class=""><a href="/04_reading/nonsense_output/">Nonsense Output</a></li>
+<li class=""><a href="/04_reading/wisdom_from_others/">Wisdom From Others</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/mathematics/">Mathematics</a>
+<ul class="">
+<li class=""><a href="/mathematics/advanced_mathematical_statistics/">Mathematical Analysis</a></li>
+<li class=""><a href="/mathematics/mathematical_analysis/">Mathematical Analysis</a></li>
+<li class=""><a href="/mathematics/functional_analysis/">Functional Analysis</a></li>
+</ul>
+  
+</li>
+
+<li class="parent"><a href="/digital_content/">Digital Content</a>
+<ul class="sub-menu">
+<li class=""><a href="/digital_content/opengl/">OpenGL</a></li>
+<li class=""><a href="/digital_content/shader/">Shader</a></li>
+<li class=""><a href="/digital_content/3dmax/">3dmax</a></li>
+<li class=""><a href="/digital_content/smpl/">SMPL</a></li>
+<li class="active"><a href="/digital_content/image_processing/">Image Processing</a></li>
+<li class=""><a href="/digital_content/affine_transformation/">Affine Transformation</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/chapter3/">Chapter 3 (hierarchized)</a>
+<ul class="">
+<li class=""><a href="/chapter3/1/">Chapter 3-1</a></li>
+
+<li class=""><a href="/chapter3/chapter3-2/">Chapter 3-2</a>
+<ul class="">
+<li class=""><a href="/chapter3/chapter3-2/1/">Chapter 3-2-1</a></li>
+<li class=""><a href="/chapter3/chapter3-2/2/">Chapter 3-2-2</a></li>
+<li class=""><a href="/chapter3/chapter3-2/3/">Chapter 3-2-3</a></li>
+<li class=""><a href="/chapter3/chapter3-2/4/">Chapter 3-2-4</a></li>
+</ul>
+  
+</li>
+<li class=""><a href="/chapter3/3/">Chapter 3-3</a></li>
+<li class=""><a href="/chapter3/4/">Chapter 3-4</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/default_post/">Default_posts</a>
+<ul class="">
+<li class=""><a href="/default_post/installation/">Installation</a></li>
+<li class=""><a href="/default_post/creating-a-new-theme/">Creating a New Theme</a></li>
+<li class=""><a href="/default_post/migrate-from-jekyll/">Migrate to Hugo from Jekyll</a></li>
+<li class=""><a href="/default_post/configuration/">Configuration</a></li>
+<li class=""><a href="/default_post/goisforlovers/">(Hu)go Template Primer</a></li>
+<li class=""><a href="/default_post/hugoisforlovers/">Getting Started with Hugo</a></li>
+</ul>
+  
+</li>
+</ul>
+</nav>
+
+
+<div class="sidebar-footer"></div>
+</div>
+</div><a href="#" id="backtothetop-fixed" class="backtothetop"
+ data-backtothetop-duration="600"
+ data-backtothetop-easing="easeOutQuart"
+ data-backtothetop-fixed-fadeIn="1000"
+ data-backtothetop-fixed-fadeOut="1000"
+ data-backtothetop-fixed-bottom="10"
+ data-backtothetop-fixed-right="20">
+<span class="fa-layers fa-fw">
+<i class="fas fa-circle"></i>
+<i class="fas fa-arrow-circle-up"></i>
+</span></a>
+</div>
+</body>
+</html>

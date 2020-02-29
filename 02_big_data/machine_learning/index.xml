@@ -30,21 +30,21 @@
     </item>
     
     <item>
+      <title>KNN</title>
+      <link>https://hanyutan.gitee.io/02_big_data/machine_learning/knn/</link>
+      <pubDate>Sat, 19 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/02_big_data/machine_learning/knn/</guid>
+      <description>Theory Part 变量标准化处理 Python Code # Packages from sklearn.neighbors import KNeighborsClassifier # Scale from sklearn.preprocessing import StandardScaler standardizer = StandardScaler() X_std = standardizer.fit_transform(X_train)</description>
+    </item>
+    
+    <item>
       <title>Linear Regression</title>
       <link>https://hanyutan.gitee.io/02_big_data/machine_learning/linear_regression/</link>
       <pubDate>Sat, 19 Oct 2019 00:00:00 +0000</pubDate>
       
       <guid>https://hanyutan.gitee.io/02_big_data/machine_learning/linear_regression/</guid>
-      <description>理论部分 检查y的正态分布，右偏进行log变换 注意y与x的线性性，进行适当变换 log sqrt ^(1&amp;frasl;3) x之间的多重共线性 考虑交互项 代码部分 # Train import statsmodels.api as sm X = sm.add_constant(X_train) # 添</description>
-    </item>
-    
-    <item>
-      <title>Logistic Regression</title>
-      <link>https://hanyutan.gitee.io/02_big_data/machine_learning/logistic_regression/</link>
-      <pubDate>Sat, 19 Oct 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://hanyutan.gitee.io/02_big_data/machine_learning/logistic_regression/</guid>
-      <description>理论部分 cutoff的选择 代码部分 # Train from sklearn.linear_model import LogisticRegression model = LogisticRegression().fit(X_train,y_train) # Coefficient beta = model.coef_.ravel() print(&amp;#34;beta coefficient:&amp;#34;,np.round(beta,3)) # Prediction y_pred = model.predict(X_test) from sklearn.metrics import accuracy_score print(&amp;#34;Test set accuracy score: {:.5f}&amp;#34;.format(accuracy_score(y_pred, y_test))) # precision、recall、f1-s</description>
+      <description>Theory Part 普通线性回归 检查y的正态分布，右偏进行log变换 注意y与x的线性性，进行适当变换 log sqrt ^(1&amp;frasl;3) x之间的多重共线性 考虑交互项 Logistic回归 c</description>
     </item>
     
     <item>

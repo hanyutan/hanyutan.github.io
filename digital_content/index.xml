@@ -44,7 +44,25 @@
       <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
       
       <guid>https://hanyutan.gitee.io/digital_content/smpl/</guid>
-      <description>Paper:SMPL: A Skinned Multi-Person Linear Model 代码实现：https://github.com/CalciferZh/SMPL 官方文档：http://smpl.is.tue.m</description>
+      <description>Paper:SMPL: A Skinned Multi-Person Linear Model SMPL的Numpy及TensorFlow实现：https://github.com/CalciferZh/SMPL hmr论文中</description>
+    </item>
+    
+    <item>
+      <title>Image Processing</title>
+      <link>https://hanyutan.gitee.io/digital_content/image_processing/</link>
+      <pubDate>Fri, 29 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/digital_content/image_processing/</guid>
+      <description>灰度变换 https://www.cnblogs.com/wangguchangqing/p/6983680.html 图像的空间域滤波——基于像素的某一邻域进行像素处理 灰度变换——仅仅针对当前像素，使用灰度变换函数（又称为图像的点运算） 图像灰度变换</description>
+    </item>
+    
+    <item>
+      <title>Affine Transformation</title>
+      <link>https://hanyutan.gitee.io/digital_content/affine_transformation/</link>
+      <pubDate>Sat, 16 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/digital_content/affine_transformation/</guid>
+      <description>affine transformation [ToC] 仿射变换——计算机图形学应用非常广泛的一种变换，包括平移、旋转、缩放、剪切等。 平移变换 $$ \begin{bmatrix}x&amp;amp;y&amp;amp;z&amp;amp;1\end{bmatrix}\times\begin{bmatrix}1 &amp;amp; 0 &amp;amp; 0 &amp;amp; 0 \0 &amp;amp; 1 &amp;amp; 0 &amp;amp; 0 \0 &amp;amp; 0 &amp;amp; 1 &amp;amp; 0 \a &amp;amp;</description>
     </item>
     
   </channel>

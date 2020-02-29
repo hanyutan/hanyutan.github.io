@@ -13,6 +13,15 @@
     
     <item>
       <title>Mathematical Analysis</title>
+      <link>https://hanyutan.gitee.io/mathematics/advanced_mathematical_statistics/</link>
+      <pubDate>Mon, 04 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/mathematics/advanced_mathematical_statistics/</guid>
+      <description>“高等数理统计笔记”整理by刘宇扬（SJTU，统计学） 如对笔记中的内容有疑问，或者想要跟作者交流，请联系Email:lyy_stat@fox</description>
+    </item>
+    
+    <item>
+      <title>Mathematical Analysis</title>
       <link>https://hanyutan.gitee.io/mathematics/mathematical_analysis/</link>
       <pubDate>Mon, 04 Nov 2019 00:00:00 +0000</pubDate>
       
@@ -206,7 +215,25 @@
       <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
       
       <guid>https://hanyutan.gitee.io/digital_content/smpl/</guid>
-      <description>Paper:SMPL: A Skinned Multi-Person Linear Model 代码实现：https://github.com/CalciferZh/SMPL 官方文档：http://smpl.is.tue.m</description>
+      <description>Paper:SMPL: A Skinned Multi-Person Linear Model SMPL的Numpy及TensorFlow实现：https://github.com/CalciferZh/SMPL hmr论文中</description>
+    </item>
+    
+    <item>
+      <title>Image Processing</title>
+      <link>https://hanyutan.gitee.io/digital_content/image_processing/</link>
+      <pubDate>Fri, 29 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/digital_content/image_processing/</guid>
+      <description>灰度变换 https://www.cnblogs.com/wangguchangqing/p/6983680.html 图像的空间域滤波——基于像素的某一邻域进行像素处理 灰度变换——仅仅针对当前像素，使用灰度变换函数（又称为图像的点运算） 图像灰度变换</description>
+    </item>
+    
+    <item>
+      <title>Affine Transformation</title>
+      <link>https://hanyutan.gitee.io/digital_content/affine_transformation/</link>
+      <pubDate>Sat, 16 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/digital_content/affine_transformation/</guid>
+      <description>affine transformation [ToC] 仿射变换——计算机图形学应用非常广泛的一种变换，包括平移、旋转、缩放、剪切等。 平移变换 $$ \begin{bmatrix}x&amp;amp;y&amp;amp;z&amp;amp;1\end{bmatrix}\times\begin{bmatrix}1 &amp;amp; 0 &amp;amp; 0 &amp;amp; 0 \0 &amp;amp; 1 &amp;amp; 0 &amp;amp; 0 \0 &amp;amp; 0 &amp;amp; 1 &amp;amp; 0 \a &amp;amp;</description>
     </item>
     
     <item>
@@ -237,48 +264,12 @@
     </item>
     
     <item>
-      <title>Julia Cheat-Sheet</title>
-      <link>https://hanyutan.gitee.io/01_course/julia_cheat_sheet/</link>
-      <pubDate>Tue, 17 Sep 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://hanyutan.gitee.io/01_course/julia_cheat_sheet/</guid>
-      <description>Julia Julia introduction 注意按照教程安装完成后，需要在Atom-Settings-Packages-Julia Client-Julia Path中修改Julia安装位置，例如D:/J</description>
-    </item>
-    
-    <item>
       <title>Latex</title>
       <link>https://hanyutan.gitee.io/01_course/latex/</link>
       <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
       
       <guid>https://hanyutan.gitee.io/01_course/latex/</guid>
       <description>用beamer做ppt？ Install TexLive 清华开源镜像下载地址 下载最新的.iso文件，进入DVD驱动器后双击install-tl-advanced.bat</description>
-    </item>
-    
-    <item>
-      <title>Mathematical Statistics</title>
-      <link>https://hanyutan.gitee.io/01_course/mathematical_statistics/</link>
-      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
-      
-      <guid>https://hanyutan.gitee.io/01_course/mathematical_statistics/</guid>
-      <description>梁汉营 hyliang@tongji.edu.cn</description>
-    </item>
-    
-    <item>
-      <title>Statistic Software</title>
-      <link>https://hanyutan.gitee.io/01_course/statistic_software/</link>
-      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
-      
-      <guid>https://hanyutan.gitee.io/01_course/statistic_software/</guid>
-      <description>张云新 xyz@fudan.edu.cn 考核方式：平时成绩20%，课程报告成绩40%，期末报告与程序40%。没有考试。 常用统计软件：SAS，SPSS，Eviews，Gaus</description>
-    </item>
-    
-    <item>
-      <title>Wei Zhongyu</title>
-      <link>https://hanyutan.gitee.io/01_course/weizhongyu/</link>
-      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
-      
-      <guid>https://hanyutan.gitee.io/01_course/weizhongyu/</guid>
-      <description>http://www.sdspeople.fudan.edu.cn/zywei/DATA130008/slides/Lecture1.1.pdf Search Search Problems state space 状态空间 successor function (with actions, costs) start state 起始空间 goal test 检测是否达到目标状态 Uninformed Search 无信息搜索算法 Depth-First Search 深度优先 Breadth-First Search 广度优先 Uniform-Cost Search 代价一致 Real World Task Pac-man</description>
     </item>
     
     <item>
@@ -300,21 +291,21 @@
     </item>
     
     <item>
+      <title>KNN</title>
+      <link>https://hanyutan.gitee.io/02_big_data/machine_learning/knn/</link>
+      <pubDate>Sat, 19 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/02_big_data/machine_learning/knn/</guid>
+      <description>Theory Part 变量标准化处理 Python Code # Packages from sklearn.neighbors import KNeighborsClassifier # Scale from sklearn.preprocessing import StandardScaler standardizer = StandardScaler() X_std = standardizer.fit_transform(X_train)</description>
+    </item>
+    
+    <item>
       <title>Linear Regression</title>
       <link>https://hanyutan.gitee.io/02_big_data/machine_learning/linear_regression/</link>
       <pubDate>Sat, 19 Oct 2019 00:00:00 +0000</pubDate>
       
       <guid>https://hanyutan.gitee.io/02_big_data/machine_learning/linear_regression/</guid>
-      <description>理论部分 检查y的正态分布，右偏进行log变换 注意y与x的线性性，进行适当变换 log sqrt ^(1&amp;frasl;3) x之间的多重共线性 考虑交互项 代码部分 # Train import statsmodels.api as sm X = sm.add_constant(X_train) # 添</description>
-    </item>
-    
-    <item>
-      <title>Logistic Regression</title>
-      <link>https://hanyutan.gitee.io/02_big_data/machine_learning/logistic_regression/</link>
-      <pubDate>Sat, 19 Oct 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://hanyutan.gitee.io/02_big_data/machine_learning/logistic_regression/</guid>
-      <description>理论部分 cutoff的选择 代码部分 # Train from sklearn.linear_model import LogisticRegression model = LogisticRegression().fit(X_train,y_train) # Coefficient beta = model.coef_.ravel() print(&amp;#34;beta coefficient:&amp;#34;,np.round(beta,3)) # Prediction y_pred = model.predict(X_test) from sklearn.metrics import accuracy_score print(&amp;#34;Test set accuracy score: {:.5f}&amp;#34;.format(accuracy_score(y_pred, y_test))) # precision、recall、f1-s</description>
+      <description>Theory Part 普通线性回归 检查y的正态分布，右偏进行log变换 注意y与x的线性性，进行适当变换 log sqrt ^(1&amp;frasl;3) x之间的多重共线性 考虑交互项 Logistic回归 c</description>
     </item>
     
     <item>
@@ -463,6 +454,15 @@ Params # Souce Code repository section description = &amp;quot;put your descript
     </item>
     
     <item>
+      <title>DIY PC</title>
+      <link>https://hanyutan.gitee.io/03_interests/diy_pc/</link>
+      <pubDate>Tue, 03 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/03_interests/diy_pc/</guid>
+      <description>对于一个装机小白来说，看这些电脑配置可太南了，把目前整理的清单放出来留着以后说不定还可以share给谁，这是一份完全不专业的入门DIY指南。</description>
+    </item>
+    
+    <item>
       <title>BSM Model</title>
       <link>https://hanyutan.gitee.io/01_course/financial_risk_management/bsm_model/</link>
       <pubDate>Thu, 24 Oct 2019 00:00:00 +0000</pubDate>
@@ -472,21 +472,21 @@ Params # Souce Code repository section description = &amp;quot;put your descript
     </item>
     
     <item>
-      <title>Reinforcement Learning</title>
-      <link>https://hanyutan.gitee.io/02_big_data/reinforcement_learning/</link>
-      <pubDate>Tue, 10 Sep 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://hanyutan.gitee.io/02_big_data/reinforcement_learning/</guid>
-      <description>The correct input/output pairs are not present. The model will learn from a sequence of actions and select the action maximizing the expected sum of the future rewards. There is a discount factor that makes future rewards less valuable that current rewards.</description>
-    </item>
-    
-    <item>
       <title>Hedging with the Greeks</title>
       <link>https://hanyutan.gitee.io/01_course/financial_risk_management/greeks/</link>
       <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
       
       <guid>https://hanyutan.gitee.io/01_course/financial_risk_management/greeks/</guid>
       <description>Outline Exotic options Greeks Delta hedging example with python code Hedge套期保值 Greeks敏感性指标（希腊字母）：指各种影响因素$(S, t)$的变动对于期权价格$f$的影响程度。 Greeks</description>
+    </item>
+    
+    <item>
+      <title>RL with KG</title>
+      <link>https://hanyutan.gitee.io/02_big_data/reinforcement_learning/rl_with_kg/</link>
+      <pubDate>Sun, 08 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hanyutan.gitee.io/02_big_data/reinforcement_learning/rl_with_kg/</guid>
+      <description>Paper: Reinforcement Knowledge Graph Reasoning for Explainable Recommendation</description>
     </item>
     
     <item>
@@ -508,21 +508,12 @@ Params # Souce Code repository section description = &amp;quot;put your descript
     </item>
     
     <item>
-      <title>Text Mining</title>
-      <link>https://hanyutan.gitee.io/02_big_data/text_mining/</link>
+      <title>Regular Expression</title>
+      <link>https://hanyutan.gitee.io/02_big_data/text_mining/regular_expression/</link>
       <pubDate>Thu, 10 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://hanyutan.gitee.io/02_big_data/text_mining/</guid>
+      <guid>https://hanyutan.gitee.io/02_big_data/text_mining/regular_expression/</guid>
       <description>正则表达式 Regular Expression 正则表达式是用于处理字符串的强大工具 Metacharacter Description ^ 开头位置，[ ]内代表“非” $ 结尾位置 . 匹配任意字符（除换行符&amp;rdquo;\n&amp;rd</description>
-    </item>
-    
-    <item>
-      <title>Artificial Intelligency</title>
-      <link>https://hanyutan.gitee.io/02_big_data/artificial_intelligency/</link>
-      <pubDate>Tue, 17 Oct 2017 15:26:15 +0000</pubDate>
-      
-      <guid>https://hanyutan.gitee.io/02_big_data/artificial_intelligency/</guid>
-      <description>数学基础：线性代数+概率统计 Bayesian 人工神经网络（MLB BP RNN） 分类-监督学习（SVM, Decision Tree） 聚类-非监督学习（KNN, K-Means） 回</description>
     </item>
     
     <item>

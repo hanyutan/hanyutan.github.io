@@ -57,26 +57,37 @@ MathJax.Hub.Config({
 <div class="content-container">
 <main><h1>Linear Regression</h1>
 
-<h2 id="理论部分">理论部分</h2>
+<h2 id="theory-part">Theory Part</h2>
+
+<h4 id="普通线性回归">普通线性回归</h4>
 
 <p>检查y的正态分布，右偏进行log变换
 注意y与x的线性性，进行适当变换 log sqrt ^(<sup>1</sup>&frasl;<sub>3</sub>)
 x之间的多重共线性
 考虑交互项</p>
 
-<h2 id="代码部分">代码部分</h2>
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Train</span>
+<h4 id="logistic回归">Logistic回归</h4>
+
+<p>cutoff的选择</p>
+
+<h2 id="python-code">Python Code</h2>
+
+<h4 id="普通线性回归-1">普通线性回归</h4>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Packages</span>
 <span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="kn">as</span> <span class="nn">sm</span>
+
+<span class="c1"># Train</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>   <span class="c1"># 添加截距项</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>   <span class="c1"># 给出R2 pvalue AIC BIC</span>
+<span class="k">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+<span class="c1"># 给出R2 pvalue AIC BIC Likelihood 回归系数表</span>
 
 <span class="c1"># Prediction</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
 <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">X_test</span><span class="p">))</span>
 
 <span class="c1"># RMSE</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;RMSE   : </span><span class="si">%0.2f</span><span class="s1"> &#39;</span> <span class="o">%</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;RMSE: </span><span class="si">%0.2f</span><span class="s1"> &#39;</span> <span class="o">%</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span>
 
 <span class="c1"># Standardized Residual Plot</span>
 <span class="n">y_residual</span><span class="o">=</span><span class="n">y_test</span><span class="o">-</span><span class="n">y_pred</span>
@@ -100,14 +111,81 @@ x之间的多重共线性
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&#34;QQ Plot&#34;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;y_test quantiles&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y_pred quantiles&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></code></pre></div><div class="edit-meta">
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></code></pre></div>
+<h4 id="logistic回归-1">Logistic回归</h4>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Packages</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+
+<span class="c1"># Train</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Coefficient</span>
+<span class="n">beta</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&#34;Beta coefficient:&#34;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">beta</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+
+<span class="c1"># Prediction</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># Accuracy</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&#34;Test set accuracy score: {:.5f}&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)))</span>
+
+<span class="c1"># precision、recall、f1-score</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span>
+<span class="k">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+
+<span class="c1"># AUC</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">roc_auc_score</span>
+<span class="n">auc</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&#34;Area under the ROC curve : </span><span class="si">%f</span><span class="s2">&#34;</span> <span class="o">%</span> <span class="n">auc</span><span class="p">)</span>
+
+<span class="c1"># ROC curve</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">roc_curve</span>
+<span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">thresholds</span>  <span class="o">=</span>  <span class="n">roc_curve</span><span class="p">(</span><span class="n">y_test_1ogit</span><span class="p">,</span> <span class="n">y_pred_logit</span><span class="p">)</span> 
+
+<span class="k">def</span> <span class="nf">plot_roc_curve</span><span class="p">(</span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;ROC&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkblue&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;False Positive Rate&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;True Positive Rate&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Receiver Operating Characteristic (ROC) Curve&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">plot_roc_curve</span><span class="p">(</span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">)</span></code></pre></div>
+<h4 id="岭回归">岭回归</h4>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Packages</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">Ridge</span>
+
+<span class="c1"># Train</span>
+<span class="n">model</span><span class="o">=</span><span class="n">Ridge</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&#34;Coefficient:&#34;</span><span class="p">,</span><span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># RMSE</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;RMSE: </span><span class="si">%0.2f</span><span class="s1"> &#39;</span> <span class="o">%</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span></code></pre></div>
+<h4 id="lasso回归">Lasso回归</h4>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Package</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">linear_model</span>
+
+<span class="c1"># Train</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">Lasso</span><span class="p">(</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Coefficient</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&#34;Coefficient:&#34;</span><span class="p">,</span><span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># RMSE</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;RMSE: </span><span class="si">%0.2f</span><span class="s1"> &#39;</span> <span class="o">%</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span></code></pre></div><div class="edit-meta">
 Last updated on 19 Oct 2019
 
 
 <br>
 Published on 19 Oct 2019
-<br><a href="https://gitee.com/hanyutan/hanyutan/edit/master/content/02_big_data%5cmachine_learning%5clinear_regression.md" class="edit-page"><i class="fas fa-pen-square"></i> Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="/02_big_data/machine_learning/bagging/" title="Bagging"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - Bagging</a>
-<a class="nav nav-next" href="/02_big_data/machine_learning/logistic_regression/" title="Logistic Regression">Next - Logistic Regression <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<br><a href="https://gitee.com/hanyutan/hanyutan/edit/master/content/02_big_data%5cmachine_learning%5clinear_regression.md" class="edit-page"><i class="fas fa-pen-square"></i> Edit on GitHub</a></div><nav class="pagination"><a class="nav nav-prev" href="/02_big_data/machine_learning/knn/" title="KNN"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - KNN</a>
+<a class="nav nav-next" href="/02_big_data/machine_learning/pca/" title="PCA">Next - PCA <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
 </nav><footer><p class="powered">Powered by <a href="https://gohugo.io">Hugo</a>. Theme by <a href="https://themes.gohugo.io/hugo-theme-techdoc/">TechDoc</a>. Designed by <a href="https://github.com/thingsym/hugo-theme-techdoc">Thingsym</a>.</p>
 </footer>
 </main><div class="sidebar">
@@ -119,11 +197,7 @@ Published on 19 Oct 2019
 <ul class="">
 <li class=""><a href="/01_course/r_cheat_sheet/">R Cheat-Sheet</a></li>
 <li class=""><a href="/01_course/spark/">Spark</a></li>
-<li class=""><a href="/01_course/julia_cheat_sheet/">Julia Cheat-Sheet</a></li>
 <li class=""><a href="/01_course/latex/">Latex</a></li>
-<li class=""><a href="/01_course/mathematical_statistics/">Mathematical Statistics</a></li>
-<li class=""><a href="/01_course/statistic_software/">Statistic Software</a></li>
-<li class=""><a href="/01_course/weizhongyu/">Wei Zhongyu</a></li>
 
 <li class=""><a href="/01_course/python_cheat_sheet/">Python Cheat Sheet</a>
 <ul class="">
@@ -157,8 +231,8 @@ Published on 19 Oct 2019
 <ul class="sub-menu">
 <li class=""><a href="/02_big_data/machine_learning/random_forest/">Random Forest</a></li>
 <li class=""><a href="/02_big_data/machine_learning/bagging/">Bagging</a></li>
+<li class=""><a href="/02_big_data/machine_learning/knn/">KNN</a></li>
 <li class="active"><a href="/02_big_data/machine_learning/linear_regression/">Linear Regression</a></li>
-<li class=""><a href="/02_big_data/machine_learning/logistic_regression/">Logistic Regression</a></li>
 <li class=""><a href="/02_big_data/machine_learning/pca/">PCA</a></li>
 <li class=""><a href="/02_big_data/machine_learning/train_test/">Train &amp; Test</a></li>
 <li class=""><a href="/02_big_data/machine_learning/clustering/">Clustering</a></li>
@@ -168,11 +242,22 @@ Published on 19 Oct 2019
 </li>
 <li class=""><a href="/02_big_data/gan/">GAN</a></li>
 <li class=""><a href="/02_big_data/tensorflow/">Tensorflow</a></li>
+
+<li class=""><a href="/02_big_data/reinforcement_learning/">Reinforcement Learning</a>
+<ul class="">
+<li class=""><a href="/02_big_data/reinforcement_learning/rl_with_kg/">RL with KG</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/02_big_data/text_mining/">Text Mining</a>
+<ul class="">
+<li class=""><a href="/02_big_data/text_mining/regular_expression/">Regular Expression</a></li>
+</ul>
+  
+</li>
 <li class=""><a href="/02_big_data/caffe/">Caffe</a></li>
-<li class=""><a href="/02_big_data/reinforcement_learning/">Reinforcement Learning</a></li>
 <li class=""><a href="/02_big_data/data_mining/">Data Mining</a></li>
-<li class=""><a href="/02_big_data/text_mining/">Text Mining</a></li>
-<li class=""><a href="/02_big_data/artificial_intelligency/">Artificial Intelligency</a></li>
 </ul>
   
 </li>
@@ -195,6 +280,7 @@ Published on 19 Oct 2019
 <ul class="">
 <li class=""><a href="/03_interests/japanese/">Japanese</a></li>
 <li class=""><a href="/03_interests/hunt_for_stars/">Hunt for Stars</a></li>
+<li class=""><a href="/03_interests/diy_pc/">DIY PC</a></li>
 </ul>
   
 </li>
@@ -210,6 +296,7 @@ Published on 19 Oct 2019
 
 <li class=""><a href="/mathematics/">Mathematics</a>
 <ul class="">
+<li class=""><a href="/mathematics/advanced_mathematical_statistics/">Mathematical Analysis</a></li>
 <li class=""><a href="/mathematics/mathematical_analysis/">Mathematical Analysis</a></li>
 <li class=""><a href="/mathematics/functional_analysis/">Functional Analysis</a></li>
 </ul>
@@ -222,6 +309,8 @@ Published on 19 Oct 2019
 <li class=""><a href="/digital_content/shader/">Shader</a></li>
 <li class=""><a href="/digital_content/3dmax/">3dmax</a></li>
 <li class=""><a href="/digital_content/smpl/">SMPL</a></li>
+<li class=""><a href="/digital_content/image_processing/">Image Processing</a></li>
+<li class=""><a href="/digital_content/affine_transformation/">Affine Transformation</a></li>
 </ul>
   
 </li>
