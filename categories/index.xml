@@ -1,31 +1,31 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Keep Learning</title>
-    <link>https://hanyutan.gitee.io/categories/</link>
+    <link>https://hanyutan.github.io/categories/</link>
     <description>Recent content in Categories on Keep Learning</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Wed, 02 Apr 2014 00:00:00 +0000</lastBuildDate>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 02 Sep 2020 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://hanyutan.gitee.io/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://hanyutan.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Development</title>
-      <link>https://hanyutan.gitee.io/categories/development/</link>
-      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
+      <title>Animation</title>
+      <link>https://hanyutan.github.io/categories/Animation/</link>
+      <pubDate>Wed, 02 Sep 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://hanyutan.gitee.io/categories/development/</guid>
+      <guid>https://hanyutan.github.io/categories/Animation/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>golang</title>
-      <link>https://hanyutan.gitee.io/categories/golang/</link>
-      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
+      <title>Golang</title>
+      <link>https://hanyutan.github.io/categories/Golang/</link>
+      <pubDate>Wed, 18 Dec 2019 21:55:00 +0800</pubDate>
       
-      <guid>https://hanyutan.gitee.io/categories/golang/</guid>
+      <guid>https://hanyutan.github.io/categories/Golang/</guid>
       <description></description>
     </item>
     

@@ -1,38 +1,41 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>golang on Keep Learning</title>
-    <link>https://hanyutan.gitee.io/tags/golang/</link>
+    <link>https://hanyutan.github.io/tags/golang/</link>
     <description>Recent content in golang on Keep Learning</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Wed, 02 Apr 2014 00:00:00 +0000</lastBuildDate>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 18 Dec 2019 21:55:00 +0800</lastBuildDate>
     
-	<atom:link href="https://hanyutan.gitee.io/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://hanyutan.github.io/tags/golang/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>(Hu)go Template Primer</title>
-      <link>https://hanyutan.gitee.io/default_post/goisforlovers/</link>
-      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
+      <title>Golang Gin 实战（五）| 接收数组和 Map</title>
+      <link>https://hanyutan.github.io/2019/12/18/golang-gin-query-parameters-array-map.html</link>
+      <pubDate>Wed, 18 Dec 2019 21:55:00 +0800</pubDate>
       
-      <guid>https://hanyutan.gitee.io/default_post/goisforlovers/</guid>
-      <description>Hugo uses the excellent Go html/template library for its template engine. It is an extremely lightweight engine that provides a very small amount of logic. In our experience that it is just the right amount of logic to be able to create a good static website. If you have used other template systems from different languages or frameworks you will find a lot of similarities in Go templates.
-This document is a brief primer on using Go templates.</description>
+      <guid>https://hanyutan.github.io/2019/12/18/golang-gin-query-parameters-array-map.html</guid>
+      <description>标题 段落内容 标题 段落内容 标题 段落内容 标题 段落内容 标题 段落内容</description>
     </item>
     
     <item>
-      <title>Getting Started with Hugo</title>
-      <link>https://hanyutan.gitee.io/default_post/hugoisforlovers/</link>
-      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
+      <title>Golang Gin 实战（三）| 路由参数</title>
+      <link>https://hanyutan.github.io/post/2019-12-13-golang-gin-parameters-in-path/</link>
+      <pubDate>Fri, 13 Dec 2019 21:00:00 +0800</pubDate>
       
-      <guid>https://hanyutan.gitee.io/default_post/hugoisforlovers/</guid>
-      <description>Step 1. Install Hugo Go to Hugo releases and download the appropriate version for your OS and architecture.
-Save it somewhere specific as we will be using it in the next step.
-More complete instructions are available at Install Hugo
-Step 2. Build the Docs Hugo has its own example site which happens to also be the documentation site you are reading right now.
-Follow the following steps:
- Clone the Hugo repository Go into the repo Run hugo in server mode and build the docs Open your browser to http://localhost:1313  Corresponding pseudo commands:</description>
+      <guid>https://hanyutan.github.io/post/2019-12-13-golang-gin-parameters-in-path/</guid>
+      <description>标题 段落内容 标题 段落内容 标题 段落内容 标题 段落内容 标题 段落内容</description>
+    </item>
+    
+    <item>
+      <title>Golang Gin 实战（三）| 路由参数</title>
+      <link>https://hanyutan.github.io/post/2019-12-15-golang-gin-query-parameters-source-code-analysis/</link>
+      <pubDate>Fri, 13 Dec 2019 21:00:00 +0800</pubDate>
+      
+      <guid>https://hanyutan.github.io/post/2019-12-15-golang-gin-query-parameters-source-code-analysis/</guid>
+      <description>标题 段落内容 标题 段落内容 标题 段落内容 标题 段落内容 标题 段落内容</description>
     </item>
     
   </channel>
